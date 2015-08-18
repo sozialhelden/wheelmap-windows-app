@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wheelmap_Windows.Source {
+namespace Wheelmap_Windows {
     static class BuildConfig {
         
         // API ENDPOINT
@@ -22,7 +22,7 @@ namespace Wheelmap_Windows.Source {
 #elif DEBUG
         public const string BUILDTYPE = "Debug";
 #else
-        public const string BUILDTYPE = "";
+        public const string BUILDTYPE = "Release";
 #endif
 
     }
