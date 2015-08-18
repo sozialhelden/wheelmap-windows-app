@@ -8,14 +8,11 @@
     x:Class="Wheelmap_Windows.Source.UI.MainPage"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <SplitView x:Name="mSplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
+               CompactPaneLength="50" OpenPaneLength="150">
 
-        <Maps:MapControl x:Name="mapControl"/>
-
-        <StackPanel Orientation="Horizontal" Width="Auto">
-
-            <!--#region Sidemenu -->
-            <Grid Background="Aqua" Width="Auto">
+        <SplitView.Pane>
+            <Grid Background="Gray">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -23,57 +20,161 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
                 <StackPanel Grid.Row="0">
 
-                    <Image Source="/Assets/StoreLogo.png" Margin="10,0"/>
+                    <StackPanel Orientation="Horizontal" Tapped="MenuButton_Click">
 
-                    <Button Click="Menu_Click">
-                        <Button.Template>
-                            <ControlTemplate>
-                                <Image Source="/Assets/StoreLogo.png" Margin="10,0"/>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                    <Button Click="Button_Click">
-                        <Button.Template>
-                            <ControlTemplate>
-                                <Image Source="/Assets/StoreLogo.png" Margin="10,0"/>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
+                        <Button 
+                            FontFamily="Segoe MDL2 Assets" 
+                            Content="&#xE700;"
+                            Width="50" 
+                            Height="50" 
+                            Background="Transparent" />
+
+                        <TextBlock 
+                            Text="WHEELMAP" 
+                            FontSize="15"
+                            FontWeight="Bold"
+                            VerticalAlignment="Center"  />
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Tapped="ShowListTapped">
+
+                        <Button
+                            FontFamily="Segoe MDL2 Assets" 
+                            Content="&#xE825;"
+                            Width="50" 
+                            Height="50" 
+                            Background="Transparent"/>
+
+                        <TextBlock 
+                            Text="Liste" 
+                            FontSize="15" 
+                            VerticalAlignment="Center" />
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <Button
+                            FontFamily="Segoe MDL2 Assets" 
+                            Content="&#xE10F;"
+                            Width="50"
+                            Height="50"
+                            Background="Transparent"/>
+
+                        <TextBlock 
+                            Text="Mithelfen" 
+                            FontSize="15" 
+                            VerticalAlignment="Center" />
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <Button
+                            FontFamily="Segoe MDL2 Assets" 
+                            Content="&#xE1D6;"
+                            Width="50" 
+                            Height="50"
+                            Background="Transparent"/>
+
+                        <TextBlock 
+                            Text="Toiletten" 
+                            FontSize="15" 
+                            VerticalAlignment="Center" />
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <Button
+                            FontFamily="Segoe MDL2 Assets" 
+                            Content="&#xE1D6;"
+                            Width="50" 
+                            Height="50"
+                            Background="Transparent"/>
+
+                        <TextBlock 
+                            Text="Status" 
+                            FontSize="15" 
+                            VerticalAlignment="Center" />
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <Button
+                            FontFamily="Segoe MDL2 Assets" 
+                            Content="&#xE1D6;"
+                            Width="50" 
+                            Height="50"
+                            Background="Transparent"/>
+
+                        <TextBlock 
+                            Text="Kategorien" 
+                            FontSize="15" 
+                            VerticalAlignment="Center" />
+
+                    </StackPanel>
+
+
                 </StackPanel>
+
 
                 <StackPanel Grid.Row="2">
 
-                    <Button Click="Button_Click">
-                        <Button.Template>
-                            <ControlTemplate>
-                                <Image Source="/Assets/StoreLogo.png" Margin="10,0"/>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
+                    <StackPanel Orientation="Horizontal">
 
-                    <Button Click="Button_Click">
-                        <Button.Template>
-                            <ControlTemplate>
-                                <Image Source="/Assets/StoreLogo.png" Margin="10,0"/>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
+                        <Button 
+                            FontFamily="Segoe MDL2 Assets" 
+                            Content="&#xE1D6;"
+                            Width="50" 
+                            Height="50" 
+                            Background="Transparent"/>
+
+                        <TextBlock 
+                            Text="Profil" 
+                            FontSize="15" 
+                            VerticalAlignment="Center" />
+                    </StackPanel>
+
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <Button 
+                            FontFamily="Segoe MDL2 Assets" 
+                            Content="&#xE1D6;"
+                            Width="50" 
+                            Height="50" 
+                            Background="Transparent"/>
+
+                        <TextBlock 
+                            Text="Einstellungen" 
+                            FontSize="15" 
+                            VerticalAlignment="Center"/>
+
+                    </StackPanel>
 
                 </StackPanel>
 
             </Grid>
-            <!--#endregion-->
+        </SplitView.Pane>
 
-            <!-- contains all subframes which are opened with the sidemenu -->
-            <Frame x:Name="menuContainerFrame"/>
+        <SplitView.Content>
+            <Grid>
+                <Maps:MapControl x:Name="mapControl"/>
 
-        </StackPanel>
+                <StackPanel 
+                    Width="Auto"
+                    Orientation="Horizontal">
+                    <!-- contains all subframes which are opened with the sidemenu -->
+                    <Frame x:Name="menuContainerFrame"/>
+                </StackPanel>
 
-    </Grid>
+            </Grid>
+        </SplitView.Content>
+    </SplitView>
+
 </Page>

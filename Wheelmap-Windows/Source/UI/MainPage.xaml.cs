@@ -25,9 +25,22 @@ namespace Wheelmap_Windows.Source.UI {
 
         public MainPage() {
             this.InitializeComponent();
-            setOsmTileSource();
 
-            menuContainerFrame.Navigate(typeof(MenuPage));
+            //menuContainerFrame.Navigate(typeof(MenuPage));
+            
+        }
+
+        private void MenuButton_Click(object sender, RoutedEventArgs e) {
+            toggleMenu();
+        }
+
+        private void ShowMenu(bool show) {
+            mSplitView.IsPaneOpen = show;
+        }
+
+        private void toggleMenu() {
+            // toggle menu
+            ShowMenu(!mSplitView.IsPaneOpen);
         }
 
         /**
@@ -42,6 +55,7 @@ namespace Wheelmap_Windows.Source.UI {
             mapControl.TileSources.Add(ts);
         }
 
+
         private void Button_Click(object sender, RoutedEventArgs e) {
             Debug.WriteLine("Button Clicked");
             menuContainerFrame.Navigate(typeof(MenuPage));
@@ -51,8 +65,20 @@ namespace Wheelmap_Windows.Source.UI {
         private void Menu_Click(object sender, RoutedEventArgs e) {
             Debug.WriteLine("Menu Clicked");
 
-            menuContainerFrame.Visibility = Visibility.Collapsed;
+            if (menuContainerFrame.Visibility == Visibility.Collapsed) {
+                menuContainerFrame.Visibility = Visibility.Visible;
+            } else {
+                menuContainerFrame.Visibility = Visibility.Collapsed;
+            }
+
         }
 
+        private void ShowListTapped(object sender, TappedRoutedEventArgs e) {
+
+            Debug.WriteLine("ShowListTapped Clicked");
+            menuContainerFrame.Navigate(typeof(MenuPage));
+            ShowMenu(false);
+
+        }
     }
 }

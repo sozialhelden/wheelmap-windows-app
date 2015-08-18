@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wheelmap-Windows", "Wheelma
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Alpha|ARM = Alpha|ARM
+		Alpha|x64 = Alpha|x64
+		Alpha|x86 = Alpha|x86
+		Beta|ARM = Beta|ARM
+		Beta|x64 = Beta|x64
+		Beta|x86 = Beta|x86
 		Debug|ARM = Debug|ARM
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
@@ -15,6 +21,24 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Alpha|ARM.ActiveCfg = Alpha|ARM
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Alpha|ARM.Build.0 = Alpha|ARM
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Alpha|ARM.Deploy.0 = Alpha|ARM
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Alpha|x64.ActiveCfg = Alpha|x64
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Alpha|x64.Build.0 = Alpha|x64
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Alpha|x64.Deploy.0 = Alpha|x64
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Alpha|x86.ActiveCfg = Alpha|x86
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Alpha|x86.Build.0 = Alpha|x86
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Alpha|x86.Deploy.0 = Alpha|x86
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Beta|ARM.ActiveCfg = Beta|ARM
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Beta|ARM.Build.0 = Beta|ARM
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Beta|ARM.Deploy.0 = Beta|ARM
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Beta|x64.ActiveCfg = Beta|x64
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Beta|x64.Build.0 = Beta|x64
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Beta|x64.Deploy.0 = Beta|x64
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Beta|x86.ActiveCfg = Beta|x86
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Beta|x86.Build.0 = Beta|x86
+		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Beta|x86.Deploy.0 = Beta|x86
 		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Debug|ARM.ActiveCfg = Debug|ARM
 		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Debug|ARM.Build.0 = Debug|ARM
 		{79F38801-AD5C-4211-9FF7-F4DE6F72ADA2}.Debug|ARM.Deploy.0 = Debug|ARM
