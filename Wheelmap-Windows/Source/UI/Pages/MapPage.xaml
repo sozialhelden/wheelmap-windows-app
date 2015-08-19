@@ -10,5 +10,33 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Maps:MapControl x:Name="mapControl"/>
+
+        <StackPanel 
+            Orientation="Vertical"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Width="Auto"
+            Height="Auto"
+            Background="#4000"
+            Margin="10,10,10,10"
+            Padding="10,10,10,10">
+
+            <Button 
+                Content="+"
+                Background="Transparent"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Click="ZoomIn_Click"
+                />
+            
+            <Button 
+                Content="-"
+                Background="Transparent"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Click="ZoomOut_Click"/>
+
+        </StackPanel>
+        
     </Grid>
 </Page>

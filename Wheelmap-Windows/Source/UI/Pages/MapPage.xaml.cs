@@ -58,5 +58,14 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             mapControl.Style = MapStyle.None;
             mapControl.TileSources.Add(ts);
         }
+
+
+        private void ZoomIn_Click(object sender, RoutedEventArgs e) {
+            mapControl.ZoomLevel += 1;
+        }
+
+        private void ZoomOut_Click(object sender, RoutedEventArgs e) {
+            mapControl.ZoomLevel -= 1;
+        }
     }
 }
