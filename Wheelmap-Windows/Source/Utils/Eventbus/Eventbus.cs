@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Wheelmap_Windows.Extensions;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 
@@ -44,7 +45,7 @@ namespace Wheelmap_Windows.Utils.Eventbus {
                         }
                     }
                 }
-            );
+            ).forget();
 
         }
 

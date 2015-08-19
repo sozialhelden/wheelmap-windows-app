@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Wheelmap_Windows.Api.Calls;
+using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Utils.Eventbus;
 using Wheelmap_Windows.Utils.Eventbus.Events;
@@ -40,8 +41,13 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             setOsmTileSource();
             mapControl.CenterChanged += MapControl_CenterChanged;
             mapControl.ZoomLevelChanged += MapControl_ZoomLevelChanged;
+            mapControl.MapElementClick += MapControl_MapElementClick;
 
             BusProvider.DefaultInstance.Register(this);
+        }
+
+        private void MapControl_MapElementClick(MapControl sender, MapElementClickEventArgs args) {
+            Debug.WriteLine("MapElementClick");
         }
 
         private void MapControl_ZoomLevelChanged(MapControl sender, object args) {
@@ -117,7 +123,8 @@ namespace Wheelmap_Windows.Source.UI.Pages {
                 var e = new NewNodesEvent();
                 e.nodes = items;
                 BusProvider.DefaultInstance.Post(e);
-            });
+            }).forget();
+
         }
         
         [Subscribe]
@@ -137,7 +144,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             });
             MapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
             MapIcon1.Title = node.name == null ? "" : node.name;
-
+            
             mapControl.MapElements.Add(MapIcon1);
         }
 

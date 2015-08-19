@@ -119,6 +119,7 @@
     <Compile Include="Source\Utils\Eventbus\Eventbus.cs" />
     <Compile Include="Source\Utils\Eventbus\Events\NewNodesEvent.cs" />
     <Compile Include="Source\Utils\Eventbus\Subscribe.cs" />
+    <Compile Include="Source\Utils\Extensions\Extensions.cs" />
     <Compile Include="Source\Utils\Extensions\MapExtensions.cs" />
     <Compile Include="Source\Utils\Extensions\WebRequestExtensions.cs" />
   </ItemGroup>
