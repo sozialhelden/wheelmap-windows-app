@@ -20,7 +20,7 @@ namespace Wheelmap_Windows.Api.Calls {
     public class NodeApiClient {
 
         const string END_POINT_NODES = "/api/nodes";
-
+        
         public static Node[] GetNodes(GeoboundingBox bbox) {
 
             //TODO bounding box
@@ -37,6 +37,7 @@ namespace Wheelmap_Windows.Api.Calls {
             var result = JsonConvert.DeserializeObject<NodesRequest>(json);
 
             return result.nodes;
+
         }
 
     }

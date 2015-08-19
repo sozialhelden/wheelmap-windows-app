@@ -17,7 +17,8 @@ namespace Wheelmap_Windows.Utils.Eventbus {
             }
         }
 
-        public BusProvider() {
+        private BusProvider() {
         }
+        
     }
 }

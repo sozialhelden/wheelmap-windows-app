@@ -6,10 +6,13 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Wheelmap_Windows.Api.Calls;
 using Wheelmap_Windows.Model;
+using Wheelmap_Windows.Utils.Eventbus;
+using Wheelmap_Windows.Utils.Eventbus.Events;
 using Wheelmap_Windows.Utils.Extensions;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System.Threading;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
@@ -37,11 +40,12 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             setOsmTileSource();
             mapControl.CenterChanged += MapControl_CenterChanged;
             mapControl.ZoomLevelChanged += MapControl_ZoomLevelChanged;
-            
+
+            BusProvider.DefaultInstance.Register(this);
         }
 
         private void MapControl_ZoomLevelChanged(MapControl sender, object args) {
-            
+            Debug.WriteLine("ZoomLevel: " + mapControl.ZoomLevel);
             var zoomLevel = (int) mapControl.ZoomLevel;
             bool isZoomedEnough = true;
 
@@ -106,6 +110,23 @@ namespace Wheelmap_Windows.Source.UI.Pages {
                 Debug.WriteLine("Items: " + n.name);
                 AddNewMapIcons(n);
             }*/
+
+            var box = mapControl.GetBoundingBox();
+            ThreadPool.RunAsync((item) => {
+                Node[] items = NodeApiClient.GetNodes(box);
+                var e = new NewNodesEvent();
+                e.nodes = items;
+                BusProvider.DefaultInstance.Post(e);
+            });
+        }
+        
+        [Subscribe]
+        public void OnNewData(NewNodesEvent e) {
+            mapControl.MapElements.Clear();
+            foreach (Node n in e.nodes) {
+                Debug.WriteLine("Items: " + n.name);
+                AddNewMapIcons(n);
+            }
         }
         
         private void AddNewMapIcons(Node node) {
