@@ -11,7 +11,7 @@
                CompactPaneLength="50" OpenPaneLength="150">
 
         <SplitView.Pane>
-            <Grid Background="Gray">
+            <Grid Background="#26333f">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -23,12 +23,10 @@
 
                     <StackPanel Orientation="Horizontal" Tapped="MenuButton_Click">
 
-                        <Button 
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE700;"
+                        <Image
+                            Source="/Assets/Images/ic_menu.png"
                             Width="50" 
-                            Height="50" 
-                            Background="Transparent" />
+                            Height="50" />
 
                         <TextBlock 
                             Text="WHEELMAP" 
@@ -40,15 +38,13 @@
 
                     <StackPanel Orientation="Horizontal" Tapped="ShowListTapped">
 
-                        <Button
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE825;"
+                        <Image
+                            Source="/Assets/Images/ic_liste.png"
                             Width="50" 
-                            Height="50" 
-                            Background="Transparent"/>
+                            Height="50" />
 
                         <TextBlock 
-                            Text="Liste" 
+                            Text="Liste"
                             FontSize="15" 
                             VerticalAlignment="Center" />
 
@@ -56,15 +52,13 @@
 
                     <StackPanel Orientation="Horizontal">
 
-                        <Button
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE10F;"
-                            Width="50"
-                            Height="50"
-                            Background="Transparent"/>
+                        <Image
+                            Source="/Assets/Images/ic_mithelfen.png"
+                            Width="50" 
+                            Height="50" />
 
                         <TextBlock 
-                            Text="Mithelfen" 
+                            Text="Mithelfen"
                             FontSize="15" 
                             VerticalAlignment="Center" />
 
@@ -72,15 +66,13 @@
 
                     <StackPanel Orientation="Horizontal">
 
-                        <Button
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE1D6;"
+                        <Image
+                            Source="/Assets/Images/ic_wc.png"
                             Width="50" 
-                            Height="50"
-                            Background="Transparent"/>
+                            Height="50" />
 
                         <TextBlock 
-                            Text="Toiletten" 
+                            Text="Toiletten"
                             FontSize="15" 
                             VerticalAlignment="Center" />
 
@@ -88,15 +80,13 @@
 
                     <StackPanel Orientation="Horizontal">
 
-                        <Button
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE1D6;"
+                        <Image
+                            Source="/Assets/Images/ic_status.png"
                             Width="50" 
-                            Height="50"
-                            Background="Transparent"/>
+                            Height="50" />
 
                         <TextBlock 
-                            Text="Status" 
+                            Text="Status"
                             FontSize="15" 
                             VerticalAlignment="Center" />
 
@@ -104,15 +94,13 @@
 
                     <StackPanel Orientation="Horizontal">
 
-                        <Button
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE1D6;"
+                        <Image
+                            Source="/Assets/Images/ic_categories.png"
                             Width="50" 
-                            Height="50"
-                            Background="Transparent"/>
+                            Height="50" />
 
                         <TextBlock 
-                            Text="Kategorien" 
+                            Text="Kategorien"
                             FontSize="15" 
                             VerticalAlignment="Center" />
 
@@ -126,15 +114,13 @@
 
                     <StackPanel Orientation="Horizontal">
 
-                        <Button 
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE1D6;"
+                        <Image
+                            Source="/Assets/Images/ic_profile.png"
                             Width="50" 
-                            Height="50" 
-                            Background="Transparent"/>
+                            Height="50" />
 
                         <TextBlock 
-                            Text="Profil" 
+                            Text="Profil"
                             FontSize="15" 
                             VerticalAlignment="Center" />
                     </StackPanel>
@@ -142,15 +128,13 @@
 
                     <StackPanel Orientation="Horizontal">
 
-                        <Button 
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE1D6;"
+                        <Image
+                            Source="/Assets/Images/ic_settings.png"
                             Width="50" 
-                            Height="50" 
-                            Background="Transparent"/>
+                            Height="50" />
 
                         <TextBlock 
-                            Text="Einstellungen" 
+                            Text="Einstellungen"
                             FontSize="15" 
                             VerticalAlignment="Center"/>
 

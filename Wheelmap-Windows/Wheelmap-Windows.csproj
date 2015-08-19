@@ -122,6 +122,35 @@
     <None Include="Wheelmap-Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\ic_camera.png" />
+    <Content Include="Assets\Images\ic_categories.png" />
+    <Content Include="Assets\Images\ic_categories_active.png" />
+    <Content Include="Assets\Images\ic_choose.png" />
+    <Content Include="Assets\Images\ic_choose_active.png" />
+    <Content Include="Assets\Images\ic_close_black.png" />
+    <Content Include="Assets\Images\ic_close_white.png" />
+    <Content Include="Assets\Images\ic_edit.png" />
+    <Content Include="Assets\Images\ic_liste.png" />
+    <Content Include="Assets\Images\ic_location.png" />
+    <Content Include="Assets\Images\ic_menu.png" />
+    <Content Include="Assets\Images\ic_mithelfen.png" />
+    <Content Include="Assets\Images\ic_mithelfen_blue.png" />
+    <Content Include="Assets\Images\ic_more.png" />
+    <Content Include="Assets\Images\ic_profile.png" />
+    <Content Include="Assets\Images\ic_route.png" />
+    <Content Include="Assets\Images\ic_settings.png" />
+    <Content Include="Assets\Images\ic_share.png" />
+    <Content Include="Assets\Images\ic_status.png" />
+    <Content Include="Assets\Images\ic_status_active.png" />
+    <Content Include="Assets\Images\ic_status_green.png" />
+    <Content Include="Assets\Images\ic_status_grey.png" />
+    <Content Include="Assets\Images\ic_status_orange.png" />
+    <Content Include="Assets\Images\ic_status_red.png" />
+    <Content Include="Assets\Images\ic_tick.png" />
+    <Content Include="Assets\Images\ic_tick_green.png" />
+    <Content Include="Assets\Images\ic_unknown.png" />
+    <Content Include="Assets\Images\ic_wc.png" />
+    <Content Include="Assets\Images\ic_wc_active.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
