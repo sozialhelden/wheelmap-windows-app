@@ -28,7 +28,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
 
         private const int MAP_ZOOM_DEFAULT = 18; // Zoon 1 is world view
 
-        int oldZoomLevel = MAP_ZOOM_DEFAULT;
+        int oldZoomLevel = 1;
         Geopoint lastRequestedPosition;
 
         public MapPage() {
@@ -37,12 +37,11 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             setOsmTileSource();
             mapControl.CenterChanged += MapControl_CenterChanged;
             mapControl.ZoomLevelChanged += MapControl_ZoomLevelChanged;
-
-            mapControl.ZoomLevel = MAP_ZOOM_DEFAULT;
             
         }
 
         private void MapControl_ZoomLevelChanged(MapControl sender, object args) {
+            
             var zoomLevel = (int) mapControl.ZoomLevel;
             bool isZoomedEnough = true;
 
@@ -132,8 +131,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             mapControl.Style = MapStyle.None;
             mapControl.TileSources.Add(ts);
         }
-
-
+        
         private void ZoomIn_Click(object sender, RoutedEventArgs e) {
             mapControl.ZoomLevel += 1;
         }
