@@ -115,6 +115,7 @@
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Source\BuildConfig.cs" />
+    <Compile Include="Source\Utils\Extensions\MapExtensions.cs" />
     <Compile Include="Source\Utils\Extensions\WebRequestExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

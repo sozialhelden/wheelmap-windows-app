@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Wheelmap_Windows.Api.Model;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Utils.Extensions;
+using Windows.Devices.Geolocation;
 
 namespace Wheelmap_Windows.Api.Calls {
 
@@ -20,11 +21,13 @@ namespace Wheelmap_Windows.Api.Calls {
 
         const string END_POINT_NODES = "/api/nodes";
 
-        public static Node[] GetNodes() {
+        public static Node[] GetNodes(GeoboundingBox bbox) {
 
             //TODO bounding box
 
-            string url = BuildConfig.API_BASEURL + END_POINT_NODES + "?" + BuildConfig.API_KEY_PARAM;
+            string bboxParam = "bbox="+bbox.NorthwestCorner.Longitude +","+bbox.NorthwestCorner.Latitude+","+bbox.SoutheastCorner.Longitude+","+bbox.SoutheastCorner.Latitude;
+
+            string url = BuildConfig.API_BASEURL + END_POINT_NODES + "?" + BuildConfig.API_KEY_PARAM + "&" + bboxParam;
             
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";

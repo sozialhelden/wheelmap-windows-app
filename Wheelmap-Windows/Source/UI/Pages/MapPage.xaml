@@ -37,6 +37,16 @@
                 Click="ZoomOut_Click"/>
 
         </StackPanel>
-        
+
+        <StackPanel
+            x:Name="outOfZoomView"
+            Background="#4000"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Margin="10,10,10,50"
+            Padding="10,10,10,10">
+            <TextBlock Text="OutOfZoom"/>
+        </StackPanel>
+
     </Grid>
 </Page>
