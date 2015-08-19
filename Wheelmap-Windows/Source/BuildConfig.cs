@@ -8,12 +8,13 @@ namespace Wheelmap_Windows {
     static class BuildConfig {
 
         public const string API_KEY = "jWeAsb34CJq4yVAryjtc";
+        public const string API_KEY_PARAM = "api_key=" + API_KEY;
 
         // API ENDPOINT
 #if DEBUG
         public const string API_BASEURL = "http://staging.wheelmap.org";
 #else
-        public const string API_BASEURL = "wheelmap.org";
+        public const string API_BASEURL = "http://wheelmap.org";
 #endif
 
         // BUILDTYPE

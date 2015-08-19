@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Navigation;
 using System.Diagnostics;
 using Windows.UI.Xaml.Controls.Maps;
 using Wheelmap_Windows.Source.UI.Pages;
+using Wheelmap_Windows.Api.Calls;
+using Wheelmap_Windows.Model;
 
 namespace Wheelmap_Windows.Source.UI {
     
@@ -23,6 +25,7 @@ namespace Wheelmap_Windows.Source.UI {
         public MainPage() {
             this.InitializeComponent();
             mainFrame.Navigate(typeof(MapPage));
+            
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e) {

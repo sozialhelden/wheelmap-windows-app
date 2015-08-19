@@ -10,7 +10,7 @@ namespace Wheelmap_Windows.Api.Model {
     /**
      * meta data for paged requests
      */
-    class Meta {
+    public class Meta {
 
         long page;
 
