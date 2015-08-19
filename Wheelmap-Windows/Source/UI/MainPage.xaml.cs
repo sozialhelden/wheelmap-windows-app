@@ -25,9 +25,7 @@ namespace Wheelmap_Windows.Source.UI {
 
         public MainPage() {
             this.InitializeComponent();
-
-            //menuContainerFrame.Navigate(typeof(MenuPage));
-            
+            mainFrame.Navigate(typeof(MapPage));
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e) {
@@ -42,20 +40,7 @@ namespace Wheelmap_Windows.Source.UI {
             // toggle menu
             ShowMenu(!mSplitView.IsPaneOpen);
         }
-
-        /**
-         * change the tilesource of the mapControl to use openstreetmap
-         */
-        private void setOsmTileSource() {
-            var httpsource = new HttpMapTileDataSource("http://a.tile.openstreetmap.org/{zoomlevel}/{x}/{y}.png");
-            var ts = new MapTileSource(httpsource) {
-                Layer = MapTileLayer.BackgroundReplacement
-            };
-            mapControl.Style = MapStyle.None;
-            mapControl.TileSources.Add(ts);
-        }
-
-
+        
         private void Button_Click(object sender, RoutedEventArgs e) {
             Debug.WriteLine("Button Clicked");
             menuContainerFrame.Navigate(typeof(MenuPage));

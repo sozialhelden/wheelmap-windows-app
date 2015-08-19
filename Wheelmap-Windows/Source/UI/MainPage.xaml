@@ -4,7 +4,6 @@
     xmlns:local="using:Wheelmap_Windows"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     x:Class="Wheelmap_Windows.Source.UI.MainPage"
     mc:Ignorable="d">
 
@@ -164,7 +163,9 @@
 
         <SplitView.Content>
             <Grid>
-                <Maps:MapControl x:Name="mapControl"/>
+                
+                <!-- will navigate to MapPage -->
+                <Frame x:Name="mainFrame"/>
 
                 <StackPanel 
                     Width="Auto"
