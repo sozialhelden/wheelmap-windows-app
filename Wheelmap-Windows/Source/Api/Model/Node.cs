@@ -12,45 +12,45 @@ namespace Wheelmap_Windows.Model {
      */
     public class Node {
 
-        public long id;
+        public long id { get; set; }
 
         //The node's latitude in degrees as float.
-        public double lat;
+        public double lat { get; set; }
 
         //The node's longitude in degrees as float.
-        public double lon;
+        public double lon { get; set; }
 
-        public string name;
+        public string name { get; set; }
 
         [JsonProperty(PropertyName = "node_type")]
-        public NodeType nodeType;
+        public NodeType nodeType { get; set; }
 
-        public Category category;
+        public Category category { get; set; }
 
         //The node's wheelchair status, must be one of [yes, no, limited, unknown]
-        public string wheelchair;
+        public string wheelchair { get; set; }
 
         //The node's additional wheelchair comment like "Ask for a ramp.", 255 characters max.
         [JsonProperty(PropertyName = "wheelchair_description")]
-        public string wheelchairDescription;
+        public string wheelchairDescription { get; set; }
 
         //The node's street.
-        public string street;
+        public string street { get; set; }
 
         //The node's house number.
-        public string housenumber;
+        public string housenumber { get; set; }
 
         //The node's city.
-        public string city;
+        public string city { get; set; }
 
         //The node's postal code.
-        public string postcode;
+        public string postcode { get; set; }
 
         //The node's url. In case there is a website about this not, for example a restaurant. Use the full url like this: http://www.example.com
-        public string website;
+        public string website { get; set; }
 
         //The node's phone number. In case there is a real phone number to call, for example in a restaurant. Use the international format: +49 30 123456-78
-        public string phone;
+        public string phone { get; set; }
 
 
         public override string ToString() {
@@ -59,12 +59,12 @@ namespace Wheelmap_Windows.Model {
     }
 
     public class NodeType {
-        long id;
-        string identifier;
+        public long id { get; set; }
+        public string identifier { get; set; }
     }
 
     public class Category {
-        long id;
-        string identifier;
+        public long id { get; set; }
+        public string identifier { get; set; }
     }
 }

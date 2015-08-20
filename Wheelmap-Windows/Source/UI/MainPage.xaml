@@ -11,7 +11,7 @@
                CompactPaneLength="50" OpenPaneLength="150">
 
         <SplitView.Pane>
-            <Grid Background="#26333f">
+            <Grid Background="#2c3b49">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

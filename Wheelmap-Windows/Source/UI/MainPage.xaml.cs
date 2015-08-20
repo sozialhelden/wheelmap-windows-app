@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using System.Diagnostics;
 using Windows.UI.Xaml.Controls.Maps;
 using Wheelmap_Windows.Source.UI.Pages;
+using Wheelmap_Windows.Source.UI.Pages.List;
 using Wheelmap_Windows.Api.Calls;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Utils.Eventbus;
@@ -29,9 +30,8 @@ namespace Wheelmap_Windows.Source.UI {
 
             this.InitializeComponent();
             mainFrame.Navigate(typeof(MapPage));
-            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            var s = loader.GetString("T");
-            Log.i(this, s);
+            //var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            
             BusProvider.DefaultInstance.Register(this);
         }
 
@@ -67,9 +67,18 @@ namespace Wheelmap_Windows.Source.UI {
 
         private void ShowListTapped(object sender, TappedRoutedEventArgs e) {
 
-            Debug.WriteLine("ShowListTapped Clicked");
-            menuContainerFrame.Navigate(typeof(MenuPage));
             ShowMenu(false);
+
+            Debug.WriteLine("ShowListTapped Clicked");
+            
+            if (menuContainerFrame.Content is NodeListPage) {
+                // remove content
+                (menuContainerFrame.Content as NodeListPage).Unregister();
+                menuContainerFrame.Content = null;
+                return;
+            }
+
+            menuContainerFrame.Navigate(typeof(NodeListPage));
 
         }
 

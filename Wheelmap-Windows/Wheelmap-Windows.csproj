@@ -103,11 +103,14 @@
     <Compile Include="Source\Api\Calls\NodeApiClient.cs" />
     <Compile Include="Source\Api\Model\Meta.cs" />
     <Compile Include="Source\Api\Model\PagedRequests.cs" />
-    <Compile Include="Source\Model\Node.cs" />
+    <Compile Include="Source\Api\Model\Node.cs" />
     <Compile Include="Source\UI\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\UI\Pages\List\NodeListPage.xaml.cs">
+      <DependentUpon>NodeListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\UI\Pages\MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,7 @@
     <Compile Include="Source\UI\Pages\Node\NodeDetailPage.xaml.cs">
       <DependentUpon>NodeDetailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\Utils\DataHolder.cs" />
     <Compile Include="Source\Utils\Eventbus\BusProvider.cs" />
     <Compile Include="Source\Utils\Eventbus\Eventbus.cs" />
     <Compile Include="Source\Utils\Eventbus\Events\NewNodesEvent.cs" />
@@ -183,6 +187,10 @@
     <Page Include="Source\UI\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Source\UI\Pages\List\NodeListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\UI\Pages\MapPage.xaml">
       <SubType>Designer</SubType>

@@ -90,8 +90,8 @@ namespace Wheelmap_Windows.Source.UI.Pages {
                 return;
             }
 
-            RequestUpdate();
             oldZoomLevel = zoomLevel;
+            RequestUpdate();
         }
         
         private void MapControl_CenterChanged(MapControl sender, object args) {

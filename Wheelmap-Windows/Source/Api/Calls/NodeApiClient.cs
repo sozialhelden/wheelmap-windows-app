@@ -27,8 +27,6 @@ namespace Wheelmap_Windows.Api.Calls {
         // For pagination, how many results to return per page. Default is 200. Max is 500.
         const int PAGE_SIZE = 500;
 
-     
-
         public static Node[] GetNodes(GeoboundingBox bbox) {
             
             string pageSizeParam = "page_size=" + PAGE_SIZE;

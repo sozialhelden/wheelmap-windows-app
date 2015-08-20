@@ -14,6 +14,9 @@ namespace Wheelmap_Windows.Utils.Eventbus {
      * https://github.com/snotyak/EventBus with minor changes
      */
     public class EventBus {
+
+        const string TAG = nameof(EventBus);
+
         private List<object> _subscribers = new List<object>();
         
         public EventBus() {
@@ -21,12 +24,15 @@ namespace Wheelmap_Windows.Utils.Eventbus {
         }
 
         public void Register(object subscriber) {
+            Log.i(TAG, "Register: " + subscriber);
             if (!_subscribers.Contains(subscriber)) {
                 _subscribers.Add(subscriber);
             }
+
         }
 
         public void Unregister(object subscriber) {
+            Log.i(TAG, "Unregister: " + subscriber);
             if (_subscribers.Contains(subscriber)) {
                 _subscribers.Remove(subscriber);
             }
@@ -48,7 +54,7 @@ namespace Wheelmap_Windows.Utils.Eventbus {
             ).forget();
 
         }
-
+        
         private List<MethodInfo> GetSubscribedMethods(Type type, object obj) {
             List<MethodInfo> subscribedMethods = new List<MethodInfo>();
 

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Wheelmap_Windows.Utils;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -53,6 +54,9 @@ namespace Wheelmap_Windows
                 //this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+
+            // init dataholder
+            DataHolder.Init();
 
             Frame rootFrame = Window.Current.Content as Frame;
 
