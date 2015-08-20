@@ -40,7 +40,7 @@ namespace Wheelmap_Windows.Utils.Eventbus {
                     foreach (object instance in _subscribers) {
                         foreach (MethodInfo method in GetSubscribedMethods(instance.GetType(), e)) {
                             try {
-                                method.Invoke(instance, new object[] { e });
+                                method?.Invoke(instance, new object[] { e });
                             } catch (TargetInvocationException) { }
                         }
                     }

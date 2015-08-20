@@ -115,13 +115,18 @@
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Source\BuildConfig.cs" />
+    <Compile Include="Source\UI\Pages\Node\NodeDetailPage.xaml.cs">
+      <DependentUpon>NodeDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\Utils\Eventbus\BusProvider.cs" />
     <Compile Include="Source\Utils\Eventbus\Eventbus.cs" />
     <Compile Include="Source\Utils\Eventbus\Events\NewNodesEvent.cs" />
+    <Compile Include="Source\Utils\Eventbus\Events\SelectedNodeChangedEvent.cs" />
     <Compile Include="Source\Utils\Eventbus\Subscribe.cs" />
     <Compile Include="Source\Utils\Extensions\Extensions.cs" />
     <Compile Include="Source\Utils\Extensions\MapExtensions.cs" />
     <Compile Include="Source\Utils\Extensions\WebRequestExtensions.cs" />
+    <Compile Include="Source\Utils\Log.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -182,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\UI\Pages\MenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\UI\Pages\Node\NodeDetailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

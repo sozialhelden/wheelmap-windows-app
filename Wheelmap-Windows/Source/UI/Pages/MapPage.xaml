@@ -28,7 +28,7 @@
                 VerticalAlignment="Center"
                 Click="ZoomIn_Click"
                 />
-            
+
             <Button 
                 Content="-"
                 Background="Transparent"

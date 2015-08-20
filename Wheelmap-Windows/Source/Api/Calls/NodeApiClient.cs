@@ -20,21 +20,25 @@ namespace Wheelmap_Windows.Api.Calls {
     public class NodeApiClient {
 
         const string END_POINT_NODES = "/api/nodes";
-        
+
+        // For pagination, how many results to return per page. Default is 200. Max is 500.
+        const int PAGE_SIZE = 500;
+
         public static Node[] GetNodes(GeoboundingBox bbox) {
 
-            //TODO bounding box
+            string pageSizeParam = "page_size=" + PAGE_SIZE;
+            string bboxParam = "bbox=" + bbox.NorthwestCorner.Longitude + "," + bbox.NorthwestCorner.Latitude + "," + bbox.SoutheastCorner.Longitude + "," + bbox.SoutheastCorner.Latitude;
+            string url = BuildConfig.API_BASEURL + END_POINT_NODES + "?"
+                + BuildConfig.API_KEY_PARAM + "&"
+                + bboxParam + "&"
+                + pageSizeParam;
 
-            string bboxParam = "bbox="+bbox.NorthwestCorner.Longitude +","+bbox.NorthwestCorner.Latitude+","+bbox.SoutheastCorner.Longitude+","+bbox.SoutheastCorner.Latitude;
-
-            string url = BuildConfig.API_BASEURL + END_POINT_NODES + "?" + BuildConfig.API_KEY_PARAM + "&" + bboxParam;
-            
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             WebResponse response = request.GetResponse();
             var json = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
-            var result = JsonConvert.DeserializeObject<NodesRequest>(json);
+            var result = JsonConvert.DeserializeObject<NodesResponse>(json);
 
             return result.nodes;
 

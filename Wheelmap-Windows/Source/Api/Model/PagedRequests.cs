@@ -10,7 +10,7 @@ using Wheelmap_Windows.Model;
  */
 namespace Wheelmap_Windows.Api.Model {
 
-    public class NodesRequest {
+    public class NodesResponse {
 
         public Meta meta;
 

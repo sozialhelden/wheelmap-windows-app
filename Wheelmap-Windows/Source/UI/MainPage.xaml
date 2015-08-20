@@ -154,8 +154,12 @@
                 <StackPanel 
                     Width="Auto"
                     Orientation="Horizontal">
+                    
                     <!-- contains all subframes which are opened with the sidemenu -->
                     <Frame x:Name="menuContainerFrame"/>
+                
+                    <Frame x:Name="detailContainerFrame"/>
+
                 </StackPanel>
 
             </Grid>

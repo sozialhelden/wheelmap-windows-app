@@ -51,7 +51,11 @@ namespace Wheelmap_Windows.Model {
 
         //The node's phone number. In case there is a real phone number to call, for example in a restaurant. Use the international format: +49 30 123456-78
         public string phone;
-        
+
+
+        public override string ToString() {
+            return $"Node: Id={id} Name={name}";
+        }
     }
 
     public class NodeType {

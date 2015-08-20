@@ -17,6 +17,9 @@ using Windows.UI.Xaml.Controls.Maps;
 using Wheelmap_Windows.Source.UI.Pages;
 using Wheelmap_Windows.Api.Calls;
 using Wheelmap_Windows.Model;
+using Wheelmap_Windows.Utils.Eventbus;
+using Wheelmap_Windows.Utils.Eventbus.Events;
+using Wheelmap_Windows.Source.UI.Pages.Node;
 
 namespace Wheelmap_Windows.Source.UI {
     
@@ -25,7 +28,8 @@ namespace Wheelmap_Windows.Source.UI {
         public MainPage() {
             this.InitializeComponent();
             mainFrame.Navigate(typeof(MapPage));
-            
+
+            BusProvider.DefaultInstance.Register(this);
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e) {
@@ -65,5 +69,11 @@ namespace Wheelmap_Windows.Source.UI {
             ShowMenu(false);
 
         }
+
+        [Subscribe]
+        public void OnSelectedNodeChanged(SelectedNodeChangedEvent e) {
+            detailContainerFrame.Navigate(typeof(NodeDetailPage), e.node);
+        }
+
     }
 }

@@ -28,12 +28,15 @@ namespace Wheelmap_Windows.Source.UI.Pages {
     public sealed partial class MapPage : Page {
 
         private const byte ZOOMLEVEL_MIN = 16;
-        private const byte ZOOMLEVEL_MAX = 15;
+        private const byte ZOOMLEVEL_MAX = 14;
 
+        private Geopoint DEBUG_POSITION = new Geopoint(new BasicGeoposition() { Latitude = 52.5207113195211, Longitude = 13.3913548104465, Altitude = 0});
         private const int MAP_ZOOM_DEFAULT = 18; // Zoon 1 is world view
 
         int oldZoomLevel = 1;
         Geopoint lastRequestedPosition;
+
+        Dictionary<MapElement, Model.Node> nodeMapIcons = new Dictionary<MapElement, Model.Node>();
 
         public MapPage() {
             this.InitializeComponent();
@@ -43,11 +46,22 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             mapControl.ZoomLevelChanged += MapControl_ZoomLevelChanged;
             mapControl.MapElementClick += MapControl_MapElementClick;
 
+            mapControl.ZoomLevel = MAP_ZOOM_DEFAULT;
+            mapControl.Center = DEBUG_POSITION;
+
             BusProvider.DefaultInstance.Register(this);
         }
 
         private void MapControl_MapElementClick(MapControl sender, MapElementClickEventArgs args) {
-            Debug.WriteLine("MapElementClick");
+            Debug.WriteLine("MapElementClick: "+ sender + "-"+ args.MapElements.First());
+            
+            if (args?.MapElements?.Count > 0) {
+                var node = nodeMapIcons[args.MapElements.First()];
+                SelectedNodeChangedEvent e = new SelectedNodeChangedEvent();
+                e.node = node;
+                BusProvider.DefaultInstance.Post(e);
+            }
+
         }
 
         private void MapControl_ZoomLevelChanged(MapControl sender, object args) {
@@ -82,6 +96,9 @@ namespace Wheelmap_Windows.Source.UI.Pages {
         
         private void MapControl_CenterChanged(MapControl sender, object args) {
             var bbox = mapControl.GetBoundingBox();
+            if (bbox == null) {
+                return;
+            }
             var center = mapControl.Center;
 
             double minimalLatitudeSpan = Math.Abs(bbox.NorthwestCorner.Latitude - bbox.SoutheastCorner.Latitude) / 3;
@@ -107,19 +124,13 @@ namespace Wheelmap_Windows.Source.UI.Pages {
         private void RequestUpdate() {
 
             Debug.WriteLine("RequestUpdate!!!");
-
-            /*mapControl.MapElements.Clear();
-            // todo load async
-            Node[] items = NodeApiClient.GetNodes(mapControl.GetBoundingBox());
-
-            foreach (Node n in items) {
-                Debug.WriteLine("Items: " + n.name);
-                AddNewMapIcons(n);
-            }*/
-
-            var box = mapControl.GetBoundingBox();
+            
+            var bbox = mapControl.GetBoundingBox();
+            if (bbox == null) {
+                return;
+            }
             ThreadPool.RunAsync((item) => {
-                Node[] items = NodeApiClient.GetNodes(box);
+                Model.Node[] items = NodeApiClient.GetNodes(bbox);
                 var e = new NewNodesEvent();
                 e.nodes = items;
                 BusProvider.DefaultInstance.Post(e);
@@ -129,23 +140,25 @@ namespace Wheelmap_Windows.Source.UI.Pages {
         
         [Subscribe]
         public void OnNewData(NewNodesEvent e) {
+            nodeMapIcons.Clear();
             mapControl.MapElements.Clear();
-            foreach (Node n in e.nodes) {
+            foreach (Model.Node n in e.nodes) {
                 Debug.WriteLine("Items: " + n.name);
                 AddNewMapIcons(n);
             }
         }
         
-        private void AddNewMapIcons(Node node) {
-            MapIcon MapIcon1 = new MapIcon();
-            MapIcon1.Location = new Geopoint(new BasicGeoposition() {
+        private void AddNewMapIcons(Model.Node node) {
+            MapIcon mapIcon = new MapIcon();
+            mapIcon.Location = new Geopoint(new BasicGeoposition() {
                 Latitude = node.lat,
                 Longitude = node.lon
             });
-            MapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
-            MapIcon1.Title = node.name == null ? "" : node.name;
+            mapIcon.NormalizedAnchorPoint = new Point(0.5, 1.0);
+            mapIcon.Title = node.name == null ? "" : node.name;
             
-            mapControl.MapElements.Add(MapIcon1);
+            mapControl.MapElements.Add(mapIcon);
+            nodeMapIcons.Add(mapIcon, node);
         }
 
         /**
@@ -168,4 +181,5 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             mapControl.ZoomLevel -= 1;
         }
     }
+    
 }
