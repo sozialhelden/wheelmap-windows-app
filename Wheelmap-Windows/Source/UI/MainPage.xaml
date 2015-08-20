@@ -44,7 +44,8 @@
                             Height="50" />
 
                         <TextBlock 
-                            Text="Liste"
+                            x:Uid="MENU_LIST"
+                            Text="List"
                             FontSize="15" 
                             VerticalAlignment="Center" />
 
@@ -58,6 +59,7 @@
                             Height="50" />
 
                         <TextBlock 
+                            x:Uid="MENU_HELP"
                             Text="Mithelfen"
                             FontSize="15" 
                             VerticalAlignment="Center" />
@@ -72,6 +74,7 @@
                             Height="50" />
 
                         <TextBlock 
+                            x:Uid="MENU_WC"
                             Text="Toiletten"
                             FontSize="15" 
                             VerticalAlignment="Center" />
@@ -86,6 +89,7 @@
                             Height="50" />
 
                         <TextBlock 
+                            x:Uid="MENU_STATUS"
                             Text="Status"
                             FontSize="15" 
                             VerticalAlignment="Center" />
@@ -100,6 +104,7 @@
                             Height="50" />
 
                         <TextBlock 
+                            x:Uid="MENU_CATEGORY"
                             Text="Kategorien"
                             FontSize="15" 
                             VerticalAlignment="Center" />
@@ -120,6 +125,7 @@
                             Height="50" />
 
                         <TextBlock 
+                            x:Uid="MENU_PROFILE"
                             Text="Profil"
                             FontSize="15" 
                             VerticalAlignment="Center" />
@@ -134,6 +140,7 @@
                             Height="50" />
 
                         <TextBlock 
+                            x:Uid="MENU_SETTINGS"
                             Text="Einstellungen"
                             FontSize="15" 
                             VerticalAlignment="Center"/>

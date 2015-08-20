@@ -26,9 +26,12 @@ namespace Wheelmap_Windows.Source.UI {
     public sealed partial class MainPage : Page {
 
         public MainPage() {
+
             this.InitializeComponent();
             mainFrame.Navigate(typeof(MapPage));
-
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            var s = loader.GetString("T");
+            Log.i(this, s);
             BusProvider.DefaultInstance.Register(this);
         }
 

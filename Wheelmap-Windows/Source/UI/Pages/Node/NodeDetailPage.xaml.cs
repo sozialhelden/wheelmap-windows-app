@@ -23,8 +23,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
-            Log.d(this, e.Parameter);
-            SetNode(e.Parameter as Model.Node);   
+            SetNode(e.Parameter as Model.Node);
         }
 
         public void SetNode(Model.Node n) {

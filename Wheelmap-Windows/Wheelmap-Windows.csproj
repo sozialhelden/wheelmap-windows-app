@@ -132,6 +132,8 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+    <PRIResource Include="Strings\de\Resources.resw" />
     <None Include="Wheelmap-Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
