@@ -19,7 +19,8 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="0">
+                <StackPanel 
+                    Grid.Row="0">
 
                     <StackPanel Orientation="Horizontal" Tapped="MenuButton_Click">
 
@@ -36,7 +37,9 @@
 
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Tapped="ShowListTapped">
+                    <StackPanel
+                        Orientation="Horizontal" 
+                        Tapped="ShowListTapped">
 
                         <Image
                             Source="/Assets/Images/ic_liste.png"

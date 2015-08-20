@@ -21,6 +21,7 @@ using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Utils.Eventbus;
 using Wheelmap_Windows.Utils.Eventbus.Events;
 using Wheelmap_Windows.Source.UI.Pages.Node;
+using Windows.UI;
 
 namespace Wheelmap_Windows.Source.UI {
     
@@ -54,17 +55,6 @@ namespace Wheelmap_Windows.Source.UI {
             menuContainerFrame.Visibility = Visibility.Visible;
         }
 
-        private void Menu_Click(object sender, RoutedEventArgs e) {
-            Debug.WriteLine("Menu Clicked");
-
-            if (menuContainerFrame.Visibility == Visibility.Collapsed) {
-                menuContainerFrame.Visibility = Visibility.Visible;
-            } else {
-                menuContainerFrame.Visibility = Visibility.Collapsed;
-            }
-
-        }
-
         private void ShowListTapped(object sender, TappedRoutedEventArgs e) {
 
             ShowMenu(false);
@@ -77,7 +67,7 @@ namespace Wheelmap_Windows.Source.UI {
                 menuContainerFrame.Content = null;
                 return;
             }
-
+            
             menuContainerFrame.Navigate(typeof(NodeListPage));
 
         }
