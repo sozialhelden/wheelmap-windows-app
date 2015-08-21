@@ -18,8 +18,8 @@ namespace Wheelmap_Windows.Api.Calls {
      * http://wheelmap.org/api/docs/resources/categories
      */
     public class CategoryRequest : PagedRequest<CategoryResponse, Category> {
-        
-        public override PagedResponse<Category> QueryPage(int page) {
+
+        protected override string GetUrl(int page) {
             string localeParam = "locale=" + CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             string pageParam = "page=" + page;
             string pageSizeParam = "page_size=" + PAGE_SIZE;
@@ -28,16 +28,8 @@ namespace Wheelmap_Windows.Api.Calls {
                 + pageSizeParam + "&"
                 + page + "&"
                 + localeParam;
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-            WebResponse response = request.GetResponse();
-            if (response == null) {
-                return null;
-            }
-            var json = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-            return JsonConvert.DeserializeObject<CategoryResponse>(json);
+            return url;
         }
+
     }
 }

@@ -24,4 +24,14 @@ namespace Wheelmap_Windows.Api.Model {
         public long itemCountTotal;
 
     }
+
+    public class Conditions {
+        public int page;
+
+        [JsonProperty(PropertyName = "localized_name")]
+        public int perPage;
+
+        public string locale;
+        public string format;
+    }
 }

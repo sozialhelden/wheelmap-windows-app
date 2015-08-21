@@ -26,8 +26,8 @@ namespace Wheelmap_Windows.Api.Calls {
         public NodesRequest(GeoboundingBox bbox) {
             this.bbox = bbox;
         }
-
-        public override PagedResponse<Node> QueryPage(int page) {
+        
+        protected override string GetUrl(int page) {
             string pageParam = "page=" + page;
             string pageSizeParam = "page_size=" + PAGE_SIZE;
             string bboxParam = "bbox="
@@ -41,18 +41,27 @@ namespace Wheelmap_Windows.Api.Calls {
                 + bboxParam + "&"
                 + pageSizeParam + "&"
                 + pageParam;
-
-            Log.d(this, "GetNodes: " + url);
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-            WebResponse response = request.GetResponse();
-            if (response == null) {
-                return null;
-            }
-            var json = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-            return JsonConvert.DeserializeObject<NodesResponse>(json);
-
+            return url;
         }
     }
+
+    public class PhotosRequest : PagedRequest<PhotosResponse, Photo> {
+
+        Node node;
+        public PhotosRequest(Node n) {
+            this.node = n;
+        }
+
+        protected override string GetUrl(int page) {
+            string pageParam = "page=" + page;
+            string pageSizeParam = "page_size=" + PAGE_SIZE;
+            string url = BuildConfig.API_BASEURL + String.Format(ApiConstants.END_POINT_PHOTOS,node.id)+ "?"
+                + BuildConfig.API_KEY_PARAM + "&"
+                + pageSizeParam + "&"
+                + pageParam;
+            return url;
+        }
+        
+    }
+
 }

@@ -35,4 +35,10 @@ namespace Wheelmap_Windows.Api.Model {
         public override Category[] GetItems() => categories;
 
     }
+
+    public class PhotosResponse : PagedResponse<Photo> {
+        public Photo[] photos;
+
+        public override Photo[] GetItems() => photos;
+    }
 }

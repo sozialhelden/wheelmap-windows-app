@@ -16,14 +16,14 @@
         <StackPanel
             Width="Auto"
             MinWidth="200">
-            
+
             <TextBlock 
                 x:Name="nameBlock"
                 Text="Cafe Einstein"
                 FontSize="20"
                 TextWrapping="Wrap"
                 />
-            
+
             <TextBlock
                 x:Name="streetBlock"
                 Text="Jerusalemer Straße 10"
@@ -35,17 +35,134 @@
                 Text="10117 Berlin"
                 TextWrapping="Wrap"
                 />
-            
+
             <HyperlinkButton
                 x:Name="websideButton"
                 HorizontalAlignment="Left"/>
 
-
             <HyperlinkButton
                 x:Name="phoneButton"
                 HorizontalAlignment="Left"/>
-            
+
+            <Border
+                Background="Green"
+                CornerRadius="4">
+                <Grid Height="40">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        Grid.Column="0"
+                        Source="/Assets/Images/ic_tick.png"
+                        Height="40"
+                        Width="40"
+                        />
+
+                    <TextBlock
+                        x:Name="statusTextBlock"
+                        Grid.Column="1"
+                        TextWrapping="Wrap"
+                        MaxLines="2"
+                        FontSize="14"
+                        Text="Voll rollstuhlgerecht"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="#fff"
+                        />
+
+                    <Image
+                        Grid.Column="2"
+                        Source="/Assets/Images/ic_more.png"
+                        Height="40"
+                        Width="40"
+                        />
+
+                </Grid>
+            </Border>
+
+            <Border
+                Background="Red"
+                Margin="0,10,0,0"
+                CornerRadius="4">
+                <Grid Height="40">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        Grid.Column="0"
+                        Source="/Assets/Images/ic_tick.png"
+                        Height="40"
+                        Width="40"
+                        />
+
+                    <TextBlock
+                        x:Name="wcTextBlock"
+                        Grid.Column="1"
+                        TextWrapping="Wrap"
+                        MaxLines="2"
+                        Text="Unbekannter WC-Status"
+                        FontSize="14"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="#fff"
+                        />
+
+                    <Image
+                        Grid.Column="2"
+                        Source="/Assets/Images/ic_more.png"
+                        Height="40"
+                        Width="40"
+                        />
+
+                </Grid>
+            </Border>
+
+            <ListView 
+                x:Name="listView"
+                Margin="0,10,0,0"
+                Height="110"
+                ScrollViewer.HorizontalScrollMode="Auto"
+                ScrollViewer.VerticalScrollMode="Disabled"
+                ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                ScrollViewer.VerticalScrollBarVisibility="Disabled" >
+                <ListView.Resources>
+                    <DataTemplate x:Key="cell">
+                        <Border BorderBrush="#444"  BorderThickness="0,0,0,0" >
+                            <Grid Margin="5,5,5,5" >
+
+                                <Image
+                                    Height="100"
+                                    Width="100">
+                                    <Image.Source>
+                                        <BitmapImage UriSource="{Binding Thumb.url}"/>
+                                    </Image.Source>
+                                </Image>
+
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.Resources>
+
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"></StackPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                
+                <ListView.ItemTemplate>
+                    <StaticResource ResourceKey="cell"/>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </StackPanel>
-        
+
     </Grid>
 </Page>
