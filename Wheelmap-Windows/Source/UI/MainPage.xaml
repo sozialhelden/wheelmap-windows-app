@@ -20,9 +20,12 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel 
+                    x:Name="menuTopPanel"
                     Grid.Row="0">
 
-                    <StackPanel Orientation="Horizontal" Tapped="MenuButton_Click">
+                    <StackPanel 
+                        Orientation="Horizontal" 
+                        Tapped="MenuButton_Click">
 
                         <Image
                             Source="/Assets/Images/ic_menu.png"
@@ -54,7 +57,9 @@
 
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel 
+                        Orientation="Horizontal" 
+                        Tapped="ShowHelpTapped">
 
                         <Image
                             Source="/Assets/Images/ic_mithelfen.png"
@@ -69,7 +74,9 @@
 
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        Tapped="ShowWCTapped">
 
                         <Image
                             Source="/Assets/Images/ic_wc.png"
@@ -84,7 +91,9 @@
 
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        Tapped="ShowStatusTapped">
 
                         <Image
                             Source="/Assets/Images/ic_status.png"
@@ -99,7 +108,9 @@
 
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        Tapped="ShowCategoryTapped">
 
                         <Image
                             Source="/Assets/Images/ic_categories.png"
@@ -118,9 +129,13 @@
                 </StackPanel>
 
 
-                <StackPanel Grid.Row="2">
+                <StackPanel 
+                    x:Name="menuBottomPanel"
+                    Grid.Row="2">
 
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        Tapped="ShowProfileTapped">
 
                         <Image
                             Source="/Assets/Images/ic_profile.png"
@@ -135,7 +150,9 @@
                     </StackPanel>
 
 
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        Tapped="ShowSettingsTapped">
 
                         <Image
                             Source="/Assets/Images/ic_settings.png"
@@ -157,17 +174,17 @@
 
         <SplitView.Content>
             <Grid>
-                
+
                 <!-- will navigate to MapPage -->
                 <Frame x:Name="mainFrame"/>
 
                 <StackPanel 
                     Width="Auto"
                     Orientation="Horizontal">
-                    
+
                     <!-- contains all subframes which are opened with the sidemenu -->
                     <Frame x:Name="menuContainerFrame"/>
-                
+
                     <Frame x:Name="detailContainerFrame"/>
 
                 </StackPanel>
