@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Wheelmap_Windows.Extensions;
 
 namespace Wheelmap_Windows.Source.UI.Pages.List {
     
@@ -32,9 +33,9 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
 
         protected override void OnNavigatedFrom(NavigationEventArgs e) {
             base.OnNavigatedFrom(e);
-            Unregister();
+            this.Unregister();
         }
-
+       
         private void Node_Selected(object sender, SelectionChangedEventArgs e) {
             if (e.AddedItems.Count() <= 0) {
                 return;
@@ -44,14 +45,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
             newEvent.node = n;
             BusProvider.DefaultInstance.Post(newEvent);
         }
-
-        /**
-         * must be called when the page should be removed from the screen
-         */
-        public void Unregister() {
-            BusProvider.DefaultInstance.Unregister(this);
-        }
-
+        
         [Subscribe]
         public void OnNewData(NewNodesEvent e) {
             SetData(e?.nodes);

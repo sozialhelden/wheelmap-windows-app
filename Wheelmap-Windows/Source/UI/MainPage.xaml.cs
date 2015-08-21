@@ -24,6 +24,7 @@ using Wheelmap_Windows.Source.UI.Pages.Node;
 using Windows.UI;
 using Windows.UI.Core;
 using Wheelmap_Windows.Utils;
+using Wheelmap_Windows.Extensions;
 
 namespace Wheelmap_Windows.Source.UI {
     
@@ -108,25 +109,9 @@ namespace Wheelmap_Windows.Source.UI {
         }
 
         private void ShowListTapped(object sender, TappedRoutedEventArgs e) {
-
-            ShowMenu(false);
-
-            Debug.WriteLine("ShowListTapped Clicked");
-            
-            if (menuContainerFrame.Content is NodeListPage) {
-                // remove content
-                (menuContainerFrame.Content as NodeListPage).Unregister();
-                menuContainerFrame.Content = null;
-                SetBackButtonStatus();
-                return;
-            }
-            
-            menuContainerFrame.Navigate(typeof(NodeListPage));
-            SetBackButtonStatus();
-            mToggleGroup.SelectedItem = (sender as Panel);
-
+            ShowOnMenuContainerFrame(sender, typeof(NodeListPage));
         }
-
+        
         private void ShowHelpTapped(object sender, TappedRoutedEventArgs e) {
             ShowMenu(false);
             Debug.WriteLine("ShowHelpTapped Clicked");
@@ -155,6 +140,31 @@ namespace Wheelmap_Windows.Source.UI {
         private void ShowSettingsTapped(object sender, TappedRoutedEventArgs e) {
             ShowMenu(false);
             Debug.WriteLine("ShowSettingsTapped Clicked");
+        }
+        
+        private void ShowOnMenuContainerFrame(object sender, Type pageType) {
+            ShowMenu(false);
+
+            if (menuContainerFrame.Content?.GetType() == pageType) {
+                // remove content
+                if (menuContainerFrame.Content is Page) {
+                    (menuContainerFrame.Content as Page).Unregister();
+                }
+                menuContainerFrame.Content = null;
+                SetBackButtonStatus();
+                return;
+            }
+
+            menuContainerFrame.Navigate(pageType);
+            SetBackButtonStatus();
+
+            if (sender is Panel) {
+                if (!mToggleGroup.Items.Contains(sender)) {
+                    mToggleGroup.Items.Add(sender as Panel);
+                }
+                mToggleGroup.SelectedItem = (sender as Panel);
+            }
+
         }
         
         [Subscribe]

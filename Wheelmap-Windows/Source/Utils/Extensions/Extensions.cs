@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wheelmap_Windows.Utils.Eventbus;
 using Windows.Foundation;
+using Windows.UI.Xaml.Controls;
 
 namespace Wheelmap_Windows.Extensions {
     public static class Extensions {
@@ -22,6 +24,11 @@ namespace Wheelmap_Windows.Extensions {
                 list.Add(t);
             }
         }
+        
+        public static void Unregister(this Page page) {
+            BusProvider.DefaultInstance.Unregister(page);
+        }
 
     }
+    
 }
