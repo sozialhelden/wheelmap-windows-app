@@ -10,7 +10,8 @@
     <Grid Background="#fff"
           Width="250"
           MinWidth="200"
-          Padding="10,10,10,10">
+          Padding="10,10,10,10"
+          RequestedTheme="Light">
 
         <StackPanel
             Width="Auto"
@@ -19,33 +20,30 @@
             <TextBlock 
                 x:Name="nameBlock"
                 Text="Cafe Einstein"
-                Foreground="#000"
                 FontSize="20"
+                TextWrapping="Wrap"
                 />
             
             <TextBlock
                 x:Name="streetBlock"
                 Text="Jerusalemer Straße 10"
-                Foreground="#000"
+                TextWrapping="Wrap"
                 />
 
             <TextBlock
                 x:Name="plzBlock"
                 Text="10117 Berlin"
-                Foreground="#000"
+                TextWrapping="Wrap"
                 />
+            
+            <HyperlinkButton
+                x:Name="websideButton"
+                HorizontalAlignment="Left"/>
 
-            <TextBlock
-                x:Name="urlBlock"
-                Text="www.domain.de"
-                Foreground="#000"
-                />
 
-            <TextBlock
-                x:Name="phoneBlock"
-                Text="030 123456789"
-                Foreground="#000"
-                />
+            <HyperlinkButton
+                x:Name="phoneButton"
+                HorizontalAlignment="Left"/>
             
         </StackPanel>
         

@@ -28,10 +28,24 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
         public void SetNode(Model.Node n) {
             nameBlock.Text = n.name ?? "";
-            phoneBlock.Text = n.phone ?? "";
+
+            try {
+                phoneButton.NavigateUri = new Uri("tel:"+n.phone);
+                phoneButton.Content = n.phone;
+                phoneButton.Visibility = Visibility.Visible;
+            } catch {
+                phoneButton.Visibility = Visibility.Collapsed;
+            }
+            
             plzBlock.Text = n.postcode ?? "";
             streetBlock.Text = n.street ?? "";
-            urlBlock.Text = n.website ?? "";
+            try {
+                websideButton.NavigateUri = new Uri(n.website);
+                websideButton.Content = n.website;
+                websideButton.Visibility = Visibility.Visible;
+            } catch {
+                websideButton.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }
