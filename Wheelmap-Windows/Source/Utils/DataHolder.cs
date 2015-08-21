@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Utils.Eventbus;
 using Wheelmap_Windows.Utils.Eventbus.Events;
 
@@ -24,10 +25,10 @@ namespace Wheelmap_Windows.Utils {
             var ignore = Instance;
         }
 
-        public Model.Node SelectedNode;
-        public List<Model.Node> Nodes;
-
-        public Dictionary<string, Model.Category> Categories = new Dictionary<string, Model.Category>();
+        public Node SelectedNode;
+        public List<Node> Nodes;
+        
+        public Dictionary<string, Category> Categories = new Dictionary<string, Category>();
 
         private DataHolder() {
             BusProvider.DefaultInstance.Register(this);

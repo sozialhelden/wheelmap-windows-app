@@ -25,6 +25,7 @@ using Windows.UI;
 using Windows.UI.Core;
 using Wheelmap_Windows.Utils;
 using Wheelmap_Windows.Extensions;
+using Wheelmap_Windows.Source.UI.Pages.Categories;
 
 namespace Wheelmap_Windows.Source.UI {
     
@@ -128,8 +129,8 @@ namespace Wheelmap_Windows.Source.UI {
         }
 
         private void ShowCategoryTapped(object sender, TappedRoutedEventArgs e) {
-            ShowMenu(false);
             Debug.WriteLine("ShowCategoryTapped Clicked");
+            ShowOnMenuContainerFrame(sender, typeof(CategoriesListPage));
         }
 
         private void ShowProfileTapped(object sender, TappedRoutedEventArgs e) {
