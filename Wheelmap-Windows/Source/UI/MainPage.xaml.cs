@@ -56,6 +56,13 @@ namespace Wheelmap_Windows.Source.UI {
             };
 
             SetBackButtonStatus();
+
+            new CategoryRequest().Query().ContinueWith((categories) => {
+                DataHolder.Instance.Categories.Clear();
+                foreach (Category c in categories.Result) {
+                    DataHolder.Instance.Categories.Add(c.identifier, c);
+                }
+            });
         }
 
         private void InitToggleGroup() {

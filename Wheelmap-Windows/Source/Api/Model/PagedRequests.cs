@@ -10,12 +10,24 @@ using Wheelmap_Windows.Model;
  */
 namespace Wheelmap_Windows.Api.Model {
 
-    public class NodesResponse {
-
+    public abstract class PagedResponse<T> {
         public Meta meta;
 
-        public Node[] nodes;
-
+        public abstract T[] GetItems();
     }
 
+    public class NodesResponse : PagedResponse<Node>{
+        
+        public Node[] nodes;
+
+        public override Node[] GetItems() => nodes;
+    }
+
+    public class CategoryResponse : PagedResponse<Category> {
+    
+        public Category[] categories;
+
+        public override Category[] GetItems() => categories;
+
+    }
 }

@@ -9,10 +9,6 @@ using Windows.UI.Xaml.Controls.Maps;
 
 namespace Wheelmap_Windows.Utils.Extensions {
 
-    public class BoundingBox {
-        
-    }
-
     public static class MapExtensions {
 
         public static GeoboundingBox GetBoundingBox(this MapControl map) {

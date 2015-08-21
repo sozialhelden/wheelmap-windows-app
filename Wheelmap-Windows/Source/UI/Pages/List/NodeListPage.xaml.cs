@@ -26,7 +26,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
-            SetData(DataHolder.Instance.nodes);
+            SetData(DataHolder.Instance.Nodes);
             BusProvider.DefaultInstance.Register(this);
         }
 
@@ -45,6 +45,9 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
             BusProvider.DefaultInstance.Post(newEvent);
         }
 
+        /**
+         * must be called when the page should be removed from the screen
+         */
         public void Unregister() {
             BusProvider.DefaultInstance.Unregister(this);
         }
@@ -54,7 +57,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
             SetData(e?.nodes);
         }
 
-        private void SetData(Model.Node[] data) {
+        private void SetData(List<Model.Node> data) {
             if (data == null) {
                 return;
             }

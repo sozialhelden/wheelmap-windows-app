@@ -11,24 +11,24 @@ using Wheelmap_Windows.Api.Model;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Utils.Extensions;
 using Windows.Devices.Geolocation;
+using Windows.System.Threading;
 
+/**
+ * contains all methods to query Node from the Wheelmap Api
+ * @see http://wheelmap.org/api/docs/resources/nodes 
+ */
 namespace Wheelmap_Windows.Api.Calls {
+    
+    public class NodesRequest : PagedRequest<NodesResponse, Node> {
 
-    /**
-     * contains all methods to query Node from the Wheelmap Api
-     * @see http://wheelmap.org/api/docs/resources/nodes 
-     */
-    public class NodeApiClient {
+        GeoboundingBox bbox;
 
-        const string TAG = nameof(NodeApiClient);
+        public NodesRequest(GeoboundingBox bbox) {
+            this.bbox = bbox;
+        }
 
-        const string END_POINT_NODES = "/api/nodes";
-
-        // For pagination, how many results to return per page. Default is 200. Max is 500.
-        const int PAGE_SIZE = 500;
-
-        public static Node[] GetNodes(GeoboundingBox bbox) {
-            
+        public override PagedResponse<Node> QueryPage(int page) {
+            string pageParam = "page=" + page;
             string pageSizeParam = "page_size=" + PAGE_SIZE;
             string bboxParam = "bbox="
                 + bbox.NorthwestCorner.Longitude.ToString(CultureInfo.InvariantCulture) + ","
@@ -36,28 +36,23 @@ namespace Wheelmap_Windows.Api.Calls {
                 + bbox.SoutheastCorner.Longitude.ToString(CultureInfo.InvariantCulture) + ","
                 + bbox.SoutheastCorner.Latitude.ToString(CultureInfo.InvariantCulture);
 
-            string url = BuildConfig.API_BASEURL + END_POINT_NODES + "?"
+            string url = BuildConfig.API_BASEURL + ApiConstants.END_POINT_NODES + "?"
                 + BuildConfig.API_KEY_PARAM + "&"
                 + bboxParam + "&"
-                + pageSizeParam;
+                + pageSizeParam + "&"
+                + pageParam;
 
-            Log.d(TAG, "GetNodes: "+url);
+            Log.d(this, "GetNodes: " + url);
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             WebResponse response = request.GetResponse();
             if (response == null) {
-                return new Node[0];
+                return null;
             }
             var json = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
-
-            var result = JsonConvert.DeserializeObject<NodesResponse>(json);
-
-            Log.d(TAG, "Nodes queries: " + result.nodes.Length);
-            return result.nodes;
+            return JsonConvert.DeserializeObject<NodesResponse>(json);
 
         }
-
     }
-
 }

@@ -7,6 +7,6 @@ using Wheelmap_Windows.Model;
 
 namespace Wheelmap_Windows.Utils.Eventbus.Events {
     public class NewNodesEvent {
-        public Node[] nodes;
+        public List<Node> nodes;
     }
 }

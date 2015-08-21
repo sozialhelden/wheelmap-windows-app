@@ -100,7 +100,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\Api\Calls\ApiConstants.cs" />
+    <Compile Include="Source\Api\Calls\CategoryApiClient.cs" />
     <Compile Include="Source\Api\Calls\NodeApiClient.cs" />
+    <Compile Include="Source\Api\Calls\PagedRequest.cs" />
     <Compile Include="Source\Api\Model\Meta.cs" />
     <Compile Include="Source\Api\Model\PagedRequests.cs" />
     <Compile Include="Source\Api\Model\Node.cs" />

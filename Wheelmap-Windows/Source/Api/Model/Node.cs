@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wheelmap_Windows.Utils;
 
 namespace Wheelmap_Windows.Model {
 
@@ -66,5 +67,23 @@ namespace Wheelmap_Windows.Model {
     public class Category {
         public long id { get; set; }
         public string identifier { get; set; }
+
+        private string _localizedName;
+        
+        [JsonProperty(PropertyName = "localized_name")]
+        public string localizedName {
+            get {
+                if (_localizedName != null) {
+                    return _localizedName;
+                }
+                if (DataHolder.Instance.Categories.ContainsKey(identifier)) {
+                    return DataHolder.Instance.Categories[identifier].localizedName;
+                }
+                return identifier;
+            }
+            set {
+                _localizedName = value;
+            }
+        }
     }
 }

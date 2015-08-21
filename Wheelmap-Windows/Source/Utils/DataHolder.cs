@@ -24,8 +24,10 @@ namespace Wheelmap_Windows.Utils {
             var ignore = Instance;
         }
 
-        public Model.Node selectedNode;
-        public Model.Node[] nodes;
+        public Model.Node SelectedNode;
+        public List<Model.Node> Nodes;
+
+        public Dictionary<string, Model.Category> Categories = new Dictionary<string, Model.Category>();
 
         private DataHolder() {
             BusProvider.DefaultInstance.Register(this);
@@ -33,12 +35,12 @@ namespace Wheelmap_Windows.Utils {
         
         [Subscribe]
         public void OnNewNodes(NewNodesEvent e) {
-            nodes = e.nodes;
+            Nodes = e.nodes;
         }
 
         [Subscribe]
         public void OnSelectedNodeChanged(SelectedNodeChangedEvent e) {
-            selectedNode = e.node;
+            SelectedNode = e.node;
         }
     }
 }

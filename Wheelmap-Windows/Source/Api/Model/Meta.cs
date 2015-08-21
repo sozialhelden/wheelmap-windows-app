@@ -12,16 +12,16 @@ namespace Wheelmap_Windows.Api.Model {
      */
     public class Meta {
 
-        long page;
+        public int page;
 
         [JsonProperty(PropertyName = "num_pages")]
-        long numPages;
+        public long numPages;
 
         [JsonProperty(PropertyName = "item_count")]
-        long itemCount;
+        public long itemCount;
 
         [JsonProperty(PropertyName = "item_count_total")]
-        long itemCountTotal;
+        public long itemCountTotal;
 
     }
 }

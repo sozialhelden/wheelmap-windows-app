@@ -46,7 +46,7 @@
                                 Grid.Row="1"
                                 x:Name="category"
                                 TextWrapping="Wrap" 
-                                Text="{Binding category.identifier}"
+                                Text="{Binding category.localizedName}"
                                 Foreground="#fff"
                                 Width="auto" FontSize="14"/>
 

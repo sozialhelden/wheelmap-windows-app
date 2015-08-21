@@ -129,13 +129,13 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             if (bbox == null) {
                 return;
             }
-            ThreadPool.RunAsync((item) => {
-                Model.Node[] items = NodeApiClient.GetNodes(bbox);
-                var e = new NewNodesEvent();
-                e.nodes = items;
-                BusProvider.DefaultInstance.Post(e);
-            }).forget();
 
+            var task = new NodesRequest(bbox).Query();
+            task.ContinueWith((items) => {
+                var e = new NewNodesEvent();
+                e.nodes = items.Result;
+                BusProvider.DefaultInstance.Post(e);
+            });
         }
         
         [Subscribe]
@@ -143,7 +143,6 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             nodeMapIcons.Clear();
             mapControl.MapElements.Clear();
             foreach (Model.Node n in e.nodes) {
-                Debug.WriteLine("Items: " + n.name);
                 AddNewMapIcons(n);
             }
         }
