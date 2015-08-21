@@ -9,6 +9,8 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -60,6 +62,8 @@ namespace Wheelmap_Windows
 
             Frame rootFrame = Window.Current.Content as Frame;
 
+            SetUpTitleBar();
+
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (rootFrame == null)
@@ -87,6 +91,22 @@ namespace Wheelmap_Windows
             }
             // Ensure the current window is active
             Window.Current.Activate();
+        }
+
+        /**
+         * change the titlebars background and foreground color
+         */
+        private void SetUpTitleBar() {
+            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+
+            Color bgColor = Color.FromArgb(0xFF, 0x2c, 0x3b, 0x49);
+
+            titleBar.BackgroundColor = bgColor;
+            titleBar.ForegroundColor = Colors.White;
+            titleBar.InactiveBackgroundColor = bgColor;
+            titleBar.ButtonBackgroundColor = bgColor;
+            titleBar.ButtonForegroundColor = Colors.White;
+            titleBar.ButtonInactiveBackgroundColor = bgColor;
         }
 
         /// <summary>
