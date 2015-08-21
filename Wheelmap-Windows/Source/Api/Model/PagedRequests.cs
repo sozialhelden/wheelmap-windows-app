@@ -11,6 +11,8 @@ using Wheelmap_Windows.Model;
 namespace Wheelmap_Windows.Api.Model {
 
     public abstract class PagedResponse<T> {
+
+        public Conditions conditions;
         public Meta meta;
 
         public abstract T[] GetItems();

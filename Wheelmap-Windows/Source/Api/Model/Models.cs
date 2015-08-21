@@ -86,4 +86,14 @@ namespace Wheelmap_Windows.Model {
             }
         }
     }
+
+    public class Conditions {
+        public int page;
+
+        [JsonProperty(PropertyName = "localized_name")]
+        public int perPage;
+
+        public string locale;
+        public string format;
+    }
 }
