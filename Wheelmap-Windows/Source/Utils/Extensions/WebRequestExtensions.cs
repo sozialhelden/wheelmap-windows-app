@@ -17,8 +17,12 @@ namespace Wheelmap_Windows.Utils.Extensions {
 
             // Wait until the call is finished
             autoResetEvent.WaitOne();
-
-            return request.EndGetResponse(asyncResult);
+            try { 
+                return request.EndGetResponse(asyncResult);
+            }catch(WebException e) {
+                Log.e(request.RequestUri, e.StackTrace);
+                return null;
+            }
         }
 
         public static Stream GetRequestStream(this WebRequest request) {

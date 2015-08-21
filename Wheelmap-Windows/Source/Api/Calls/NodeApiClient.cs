@@ -45,6 +45,9 @@ namespace Wheelmap_Windows.Api.Calls {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             WebResponse response = request.GetResponse();
+            if (response == null) {
+                return new Node[0];
+            }
             var json = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
 

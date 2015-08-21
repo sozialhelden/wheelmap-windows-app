@@ -12,7 +12,9 @@
         Width="360"
         >
 
-        <ListView x:Name="listView">
+        <ListView 
+            x:Name="listView"
+            SelectionChanged="Node_Selected">
 
             <ListView.Resources>
                 <DataTemplate x:Key="nodeCell">

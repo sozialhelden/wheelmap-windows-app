@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -32,6 +33,16 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
         protected override void OnNavigatedFrom(NavigationEventArgs e) {
             base.OnNavigatedFrom(e);
             Unregister();
+        }
+
+        private void Node_Selected(object sender, SelectionChangedEventArgs e) {
+            if (e.AddedItems.Count() <= 0) {
+                return;
+            }
+            Model.Node n = e.AddedItems[0] as Model.Node;
+            SelectedNodeChangedEvent newEvent = new SelectedNodeChangedEvent();
+            newEvent.node = n;
+            BusProvider.DefaultInstance.Post(newEvent);
         }
 
         public void Unregister() {
