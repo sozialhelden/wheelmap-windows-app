@@ -15,6 +15,9 @@ namespace Wheelmap_Windows.Extensions {
         public static void forget(this Task e) {}
 
         public static void AddAll<T>(this List<T> list, T[] items) {
+            if (items == null) {
+                return;
+            }
             foreach(T t in items) {
                 list.Add(t);
             }

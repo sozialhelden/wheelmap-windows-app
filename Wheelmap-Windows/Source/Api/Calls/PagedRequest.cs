@@ -28,7 +28,7 @@ namespace Wheelmap_Windows.Api.Calls {
                 long numPages = 1;
                 while (page < numPages) {
                     var resp = QueryPage(page + 1);
-                    if (resp == null) {
+                    if (resp?.meta == null) {
                         break;
                     }
                     page = resp.meta.page;

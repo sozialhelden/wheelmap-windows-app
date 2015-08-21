@@ -10,6 +10,9 @@ using Wheelmap_Windows.Model;
  */
 namespace Wheelmap_Windows.Api.Model {
 
+    /**
+     * base response for all PagedRequests
+     */
     public abstract class PagedResponse<T> {
 
         public Conditions conditions;
