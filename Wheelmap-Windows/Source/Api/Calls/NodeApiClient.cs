@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wheelmap_Windows.Api.Model;
 using Wheelmap_Windows.Model;
+using Wheelmap_Windows.Source.Utils.Threads;
 using Wheelmap_Windows.Utils.Extensions;
 using Windows.Devices.Geolocation;
 using Windows.System.Threading;
@@ -21,12 +22,23 @@ namespace Wheelmap_Windows.Api.Calls {
     
     public class NodesRequest : PagedRequest<NodesResponse, Node> {
 
+        // only one NodeRequest should run at a time
+        private static LimitedConcurrencyLevelTaskScheduler lcts = new LimitedConcurrencyLevelTaskScheduler(1);
+        private static TaskFactory factory = new TaskFactory(lcts);
+
         GeoboundingBox bbox;
 
-        public NodesRequest(GeoboundingBox bbox) {
+        public NodesRequest(GeoboundingBox bbox) : base(factory) {
             this.bbox = bbox;
         }
-        
+
+        public override Task<List<Node>> Query() {
+            // tell scheduler to skip all task in queue
+            // they are all outdated now
+            lcts.ClearTasks();
+            return base.Query();
+        }
+
         protected override string GetUrl(int page) {
             string pageParam = "page=" + page;
             string pageSizeParam = "page_size=" + PAGE_SIZE;

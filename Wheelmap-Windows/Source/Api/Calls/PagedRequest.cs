@@ -14,23 +14,40 @@ namespace Wheelmap_Windows.Api.Calls {
 
     public abstract class PagedRequest<T, K> where T : PagedResponse<K> {
 
-        string TAG = "PagesRequest";
+        protected string TAG = "PagesRequest";
+        private TaskFactory mTaskFactory;
 
-        public PagedRequest() {
+        public PagedRequest() : this(null) {
+        }
+
+        public PagedRequest(TaskFactory factory) {
             TAG = GetType().Name;
+            mTaskFactory = factory;
         }
 
         // For pagination, how many results to return per page. Default is 200. Max is 500.
         public const int PAGE_SIZE = 500;
 
-        public async Task<List<K>> Query() {
-            return await Task.Run(() => {
-                List<K> items = new List<K>();
+        public async virtual Task<List<K>> Query() {
+            if (mTaskFactory != null) {
+                return await mTaskFactory.StartNew(QueryPages);
+            } else {
+                return await Task.Run(() => QueryPages());
+            }
+        }
 
-                // handle pages request
-                int page = 0;
-                long numPages = 1;
-                while (page < numPages) {
+        /**
+         * collects all available pages and merges their result
+         * returns null if an error happens
+         */
+        protected List<K> QueryPages() {
+            List<K> items = new List<K>();
+
+            // handle pages request
+            int page = 0;
+            long numPages = 1;
+            while (page < numPages) {
+                try {
                     var resp = QueryPage(page + 1);
                     if (resp?.meta == null) {
                         break;
@@ -41,10 +58,12 @@ namespace Wheelmap_Windows.Api.Calls {
                     if (page == 1) {
                         Log.d(TAG, "Query: numPages = " + numPages + ": items: " + resp.meta.itemCountTotal);
                     }
+                } catch {
+                    return null;
                 }
+            }
 
-                return items;
-            });
+            return items;
         }
 
         protected PagedResponse<K> QueryPage(int page) {

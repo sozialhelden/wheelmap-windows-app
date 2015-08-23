@@ -133,6 +133,7 @@
     <Compile Include="Source\Utils\Extensions\MapExtensions.cs" />
     <Compile Include="Source\Utils\Extensions\WebRequestExtensions.cs" />
     <Compile Include="Source\Utils\Log.cs" />
+    <Compile Include="Source\Utils\Threads\LimitedConcurrencyLevelTaskScheduler.cs" />
     <Compile Include="Source\Utils\ToggleGroup.cs" />
   </ItemGroup>
   <ItemGroup>

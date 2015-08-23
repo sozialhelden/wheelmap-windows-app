@@ -64,6 +64,10 @@ namespace Wheelmap_Windows.Source.UI.Pages {
 
         }
 
+        /**
+         * called when the maps ZoomLevel has changed
+         * request new data if needed
+         */
         private void MapControl_ZoomLevelChanged(MapControl sender, object args) {
             Debug.WriteLine("ZoomLevel: " + mapControl.ZoomLevel);
             var zoomLevel = (int) mapControl.ZoomLevel;
@@ -94,6 +98,10 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             RequestUpdate();
         }
         
+        /**
+         * called when the maps center has changed
+         * request new data if map moves more than 30% from the last position depending on the maps size
+         */
         private void MapControl_CenterChanged(MapControl sender, object args) {
             var bbox = mapControl.GetBoundingBox();
             if (bbox == null) {
