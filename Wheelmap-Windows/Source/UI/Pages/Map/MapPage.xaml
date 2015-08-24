@@ -11,30 +11,51 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Maps:MapControl x:Name="mapControl"/>
 
+
         <StackPanel 
             Orientation="Vertical"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             Width="Auto"
             Height="Auto"
-            Background="#4000"
-            Margin="10,10,10,10"
-            Padding="10,10,10,10">
+            Background="#7000"
+            Margin="10,10,10,10">
 
-            <Button 
-                Content="+"
-                Background="Transparent"
+
+            <Image
+                Height="40"
+                Width="40"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Click="ZoomIn_Click"
+                Tapped="OnCompass_Click"
+                Source="/Assets/Images/ic_north.png"
                 />
 
-            <Button 
-                Content="-"
-                Background="Transparent"
+            <Image
+                Height="40"
+                Width="40"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Click="ZoomOut_Click"/>
+                Tapped="OnMyPosition_Click"
+                Source="/Assets/Images/ic_circle.png"
+                />
+
+            <Image
+                Height="40"
+                Width="40"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Tapped="ZoomIn_Click"
+                Source="/Assets/Images/ic_plus.png"
+                />
+
+            <Image 
+                Height="40"
+                Width="40"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Source="/Assets/Images/ic_minus.png"
+                Tapped="ZoomOut_Click"/>
 
         </StackPanel>
 

@@ -8,6 +8,7 @@ using Wheelmap_Windows.Api.Calls;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Source.UI.Pages.Map;
+using Wheelmap_Windows.Utils;
 using Wheelmap_Windows.Utils.Eventbus;
 using Wheelmap_Windows.Utils.Eventbus.Events;
 using Wheelmap_Windows.Utils.Extensions;
@@ -190,7 +191,17 @@ namespace Wheelmap_Windows.Source.UI.Pages {
         private void ZoomOut_Click(object sender, RoutedEventArgs e) {
             mapControl.ZoomLevel -= 1;
         }
-        
+
+        private void OnMyPosition_Click(object sender, RoutedEventArgs e) {
+            var point = LocationManager.Instance?.LastLocationEvent?.Args?.Position?.Coordinate?.Point;
+            if (point != null) {
+                mapControl.Center = point; 
+            }
+        }
+
+        private void OnCompass_Click(object sender, RoutedEventArgs e) {
+            mapControl.TryRotateToAsync(0).AsTask().forget();
+        }
     }
-    
+
 }
