@@ -36,6 +36,15 @@ namespace Wheelmap_Windows.Extensions {
             }
         }
 
+        public static void AddAll<X, T>(this ICollection<X> list, IList<T> items) where T : X {
+            if (items == null) {
+                return;
+            }
+            foreach (T t in items) {
+                list.Add(t);
+            }
+        }
+
         public static void Unregister(this Page page) {
             BusProvider.DefaultInstance.Unregister(page);
         }

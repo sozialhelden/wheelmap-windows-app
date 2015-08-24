@@ -17,16 +17,21 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Wheelmap_Windows.Extensions;
+using System.Collections.ObjectModel;
 
 namespace Wheelmap_Windows.Source.UI.Pages.List {
     
     public sealed partial class NodeListPage : Page {
+
+        private ObservableCollection<Model.Node> mItems = new ObservableCollection<Model.Node>();
+
         public NodeListPage() {
             this.InitializeComponent();            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
+            listView.ItemsSource = mItems;
             SetData(DataHolder.Instance.Nodes);
             BusProvider.DefaultInstance.Register(this);
         }
@@ -55,10 +60,12 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
             if (data == null) {
                 return;
             }
-            listView.Items.Clear();
-            foreach (Model.Node n in data) {
-                listView.Items.Add(n);
-            }
+            
+            data = data.OrderBy(n => n.category.localizedName).ToList();
+            mItems.Clear();
+            mItems.AddAll(data);
+            
         }
+        
     }
 }

@@ -15,7 +15,13 @@
         <ListView 
             x:Name="listView"
             SelectionChanged="Node_Selected">
-
+            
+            <ListView.ItemContainerTransitions>
+                <TransitionCollection>
+                    <!-- You can even omit this transition if desired -->
+                </TransitionCollection>
+            </ListView.ItemContainerTransitions>
+            
             <ListView.Resources>
                 <DataTemplate x:Key="nodeCell">
                     <Border BorderBrush="#444"  BorderThickness="0,0,0,1" >
