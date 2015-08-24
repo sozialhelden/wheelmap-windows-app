@@ -144,7 +144,7 @@
                 <ListView 
                     Background="#DDD"
                     x:Name="listView"
-                    Margin="-10,10,-10,0"
+                    Margin="-10,30,-10,0"
                     Height="110"
                     ScrollViewer.HorizontalScrollMode="Auto"
                     ScrollViewer.VerticalScrollMode="Disabled"
