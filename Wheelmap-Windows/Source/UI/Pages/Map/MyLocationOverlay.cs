@@ -17,11 +17,11 @@ using Windows.UI.Xaml.Shapes;
 namespace Wheelmap_Windows.Source.UI.Pages.Map {
     public class MyLocationOverlay {
 
-        MapControl mMapControl;
+        WeakReference<MapControl> mMapControl;
         DependencyObject mMarker;
 
         public MyLocationOverlay(MapControl mapControl) {
-            mMapControl = mapControl;
+            mMapControl = new WeakReference<MapControl>(mapControl);
             BusProvider.DefaultInstance.Register(this);
             OnLocationChanged(LocationManager.Instance.LastLocationEvent);
         }
@@ -62,12 +62,22 @@ namespace Wheelmap_Windows.Source.UI.Pages.Map {
                 return;
             }
 
+            MapControl target;
+            mMapControl.TryGetTarget(out target);
+            
+            if (target == null) {
+                // the map is not longer present
+                // this overlay is not longer needed
+                Unregister();
+                return;
+            }
+
             if (mMarker != null) {
-                mMapControl.Children.Remove(mMarker);
+                target.Children.Remove(mMarker);
             }
 
             mMarker = CreateMarker();
-            mMapControl.Children.Add(mMarker);
+            target.Children.Add(mMarker);
             MapControl.SetLocation(mMarker, e.Args.Position.Coordinate.Point);
             MapControl.SetNormalizedAnchorPoint(mMarker, new Point(0.5, 0.5));
         }
