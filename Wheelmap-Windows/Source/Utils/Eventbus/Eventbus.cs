@@ -25,16 +25,20 @@ namespace Wheelmap_Windows.Utils.Eventbus {
 
         public void Register(object subscriber) {
             Log.i(TAG, "Register: " + subscriber);
-            if (!_subscribers.Contains(subscriber)) {
-                _subscribers.Add(subscriber);
+            lock (_subscribers) {
+                if (!_subscribers.Contains(subscriber)) {
+                    _subscribers.Add(subscriber);
+                }
             }
 
         }
 
         public void Unregister(object subscriber) {
             Log.i(TAG, "Unregister: " + subscriber);
-            if (_subscribers.Contains(subscriber)) {
-                _subscribers.Remove(subscriber);
+            lock(_subscribers) { 
+                if (_subscribers.Contains(subscriber)) {
+                    _subscribers.Remove(subscriber);
+                }
             }
         }
 
@@ -43,11 +47,13 @@ namespace Wheelmap_Windows.Utils.Eventbus {
             // run callback on mainthread
             CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
                 () => {
-                    foreach (object instance in _subscribers) {
-                        foreach (MethodInfo method in GetSubscribedMethods(instance.GetType(), e)) {
-                            try {
-                                method?.Invoke(instance, new object[] { e });
-                            } catch (TargetInvocationException) { }
+                    lock (_subscribers) {
+                        foreach (object instance in _subscribers) {
+                            foreach (MethodInfo method in GetSubscribedMethods(instance.GetType(), e)) {
+                                try {
+                                    method?.Invoke(instance, new object[] { e });
+                                } catch (TargetInvocationException) { }
+                            }
                         }
                     }
                 }

@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Wheelmap_Windows.Api.Calls;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Source.Api.Model;
+using Wheelmap_Windows.Source.UI.Pages.List;
 using Wheelmap_Windows.Utils.Extensions;
+using Windows.ApplicationModel.Core;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
@@ -111,7 +116,9 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                     listView.Items.Add(p);
                 }
             });
+            
         }
+        
     }
     
 }

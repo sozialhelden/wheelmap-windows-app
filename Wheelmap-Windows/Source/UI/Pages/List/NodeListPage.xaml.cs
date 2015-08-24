@@ -35,7 +35,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
             SetData(DataHolder.Instance.Nodes);
             BusProvider.DefaultInstance.Register(this);
         }
-
+        
         protected override void OnNavigatedFrom(NavigationEventArgs e) {
             base.OnNavigatedFrom(e);
             this.Unregister();

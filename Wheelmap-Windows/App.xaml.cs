@@ -13,6 +13,7 @@ using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -97,6 +98,48 @@ namespace Wheelmap_Windows
             }
             // Ensure the current window is active
             Window.Current.Activate();
+            
+            SystemNavigationManager.GetForCurrentView().BackRequested += (source, args) => GoBack();
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons")) {
+                Windows.Phone.UI.Input.HardwareButtons.BackPressed += (source, args) => GoBack();
+            }
+        }
+
+        public void GoBack() {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame.Content is BackDelegate) {
+                var backhandling = rootFrame.Content as BackDelegate;
+                if (backhandling.CanGoBack()) {
+                    backhandling.GoBack();
+                    RefreshBackStatus();
+                    return;
+                }
+            }
+            if (rootFrame.CanGoBack) {
+                rootFrame.GoBack();
+            }
+            RefreshBackStatus();
+        }
+
+        public void RefreshBackStatus() {
+            bool canGoBack = false;
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame.Content is BackDelegate) {
+                var backhandling = rootFrame.Content as BackDelegate;
+                if (backhandling.CanGoBack()) {
+                    canGoBack = true;
+                }
+            }
+            if (rootFrame.CanGoBack) {
+                canGoBack = true;
+            }
+
+            if (canGoBack) {
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            } else {
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+            }
+
         }
 
         /**

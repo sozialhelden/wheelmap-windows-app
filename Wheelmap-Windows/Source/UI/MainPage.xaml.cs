@@ -30,7 +30,7 @@ using Windows.Devices.Geolocation;
 
 namespace Wheelmap_Windows.Source.UI {
 
-    public sealed partial class MainPage : Page {
+    public sealed partial class MainPage : Page, BackDelegate{
 
         ToggleGroup<Panel> mToggleGroup;
 
@@ -43,23 +43,7 @@ namespace Wheelmap_Windows.Source.UI {
             //var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
 
             BusProvider.DefaultInstance.Register(this);
-
-            SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) => {
-                if (detailContainerFrame.Content != null) {
-                    detailContainerFrame.Content = null;
-                    SetBackButtonStatus();
-                    return;
-                }
-                if (menuContainerFrame.Content != null) {
-                    menuContainerFrame.Content = null;
-                    SetBackButtonStatus();
-                    return;
-                }
-                SetBackButtonStatus();
-            };
-
-            SetBackButtonStatus();
-
+            
             new CategoryRequest().Query().ContinueWith((categories) => {
                 DataHolder.Instance.Categories.Clear();
                 foreach (Category c in categories.Result) {
@@ -88,16 +72,7 @@ namespace Wheelmap_Windows.Source.UI {
                 }
             };
         }
-
-        private void SetBackButtonStatus() {
-            if (menuContainerFrame.Content != null || detailContainerFrame.Content != null) {
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
-            } else {
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
-                mToggleGroup.SelectedItem = null;
-            }
-        }
-
+        
         private void ShowMenu(bool show) {
             mSplitView.IsPaneOpen = show;
         }
@@ -154,12 +129,13 @@ namespace Wheelmap_Windows.Source.UI {
                     (menuContainerFrame.Content as Page).Unregister();
                 }
                 menuContainerFrame.Content = null;
-                SetBackButtonStatus();
+                mToggleGroup.SelectedItem = null;
+                this.RefreshCanGoBack();
                 return;
             }
 
             menuContainerFrame.Navigate(pageType);
-            SetBackButtonStatus();
+            this.RefreshCanGoBack();
 
             if (sender is Panel) {
                 if (!mToggleGroup.Items.Contains(sender)) {
@@ -177,8 +153,27 @@ namespace Wheelmap_Windows.Source.UI {
             }else { 
                 detailContainerFrame.Navigate(typeof(NodeDetailPage), e.node);
             }
-            SetBackButtonStatus();
+            this.RefreshCanGoBack();
         }
-        
+
+        public bool CanGoBack() {
+            if (menuContainerFrame.Content != null || detailContainerFrame.Content != null) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public void GoBack() {
+            if (detailContainerFrame.Content != null) {
+                detailContainerFrame.Content = null;
+                return;
+            }
+            if (menuContainerFrame.Content != null) {
+                menuContainerFrame.Content = null;
+                mToggleGroup.SelectedItem = null;
+                return;
+            }
+        }
     }
 }

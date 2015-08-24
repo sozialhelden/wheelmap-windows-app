@@ -126,6 +126,7 @@
     <Compile Include="Source\UI\Pages\Node\NodeDetailPage.xaml.cs">
       <DependentUpon>NodeDetailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\Utils\BackDelegate.cs" />
     <Compile Include="Source\Utils\DataHolder.cs" />
     <Compile Include="Source\Utils\Eventbus\BusProvider.cs" />
     <Compile Include="Source\Utils\Eventbus\Eventbus.cs" />
