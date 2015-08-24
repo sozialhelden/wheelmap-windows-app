@@ -138,4 +138,28 @@
   <data name="MENU_WC.Text" xml:space="preserve">
     <value>Toilette</value>
   </data>
+  <data name="STATUS_LIMITED" xml:space="preserve">
+    <value>Teilweise Rollstuhlgerecht</value>
+  </data>
+  <data name="STATUS_NO" xml:space="preserve">
+    <value>Nicht Rollstuhlgerecht</value>
+  </data>
+  <data name="STATUS_TOILET_LIMITED" xml:space="preserve">
+    <value>Teilweise Rollstuhlgerechtes WC</value>
+  </data>
+  <data name="STATUS_TOILET_NO" xml:space="preserve">
+    <value>Nicht Rollstuhlgerechtes WC</value>
+  </data>
+  <data name="STATUS_TOILET_UNKNOWN" xml:space="preserve">
+    <value>Status WC unbekannt</value>
+  </data>
+  <data name="STATUS_TOILET_YES" xml:space="preserve">
+    <value>Rollstuhlgerechtes WC</value>
+  </data>
+  <data name="STATUS_UNKNOWN" xml:space="preserve">
+    <value>Status unbekannt</value>
+  </data>
+  <data name="STATUS_YES" xml:space="preserve">
+    <value>Voll Rollstuhlgerecht</value>
+  </data>
 </root>

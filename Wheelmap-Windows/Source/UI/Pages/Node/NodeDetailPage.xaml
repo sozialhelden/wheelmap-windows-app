@@ -5,12 +5,12 @@
     xmlns:local="using:Wheelmap_Windows.Source.UI.Pages.Node"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d">
 
     <Grid Background="#fff"
           Width="250"
           MinWidth="200"
-          Padding="10,10,10,10"
           RequestedTheme="Light">
 
         <Grid.RowDefinitions>
@@ -18,14 +18,19 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-
         <ScrollViewer
             Grid.Row="0"
             VerticalScrollMode="Auto"
             VerticalScrollBarVisibility="Hidden">
             <StackPanel
+                Padding="10,10,10,10"
                 Width="Auto"
                 MinWidth="200">
+
+                <Maps:MapControl
+                    Background="Transparent"
+                    x:Name="mapControl"
+                    Height="200"/>
 
                 <TextBlock 
                     x:Name="nameBlock"
@@ -55,8 +60,10 @@
                     HorizontalAlignment="Left"/>
 
                 <Border
-                    Background="Green"
+                    x:Name="statusBgBorder"
+                    Background="Gray"
                     CornerRadius="4">
+                    
                     <Grid Height="40">
 
                         <Grid.ColumnDefinitions>
@@ -66,8 +73,8 @@
                         </Grid.ColumnDefinitions>
 
                         <Image
+                            x:Name="statusImage"
                             Grid.Column="0"
-                            Source="/Assets/Images/ic_tick.png"
                             Height="40"
                             Width="40"
                         />
@@ -78,7 +85,6 @@
                             TextWrapping="Wrap"
                             MaxLines="2"
                             FontSize="14"
-                            Text="Voll rollstuhlgerecht"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
                             Foreground="#fff"
@@ -95,7 +101,8 @@
                 </Border>
 
                 <Border
-                    Background="Red"
+                    x:Name="statusToiletBgBorder"
+                    Background="Gray"
                     Margin="0,10,0,0"
                     CornerRadius="4">
                     <Grid Height="40">
@@ -107,18 +114,17 @@
                         </Grid.ColumnDefinitions>
 
                         <Image
+                            x:Name="statusToiletImage"
                             Grid.Column="0"
-                            Source="/Assets/Images/ic_tick.png"
                             Height="40"
                             Width="40"
                         />
 
                         <TextBlock
-                            x:Name="wcTextBlock"
+                            x:Name="statusToiletTextBlock"
                             Grid.Column="1"
                             TextWrapping="Wrap"
                             MaxLines="2"
-                            Text="Unbekannter WC-Status"
                             FontSize="14"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
@@ -136,8 +142,9 @@
                 </Border>
 
                 <ListView 
+                    Background="#DDD"
                     x:Name="listView"
-                    Margin="0,10,0,0"
+                    Margin="-10,10,-10,0"
                     Height="110"
                     ScrollViewer.HorizontalScrollMode="Auto"
                     ScrollViewer.VerticalScrollMode="Disabled"
@@ -175,36 +182,40 @@
             </StackPanel>
         </ScrollViewer>
 
-        <Grid
+        <Border
             Grid.Row="1"
+            BorderBrush="Black"
+            BorderThickness="0,1,0,0">
+            <Grid
             Height="Auto">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Image
+                <Image
                 Grid.Column="0"
                 Source="/Assets/Images/ic_edit.png"
                 Height="40"
                 Width="40"
                 />
 
-            <Image
+                <Image
                 Grid.Column="1"
                 Source="/Assets/Images/ic_route.png"
                 Height="40"
                 Width="40"
                 />
 
-            <Image
+                <Image
                 Grid.Column="2"
                 Source="/Assets/Images/ic_share.png"
                 Height="40"
                 Width="40"
                 />
-        </Grid>
+            </Grid>
+        </Border>
 
     </Grid>
 </Page>

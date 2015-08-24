@@ -107,6 +107,7 @@
     <Compile Include="Source\Api\Model\Meta.cs" />
     <Compile Include="Source\Api\Model\PagedRequests.cs" />
     <Compile Include="Source\Api\Model\Models.cs" />
+    <Compile Include="Source\Api\Model\Status.cs" />
     <Compile Include="Source\UI\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -133,6 +134,7 @@
     <Compile Include="Source\Utils\Extensions\Extensions.cs" />
     <Compile Include="Source\Utils\Extensions\MapExtensions.cs" />
     <Compile Include="Source\Utils\Extensions\WebRequestExtensions.cs" />
+    <Compile Include="Source\Utils\HaversineFormula.cs" />
     <Compile Include="Source\Utils\LocationManager.cs" />
     <Compile Include="Source\Utils\Log.cs" />
     <Compile Include="Source\Utils\Threads\LimitedConcurrencyLevelTaskScheduler.cs" />

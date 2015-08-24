@@ -138,4 +138,25 @@
   <data name="MENU_WC.Text" xml:space="preserve">
     <value>Toilet</value>
   </data>
+  <data name="STATUS_LIMITED" xml:space="preserve">
+    <value>STATUS_LIMITED</value>
+  </data>
+  <data name="STATUS_NO" xml:space="preserve">
+    <value>STATUS_NO</value>
+  </data>
+  <data name="STATUS_TOILET_LIMITED" xml:space="preserve">
+    <value>STATUS_TOILET_LIMITED</value>
+  </data>
+  <data name="STATUS_TOILET_UNKNOWN" xml:space="preserve">
+    <value>STATUS_TOILET_UNKNOWN</value>
+  </data>
+  <data name="STATUS_TOILET_YES" xml:space="preserve">
+    <value>STATUS_TOILET_YES</value>
+  </data>
+  <data name="STATUS_UNKNOWN" xml:space="preserve">
+    <value>STATUS_UNKNOWN</value>
+  </data>
+  <data name="STATUS_YES" xml:space="preserve">
+    <value>STATUS_YES</value>
+  </data>
 </root>

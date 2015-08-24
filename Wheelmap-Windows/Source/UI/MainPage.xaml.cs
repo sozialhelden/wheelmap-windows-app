@@ -172,7 +172,11 @@ namespace Wheelmap_Windows.Source.UI {
 
         [Subscribe]
         public void OnSelectedNodeChanged(SelectedNodeChangedEvent e) {
-            detailContainerFrame.Navigate(typeof(NodeDetailPage), e.node);
+            if (detailContainerFrame.Content is NodeDetailPage) {
+                (detailContainerFrame.Content as NodeDetailPage).SetNode(e.node);
+            }else { 
+                detailContainerFrame.Navigate(typeof(NodeDetailPage), e.node);
+            }
             SetBackButtonStatus();
         }
         

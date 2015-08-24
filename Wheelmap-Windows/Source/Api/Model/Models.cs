@@ -29,11 +29,16 @@ namespace Wheelmap_Windows.Model {
         public Category category { get; set; }
 
         //The node's wheelchair status, must be one of [yes, no, limited, unknown]
-        public string wheelchair { get; set; }
+        [JsonProperty(PropertyName = "wheelchair")]
+        public string wheelchairStatus { get; set; }
 
         //The node's additional wheelchair comment like "Ask for a ramp.", 255 characters max.
         [JsonProperty(PropertyName = "wheelchair_description")]
         public string wheelchairDescription { get; set; }
+
+        //The node's wheelchair toilet status, must be one of [yes, no, limited, unknown]
+        [JsonProperty(PropertyName = "wheelchair_toilet")]
+        public string wheelchairToiletStatus { get; set; }
 
         //The node's street.
         public string street { get; set; }

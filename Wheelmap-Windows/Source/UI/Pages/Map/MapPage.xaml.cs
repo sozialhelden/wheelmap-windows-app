@@ -43,7 +43,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
         public MapPage() {
             this.InitializeComponent();
 
-            setOsmTileSource();
+            mapControl.SetOsmTileSource();
             mapControl.CenterChanged += MapControl_CenterChanged;
             mapControl.ZoomLevelChanged += MapControl_ZoomLevelChanged;
             mapControl.MapElementClick += MapControl_MapElementClick;
@@ -172,18 +172,6 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             nodeMapIcons.Add(mapIcon, node);
         }
 
-        /**
-         * change the tilesource of the mapControl to use openstreetmap
-         */
-        private void setOsmTileSource() {
-            var httpsource = new HttpMapTileDataSource("http://a.tile.openstreetmap.org/{zoomlevel}/{x}/{y}.png");
-            var ts = new MapTileSource(httpsource) {
-                Layer = MapTileLayer.BackgroundReplacement
-            };
-            mapControl.Style = MapStyle.None;
-            mapControl.TileSources.Add(ts);
-        }
-        
         private void ZoomIn_Click(object sender, RoutedEventArgs e) {
             mapControl.ZoomLevel += 1;
         }

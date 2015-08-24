@@ -51,11 +51,6 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
             BusProvider.DefaultInstance.Post(newEvent);
         }
         
-        [Subscribe]
-        public void OnNewData(NewNodesEvent e) {
-            SetData(e?.nodes);
-        }
-
         private void SetData(List<Model.Node> data) {
             if (data == null) {
                 return;
@@ -66,6 +61,27 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
             mItems.AddAll(data);
             
         }
-        
+
+        [Subscribe]
+        public void OnNewData(NewNodesEvent e) {
+            SetData(e?.nodes);
+        }
+
+        [Subscribe]
+        public void OnLocationChanged(LocationChangedEvent e) {
+            if (e == null) {
+                return;
+            }
+            /*var point = Position.From(e.Args.Position.Coordinate.Point);
+
+            var elist = mItems.OrderBy(node => {
+                return Haversine.DistanceInKm(point,new Position() { Latitude = node.lat, Longitude = node.lon});
+            });
+            var list = elist.ToList();
+            mItems.Clear();
+            mItems.AddAll(list);*/
+
+        }
+
     }
 }

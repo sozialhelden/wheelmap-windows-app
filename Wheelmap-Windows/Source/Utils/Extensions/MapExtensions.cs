@@ -50,5 +50,17 @@ namespace Wheelmap_Windows.Utils.Extensions {
             }
             return null;
         }
+
+        /**
+         * change the tilesource of the mapControl to use openstreetmap
+         */
+        public static void SetOsmTileSource(this MapControl mapControl) {
+            var httpsource = new HttpMapTileDataSource("http://a.tile.openstreetmap.org/{zoomlevel}/{x}/{y}.png");
+            var ts = new MapTileSource(httpsource) {
+                Layer = MapTileLayer.BackgroundReplacement
+            };
+            mapControl.Style = MapStyle.None;
+            mapControl.TileSources.Add(ts);
+        }
     }
 }

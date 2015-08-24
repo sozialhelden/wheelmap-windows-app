@@ -6,12 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Wheelmap_Windows.Utils.Eventbus;
 using Windows.ApplicationModel.Core;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 
 namespace Wheelmap_Windows.Extensions {
     public static class Extensions {
+        static ResourceLoader mResourceLoader = new ResourceLoader();
+        
 
         // use this to ignore the warning to await for the result
         // for fire and forget
@@ -36,7 +39,7 @@ namespace Wheelmap_Windows.Extensions {
             }
         }
 
-        public static void AddAll<X, T>(this ICollection<X> list, IList<T> items) where T : X {
+        public static void AddAll<X, T>(this ICollection<X> list, ICollection<T> items) where T : X {
             if (items == null) {
                 return;
             }
@@ -47,6 +50,10 @@ namespace Wheelmap_Windows.Extensions {
 
         public static void Unregister(this Page page) {
             BusProvider.DefaultInstance.Unregister(page);
+        }
+
+        public static string t(this string key) {
+            return mResourceLoader.GetString(key);
         }
 
     }
