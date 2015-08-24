@@ -43,5 +43,6 @@ namespace Wheelmap_Windows.Utils {
         public void OnSelectedNodeChanged(SelectedNodeChangedEvent e) {
             SelectedNode = e.node;
         }
+        
     }
 }

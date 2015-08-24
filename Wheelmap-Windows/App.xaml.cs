@@ -5,8 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Wheelmap_Windows.Utils;
+using Wheelmap_Windows.Utils.Eventbus;
+using Wheelmap_Windows.Utils.Eventbus.Events;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
@@ -26,6 +29,8 @@ namespace Wheelmap_Windows
     /// </summary>
     sealed partial class App : Application
     {
+        private static string TAG = "App";
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -59,6 +64,7 @@ namespace Wheelmap_Windows
 
             // init dataholder
             DataHolder.Init();
+            LocationManager.Init();
 
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -132,6 +138,5 @@ namespace Wheelmap_Windows
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
-        
     }
 }

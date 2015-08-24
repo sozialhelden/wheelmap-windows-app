@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Wheelmap_Windows.Api.Calls;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
+using Wheelmap_Windows.Source.UI.Pages.Map;
 using Wheelmap_Windows.Utils.Eventbus;
 using Wheelmap_Windows.Utils.Eventbus.Events;
 using Wheelmap_Windows.Utils.Extensions;
@@ -30,7 +31,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
         private const byte ZOOMLEVEL_MIN = 16;
         private const byte ZOOMLEVEL_MAX = 14;
 
-        private Geopoint DEBUG_POSITION = new Geopoint(new BasicGeoposition() { Latitude = 52.5207113195211, Longitude = 13.3913548104465, Altitude = 0});
+        private Geopoint DEBUG_POSITION = new Geopoint(new BasicGeoposition() { Latitude = 52.5139845511952, Longitude = 13.3907276745181, Altitude = 0});
         private const int MAP_ZOOM_DEFAULT = 18; // Zoon 1 is world view
 
         int oldZoomLevel = 1;
@@ -48,8 +49,10 @@ namespace Wheelmap_Windows.Source.UI.Pages {
 
             mapControl.ZoomLevel = MAP_ZOOM_DEFAULT;
             mapControl.Center = DEBUG_POSITION;
-
             BusProvider.DefaultInstance.Register(this);
+
+            new MyLocationOverlay(mapControl);
+
         }
 
         private void MapControl_MapElementClick(MapControl sender, MapElementClickEventArgs args) {
@@ -187,6 +190,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
         private void ZoomOut_Click(object sender, RoutedEventArgs e) {
             mapControl.ZoomLevel -= 1;
         }
+        
     }
     
 }

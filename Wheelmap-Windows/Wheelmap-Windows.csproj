@@ -117,10 +117,11 @@
     <Compile Include="Source\UI\Pages\List\NodeListPage.xaml.cs">
       <DependentUpon>NodeListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Source\UI\Pages\MapPage.xaml.cs">
+    <Compile Include="Source\UI\Pages\Map\MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Source\BuildConfig.cs" />
+    <Compile Include="Source\UI\Pages\Map\MyLocationOverlay.cs" />
     <Compile Include="Source\UI\Pages\Node\NodeDetailPage.xaml.cs">
       <DependentUpon>NodeDetailPage.xaml</DependentUpon>
     </Compile>
@@ -132,6 +133,7 @@
     <Compile Include="Source\Utils\Extensions\Extensions.cs" />
     <Compile Include="Source\Utils\Extensions\MapExtensions.cs" />
     <Compile Include="Source\Utils\Extensions\WebRequestExtensions.cs" />
+    <Compile Include="Source\Utils\LocationManager.cs" />
     <Compile Include="Source\Utils\Log.cs" />
     <Compile Include="Source\Utils\Threads\LimitedConcurrencyLevelTaskScheduler.cs" />
     <Compile Include="Source\Utils\ToggleGroup.cs" />
@@ -200,7 +202,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Source\UI\Pages\MapPage.xaml">
+    <Page Include="Source\UI\Pages\Map\MapPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

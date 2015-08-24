@@ -26,9 +26,10 @@ using Windows.UI.Core;
 using Wheelmap_Windows.Utils;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Source.UI.Pages.Categories;
+using Windows.Devices.Geolocation;
 
 namespace Wheelmap_Windows.Source.UI {
-    
+
     public sealed partial class MainPage : Page {
 
         ToggleGroup<Panel> mToggleGroup;
@@ -40,11 +41,11 @@ namespace Wheelmap_Windows.Source.UI {
 
             mainFrame.Navigate(typeof(MapPage));
             //var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            
+
             BusProvider.DefaultInstance.Register(this);
 
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) => {
-            if (detailContainerFrame.Content != null) {
+                if (detailContainerFrame.Content != null) {
                     detailContainerFrame.Content = null;
                     SetBackButtonStatus();
                     return;
@@ -65,6 +66,7 @@ namespace Wheelmap_Windows.Source.UI {
                     DataHolder.Instance.Categories.Add(c.identifier, c);
                 }
             });
+            
         }
 
         private void InitToggleGroup() {
@@ -95,7 +97,7 @@ namespace Wheelmap_Windows.Source.UI {
                 mToggleGroup.SelectedItem = null;
             }
         }
-        
+
         private void ShowMenu(bool show) {
             mSplitView.IsPaneOpen = show;
         }
@@ -104,7 +106,7 @@ namespace Wheelmap_Windows.Source.UI {
             // toggle menu
             ShowMenu(!mSplitView.IsPaneOpen);
         }
-        
+
         private void MenuButton_Click(object sender, RoutedEventArgs e) {
             toggleMenu();
         }
@@ -112,12 +114,12 @@ namespace Wheelmap_Windows.Source.UI {
         private void ShowListTapped(object sender, TappedRoutedEventArgs e) {
             ShowOnMenuContainerFrame(sender, typeof(NodeListPage));
         }
-        
+
         private void ShowHelpTapped(object sender, TappedRoutedEventArgs e) {
             ShowMenu(false);
             Debug.WriteLine("ShowHelpTapped Clicked");
         }
-        
+
         private void ShowWCTapped(object sender, TappedRoutedEventArgs e) {
             ShowMenu(false);
             Debug.WriteLine("ShowWCTapped Clicked");
@@ -142,7 +144,7 @@ namespace Wheelmap_Windows.Source.UI {
             ShowMenu(false);
             Debug.WriteLine("ShowSettingsTapped Clicked");
         }
-        
+
         private void ShowOnMenuContainerFrame(object sender, Type pageType) {
             ShowMenu(false);
 
@@ -167,12 +169,12 @@ namespace Wheelmap_Windows.Source.UI {
             }
 
         }
-        
+
         [Subscribe]
         public void OnSelectedNodeChanged(SelectedNodeChangedEvent e) {
             detailContainerFrame.Navigate(typeof(NodeDetailPage), e.node);
             SetBackButtonStatus();
         }
-
+        
     }
 }
