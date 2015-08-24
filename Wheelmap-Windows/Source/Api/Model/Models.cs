@@ -109,6 +109,12 @@ namespace Wheelmap_Windows.Model {
             }
         }
 
+        public Image Source {
+            get {
+                return GetSource();
+            }
+        }
+
         public Image GetThumb() {
             return GetImage("thumb_iphone_retina");
         }

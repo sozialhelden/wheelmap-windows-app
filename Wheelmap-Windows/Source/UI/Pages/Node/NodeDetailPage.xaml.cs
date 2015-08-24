@@ -6,6 +6,7 @@ using Wheelmap_Windows.Api.Calls;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Source.Api.Model;
+using Wheelmap_Windows.Source.UI.Pages.ImagesDetail;
 using Wheelmap_Windows.Source.UI.Pages.List;
 using Wheelmap_Windows.Utils.Extensions;
 using Windows.ApplicationModel.Core;
@@ -25,6 +26,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
     public sealed partial class NodeDetailPage : Page {
 
         public Model.Node CurrentNode;
+        public List<Photo> mPhotos;
 
         public NodeDetailPage() {
             this.InitializeComponent();
@@ -109,16 +111,20 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 if (CurrentNode != node) {
                     return;
                 }
+                mPhotos = photos.Result;
                 listView.Items.Clear();
                 Log.d(this, "Photos: " + photos.Result.Count());
                 foreach (Photo p in photos.Result) {
                     Log.d(this, p.GetThumb());
                     listView.Items.Add(p);
                 }
+                
             });
-            
         }
-        
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            (App.Current as App).Navigate(typeof(ImagesDetailPage), mPhotos);
+        }
     }
     
 }

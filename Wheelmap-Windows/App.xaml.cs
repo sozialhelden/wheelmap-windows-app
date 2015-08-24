@@ -105,6 +105,13 @@ namespace Wheelmap_Windows
             }
         }
 
+        public void Navigate(Type type, object param = null) {
+            Log.d(TAG, "Navigate to " + type);
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(type, param);
+            RefreshBackStatus();
+        }
+
         public void GoBack() {
             Frame rootFrame = Window.Current.Content as Frame;
             if (rootFrame.Content is BackDelegate) {

@@ -146,6 +146,7 @@
                     x:Name="listView"
                     Margin="-10,30,-10,0"
                     Height="110"
+                    SelectionChanged="ListView_SelectionChanged"
                     ScrollViewer.HorizontalScrollMode="Auto"
                     ScrollViewer.VerticalScrollMode="Disabled"
                     ScrollViewer.HorizontalScrollBarVisibility="Auto"
