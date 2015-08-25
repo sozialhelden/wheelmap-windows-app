@@ -17,7 +17,7 @@ namespace Wheelmap_Windows.Utils.Eventbus {
 
         const string TAG = nameof(EventBus);
 
-        private List<object> _subscribers = new List<object>();
+        private List<WeakReference> _subscribers = new List<WeakReference>();
         
         public EventBus() {
 
@@ -26,19 +26,19 @@ namespace Wheelmap_Windows.Utils.Eventbus {
         public void Register(object subscriber) {
             Log.i(TAG, "Register: " + subscriber);
             lock (_subscribers) {
-                if (!_subscribers.Contains(subscriber)) {
-                    _subscribers.Add(subscriber);
+                if (!_subscribers.ContainsWeak(subscriber)) {
+                    _subscribers.Add(new WeakReference(subscriber));
+                    _subscribers.RemoveAll((item) => !item.IsAlive);
                 }
             }
-
+            Log.i(TAG, "Register Count: " + _subscribers.Count());
         }
 
         public void Unregister(object subscriber) {
             Log.i(TAG, "Unregister: " + subscriber);
-            lock(_subscribers) { 
-                if (_subscribers.Contains(subscriber)) {
-                    _subscribers.Remove(subscriber);
-                }
+            lock(_subscribers) {
+                _subscribers.RemoveWeak(subscriber);
+                _subscribers.RemoveAll((item) => !item.IsAlive);
             }
         }
 
@@ -48,10 +48,14 @@ namespace Wheelmap_Windows.Utils.Eventbus {
             CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
                 () => {
                     lock (_subscribers) {
-                        foreach (object instance in _subscribers) {
-                            foreach (MethodInfo method in GetSubscribedMethods(instance.GetType(), e)) {
+                        foreach (WeakReference instance in _subscribers) {
+                            if (!instance.IsAlive) {
+                                continue;
+                            }
+                            var sub = instance.Target;
+                            foreach (MethodInfo method in GetSubscribedMethods(sub.GetType(), e)) {
                                 try {
-                                    method?.Invoke(instance, new object[] { e });
+                                    method?.Invoke(sub, new object[] { e });
                                 } catch (TargetInvocationException) { }
                             }
                         }

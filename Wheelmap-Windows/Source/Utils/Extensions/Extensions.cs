@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Wheelmap_Windows.Utils.Eventbus;
 using Windows.ApplicationModel.Core;
@@ -48,6 +45,28 @@ namespace Wheelmap_Windows.Extensions {
             }
         }
 
+        public static bool ContainsWeak(this ICollection<WeakReference> list, object item) {
+            foreach (WeakReference r in list) {
+                if (r.IsAlive && r.Target == item) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool RemoveWeak(this ICollection<WeakReference> list, object item) {
+            WeakReference remove = null;
+            foreach (WeakReference r in list) {
+                if (r.IsAlive && r.Target == item) {
+                    remove = r;
+                }
+            }
+            if (remove != null) {
+                return list.Remove(remove);
+            }
+            return false;
+        }
+        
         public static void Unregister(this Page page) {
             BusProvider.DefaultInstance.Unregister(page);
         }

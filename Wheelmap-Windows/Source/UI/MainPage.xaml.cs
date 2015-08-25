@@ -52,7 +52,7 @@ namespace Wheelmap_Windows.Source.UI {
             });
             
         }
-
+        
         private void InitToggleGroup() {
             mToggleGroup = new ToggleGroup<Panel>();
             foreach (Panel p in menuTopPanel.Children) {
