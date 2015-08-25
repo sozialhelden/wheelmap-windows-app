@@ -9,9 +9,12 @@ using Wheelmap_Windows.Utils.Eventbus;
 using Wheelmap_Windows.Utils.Eventbus.Events;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.VoiceCommands;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.SpeechRecognition;
+using Windows.Storage;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
@@ -62,49 +65,81 @@ namespace Wheelmap_Windows
                 //this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+            
+            InitMangers();
+            InitWindow();
+            ShowMainPage();
 
-            // init dataholder
+            SetUpVoiceCommands();
+        }
+
+        protected override void OnActivated(IActivatedEventArgs args) {
+            base.OnActivated(args);
+            
+            if (args.Kind == ActivationKind.VoiceCommand) {
+                var commands = args as VoiceCommandActivatedEventArgs;
+                SpeechRecognitionResult result = commands.Result;
+                string voiceCommandName = result.RulePath[0];
+                if (voiceCommandName == "testCommand") {
+                    // TODO
+                }
+                Log.d(TAG, "VoiceCommand: " + voiceCommandName);
+                InitMangers();
+                InitWindow();
+                ShowMainPage();
+            }
+            Window.Current.Activate();
+        }
+
+        private void InitMangers() {
             DataHolder.Init();
             LocationManager.Init();
+        }
 
-            Frame rootFrame = Window.Current.Content as Frame;
-
+        private void InitWindow() {
             SetUpTitleBar();
-
-            // Do not repeat app initialization when the Window already has content,
-            // just ensure that the window is active
-            if (rootFrame == null)
-            {
-                // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new Frame();
-
-                rootFrame.NavigationFailed += OnNavigationFailed;
-
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                {
-                    //TODO: Load state from previously suspended application
-                }
-
-                // Place the frame in the current Window
-                Window.Current.Content = rootFrame;
-            }
-
-            if (rootFrame.Content == null)
-            {
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
-                rootFrame.Navigate(typeof(Source.UI.MainPage), e.Arguments);
-            }
-            // Ensure the current window is active
-            Window.Current.Activate();
-            
             SystemNavigationManager.GetForCurrentView().BackRequested += (source, args) => GoBack();
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons")) {
                 Windows.Phone.UI.Input.HardwareButtons.BackPressed += (source, args) => GoBack();
             }
         }
+        
+        private void ShowMainPage() {
+            
+            Frame rootFrame = Window.Current.Content as Frame;
+            
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
+            if (rootFrame == null) {
+                // Create a Frame to act as the navigation context and navigate to the first page
+                rootFrame = new Frame();
 
+                rootFrame.NavigationFailed += OnNavigationFailed;
+
+                /*if (e.PreviousExecutionState == ApplicationExecutionState.Terminated) {
+                    //TODO: Load state from previously suspended application
+                }*/
+
+                // Place the frame in the current Window
+                Window.Current.Content = rootFrame;
+            }
+
+            if (rootFrame.Content == null) {
+                // When the navigation stack isn't restored navigate to the first page,
+                // configuring the new page by passing required information as a navigation
+                // parameter
+                rootFrame.Navigate(typeof(Source.UI.MainPage)/*, e.Arguments*/);
+            }
+            // Ensure the current window is active
+            Window.Current.Activate();
+            
+        }
+
+        private async void SetUpVoiceCommands() {
+            var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Commands.xml"));
+            await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(file);
+        }
+        
         public void Navigate(Type type, object param = null) {
             Log.d(TAG, "Navigate to " + type);
             Frame rootFrame = Window.Current.Content as Frame;

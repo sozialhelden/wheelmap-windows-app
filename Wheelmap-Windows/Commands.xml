@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+
+  <CommandSet xml:lang="de-de" Name="de-de-CommandSet">
+
+    <AppName>Wheelmap</AppName>
+
+    <Example>Examplecommand</Example>
+
+    <Command Name="testCommand">
+
+      <Example>Test Command</Example>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">Öffne [mir] [meine] Karte</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">Zeige [mir] [meine] Karte</ListenFor>
+      <Feedback>Öffne Karte</Feedback>
+      <Navigate/>
+    </Command>
+
+    <!--
+    <PhraseList Label="OPEN">
+      <Item>Zeige</Item>
+      <Item>Öffne</Item>
+    </PhraseList>
+    -->
+  </CommandSet>
+  
+</VoiceCommands>
