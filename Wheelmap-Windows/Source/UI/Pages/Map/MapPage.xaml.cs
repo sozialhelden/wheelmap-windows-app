@@ -29,6 +29,8 @@ namespace Wheelmap_Windows.Source.UI.Pages {
     
     public sealed partial class MapPage : Page {
 
+        private static string TAG = "MapPage";
+
         private const byte ZOOMLEVEL_MIN = 16;
         private const byte ZOOMLEVEL_MAX = 14;
 
@@ -43,7 +45,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
         public MapPage() {
             this.InitializeComponent();
 
-            mapControl.SetOsmTileSource();
+            //mapControl.SetOsmTileSource();
             mapControl.CenterChanged += MapControl_CenterChanged;
             mapControl.ZoomLevelChanged += MapControl_ZoomLevelChanged;
             mapControl.MapElementClick += MapControl_MapElementClick;
@@ -55,7 +57,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             new MyLocationOverlay(mapControl);
 
         }
-
+        
         private void MapControl_MapElementClick(MapControl sender, MapElementClickEventArgs args) {
             Debug.WriteLine("MapElementClick: "+ sender + "-"+ args.MapElements.First());
             
@@ -190,6 +192,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
         private void OnCompass_Click(object sender, RoutedEventArgs e) {
             mapControl.TryRotateToAsync(0).AsTask().forget();
         }
+        
     }
 
 }

@@ -30,7 +30,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
         public NodeDetailPage() {
             this.InitializeComponent();
-            mapControl.SetOsmTileSource();
+            //mapControl.SetOsmTileSource();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
