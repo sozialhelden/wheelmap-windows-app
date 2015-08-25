@@ -110,6 +110,7 @@
     <Compile Include="Source\Api\Model\PagedRequests.cs" />
     <Compile Include="Source\Api\Model\Models.cs" />
     <Compile Include="Source\Api\Model\Status.cs" />
+    <Compile Include="Source\UI\MainPage.VisualState.cs" />
     <Compile Include="Source\UI\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

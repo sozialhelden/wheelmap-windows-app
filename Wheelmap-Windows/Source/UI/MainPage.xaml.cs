@@ -50,9 +50,10 @@ namespace Wheelmap_Windows.Source.UI {
                     DataHolder.Instance.Categories.Add(c.identifier, c);
                 }
             });
-            
+
+            InitVisualState();
         }
-        
+       
         private void InitToggleGroup() {
             mToggleGroup = new ToggleGroup<Panel>();
             foreach (Panel p in menuTopPanel.Children) {

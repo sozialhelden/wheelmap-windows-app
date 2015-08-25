@@ -23,7 +23,7 @@ namespace Wheelmap_Windows {
         public static void e(object TAG, object message) {
             printLog("ERROR", TAG, message);
         }
-
+        
         private static void printLog(string level, object TAG, object message) {
             Debug.WriteLine($"{level} | {TAG} | {message}");
         }

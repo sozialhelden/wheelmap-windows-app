@@ -10,6 +10,62 @@
     <SplitView x:Name="mSplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
                CompactPaneLength="50" OpenPaneLength="150">
 
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowSizeStates">
+
+                <!-- tablet / desktop -->
+                <VisualState x:Name="STATE_BIG">
+
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="mSplitView.CompactPaneLength" Value="50"/>
+                        <Setter Target="menuContainerFrame.Grid.Column" Value="0"/>
+                        <Setter Target="detailContainerFrame.Grid.Column" Value="1"/>
+                        <Setter Target="menuContainerFrame.MaxWidth" Value="360"/>
+                        <Setter Target="detailContainerFrame.MaxWidth" Value="250"/>
+                    </VisualState.Setters>
+
+                </VisualState>
+
+
+                <!-- small tablets -->
+                <VisualState x:Name="STATE_MEDIUM">
+
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="mSplitView.CompactPaneLength" Value="50"/>
+                        <Setter Target="menuContainerFrame.Grid.Column" Value="0"/>
+                        <Setter Target="detailContainerFrame.Grid.Column" Value="0"/>
+                        <Setter Target="menuContainerFrame.MaxWidth" Value="360"/>
+                        <Setter Target="detailContainerFrame.MaxWidth" Value="360"/>
+                    </VisualState.Setters>
+
+                </VisualState>
+
+                <!-- phone -->
+                <VisualState x:Name="STATE_SMALL">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="mSplitView.CompactPaneLength" Value="0"/>
+                        <Setter Target="menuContainerFrame.Grid.Column" Value="2"/>
+                        <Setter Target="detailContainerFrame.Grid.Column" Value="2"/>
+                        <Setter Target="menuContainerFrame.MaxWidth" Value="Auto"/>
+                        <Setter Target="detailContainerFrame.MaxWidth" Value="Auto"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <SplitView.Pane>
             <Grid Background="#2c3b49">
 
@@ -178,16 +234,27 @@
                 <!-- will navigate to MapPage -->
                 <Frame x:Name="mainFrame"/>
 
-                <StackPanel 
-                    Width="Auto"
-                    Orientation="Horizontal">
+                <Grid 
+                    Width="Auto">
 
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
                     <!-- contains all subframes which are opened with the sidemenu -->
-                    <Frame x:Name="menuContainerFrame"/>
+                    <Frame 
+                        MaxWidth="360"
+                        Grid.Column="0"
+                        x:Name="menuContainerFrame"/>
 
-                    <Frame x:Name="detailContainerFrame"/>
+                    <Frame 
+                        MaxWidth="250"
+                        Grid.Column="1"
+                        x:Name="detailContainerFrame"/>
 
-                </StackPanel>
+                </Grid>
 
             </Grid>
         </SplitView.Content>
