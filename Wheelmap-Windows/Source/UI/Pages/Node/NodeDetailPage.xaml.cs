@@ -62,6 +62,10 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             } catch {
                 websideButton.Visibility = Visibility.Collapsed;
             }
+
+            categoryNameTextBlock.Text = n.category.localizedName;
+            distanceTextBlock.Text = n.DistanceString;
+
         }
 
         private void InitMapControl(Model.Node node) {
@@ -117,6 +121,14 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+            // check if items are selected
+            if (e.AddedItems.Count() <= 0) {
+                return;
+            }
+
+            // clear selection
+            listView.SelectedIndex = -1;
 
             if (Window.Current.Content is Frame) {
                 var page = Window.Current.Content as Frame;
