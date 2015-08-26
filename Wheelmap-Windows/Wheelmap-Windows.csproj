@@ -104,14 +104,15 @@
     </Compile>
     <Compile Include="Source\Api\Calls\ApiConstants.cs" />
     <Compile Include="Source\Api\Calls\CategoryApiClient.cs" />
+    <Compile Include="Source\Api\Calls\IconDownloadRequest.cs" />
     <Compile Include="Source\Api\Calls\NodeApiClient.cs" />
     <Compile Include="Source\Api\Calls\PagedRequest.cs" />
     <Compile Include="Source\Api\Model\Meta.cs" />
     <Compile Include="Source\Api\Model\PagedRequests.cs" />
     <Compile Include="Source\Api\Model\Models.cs" />
     <Compile Include="Source\Api\Model\Status.cs" />
-    <Compile Include="Source\UI\MainPage.VisualState.cs" />
-    <Compile Include="Source\UI\MainPage.xaml.cs">
+    <Compile Include="Source\UI\Pages\MainPage\MainPage.VisualState.cs" />
+    <Compile Include="Source\UI\Pages\MainPage\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -132,8 +133,13 @@
     <Compile Include="Source\UI\Pages\Node\NodeDetailPage.xaml.cs">
       <DependentUpon>NodeDetailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\UI\Pages\Splashscreen\SplashScreen.LoadData.cs" />
+    <Compile Include="Source\UI\Pages\Splashscreen\Splashscreen.xaml.cs">
+      <DependentUpon>Splashscreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\Utils\BackDelegate.cs" />
     <Compile Include="Source\Utils\BulkObservableCollection.cs" />
+    <Compile Include="Source\Utils\Constants.cs" />
     <Compile Include="Source\Utils\DataHolder.cs" />
     <Compile Include="Source\Utils\Eventbus\BusProvider.cs" />
     <Compile Include="Source\Utils\Eventbus\Eventbus.cs" />
@@ -147,6 +153,7 @@
     <Compile Include="Source\Utils\Log.cs" />
     <Compile Include="Source\Utils\Threads\LimitedConcurrencyLevelTaskScheduler.cs" />
     <Compile Include="Source\Utils\ToggleGroup.cs" />
+    <Compile Include="Source\Utils\ZipHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -209,7 +216,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Source\UI\MainPage.xaml">
+    <Page Include="Source\UI\Pages\MainPage\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -230,6 +237,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\UI\Pages\Node\NodeDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\UI\Pages\Splashscreen\Splashscreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

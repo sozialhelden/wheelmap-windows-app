@@ -43,13 +43,6 @@ namespace Wheelmap_Windows.Source.UI {
             
             BusProvider.DefaultInstance.Register(this);
             
-            new CategoryRequest().Query().ContinueWith((categories) => {
-                DataHolder.Instance.Categories.Clear();
-                foreach (Category c in categories.Result) {
-                    DataHolder.Instance.Categories.Add(c.identifier, c);
-                }
-            });
-
             InitVisualState();
         }
        
