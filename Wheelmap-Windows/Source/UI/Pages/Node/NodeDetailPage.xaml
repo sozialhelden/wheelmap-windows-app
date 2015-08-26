@@ -11,6 +11,7 @@
     <Grid>
         <!-- force parent to fill the full width-->
         <Canvas Width="999999"/>
+
         <Grid Background="#fff"
           RequestedTheme="Light">
 
@@ -33,24 +34,45 @@
                     x:Name="mapControl"
                     Height="200"/>
 
+                    <Grid Margin="0,0,0,30">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            x:Name="categoryNameTextBlock"
+                            TextWrapping="Wrap"
+                            />
+
+
+                        <TextBlock
+                            Grid.Column="1"
+                            x:Name="distanceTextBlock"
+                            TextWrapping="Wrap"
+                            />
+                    </Grid>
+                    
                     <TextBlock 
                     x:Name="nameBlock"
                     Text="Cafe Einstein"
                     FontSize="20"
                     TextWrapping="Wrap"
-                />
+                    />
 
                     <TextBlock
                     x:Name="streetBlock"
                     Text="Jerusalemer Straße 10"
                     TextWrapping="Wrap"
-                />
+                    />
 
                     <TextBlock
                     x:Name="plzBlock"
                     Text="10117 Berlin"
                     TextWrapping="Wrap"
-                />
+                    />
 
                     <HyperlinkButton
                     x:Name="websideButton"
