@@ -7,9 +7,7 @@
     x:Class="Wheelmap_Windows.Source.UI.MainPage"
     mc:Ignorable="d">
 
-    <SplitView x:Name="mSplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
-               CompactPaneLength="50" OpenPaneLength="150">
-
+    <Grid>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="WindowSizeStates">
 
@@ -60,198 +58,205 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <SplitView.Pane>
-            <Grid Background="#2c3b49">
+        <SplitView x:Name="mSplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
+               CompactPaneLength="50" OpenPaneLength="150">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
 
-                <StackPanel 
+            <SplitView.Pane>
+                <Grid Background="#2c3b49">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel 
                     x:Name="menuTopPanel"
                     Grid.Row="0">
 
-                    <StackPanel 
+                        <StackPanel 
                         Orientation="Horizontal" 
                         Tapped="MenuButton_Click">
 
-                        <Image
+                            <Image
                             Source="/Assets/Images/ic_menu.png"
                             Width="50" 
                             Height="50" />
 
-                        <TextBlock 
+                            <TextBlock 
                             Text="WHEELMAP" 
                             FontSize="15"
                             FontWeight="Bold"
                             VerticalAlignment="Center"  />
 
-                    </StackPanel>
+                        </StackPanel>
 
-                    <StackPanel
+                        <StackPanel
                         Orientation="Horizontal" 
                         Tapped="ShowListTapped">
 
-                        <Image
+                            <Image
                             Source="/Assets/Images/ic_liste.png"
                             Width="50" 
                             Height="50" />
 
-                        <TextBlock 
+                            <TextBlock 
                             x:Uid="MENU_LIST"
                             Text="List"
                             FontSize="15" 
                             VerticalAlignment="Center" />
 
-                    </StackPanel>
+                        </StackPanel>
 
-                    <StackPanel 
+                        <StackPanel 
                         Orientation="Horizontal" 
                         Tapped="ShowHelpTapped">
 
-                        <Image
+                            <Image
                             Source="/Assets/Images/ic_mithelfen.png"
                             Width="50" 
                             Height="50" />
 
-                        <TextBlock 
+                            <TextBlock 
                             x:Uid="MENU_HELP"
                             Text="Mithelfen"
                             FontSize="15" 
                             VerticalAlignment="Center" />
 
-                    </StackPanel>
+                        </StackPanel>
 
-                    <StackPanel 
+                        <StackPanel 
                         Orientation="Horizontal"
                         Tapped="ShowWCTapped">
 
-                        <Image
+                            <Image
                             Source="/Assets/Images/ic_wc.png"
                             Width="50" 
                             Height="50" />
 
-                        <TextBlock 
+                            <TextBlock 
                             x:Uid="MENU_WC"
                             Text="Toiletten"
                             FontSize="15" 
                             VerticalAlignment="Center" />
 
-                    </StackPanel>
+                        </StackPanel>
 
-                    <StackPanel 
+                        <StackPanel 
                         Orientation="Horizontal"
                         Tapped="ShowStatusTapped">
 
-                        <Image
+                            <Image
                             Source="/Assets/Images/ic_status.png"
                             Width="50" 
                             Height="50" />
 
-                        <TextBlock 
+                            <TextBlock 
                             x:Uid="MENU_STATUS"
                             Text="Status"
                             FontSize="15" 
                             VerticalAlignment="Center" />
 
-                    </StackPanel>
+                        </StackPanel>
 
-                    <StackPanel 
+                        <StackPanel 
                         Orientation="Horizontal"
                         Tapped="ShowCategoryTapped">
 
-                        <Image
+                            <Image
                             Source="/Assets/Images/ic_categories.png"
                             Width="50" 
                             Height="50" />
 
-                        <TextBlock 
+                            <TextBlock 
                             x:Uid="MENU_CATEGORY"
                             Text="Kategorien"
                             FontSize="15" 
                             VerticalAlignment="Center" />
 
+                        </StackPanel>
+
+
                     </StackPanel>
 
 
-                </StackPanel>
-
-
-                <StackPanel 
+                    <StackPanel 
                     x:Name="menuBottomPanel"
                     Grid.Row="2">
 
-                    <StackPanel 
+                        <StackPanel 
                         Orientation="Horizontal"
                         Tapped="ShowProfileTapped">
 
-                        <Image
+                            <Image
                             Source="/Assets/Images/ic_profile.png"
                             Width="50" 
                             Height="50" />
 
-                        <TextBlock 
+                            <TextBlock 
                             x:Uid="MENU_PROFILE"
                             Text="Profil"
                             FontSize="15" 
                             VerticalAlignment="Center" />
-                    </StackPanel>
+                        </StackPanel>
 
 
-                    <StackPanel 
+                        <StackPanel 
                         Orientation="Horizontal"
                         Tapped="ShowSettingsTapped">
 
-                        <Image
+                            <Image
                             Source="/Assets/Images/ic_settings.png"
                             Width="50" 
                             Height="50" />
 
-                        <TextBlock 
+                            <TextBlock 
                             x:Uid="MENU_SETTINGS"
                             Text="Einstellungen"
                             FontSize="15" 
                             VerticalAlignment="Center"/>
 
+                        </StackPanel>
+
                     </StackPanel>
 
-                </StackPanel>
+                </Grid>
+            </SplitView.Pane>
 
-            </Grid>
-        </SplitView.Pane>
+            <SplitView.Content>
+                <Grid>
 
-        <SplitView.Content>
-            <Grid>
+                    <!-- will navigate to MapPage -->
+                    <Frame x:Name="mainFrame"/>
 
-                <!-- will navigate to MapPage -->
-                <Frame x:Name="mainFrame"/>
-
-                <Grid 
+                    <Grid 
                     Width="Auto">
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <!-- contains all subframes which are opened with the sidemenu -->
-                    <Frame 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- contains all subframes which are opened with the sidemenu -->
+                        <Frame 
                         MaxWidth="360"
                         Grid.Column="0"
                         x:Name="menuContainerFrame"/>
 
-                    <Frame 
+                        <Frame 
                         MaxWidth="250"
                         Grid.Column="1"
                         x:Name="detailContainerFrame"/>
 
+                    </Grid>
+
                 </Grid>
+            </SplitView.Content>
+        </SplitView>
 
-            </Grid>
-        </SplitView.Content>
-    </SplitView>
+        <Frame x:Name="SecondPage"/>
 
+    </Grid>
 </Page>

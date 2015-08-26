@@ -40,8 +40,7 @@ namespace Wheelmap_Windows.Source.UI {
             InitToggleGroup();
 
             mainFrame.Navigate(typeof(MapPage));
-            //var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-
+            
             BusProvider.DefaultInstance.Register(this);
             
             new CategoryRequest().Query().ContinueWith((categories) => {
@@ -152,6 +151,11 @@ namespace Wheelmap_Windows.Source.UI {
 
         }
 
+        public void NavigateSecondPage(Type page, object args = null) {
+            SecondPage.Navigate(page, args);
+            this.RefreshCanGoBack();
+        }
+
         [Subscribe]
         public void OnSelectedNodeChanged(SelectedNodeChangedEvent e) {
             if (detailContainerFrame.Content is NodeDetailPage) {
@@ -163,18 +167,22 @@ namespace Wheelmap_Windows.Source.UI {
         }
 
         public bool CanGoBack() {
-            if (menuContainerFrame.Content != null || detailContainerFrame.Content != null) {
-                return true;
-            } else {
-                return false;
-            }
+            return SecondPage.Content != null
+                || menuContainerFrame.Content != null
+                || detailContainerFrame.Content != null;
         }
 
         public void GoBack() {
+            if (SecondPage.Content != null) {
+                SecondPage.Content = null;
+                return;
+            }
+
             if (detailContainerFrame.Content != null) {
                 detailContainerFrame.Content = null;
                 return;
             }
+
             if (menuContainerFrame.Content != null) {
                 menuContainerFrame.Content = null;
                 mToggleGroup.SelectedItem = null;
