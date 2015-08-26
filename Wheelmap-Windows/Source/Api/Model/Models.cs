@@ -174,4 +174,16 @@ namespace Wheelmap_Windows.Model {
         }
     }
 
+    public class Asset {
+        public int id { get; set; }
+
+        // marker, icons, icons_white
+        [JsonProperty(PropertyName = "name")]
+        public string type { get; set; }
+
+        public string url { get; set; }
+        public string license { get; set; }
+        public long modified_at { get; set; }
+    }
+
 }

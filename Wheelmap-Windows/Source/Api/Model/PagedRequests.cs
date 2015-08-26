@@ -41,4 +41,11 @@ namespace Wheelmap_Windows.Api.Model {
 
         public override Photo[] GetItems() => photos;
     }
+
+    public class AssetsResponse : PagedResponse<Asset> {
+
+        public Asset[] assets;
+
+        public override Asset[] GetItems() => assets;
+    }
 }
