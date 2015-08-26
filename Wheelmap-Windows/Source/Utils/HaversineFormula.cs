@@ -58,11 +58,11 @@ namespace Wheelmap_Windows.Utils {
         }
 
         public static double DistanceInKm(Position pos1, Position pos2) {
-            return Distance(pos1, pos1, DistanceType.Kilometers);
+            return Distance(pos1, pos2, DistanceType.Kilometers);
         }
 
         public static double DistanceInMeters(Position pos1, Position pos2) {
-            return Distance(pos1, pos1, DistanceType.Kilometers) * 1000;
+            return DistanceInKm(pos1, pos2) * 1000;
         }
         
         /// <summary>  

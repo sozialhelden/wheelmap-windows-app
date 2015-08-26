@@ -58,6 +58,20 @@ namespace Wheelmap_Windows.Model {
         //The node's phone number. In case there is a real phone number to call, for example in a restaurant. Use the international format: +49 30 123456-78
         public string phone { get; set; }
 
+        // calculated distance in meters
+        public double Distance { get; set; } = -1;
+
+        public string DistanceString {
+            get {
+                if (Distance < 0) {
+                    return "";
+                } else if (Distance > 1000) {
+                    return String.Format("{0:0.##}", Distance);
+                } else {
+                    return Convert.ToInt32(Distance) + "m";
+                }
+            }
+        }
 
         public override string ToString() {
             return $"Node: Id={id} Name={name}";

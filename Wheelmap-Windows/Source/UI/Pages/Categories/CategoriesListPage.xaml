@@ -9,9 +9,11 @@
 
     <Grid 
         Background="#26333f"
-        Width="360"
         >
 
+        <!-- force parent to fill the full width-->
+        <Canvas Width="999999"/>
+        
         <ListView 
             x:Name="listView"
             SelectionChanged="Item_Selected">

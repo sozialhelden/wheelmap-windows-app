@@ -26,10 +26,12 @@
             <ListView.Resources>
                 <DataTemplate x:Key="nodeCell">
                     <Border BorderBrush="#444"  BorderThickness="0,0,0,1" >
-                        <Grid Margin="5,5,5,5" >
+                        <Grid Margin="-5,5,0,2" >
 
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
@@ -37,29 +39,50 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            
-                            <TextBlock 
+
+
+                            <Image
+                                Grid.RowSpan="2"
                                 Grid.Column="0"
+                                Source="/Assets/Images/ic_more.png"
+                                Height="40"
+                                Width="40"
+                                />
+
+                            <TextBlock 
+                                Grid.ColumnSpan="2"
+                                Grid.Column="1"
                                 Grid.Row="0"
                                 x:Name="name"
                                 TextWrapping="Wrap" 
                                 Text="{Binding name}"
                                 Foreground="#fff"
                                 FontWeight="Bold"
+                                MaxLines="2"
                                 Width="auto" FontSize="14"/>
 
                             <TextBlock 
-                                Grid.Column="0"
+                                Grid.Column="1"
                                 Grid.Row="1"
                                 x:Name="category"
                                 TextWrapping="Wrap" 
+                                MaxLines="1"
                                 Text="{Binding category.localizedName}"
                                 Foreground="#fff"
                                 Width="auto" FontSize="14"/>
 
+                            <TextBlock 
+                                Grid.Column="2"
+                                Grid.Row="1"
+                                TextWrapping="Wrap" 
+                                MaxLines="1"
+                                Text="{Binding DistanceString}"
+                                Foreground="#fff"
+                                Width="auto" FontSize="10"/>
+
                             <Image
                                 Grid.RowSpan="2"
-                                Grid.Column="1"
+                                Grid.Column="3"
                                 Source="/Assets/Images/ic_more.png"
                                 Height="40"
                                 Width="40"

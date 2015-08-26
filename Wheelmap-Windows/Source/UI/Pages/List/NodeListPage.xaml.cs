@@ -18,12 +18,14 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Wheelmap_Windows.Extensions;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using Windows.Devices.Geolocation;
 
 namespace Wheelmap_Windows.Source.UI.Pages.List {
     
     public sealed partial class NodeListPage : Page {
 
-        private ObservableCollection<Model.Node> mItems = new ObservableCollection<Model.Node>();
+        private BulkObservableCollection<Model.Node> mItems = new BulkObservableCollection<Model.Node>();
 
         public NodeListPage() {
             this.InitializeComponent();            
@@ -51,15 +53,17 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
             BusProvider.DefaultInstance.Post(newEvent);
         }
         
-        private void SetData(List<Model.Node> data) {
+        private void SetData(ICollection<Model.Node> data) {
             if (data == null) {
                 return;
             }
-            
-            data = data.OrderBy(n => n.category.localizedName).ToList();
-            mItems.Clear();
-            mItems.AddAll(data);
-            
+
+            var orderedData = OrderItemsByDistance(data, LocationManager.Instance?.LastLocationEvent?.Args?.Position?.Coordinate?.Point);
+            mItems.CallBatch(() => {
+                mItems.Clear();
+                mItems.AddAll(orderedData);
+            });
+
         }
 
         [Subscribe]
@@ -68,19 +72,20 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
         }
 
         [Subscribe]
-        public void OnLocationChanged(LocationChangedEvent e) {
-            if (e == null) {
-                return;
-            }
-            /*var point = Position.From(e.Args.Position.Coordinate.Point);
+        public void OnLocationChanged(LocationChangedEvent e) => SetData(mItems);
 
-            var elist = mItems.OrderBy(node => {
-                return Haversine.DistanceInKm(point,new Position() { Latitude = node.lat, Longitude = node.lon});
+        private ICollection<Model.Node> OrderItemsByDistance(ICollection<Model.Node> nodes, Geopoint location) {
+            if (nodes == null || location == null) {
+                return nodes;
+            }
+            var point = Position.From(location);
+            var elist = nodes.OrderBy(node => {
+                double meters = Haversine.DistanceInMeters(point, new Position() { Latitude = node.lat, Longitude = node.lon });
+                node.Distance = meters;
+                return meters;
             });
             var list = elist.ToList();
-            mItems.Clear();
-            mItems.AddAll(list);*/
-
+            return list;
         }
 
     }
