@@ -17,33 +17,28 @@
                 <VisualState x:Name="STATE_BIG">
 
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="720"/>
+                        <AdaptiveTrigger MinWindowWidth="960"/>
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
                         <Setter Target="mSplitView.CompactPaneLength" Value="50"/>
-                        <Setter Target="menuContainerFrame.Grid.Column" Value="0"/>
-                        <Setter Target="detailContainerFrame.Grid.Column" Value="1"/>
-                        <Setter Target="menuContainerFrame.MaxWidth" Value="360"/>
-                        <Setter Target="detailContainerFrame.MaxWidth" Value="250"/>
+                        <Setter Target="menuContainerFrame.MaxWidth" Value="320"/>
+                        <Setter Target="detailContainerFrame.MaxWidth" Value="320"/>
                     </VisualState.Setters>
 
                 </VisualState>
-
 
                 <!-- small tablets -->
                 <VisualState x:Name="STATE_MEDIUM">
 
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="600"/>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
                         <Setter Target="mSplitView.CompactPaneLength" Value="50"/>
-                        <Setter Target="menuContainerFrame.Grid.Column" Value="0"/>
-                        <Setter Target="detailContainerFrame.Grid.Column" Value="0"/>
-                        <Setter Target="menuContainerFrame.MaxWidth" Value="360"/>
-                        <Setter Target="detailContainerFrame.MaxWidth" Value="360"/>
+                        <Setter Target="menuContainerFrame.MaxWidth" Value="320"/>
+                        <Setter Target="detailContainerFrame.MaxWidth" Value="320"/>
                     </VisualState.Setters>
 
                 </VisualState>
@@ -56,10 +51,9 @@
 
                     <VisualState.Setters>
                         <Setter Target="mSplitView.CompactPaneLength" Value="0"/>
-                        <Setter Target="menuContainerFrame.Grid.Column" Value="2"/>
-                        <Setter Target="detailContainerFrame.Grid.Column" Value="2"/>
-                        <Setter Target="menuContainerFrame.MaxWidth" Value="Auto"/>
-                        <Setter Target="detailContainerFrame.MaxWidth" Value="Auto"/>
+                        <!-- set to high positive value to ignore the value -->
+                        <Setter Target="menuContainerFrame.MaxWidth" Value="999999"/>
+                        <Setter Target="detailContainerFrame.MaxWidth" Value="999999"/>
                     </VisualState.Setters>
                 </VisualState>
 

@@ -14,16 +14,20 @@ namespace Wheelmap_Windows.Source.UI {
         const string TAG = "MainPage";
 
         private void InitVisualState() {
-            WindowSizeStates.CurrentStateChanged += WindowSizeStates_CurrentStateChanged;
+            WindowSizeStates.CurrentStateChanged += (sender, e) => OnStateChanged(e.NewState);
+            Loaded += (sender, e) => OnStateChanged(WindowSizeStates.CurrentState);
         }
+        
+        /**
+         * Do some extra action on VisualStateChanged.
+         */
+        private void OnStateChanged(VisualState state) {
+            Log.d(TAG, "New State Changed: " + state.Name);
 
-        private void WindowSizeStates_CurrentStateChanged(object sender, VisualStateChangedEventArgs e) {
-            Log.d(TAG, "New State Changed: "+ e.NewState.Name);
-
-            if (e.NewState == STATE_SMALL) {
+            if (state == STATE_SMALL) {
                 Grid.SetColumn(menuContainerFrame, 2);
                 Grid.SetColumn(detailContainerFrame, 2);
-            } else if (e.NewState == STATE_MEDIUM){
+            } else if (state == STATE_MEDIUM) {
                 Grid.SetColumn(menuContainerFrame, 0);
                 Grid.SetColumn(detailContainerFrame, 0);
             } else {

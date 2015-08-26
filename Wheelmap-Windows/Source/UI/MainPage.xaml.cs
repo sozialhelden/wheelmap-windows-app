@@ -136,6 +136,11 @@ namespace Wheelmap_Windows.Source.UI {
             }
 
             menuContainerFrame.Navigate(pageType);
+
+            if (Grid.GetColumn(menuContainerFrame) == Grid.GetColumn(detailContainerFrame)) {
+                detailContainerFrame.Content = null;
+            }
+
             this.RefreshCanGoBack();
 
             if (sender is Panel) {
