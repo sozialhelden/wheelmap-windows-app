@@ -41,7 +41,7 @@ namespace Wheelmap_Windows.Api.Calls {
             foreach (Asset asset in assets) {
                 if (asset.type == iconsType) {
                     string folderName = Constants.FOLDER_MARKER_ICONS;
-                    StorageFolder local = Windows.Storage.ApplicationData.Current.LocalCacheFolder;
+                    StorageFolder local = Windows.Storage.ApplicationData.Current.LocalFolder;
                     StorageFolder folder = null;
                     try {
                         // check if folder already exists

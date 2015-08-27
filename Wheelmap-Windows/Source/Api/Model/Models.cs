@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Wheelmap_Windows.Utils;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Wheelmap_Windows.Model {
 
@@ -77,11 +78,17 @@ namespace Wheelmap_Windows.Model {
 
         public StorageFile MapIconFile;
 
-        public Uri MapIconFileUri {
+        public string MapIconFileUriString {
             get {
                 var fileName = wheelchairStatus + "_" + nodeType.icon;
-                var uri = $"ms-appdata:///localcache/{Constants.FOLDER_MARKER_ICONS}/{Constants.FOLDER_COMBINED_ICONS}/{fileName}";
-                return new Uri(uri);
+                var uri = $"ms-appdata:///local/{Constants.FOLDER_MARKER_ICONS}/{Constants.FOLDER_COMBINED_ICONS}/{fileName}";
+                return uri;
+            }
+        }
+        
+        public Uri MapIconFileUri {
+            get {
+                return new Uri(MapIconFileUriString);
             }
         }
 

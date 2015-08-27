@@ -44,10 +44,11 @@
                             <Image
                                 Grid.RowSpan="2"
                                 Grid.Column="0"
-                                Source="/Assets/Images/ic_more.png"
-                                Height="40"
-                                Width="40"
-                                />
+                                Height="32"
+                                Width="32"
+                                Margin="10,10,10,10"
+                                Source="{Binding MapIconFileUriString}">
+                            </Image>
 
                             <TextBlock 
                                 Grid.ColumnSpan="2"
