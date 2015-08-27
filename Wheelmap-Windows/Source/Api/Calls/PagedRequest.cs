@@ -28,14 +28,14 @@ namespace Wheelmap_Windows.Api.Calls {
         // For pagination, how many results to return per page. Default is 200. Max is 500.
         public const int PAGE_SIZE = 500;
 
-        public async virtual Task<List<K>> Query() {
+        public virtual Task<List<K>> Query() {
             if (mTaskFactory != null) {
-                return await mTaskFactory.StartNew(QueryPages);
+                return mTaskFactory.StartNew(QueryPages);
             } else {
-                return await Task.Run(() => QueryPages());
+                return Task.Run(() => QueryPages());
             }
         }
-
+        
         /**
          * collects all available pages and merges their result
          * returns null if an error happens
@@ -62,7 +62,6 @@ namespace Wheelmap_Windows.Api.Calls {
                     return null;
                 }
             }
-
             return items;
         }
 
@@ -88,6 +87,10 @@ namespace Wheelmap_Windows.Api.Calls {
          * return the url to fetch for the next page
          */
         protected abstract string GetUrl(int page);
-
+     
+        protected virtual List<K> AfterQuery(List<K> items) {
+            return items;
+        }
+           
     }
 }

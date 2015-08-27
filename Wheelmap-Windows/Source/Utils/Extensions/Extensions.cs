@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Wheelmap_Windows.Utils.Eventbus;
 using Windows.ApplicationModel.Core;
@@ -66,7 +67,25 @@ namespace Wheelmap_Windows.Extensions {
             }
             return false;
         }
-        
+
+        /**
+         * calls an task and wait for it
+         */
+        public static Task<T> Sync<T>(this Task<T> task) {
+            AutoResetEvent autoResetEvent = new AutoResetEvent(false);
+            
+            Task<T> result = null;
+            task.ContinueWith((t) => {
+                result = t;
+                autoResetEvent.Set();
+            });
+
+            // Wait until the call is finished
+            autoResetEvent.WaitOne();
+
+            return result;
+        }
+
         public static void Unregister(this Page page) {
             BusProvider.DefaultInstance.Unregister(page);
         }

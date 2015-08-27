@@ -38,7 +38,7 @@ namespace Wheelmap_Windows.Api.Calls {
             lcts.ClearTasks();
             return base.Query();
         }
-
+        
         protected override string GetUrl(int page) {
             string pageParam = "page=" + page;
             string pageSizeParam = "page_size=" + PAGE_SIZE;
@@ -55,6 +55,7 @@ namespace Wheelmap_Windows.Api.Calls {
                 + pageParam;
             return url;
         }
+        
     }
 
     public class PhotosRequest : PagedRequest<PhotosResponse, Photo> {

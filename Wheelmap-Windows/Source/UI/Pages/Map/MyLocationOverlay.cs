@@ -21,6 +21,10 @@ namespace Wheelmap_Windows.Source.UI.Pages.Map {
         DependencyObject mMarker;
 
         public MyLocationOverlay(MapControl mapControl) {
+            AddToMapControl(mapControl);
+        }
+
+        public void AddToMapControl(MapControl mapControl) {
             mMapControl = new WeakReference<MapControl>(mapControl);
             BusProvider.DefaultInstance.Register(this);
             OnLocationChanged(LocationManager.Instance.LastLocationEvent);

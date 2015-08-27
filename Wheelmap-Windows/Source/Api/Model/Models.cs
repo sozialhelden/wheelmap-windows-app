@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wheelmap_Windows.Utils;
+using Windows.Storage;
+using Windows.Storage.Streams;
 
 namespace Wheelmap_Windows.Model {
 
@@ -66,13 +68,21 @@ namespace Wheelmap_Windows.Model {
                 if (Distance < 0) {
                     return "";
                 } else if (Distance > 1000) {
-                    return String.Format("{0:0.##}", Distance);
+                    return String.Format("{0:0.##}", Distance) + "km";
                 } else {
                     return Convert.ToInt32(Distance) + "m";
                 }
             }
         }
 
+        private StorageFile mapIconFile;
+        public RandomAccessStreamReference MapIcon {
+            get {
+                string uri = "http://maps.google.com/mapfiles/kml/pal3/icon55.png";
+                return RandomAccessStreamReference.CreateFromUri(new Uri(uri));
+            }
+        }
+        
         public override string ToString() {
             return $"Node: Id={id} Name={name}";
         }

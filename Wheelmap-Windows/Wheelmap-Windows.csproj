@@ -199,6 +199,10 @@
     <Content Include="Assets\Images\ic_unknown.png" />
     <Content Include="Assets\Images\ic_wc.png" />
     <Content Include="Assets\Images\ic_wc_active.png" />
+    <Content Include="Assets\Images\mapmarker\bg_status_limited.png" />
+    <Content Include="Assets\Images\mapmarker\bg_status_no.png" />
+    <Content Include="Assets\Images\mapmarker\bg_status_unknown.png" />
+    <Content Include="Assets\Images\mapmarker\bg_status_yes.png" />
     <Content Include="Commands.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -250,6 +254,7 @@
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
