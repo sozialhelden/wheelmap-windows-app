@@ -7,5 +7,6 @@ using System.Threading.Tasks;
 namespace Wheelmap_Windows.Utils {
     public class Constants {
         public const string FOLDER_MARKER_ICONS = "markericons";
+        public const string FOLDER_COMBINED_ICONS = "combinedIcons";
     }
 }

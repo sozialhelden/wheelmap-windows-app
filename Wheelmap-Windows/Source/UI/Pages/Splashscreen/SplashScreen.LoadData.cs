@@ -10,16 +10,18 @@ using Wheelmap_Windows.Utils;
 namespace Wheelmap_Windows.Source.UI.Pages.Splashscreen {
     public sealed partial class ExtendedSplashPage {
         public async Task<bool> LoadData() {
-
+            
             var categories = await new CategoryRequest().Query();
 
             DataHolder.Instance.Categories.Clear();
             foreach (Category c in categories) {
                 DataHolder.Instance.Categories.Add(c.identifier, c);
             }
-            
-            return await new IconDownloadRequest().Query();
 
+            var nodeTypes = await new NodeTypeRequest().Query();
+            DataHolder.Instance.NodeTypes = nodeTypes;
+
+            return await new IconDownloadRequest().Query();
         }
     }
 }

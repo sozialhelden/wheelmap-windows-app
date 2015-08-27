@@ -14,7 +14,7 @@ namespace Wheelmap_Windows.Model {
      * @see related api http://wheelmap.org/api/docs/resources/nodes
      */
     public class Node {
-
+        
         public long id { get; set; }
 
         //The node's latitude in degrees as float.
@@ -75,21 +75,60 @@ namespace Wheelmap_Windows.Model {
             }
         }
 
-        private StorageFile mapIconFile;
-        public RandomAccessStreamReference MapIcon {
+        public StorageFile MapIconFile;
+
+        public Uri MapIconFileUri {
             get {
-                string uri = "http://maps.google.com/mapfiles/kml/pal3/icon55.png";
-                return RandomAccessStreamReference.CreateFromUri(new Uri(uri));
+                var fileName = wheelchairStatus + "_" + nodeType.icon;
+                var uri = $"ms-appdata:///localcache/{Constants.FOLDER_MARKER_ICONS}/{Constants.FOLDER_COMBINED_ICONS}/{fileName}";
+                return new Uri(uri);
             }
         }
-        
+
         public override string ToString() {
             return $"Node: Id={id} Name={name}";
         }
     }
 
     public class NodeType {
-        public long id { get; set; }
+        public int id { get; set; }
+
+        public int category_id { get; set; }
+        public Category category { get; set; }
+
+        private string _localizedName;
+
+        [JsonProperty(PropertyName = "localized_name")]
+        public string localizedName {
+            get {
+                return _localizedName;
+            }
+            set {
+                _localizedName = value;
+            }
+        }
+
+        public string _icon;
+        // for example boat.png
+        public string icon {
+            get {
+                if (_icon != null) {
+                    return _icon;
+                }
+                if (DataHolder.Instance.NodeTypeById.ContainsKey(id)) {
+                    var type = DataHolder.Instance.NodeTypeById[id];
+                    if (type == this) {
+                        return null;
+                    }
+                    return type.icon;
+                }
+                return null;
+            }
+            set {
+                _icon = value;
+            }
+        }
+
         public string identifier { get; set; }
     }
 

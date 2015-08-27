@@ -19,7 +19,7 @@ using Windows.System.Threading;
  * @see http://wheelmap.org/api/docs/resources/nodes 
  */
 namespace Wheelmap_Windows.Api.Calls {
-    
+
     public class NodesRequest : PagedRequest<NodesResponse, Node> {
 
         // only one NodeRequest should run at a time
@@ -55,7 +55,19 @@ namespace Wheelmap_Windows.Api.Calls {
                 + pageParam;
             return url;
         }
-        
+
+    }
+
+    public class NodeTypeRequest : PagedRequest<NodeTypeResponse, NodeType> {
+        protected override string GetUrl(int page) {
+            string pageParam = "page=" + page;
+            string pageSizeParam = "page_size=" + PAGE_SIZE;
+            string url = BuildConfig.API_BASEURL + ApiConstants.END_POINT_NODE_TYPES + "?"
+                + BuildConfig.API_KEY_PARAM + "&"
+                + pageSizeParam + "&"
+                + pageParam;
+            return url;
+        }
     }
 
     public class PhotosRequest : PagedRequest<PhotosResponse, Photo> {

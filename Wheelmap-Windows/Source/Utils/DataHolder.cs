@@ -27,6 +27,22 @@ namespace Wheelmap_Windows.Utils {
 
         public Node SelectedNode;
         public List<Node> Nodes;
+
+        private List<NodeType> _nodeTypes = new List<NodeType>();
+        public List<NodeType> NodeTypes {
+            get {
+                return _nodeTypes;  
+            }
+            set {
+                _nodeTypes = value;
+                NodeTypeById.Clear();
+                foreach(NodeType type in value) {
+                    NodeTypeById.Add(type.id, type);
+                }
+            }
+        }
+        
+        public IDictionary<int, NodeType> NodeTypeById = new Dictionary<int, NodeType>();
         
         public Dictionary<string, Category> Categories = new Dictionary<string, Category>();
 

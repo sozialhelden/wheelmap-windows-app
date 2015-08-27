@@ -37,8 +37,9 @@ namespace Wheelmap_Windows.Api.Calls {
 
         public async Task<bool> Query() {
             var assets = await new AssetsRequest().Query();
+            var iconsType = "icons";
             foreach (Asset asset in assets) {
-                if (asset.type == "icons") {
+                if (asset.type == iconsType) {
                     string folderName = Constants.FOLDER_MARKER_ICONS;
                     StorageFolder local = Windows.Storage.ApplicationData.Current.LocalCacheFolder;
                     StorageFolder folder = null;
@@ -56,8 +57,8 @@ namespace Wheelmap_Windows.Api.Calls {
                     Log.d(TAG, "Save icons to " + folder.Path);
                     var done = await DownloadAsset(asset, folder);
                     if (done) {
-                        var fromFolder = await folder.CreateFolderAsync("icons", CreationCollisionOption.OpenIfExists);
-                        var toFolder = await folder.CreateFolderAsync("combined_icons", CreationCollisionOption.OpenIfExists);
+                        var fromFolder = await folder.CreateFolderAsync(iconsType, CreationCollisionOption.OpenIfExists);
+                        var toFolder = await folder.CreateFolderAsync(Constants.FOLDER_COMBINED_ICONS, CreationCollisionOption.OpenIfExists);
                         return await PrepareImages(fromFolder, toFolder);
                     }
                 }

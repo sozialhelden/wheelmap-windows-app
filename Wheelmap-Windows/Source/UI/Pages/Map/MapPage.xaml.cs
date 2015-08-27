@@ -174,7 +174,8 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             mapIcon.Location = geopoint;
             mapIcon.NormalizedAnchorPoint = new Point(0.5, 1.0);
             mapIcon.Title = node.name == null ? "" : node.name;
-            mapIcon.Image = node.MapIcon;
+            
+            mapIcon.Image = RandomAccessStreamReference.CreateFromUri(node.MapIconFileUri);
             mapControl.MapElements.Add(mapIcon);
             nodeMapIcons.Add(mapIcon, node);
             

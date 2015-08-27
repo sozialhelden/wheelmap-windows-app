@@ -48,4 +48,12 @@ namespace Wheelmap_Windows.Api.Model {
 
         public override Asset[] GetItems() => assets;
     }
+
+    public class NodeTypeResponse : PagedResponse<NodeType> {
+
+        public NodeType[] node_types;
+
+        public override NodeType[] GetItems() => node_types;
+
+    }
 }

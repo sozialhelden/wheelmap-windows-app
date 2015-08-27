@@ -62,6 +62,7 @@ namespace Wheelmap_Windows.Api.Calls {
                     return null;
                 }
             }
+            
             return items;
         }
 
@@ -88,9 +89,5 @@ namespace Wheelmap_Windows.Api.Calls {
          */
         protected abstract string GetUrl(int page);
      
-        protected virtual List<K> AfterQuery(List<K> items) {
-            return items;
-        }
-           
     }
 }
