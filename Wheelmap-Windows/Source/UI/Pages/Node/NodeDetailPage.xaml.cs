@@ -8,6 +8,7 @@ using Wheelmap_Windows.Source.Api.Model;
 using Wheelmap_Windows.Source.UI.Pages.ImagesDetail;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
@@ -82,6 +83,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
             MapIcon mapIcon = new MapIcon();
             mapIcon.Location = point;
+            mapIcon.Image = RandomAccessStreamReference.CreateFromUri(node.MapIconFileUri);
             mapIcon.NormalizedAnchorPoint = new Point(0.5, 1.0);
             mapIcon.Title = node.name == null ? "" : node.name;
             mapControl.MapElements.Add(mapIcon);
