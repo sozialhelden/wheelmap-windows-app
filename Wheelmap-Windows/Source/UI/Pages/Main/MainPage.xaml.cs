@@ -148,44 +148,6 @@ namespace Wheelmap_Windows.Source.UI {
             return actionbarTitle.Text;
         }
         
-        /**
-         * returns true if page will be shown
-         */
-        private bool ShowOnMenuContainerFrame(object sender, Type pageType) {
-            ShowMenu(false);
-
-            if (menuContainerFrame.Content?.GetType() == pageType) {
-                // remove content
-                if (menuContainerFrame.Content is Page) {
-                    (menuContainerFrame.Content as Page).Unregister();
-                }
-                menuContainerFrame.Content = null;
-                mToggleGroup.SelectedItem = null;
-                this.RefreshCanGoBack();
-                UpdateTitle();
-                return false;
-            }
-
-            menuContainerFrame.Navigate(pageType);
-
-            if (Grid.GetColumn(menuContainerFrame) == Grid.GetColumn(detailContainerFrame)) {
-                detailContainerFrame.Content = null;
-            }
-
-            this.RefreshCanGoBack();
-
-            if (sender is Panel) {
-                if (!mToggleGroup.Items.Contains(sender)) {
-                    mToggleGroup.Items.Add(sender as Panel);
-                }
-                mToggleGroup.SelectedItem = (sender as Panel);
-            }
-
-            UpdateTitle();
-            return true;
-
-        }
-
         public void UpdateTitle() {
             if (detailContainerFrame.Content is BasePage) {
                 var page = detailContainerFrame.Content as BasePage;
@@ -199,47 +161,6 @@ namespace Wheelmap_Windows.Source.UI {
             }
             SetTitle(mMapPage.Title);
         }
-
-        public void NavigateSecondPage(Type page, object args = null) {
-            SecondPage.Navigate(page, args);
-            this.RefreshCanGoBack();
-        }
-
-        [Subscribe]
-        public void OnSelectedNodeChanged(SelectedNodeChangedEvent e) {
-            if (detailContainerFrame.Content is NodeDetailPage) {
-                (detailContainerFrame.Content as NodeDetailPage).SetNode(e.node);
-            }else { 
-                detailContainerFrame.Navigate(typeof(NodeDetailPage), e.node);
-            }
-            this.RefreshCanGoBack();
-        }
-
-        public override bool CanGoBack() {
-            return SecondPage.Content != null
-                || menuContainerFrame.Content != null
-                || detailContainerFrame.Content != null;
-        }
-
-        public override void GoBack() {
-            if (SecondPage.Content != null) {
-                SecondPage.Content = null;
-                UpdateTitle();
-                return;
-            }
-
-            if (detailContainerFrame.Content != null) {
-                detailContainerFrame.Content = null;
-                UpdateTitle();
-                return;
-            }
-
-            if (menuContainerFrame.Content != null) {
-                menuContainerFrame.Content = null;
-                mToggleGroup.SelectedItem = null;
-                UpdateTitle();
-                return;
-            }
-        }
+        
     }
 }

@@ -112,6 +112,7 @@
     <Compile Include="Source\Api\Model\Models.cs" />
     <Compile Include="Source\Api\Model\Status.cs" />
     <Compile Include="Source\UI\Pages\Base\BasePage.cs" />
+    <Compile Include="Source\UI\Pages\Main\MainPage.Navigation.cs" />
     <Compile Include="Source\UI\Pages\Main\MainPage.VisualState.cs" />
     <Compile Include="Source\UI\Pages\Main\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

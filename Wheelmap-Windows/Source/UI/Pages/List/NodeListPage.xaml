@@ -11,6 +11,30 @@
     <Grid Background="#fff"
           RequestedTheme="Light">
 
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowSizeStates">
+
+                <!-- tablet / desktop -->
+                <VisualState x:Name="STATE_MEDIUM">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+
+                <!-- phone -->
+                <VisualState x:Name="STATE_SMALL">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="listView.Margin" Value="0,48,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
         <!-- force parent to fill the full width-->
         <Canvas Width="999999"/>
 

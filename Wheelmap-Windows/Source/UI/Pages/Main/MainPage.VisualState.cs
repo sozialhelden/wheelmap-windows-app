@@ -4,15 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wheelmap_Windows.UI.Pages.Base;
+using Wheelmap_Windows.Utils;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
 namespace Wheelmap_Windows.Source.UI {
 
+    /**
+     * part of MainPage to handle all viszal state changes
+     */
     public sealed partial class MainPage : BasePage {
 
         const string TAG = "MainPage";
+        
+        private VisualState CurrentSizeState {
+            get {
+                return WindowSizeStates.CurrentState;
+            }
+        }
 
         private void InitVisualState() {
             WindowSizeStates.CurrentStateChanged += (sender, e) => OnStateChanged(e.NewState);
@@ -26,21 +36,24 @@ namespace Wheelmap_Windows.Source.UI {
             Log.d(TAG, "New State Changed: " + state.Name);
 
             if (state == STATE_SMALL) {
-                Grid.SetColumn(menuContainerFrame, 2);
-                Grid.SetColumn(detailContainerFrame, 2);
                 phoneUIControlsTop.Visibility = Visibility.Visible;
                 phoneUIControlsBottom.Visibility = Visibility.Visible;
+                if (detailContainerFrame.Content != null || SecondPage.Content != null) {
+                    bottomBar.Visibility = Visibility.Collapsed;
+                } else {
+                    bottomBar.Visibility = Visibility.Visible;
+                }
             } else if (state == STATE_MEDIUM) {
-                Grid.SetColumn(menuContainerFrame, 0);
-                Grid.SetColumn(detailContainerFrame, 0);
                 phoneUIControlsTop.Visibility = Visibility.Collapsed;
                 phoneUIControlsBottom.Visibility = Visibility.Collapsed;
+                bottomBar.Visibility = Visibility.Collapsed;
             } else {
-                Grid.SetColumn(menuContainerFrame, 0);
-                Grid.SetColumn(detailContainerFrame, 1);
                 phoneUIControlsTop.Visibility = Visibility.Collapsed;
                 phoneUIControlsBottom.Visibility = Visibility.Collapsed;
+                bottomBar.Visibility = Visibility.Collapsed;
             }
+
+            this.RefreshCanGoBack();
         }
         
     }

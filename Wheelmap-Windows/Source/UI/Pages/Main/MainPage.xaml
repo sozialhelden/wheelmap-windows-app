@@ -57,8 +57,7 @@
                         <Setter Target="menuContainerFrame.MaxWidth" Value="999999"/>
                         <Setter Target="detailContainerFrame.MaxWidth" Value="999999"/>
 
-                        <Setter Target="menuContainerFrame.Margin" Value="0,96,0,0"/>
-                        <Setter Target="bottomBar.Visibility" Value="Visible"/>
+                        <Setter Target="menuContainerFrame.Margin" Value="0,48,0,0"/>
                     </VisualState.Setters>
                 </VisualState>
 
@@ -297,8 +296,8 @@
 
                             </Grid>
 
-                            <Grid
-                                Background="#AFFF"
+                            <Canvas
+                                Background="#AAF0F0F0"
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="4"/>
@@ -330,7 +329,7 @@
 
                         <StackPanel
                             x:Name="phoneUIControlsBottom"
-                            Background="#AFFF"
+                            Background="#88F0F0F0"
                             Orientation="Vertical"
                             RelativePanel.AlignBottomWithPanel="True"
                             RelativePanel.AlignRightWithPanel="True"
@@ -359,7 +358,7 @@
         <CommandBar 
             Visibility="Collapsed"
             x:Name="bottomBar"
-            Background="#AFFF"
+            Background="#88F0F0F0"
             RequestedTheme="Light">
 
             <CommandBar.Content>
