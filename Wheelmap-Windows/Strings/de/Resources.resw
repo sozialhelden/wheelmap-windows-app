@@ -120,6 +120,9 @@
   <data name="MENU_CATEGORY.Text" xml:space="preserve">
     <value>Kategory</value>
   </data>
+  <data name="MENU_CREDITS.Text" xml:space="preserve">
+    <value>Credits</value>
+  </data>
   <data name="MENU_HELP.Text" xml:space="preserve">
     <value>Mithelfen</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="MENU_STATUS.Text" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="MENU_STATUS_INFO.Text" xml:space="preserve">
+    <value>Infos zum Markieren</value>
   </data>
   <data name="MENU_WC.Text" xml:space="preserve">
     <value>Toilette</value>

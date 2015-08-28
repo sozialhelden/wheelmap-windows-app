@@ -54,8 +54,12 @@ namespace Wheelmap_Windows.Source.UI {
             
             InitVisualState();
             UpdateTitle();
+
+            // enable Overlay mode for Page.BottomAppBar
+            Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().SetDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.UseCoreWindow);
+
         }
-       
+
         private void InitToggleGroup() {
             mToggleGroup = new ToggleGroup<Panel>();
             foreach (Panel p in menuTopPanel.Children) {

@@ -58,6 +58,7 @@
                         <Setter Target="detailContainerFrame.MaxWidth" Value="999999"/>
 
                         <Setter Target="menuContainerFrame.Margin" Value="0,96,0,0"/>
+                        <Setter Target="bottomBar.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
 
@@ -235,29 +236,6 @@
                     <!-- will navigate to MapPage -->
                     <Frame x:Name="mainFrame"/>
 
-                    <!--
-                    <Grid 
-                    Width="Auto">
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <Frame 
-                        MaxWidth="360"
-                        Grid.Column="0"
-                        x:Name="menuContainerFrame"/>
-
-                        <Frame 
-                        MaxWidth="250"
-                        Grid.Column="1"
-                        x:Name="detailContainerFrame"/>
-
-                    </Grid>
-                    -->
-
                     <RelativePanel>
 
                         <Frame 
@@ -316,7 +294,7 @@
                                     Height="48"
                                     Width="48"
                                     Source="/Assets/Images/Phone/ic_neu.png"/>
-                                
+
                             </Grid>
 
                             <Grid
@@ -357,40 +335,7 @@
                             RelativePanel.AlignBottomWithPanel="True"
                             RelativePanel.AlignRightWithPanel="True"
                             RelativePanel.AlignLeftWithPanel="True">
-
-                            <Grid
-                                Height="48">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Image
-                                    Grid.Column="1"
-                                    Tapped="ShowWCTapped"
-                                    Source="/Assets/Images/Phone/ic_wc.png"/>
-
-                                <Image
-                                    Grid.Column="2"
-                                    Tapped="ShowStatusTapped"
-                                    Source="/Assets/Images/Phone/ic_status.png"/>
-
-                                <Image
-                                    Grid.Column="3"
-                                    Tapped="ShowCategoryTapped"
-                                    Source="/Assets/Images/Phone/ic_kategorie.png"/>
-
-                                <Image
-                                    Grid.Column="4"
-                                    Tapped="ShowMyLocationTapped"
-                                    Source="/Assets/Images/Phone/ic_location.png"/>
-
-                            </Grid>
-                            
+                            <!-- for later -->
                         </StackPanel>
 
                         <Frame 
@@ -399,7 +344,7 @@
                             Grid.Column="1"
                             RelativePanel.AlignTopWithPanel="True"
                             RelativePanel.AlignBottomWithPanel="True"/>
-                        
+
                     </RelativePanel>
 
                 </Grid>
@@ -409,4 +354,74 @@
         <Frame x:Name="SecondPage"/>
 
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar 
+            Visibility="Collapsed"
+            x:Name="bottomBar"
+            Background="#AFFF"
+            RequestedTheme="Light">
+
+            <CommandBar.Content>
+                <StackPanel Orientation="Vertical">
+                    <!-- force container to be full with-->
+                    <Canvas MinWidth="99999999"/>
+                    <Grid
+                        Height="48"
+                        Margin="0,0,-48,0"
+                        VerticalAlignment="Center">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image
+                            Grid.Column="1"
+                            Tapped="ShowWCTapped"
+                            Source="/Assets/Images/Phone/ic_wc.png"/>
+
+                        <Image
+                            Grid.Column="2"
+                            Tapped="ShowStatusTapped"
+                            Source="/Assets/Images/Phone/ic_status.png"/>
+
+                        <Image
+                            Grid.Column="3"
+                            Tapped="ShowCategoryTapped"
+                            Source="/Assets/Images/Phone/ic_kategorie.png"/>
+
+                        <Image
+                            Grid.Column="4"
+                            Tapped="ShowMyLocationTapped"
+                            Source="/Assets/Images/Phone/ic_location.png"/>
+
+                    </Grid>
+
+                    <TextBlock 
+                        x:Uid="MENU_SETTINGS"
+                        FontSize="20"
+                        Padding="10,0,10,10"
+                        Tapped="ShowSettingsTapped"/>
+
+                    <TextBlock 
+                        x:Uid="MENU_STATUS_INFO"
+                        FontSize="20"
+                        Padding="10,0,10,10"/>
+
+                    <TextBlock 
+                        x:Uid="MENU_CREDITS"
+                        FontSize="20"
+                        Padding="10,0,10,10"/>
+
+                </StackPanel>
+            </CommandBar.Content>
+            
+        </CommandBar>
+    </Page.BottomAppBar>
+    
 </app:BasePage>
