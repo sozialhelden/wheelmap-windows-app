@@ -56,6 +56,7 @@ namespace Wheelmap_Windows.Utils.Extensions {
          */
         public static void SetOsmTileSource(this MapControl mapControl) {
             var httpsource = new HttpMapTileDataSource("http://a.tile.openstreetmap.org/{zoomlevel}/{x}/{y}.png");
+            httpsource.AllowCaching = true;
             var ts = new MapTileSource(httpsource) {
                 Layer = MapTileLayer.BackgroundReplacement
             };

@@ -10,6 +10,9 @@ using Windows.UI.Xaml.Navigation;
 namespace Wheelmap_Windows.UI.Pages.Base {
     public class BasePage : Page, BackDelegate {
 
+        public BasePage() {
+        }
+
         public virtual string Title {
             get {
                 return null;

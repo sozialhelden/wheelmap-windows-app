@@ -62,6 +62,8 @@ namespace Wheelmap_Windows.Source.UI {
             // set min dimensions for window
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 500));
 
+            // important to keep the page state
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
 
         private void InitToggleGroup() {

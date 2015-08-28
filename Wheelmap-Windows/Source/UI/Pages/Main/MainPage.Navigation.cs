@@ -56,7 +56,8 @@ namespace Wheelmap_Windows.Source.UI {
         }
         
         public void NavigateSecondPage(Type page, object args = null) {
-            SecondPage.Navigate(page, args);
+            //SecondPage.Navigate(page, args);
+            (App.Current as App).Navigate(page, args);
             this.RefreshCanGoBack();
         }
 
