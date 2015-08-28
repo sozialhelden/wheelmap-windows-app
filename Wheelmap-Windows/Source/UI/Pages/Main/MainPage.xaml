@@ -68,7 +68,7 @@
                CompactPaneLength="50" OpenPaneLength="200">
 
             <SplitView.Pane>
-                <Grid Background="#2c3b49">
+                <Grid Background="{StaticResource ResourceKey=PrimaryColor}">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -297,7 +297,7 @@
                             </Grid>
 
                             <Canvas
-                                Background="#AAF0F0F0"
+                                Background="{StaticResource ResourceKey=AppBarBackgroundColor}"
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="4"/>
@@ -329,7 +329,7 @@
 
                         <StackPanel
                             x:Name="phoneUIControlsBottom"
-                            Background="#88F0F0F0"
+                            Background="{StaticResource ResourceKey=AppBarBackgroundColor}"
                             Orientation="Vertical"
                             RelativePanel.AlignBottomWithPanel="True"
                             RelativePanel.AlignRightWithPanel="True"
@@ -358,7 +358,7 @@
         <CommandBar 
             Visibility="Collapsed"
             x:Name="bottomBar"
-            Background="#88F0F0F0"
+            Background="{StaticResource ResourceKey=AppBarBackgroundColor}"
             RequestedTheme="Light">
 
             <CommandBar.Content>
