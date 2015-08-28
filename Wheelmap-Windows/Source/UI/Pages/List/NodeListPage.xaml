@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid 
-        Background="#26333f">
+    <Grid Background="#fff"
+          RequestedTheme="Light">
 
         <!-- force parent to fill the full width-->
         <Canvas Width="999999"/>
@@ -57,7 +57,6 @@
                                 x:Name="name"
                                 TextWrapping="Wrap" 
                                 Text="{Binding name}"
-                                Foreground="#fff"
                                 FontWeight="Bold"
                                 MaxLines="2"
                                 Width="auto" FontSize="14"/>
@@ -69,7 +68,6 @@
                                 TextWrapping="Wrap" 
                                 MaxLines="1"
                                 Text="{Binding category.localizedName}"
-                                Foreground="#fff"
                                 Width="auto" FontSize="14"/>
 
                             <TextBlock 
@@ -78,7 +76,6 @@
                                 TextWrapping="Wrap" 
                                 MaxLines="1"
                                 Text="{Binding DistanceString}"
-                                Foreground="#fff"
                                 Width="auto" FontSize="10"/>
 
                             <Image
