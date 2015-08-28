@@ -1,0 +1,9 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Wheelmap_Windows.Resources">
+
+    <SolidColorBrush x:Key="PrimaryColor" Color="#2c3b49"/>
+    <SolidColorBrush x:Key="AppBarBackgroundColor" Color="#AAF0F0F0"/>
+    
+</ResourceDictionary>

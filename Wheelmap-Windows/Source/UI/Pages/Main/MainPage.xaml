@@ -264,7 +264,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid
-                                Background="#2c3b49"
+                                Background="{StaticResource ResourceKey=PrimaryColor}"
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="4">

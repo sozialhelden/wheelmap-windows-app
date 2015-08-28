@@ -31,6 +31,7 @@ namespace Wheelmap_Windows.Utils {
                 OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
             }
         }
+        
 
     }
 }
