@@ -10,6 +10,7 @@ using Wheelmap_Windows.Api.Model;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Source.Utils;
 using Wheelmap_Windows.Utils;
+using Wheelmap_Windows.Utils.Preferences;
 using Windows.Foundation;
 using Windows.Graphics.Imaging;
 using Windows.Networking.BackgroundTransfer;
@@ -23,8 +24,8 @@ namespace Wheelmap_Windows.Api.Calls {
     public class IconDownloadRequest {
 
         private const string TAG = "IconDownloadRequest";
-
-
+        private const string ETAG_KEY = TAG + "_icons";
+        
         private const int ICON_HEIGHT = 66;
         private const int ICON_WIDTH = 58;
         private Rect destRectIcon = new Rect(7, 7, ICON_WIDTH - 14, ICON_WIDTH - 14);
@@ -34,7 +35,7 @@ namespace Wheelmap_Windows.Api.Calls {
         WriteableBitmap bitmapStateNo;
         WriteableBitmap bitmapStateLimited;
         WriteableBitmap bitmapStateUnknown;
-
+        
         public async Task<bool> Query() {
             var assets = await new AssetsRequest().Query();
             var iconsType = "icons";
@@ -49,8 +50,10 @@ namespace Wheelmap_Windows.Api.Calls {
                     }
                     catch { }
                     if (folder != null) {
-                        // TODO check modified at
-                        // return true;
+                        // check if update is needed
+                        if ((asset.modified_at+"") == ApiPreferences.GetEtag(ETAG_KEY)) {
+                            return true;
+                        }
                     }
                     folder = await local.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
 
@@ -59,7 +62,11 @@ namespace Wheelmap_Windows.Api.Calls {
                     if (done) {
                         var fromFolder = await folder.CreateFolderAsync(iconsType, CreationCollisionOption.OpenIfExists);
                         var toFolder = await folder.CreateFolderAsync(Constants.FOLDER_COMBINED_ICONS, CreationCollisionOption.OpenIfExists);
-                        return await PrepareImages(fromFolder, toFolder);
+                        bool ret = await PrepareImages(fromFolder, toFolder);
+                        if (ret) {
+                            ApiPreferences.SetEtag(ETAG_KEY, asset.modified_at + "");
+                        }
+                        return ret;
                     }
                 }
             }
