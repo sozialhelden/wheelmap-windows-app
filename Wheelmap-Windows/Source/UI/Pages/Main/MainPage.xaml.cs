@@ -58,10 +58,7 @@ namespace Wheelmap_Windows.Source.UI {
 
             // enable Overlay mode for Page.BottomAppBar
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
-
-            // set min dimensions for window
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 500));
-
+            
             // important to keep the page state
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }

@@ -104,8 +104,12 @@ namespace Wheelmap_Windows
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons")) {
                 Windows.Phone.UI.Input.HardwareButtons.BackPressed += (source, args) => GoBack();
             }
+
+            // set min dimensions for window
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 500));
+
         }
-        
+
         private void ShowMainPage(IActivatedEventArgs args) {
 
 
