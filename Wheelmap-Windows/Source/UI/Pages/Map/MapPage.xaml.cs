@@ -8,6 +8,7 @@ using Wheelmap_Windows.Api.Calls;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Source.UI.Pages.Map;
+using Wheelmap_Windows.UI.Pages.Base;
 using Wheelmap_Windows.Utils;
 using Wheelmap_Windows.Utils.Eventbus;
 using Wheelmap_Windows.Utils.Eventbus.Events;
@@ -28,9 +29,15 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Wheelmap_Windows.Source.UI.Pages {
 
-    public sealed partial class MapPage : Page {
-
+    public sealed partial class MapPage : BasePage {
+        
         private static string TAG = "MapPage";
+        
+        public override string Title {
+            get {
+                return "TITLE_MAP".t().ToUpper();
+            }
+        }
 
         private const byte ZOOMLEVEL_MIN = 16;
         private const byte ZOOMLEVEL_MAX = 14;

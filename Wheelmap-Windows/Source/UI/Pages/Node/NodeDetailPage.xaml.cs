@@ -6,6 +6,7 @@ using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Source.Api.Model;
 using Wheelmap_Windows.Source.UI.Pages.ImagesDetail;
+using Wheelmap_Windows.UI.Pages.Base;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Storage.Streams;
@@ -18,7 +19,13 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
-    public sealed partial class NodeDetailPage : Page {
+    public sealed partial class NodeDetailPage : BasePage {
+
+        public override string Title {
+            get {
+                return CurrentNode.name;
+            }
+        }
 
         public Model.Node CurrentNode;
         public List<Photo> mPhotos;

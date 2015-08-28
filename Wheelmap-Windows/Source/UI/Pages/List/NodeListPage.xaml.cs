@@ -20,10 +20,17 @@ using Wheelmap_Windows.Extensions;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using Windows.Devices.Geolocation;
+using Wheelmap_Windows.UI.Pages.Base;
 
 namespace Wheelmap_Windows.Source.UI.Pages.List {
     
-    public sealed partial class NodeListPage : Page {
+    public sealed partial class NodeListPage : BasePage {
+
+        public override string Title {
+            get {
+                return "TITLE_LIST".t().ToUpper();
+            }
+        }
 
         private BulkObservableCollection<Model.Node> mItems = new BulkObservableCollection<Model.Node>();
 

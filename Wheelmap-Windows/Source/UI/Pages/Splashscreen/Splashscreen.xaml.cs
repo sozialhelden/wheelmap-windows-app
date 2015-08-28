@@ -16,10 +16,11 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Wheelmap_Windows.Utils.Extensions;
 using Wheelmap_Windows.Extensions;
+using Wheelmap_Windows.UI.Pages.Base;
 
 namespace Wheelmap_Windows.Source.UI.Pages.Splashscreen {
 
-    public sealed partial class ExtendedSplashPage : Page {
+    public sealed partial class ExtendedSplashPage : BasePage {
 
         internal Rect splashImageRect; // Rect to store splash screen image coordinates.
         private SplashScreen splash; // Variable to hold the splash screen object.

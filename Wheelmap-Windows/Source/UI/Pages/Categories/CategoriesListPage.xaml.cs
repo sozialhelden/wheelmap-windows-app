@@ -17,10 +17,12 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Wheelmap_Windows.Extensions;
+using Wheelmap_Windows.UI.Pages.Base;
 
 namespace Wheelmap_Windows.Source.UI.Pages.Categories {
     
-    public sealed partial class CategoriesListPage : Page {
+    public sealed partial class CategoriesListPage : BasePage {
+        
         public CategoriesListPage() {
             this.InitializeComponent();            
         }

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wheelmap_Windows.UI.Pages.Base;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
 namespace Wheelmap_Windows.Source.UI {
 
-    public sealed partial class MainPage : Page {
+    public sealed partial class MainPage : BasePage {
 
         const string TAG = "MainPage";
 

@@ -27,10 +27,17 @@ using Wheelmap_Windows.Utils;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Source.UI.Pages.Categories;
 using Windows.Devices.Geolocation;
+using Wheelmap_Windows.UI.Pages.Base;
 
 namespace Wheelmap_Windows.Source.UI {
 
-    public sealed partial class MainPage : Page, BackDelegate{
+    public sealed partial class MainPage : BasePage {
+
+        public override string Title {
+            get {
+                return GetTitle();
+            }
+        }
 
         ToggleGroup<Panel> mToggleGroup;
         MapPage mMapPage;
@@ -46,6 +53,7 @@ namespace Wheelmap_Windows.Source.UI {
             BusProvider.DefaultInstance.Register(this);
             
             InitVisualState();
+            UpdateTitle();
         }
        
         private void InitToggleGroup() {
@@ -86,6 +94,7 @@ namespace Wheelmap_Windows.Source.UI {
             detailContainerFrame.Content = null;
             SecondPage.Content = null;
             this.RefreshCanGoBack();
+            UpdateTitle();
         }
 
         private void ShowListTapped(object sender, TappedRoutedEventArgs e) {
@@ -127,7 +136,18 @@ namespace Wheelmap_Windows.Source.UI {
             Debug.WriteLine("ShowSettingsTapped Clicked");
         }
 
-        private void ShowOnMenuContainerFrame(object sender, Type pageType) {
+        public void SetTitle(string title) {           
+            actionbarTitle.Text = title ?? "WHEELMAP";
+        }
+
+        public string GetTitle() {
+            return actionbarTitle.Text;
+        }
+        
+        /**
+         * returns true if page will be shown
+         */
+        private bool ShowOnMenuContainerFrame(object sender, Type pageType) {
             ShowMenu(false);
 
             if (menuContainerFrame.Content?.GetType() == pageType) {
@@ -138,7 +158,8 @@ namespace Wheelmap_Windows.Source.UI {
                 menuContainerFrame.Content = null;
                 mToggleGroup.SelectedItem = null;
                 this.RefreshCanGoBack();
-                return;
+                UpdateTitle();
+                return false;
             }
 
             menuContainerFrame.Navigate(pageType);
@@ -156,6 +177,23 @@ namespace Wheelmap_Windows.Source.UI {
                 mToggleGroup.SelectedItem = (sender as Panel);
             }
 
+            UpdateTitle();
+            return true;
+
+        }
+
+        public void UpdateTitle() {
+            if (detailContainerFrame.Content is BasePage) {
+                var page = detailContainerFrame.Content as BasePage;
+                SetTitle(page.Title);
+                return;
+            }
+            if (menuContainerFrame.Content is BasePage) {
+                var page = menuContainerFrame.Content as BasePage;
+                SetTitle(page.Title);
+                return;
+            }
+            SetTitle(mMapPage.Title);
         }
 
         public void NavigateSecondPage(Type page, object args = null) {
@@ -173,26 +211,29 @@ namespace Wheelmap_Windows.Source.UI {
             this.RefreshCanGoBack();
         }
 
-        public bool CanGoBack() {
+        public override bool CanGoBack() {
             return SecondPage.Content != null
                 || menuContainerFrame.Content != null
                 || detailContainerFrame.Content != null;
         }
 
-        public void GoBack() {
+        public override void GoBack() {
             if (SecondPage.Content != null) {
                 SecondPage.Content = null;
+                UpdateTitle();
                 return;
             }
 
             if (detailContainerFrame.Content != null) {
                 detailContainerFrame.Content = null;
+                UpdateTitle();
                 return;
             }
 
             if (menuContainerFrame.Content != null) {
                 menuContainerFrame.Content = null;
                 mToggleGroup.SelectedItem = null;
+                UpdateTitle();
                 return;
             }
         }
