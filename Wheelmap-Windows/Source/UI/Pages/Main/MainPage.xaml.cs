@@ -28,6 +28,7 @@ using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Source.UI.Pages.Categories;
 using Windows.Devices.Geolocation;
 using Wheelmap_Windows.UI.Pages.Base;
+using Windows.UI.ViewManagement;
 
 namespace Wheelmap_Windows.Source.UI {
 
@@ -56,7 +57,10 @@ namespace Wheelmap_Windows.Source.UI {
             UpdateTitle();
 
             // enable Overlay mode for Page.BottomAppBar
-            Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().SetDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.UseCoreWindow);
+            ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
+
+            // set min dimensions for window
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 500));
 
         }
 
