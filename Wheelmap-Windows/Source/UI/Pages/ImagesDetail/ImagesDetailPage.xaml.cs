@@ -28,7 +28,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.ImagesDetail {
 
             for (int i=0;i<photos.Count();i++) {
                 var title = (i + 1) + "/" + photos.Count();
-                mPivot.Items.Add(new PivotDataHolder(title, photos[i]));
+                mFlipView.Items.Add(new PivotDataHolder(title, photos[i]));
             }
         }
     }
