@@ -108,6 +108,7 @@
     <Compile Include="Source\Api\Calls\NodeApiClient.cs" />
     <Compile Include="Source\Api\Calls\PagedRequest.cs" />
     <Compile Include="Source\Api\Model\Meta.cs" />
+    <Compile Include="Source\Api\Model\Node.cs" />
     <Compile Include="Source\Api\Model\PagedRequests.cs" />
     <Compile Include="Source\Api\Model\Models.cs" />
     <Compile Include="Source\Api\Model\Status.cs" />

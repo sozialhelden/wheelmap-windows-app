@@ -7,9 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <FlipView x:Name="mFlipView">
+        <FlipView 
+            x:Name="mFlipView" SelectionChanged="FlipView_SelectionChanged"
+            RelativePanel.AlignBottomWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True">
             <FlipView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="5,5,5,5" >
@@ -25,5 +30,11 @@
             </FlipView.ItemTemplate>
         </FlipView>
 
-    </Grid>
+        <TextBlock
+            x:Name="currentPage"
+            Margin="12,12,12,12"
+            RelativePanel.AlignTopWithPanel="True" 
+            RelativePanel.AlignLeftWithPanel="True"/>
+
+    </RelativePanel>
 </Page>

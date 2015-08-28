@@ -135,6 +135,11 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             if (e.AddedItems.Count() <= 0) {
                 return;
             }
+            
+            var args = new ImagesDetailArguments() {
+                photos = mPhotos,
+                selectedItem = listView.SelectedIndex
+            };
 
             // clear selection
             listView.SelectedIndex = -1;
@@ -142,13 +147,13 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             if (Window.Current.Content is Frame) {
                 var page = Window.Current.Content as Frame;
                 if (page.Content is MainPage) {
-                    (page.Content as MainPage).NavigateSecondPage(typeof(ImagesDetailPage), mPhotos);
+                    (page.Content as MainPage).NavigateSecondPage(typeof(ImagesDetailPage), args);
                     return;
                 }
             }
 
             if (App.Current is App) {
-                (App.Current as App).Navigate(typeof(ImagesDetailPage), mPhotos);
+                (App.Current as App).Navigate(typeof(ImagesDetailPage), args);
                 return;
             }
             
