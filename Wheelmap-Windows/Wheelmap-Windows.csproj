@@ -151,6 +151,7 @@
     <Compile Include="Source\Utils\HaversineFormula.cs" />
     <Compile Include="Source\Utils\LocationManager.cs" />
     <Compile Include="Source\Utils\Log.cs" />
+    <Compile Include="Source\Utils\Preferences\ApiPreferences.cs" />
     <Compile Include="Source\Utils\Threads\LimitedConcurrencyLevelTaskScheduler.cs" />
     <Compile Include="Source\Utils\ToggleGroup.cs" />
     <Compile Include="Source\Utils\ZipHelper.cs" />
