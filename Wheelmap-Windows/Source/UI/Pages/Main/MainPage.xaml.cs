@@ -33,6 +33,7 @@ namespace Wheelmap_Windows.Source.UI {
     public sealed partial class MainPage : Page, BackDelegate{
 
         ToggleGroup<Panel> mToggleGroup;
+        MapPage mMapPage;
 
         public MainPage() {
 
@@ -40,7 +41,8 @@ namespace Wheelmap_Windows.Source.UI {
             InitToggleGroup();
 
             mainFrame.Navigate(typeof(MapPage));
-            
+            mMapPage = mainFrame.Content as MapPage;
+
             BusProvider.DefaultInstance.Register(this);
             
             InitVisualState();
@@ -79,6 +81,13 @@ namespace Wheelmap_Windows.Source.UI {
             toggleMenu();
         }
 
+        private void ShowMapTapped(object sender, TappedRoutedEventArgs e) {
+            menuContainerFrame.Content = null;
+            detailContainerFrame.Content = null;
+            SecondPage.Content = null;
+            this.RefreshCanGoBack();
+        }
+
         private void ShowListTapped(object sender, TappedRoutedEventArgs e) {
             ShowOnMenuContainerFrame(sender, typeof(NodeListPage));
         }
@@ -101,6 +110,11 @@ namespace Wheelmap_Windows.Source.UI {
         private void ShowCategoryTapped(object sender, TappedRoutedEventArgs e) {
             Debug.WriteLine("ShowCategoryTapped Clicked");
             ShowOnMenuContainerFrame(sender, typeof(CategoriesListPage));
+        }
+
+        private void ShowMyLocationTapped(object sender, TappedRoutedEventArgs e) {
+            ShowMapTapped(sender, e);
+            mMapPage.OnMyPosition_Click(sender, e);
         }
 
         private void ShowProfileTapped(object sender, TappedRoutedEventArgs e) {

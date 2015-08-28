@@ -27,12 +27,18 @@ namespace Wheelmap_Windows.Source.UI {
             if (state == STATE_SMALL) {
                 Grid.SetColumn(menuContainerFrame, 2);
                 Grid.SetColumn(detailContainerFrame, 2);
+                phoneUIControlsTop.Visibility = Visibility.Visible;
+                phoneUIControlsBottom.Visibility = Visibility.Visible;
             } else if (state == STATE_MEDIUM) {
                 Grid.SetColumn(menuContainerFrame, 0);
                 Grid.SetColumn(detailContainerFrame, 0);
+                phoneUIControlsTop.Visibility = Visibility.Collapsed;
+                phoneUIControlsBottom.Visibility = Visibility.Collapsed;
             } else {
                 Grid.SetColumn(menuContainerFrame, 0);
                 Grid.SetColumn(detailContainerFrame, 1);
+                phoneUIControlsTop.Visibility = Visibility.Collapsed;
+                phoneUIControlsBottom.Visibility = Visibility.Collapsed;
             }
         }
         

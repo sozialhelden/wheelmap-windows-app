@@ -22,6 +22,9 @@
                         <Setter Target="mSplitView.CompactPaneLength" Value="50"/>
                         <Setter Target="menuContainerFrame.MaxWidth" Value="320"/>
                         <Setter Target="detailContainerFrame.MaxWidth" Value="320"/>
+
+                        <Setter Target="detailContainerFrame.(RelativePanel.RightOf)"
+                            Value="menuContainerFrame" />
                     </VisualState.Setters>
 
                 </VisualState>
@@ -52,6 +55,8 @@
                         <!-- set to high positive value to ignore the value -->
                         <Setter Target="menuContainerFrame.MaxWidth" Value="999999"/>
                         <Setter Target="detailContainerFrame.MaxWidth" Value="999999"/>
+
+                        <Setter Target="menuContainerFrame.Margin" Value="0,96,0,0"/>
                     </VisualState.Setters>
                 </VisualState>
 
@@ -60,7 +65,6 @@
 
         <SplitView x:Name="mSplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
                CompactPaneLength="50" OpenPaneLength="200">
-
 
             <SplitView.Pane>
                 <Grid Background="#2c3b49">
@@ -230,6 +234,7 @@
                     <!-- will navigate to MapPage -->
                     <Frame x:Name="mainFrame"/>
 
+                    <!--
                     <Grid 
                     Width="Auto">
 
@@ -238,8 +243,7 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-
-                        <!-- contains all subframes which are opened with the sidemenu -->
+                        
                         <Frame 
                         MaxWidth="360"
                         Grid.Column="0"
@@ -251,6 +255,143 @@
                         x:Name="detailContainerFrame"/>
 
                     </Grid>
+                    -->
+
+                    <RelativePanel>
+
+                        <Frame 
+                            x:Name="menuContainerFrame"
+                            RelativePanel.AlignTopWithPanel="True"
+                            RelativePanel.AlignBottomWithPanel="True"
+                            MaxWidth="360"
+                            Grid.Column="0"/>
+
+                        <Grid
+                            x:Name="phoneUIControlsTop"
+                            RelativePanel.AlignTopWithPanel="True"
+                            RelativePanel.AlignRightWithPanel="True"
+                            RelativePanel.AlignLeftWithPanel="True"
+                            Height="96">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid
+                                Background="#2c3b49"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="4">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Image
+                                    Grid.Column="1"
+                                    Height="48"
+                                    Width="48"
+                                    Source="/Assets/Images/Phone/ic_search.png"/>
+
+                                <Image
+                                    Grid.Column="2"
+                                    Height="48"
+                                    Width="48"
+                                    Source="/Assets/Images/Phone/ic_neu.png"/>
+                                
+                            </Grid>
+
+                            <Grid
+                                Background="#AFFF"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="4"/>
+
+                            <Image
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Tapped="ShowMapTapped"
+                                Source="/Assets/Images/Phone/ic_map.png"/>
+
+                            <Image
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Tapped="ShowListTapped"
+                                Source="/Assets/Images/Phone/ic_list.png"/>
+
+                            <Image
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Tapped="ShowHelpTapped"
+                                Source="/Assets/Images/Phone/ic_mithelfen_blue.png"/>
+
+                            <Image
+                                Grid.Row="1"
+                                Grid.Column="3"
+                                Tapped="ShowProfileTapped"
+                                Source="/Assets/Images/Phone/ic_profile.png"/>
+                        </Grid>
+
+                        <StackPanel
+                            x:Name="phoneUIControlsBottom"
+                            Background="#AFFF"
+                            RelativePanel.AlignBottomWithPanel="True"
+                            RelativePanel.AlignRightWithPanel="True"
+                            RelativePanel.AlignLeftWithPanel="True">
+
+                            <Grid
+                                Height="48">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image
+                                    Grid.Column="1"
+                                    Tapped="ShowWCTapped"
+                                    Source="/Assets/Images/Phone/ic_wc.png"/>
+
+                                <Image
+                                    Grid.Column="2"
+                                    Tapped="ShowStatusTapped"
+                                    Source="/Assets/Images/Phone/ic_status.png"/>
+
+                                <Image
+                                    Grid.Column="3"
+                                    Tapped="ShowCategoryTapped"
+                                    Source="/Assets/Images/Phone/ic_kategorie.png"/>
+
+                                <Image
+                                    Grid.Column="4"
+                                    Tapped="ShowMyLocationTapped"
+                                    Source="/Assets/Images/Phone/ic_location.png"/>
+
+                            </Grid>
+                            
+                        </StackPanel>
+
+                        <Frame 
+                            x:Name="detailContainerFrame"
+                            MaxWidth="250"
+                            Grid.Column="1"
+                            RelativePanel.AlignTopWithPanel="True"
+                            RelativePanel.AlignBottomWithPanel="True"/>
+                        
+                    </RelativePanel>
 
                 </Grid>
             </SplitView.Content>

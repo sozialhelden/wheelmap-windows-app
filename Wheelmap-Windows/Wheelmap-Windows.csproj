@@ -111,8 +111,8 @@
     <Compile Include="Source\Api\Model\PagedRequests.cs" />
     <Compile Include="Source\Api\Model\Models.cs" />
     <Compile Include="Source\Api\Model\Status.cs" />
-    <Compile Include="Source\UI\Pages\MainPage\MainPage.VisualState.cs" />
-    <Compile Include="Source\UI\Pages\MainPage\MainPage.xaml.cs">
+    <Compile Include="Source\UI\Pages\Main\MainPage.VisualState.cs" />
+    <Compile Include="Source\UI\Pages\Main\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,15 +178,22 @@
     <Content Include="Assets\Images\ic_layer.png" />
     <Content Include="Assets\Images\ic_liste.png" />
     <Content Include="Assets\Images\ic_location.png" />
+    <Content Include="Assets\Images\ic_map.png" />
+    <Content Include="Assets\Images\ic_map_grey.png" />
     <Content Include="Assets\Images\ic_menu.png" />
     <Content Include="Assets\Images\ic_minus.png" />
     <Content Include="Assets\Images\ic_mithelfen.png" />
     <Content Include="Assets\Images\ic_mithelfen_blue.png" />
+    <Content Include="Assets\Images\ic_mithelfen_grey.png" />
+    <Content Include="Assets\Images\ic_mithelfen_white.png" />
     <Content Include="Assets\Images\ic_more.png" />
     <Content Include="Assets\Images\ic_north.png" />
+    <Content Include="Assets\Images\ic_orange.png" />
     <Content Include="Assets\Images\ic_plus.png" />
     <Content Include="Assets\Images\ic_profile.png" />
+    <Content Include="Assets\Images\ic_red.png" />
     <Content Include="Assets\Images\ic_route.png" />
+    <Content Include="Assets\Images\ic_search.png" />
     <Content Include="Assets\Images\ic_settings.png" />
     <Content Include="Assets\Images\ic_share.png" />
     <Content Include="Assets\Images\ic_status.png" />
@@ -204,6 +211,35 @@
     <Content Include="Assets\Images\mapmarker\bg_status_no.png" />
     <Content Include="Assets\Images\mapmarker\bg_status_unknown.png" />
     <Content Include="Assets\Images\mapmarker\bg_status_yes.png" />
+    <Content Include="Assets\Images\Phone\ic_circle.png" />
+    <Content Include="Assets\Images\Phone\ic_circle_active.png" />
+    <Content Include="Assets\Images\Phone\ic_green.png" />
+    <Content Include="Assets\Images\Phone\ic_grey.png" />
+    <Content Include="Assets\Images\Phone\ic_kategorie.png" />
+    <Content Include="Assets\Images\Phone\ic_kategorie_active.png" />
+    <Content Include="Assets\Images\Phone\ic_list.png" />
+    <Content Include="Assets\Images\Phone\ic_list_grey.png" />
+    <Content Include="Assets\Images\Phone\ic_location.png" />
+    <Content Include="Assets\Images\Phone\ic_location_active.png" />
+    <Content Include="Assets\Images\Phone\ic_map.png" />
+    <Content Include="Assets\Images\Phone\ic_map_grey.png" />
+    <Content Include="Assets\Images\Phone\ic_mithelfen_blue.png" />
+    <Content Include="Assets\Images\Phone\ic_mithelfen_grey.png" />
+    <Content Include="Assets\Images\Phone\ic_mithelfen_white.png" />
+    <Content Include="Assets\Images\Phone\ic_more.png" />
+    <Content Include="Assets\Images\Phone\ic_neu.png" />
+    <Content Include="Assets\Images\Phone\ic_orange.png" />
+    <Content Include="Assets\Images\Phone\ic_profile.png" />
+    <Content Include="Assets\Images\Phone\ic_profile_grey.png" />
+    <Content Include="Assets\Images\Phone\ic_red.png" />
+    <Content Include="Assets\Images\Phone\ic_search.png" />
+    <Content Include="Assets\Images\Phone\ic_share.png" />
+    <Content Include="Assets\Images\Phone\ic_status.png" />
+    <Content Include="Assets\Images\Phone\ic_status_active.png" />
+    <Content Include="Assets\Images\Phone\ic_status_select.png" />
+    <Content Include="Assets\Images\Phone\ic_status_white.png" />
+    <Content Include="Assets\Images\Phone\ic_wc.png" />
+    <Content Include="Assets\Images\Phone\ic_wc_active.png" />
     <Content Include="Commands.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -221,7 +257,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Source\UI\Pages\MainPage\MainPage.xaml">
+    <Page Include="Source\UI\Pages\Main\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

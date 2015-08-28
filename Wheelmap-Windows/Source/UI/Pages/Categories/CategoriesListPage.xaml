@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid 
-        Background="#26333f"
+    <Grid Background="#fff"
+          RequestedTheme="Light"
         >
 
         <!-- force parent to fill the full width-->
@@ -35,7 +35,6 @@
                                 TextWrapping="Wrap" 
                                 VerticalAlignment="Center"
                                 Text="{Binding localizedName}"
-                                Foreground="#fff"
                                 Width="auto" FontSize="14"/>
 
                             <Image

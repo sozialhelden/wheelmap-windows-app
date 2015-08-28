@@ -69,7 +69,8 @@ namespace Wheelmap_Windows.Model {
                 if (Distance < 0) {
                     return "";
                 } else if (Distance > 1000) {
-                    return String.Format("{0:0.##}", Distance) + "km";
+
+                    return String.Format("{0:0.##}", (Distance/1000)) + "km";
                 } else {
                     return Convert.ToInt32(Distance) + "m";
                 }

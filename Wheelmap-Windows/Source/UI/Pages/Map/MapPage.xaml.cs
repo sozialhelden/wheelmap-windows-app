@@ -195,7 +195,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             mapControl.ZoomLevel -= 1;
         }
 
-        private void OnMyPosition_Click(object sender, RoutedEventArgs e) {
+        public void OnMyPosition_Click(object sender, RoutedEventArgs e) {
             var point = LocationManager.Instance?.LastLocationEvent?.Args?.Position?.Coordinate?.Point;
             if (point != null) {
                 mapControl.Center = point;
