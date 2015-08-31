@@ -19,9 +19,9 @@ namespace Wheelmap_Windows.Utils {
         private T _SelectedItem;
         public T SelectedItem {
             set {
-                StateChanged.Invoke(_SelectedItem, false);
+                StateChanged?.Invoke(_SelectedItem, false);
                 _SelectedItem = value;
-                StateChanged.Invoke(_SelectedItem, true);
+                StateChanged?.Invoke(_SelectedItem, true);
             }
             get {
                 return _SelectedItem;

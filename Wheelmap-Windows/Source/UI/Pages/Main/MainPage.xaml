@@ -333,8 +333,13 @@
                             Orientation="Vertical"
                             RelativePanel.AlignBottomWithPanel="True"
                             RelativePanel.AlignRightWithPanel="True"
-                            RelativePanel.AlignLeftWithPanel="True">
-                            <!-- for later -->
+                            RelativePanel.AlignLeftWithPanel="True"
+                            Margin="0,0,0,48">
+                            <Frame 
+                                x:Name="phoneUIBottomSlideUp"
+                                MaxHeight="300"/>
+
+
                         </StackPanel>
 
                         <Frame 

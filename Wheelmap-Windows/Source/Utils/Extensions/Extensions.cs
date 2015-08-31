@@ -11,9 +11,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace Wheelmap_Windows.Extensions {
     public static class Extensions {
-        static ResourceLoader mResourceLoader = new ResourceLoader();
         
-
         // use this to ignore the warning to await for the result
         // for fire and forget
         public static void forget(this IAsyncAction e) { }
@@ -89,11 +87,7 @@ namespace Wheelmap_Windows.Extensions {
         public static void Unregister(this Page page) {
             BusProvider.DefaultInstance.Unregister(page);
         }
-
-        public static string t(this string key) {
-            return mResourceLoader.GetString(key);
-        }
-
+        
     }
 
 }

@@ -156,6 +156,7 @@
     <Compile Include="Source\Utils\Eventbus\Events\Events.cs" />
     <Compile Include="Source\Utils\Eventbus\Subscribe.cs" />
     <Compile Include="Source\Utils\Extensions\Extensions.cs" />
+    <Compile Include="Source\Utils\Extensions\Localization.cs" />
     <Compile Include="Source\Utils\Extensions\MapExtensions.cs" />
     <Compile Include="Source\Utils\Extensions\WebRequestExtensions.cs" />
     <Compile Include="Source\Utils\HaversineFormula.cs" />
@@ -172,6 +173,7 @@
     </AppxManifest>
     <PRIResource Include="Strings\en-US\Resources.resw" />
     <PRIResource Include="Strings\de\Resources.resw" />
+    <PRIResource Include="Strings\de\Status.resw" />
     <None Include="Wheelmap-Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

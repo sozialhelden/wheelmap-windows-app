@@ -9,29 +9,78 @@
     mc:Ignorable="d">
 
     <Grid 
+        x:Name="root"
         RequestedTheme="Light"
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowSizeStates">
+
+                <!-- tablet / desktop -->
+                <VisualState x:Name="STATE_MEDIUM">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+
+                <!-- phone -->
+                <VisualState x:Name="STATE_SMALL">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="hintTextBlockContainer.Visibility" Value="Collapsed"/>
+                        <Setter Target="titleTextBlock.Visibility" Value="Collapsed"/>
+                        <Setter Target="titleTextBlock.Visibility" Value="Collapsed"/>
+                        <Setter Target="root.Background" Value="Transparent"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
 
         <!-- force parent to fill the full width-->
         <Canvas Width="999999"/>
 
-        <StackPanel>
+        <StackPanel
+            x:Name="contentPanel">
+
+            <TextBlock
+                x:Name="titleTextBlock"
+                FontWeight="Bold"/>
+
+            <Border 
+                x:Name="hintTextBlockContainer"
+                Background="{StaticResource ResourceKey=PrimaryColor}"
+                CornerRadius="10"
+                Margin="10,10,10,10">
+                <TextBlock
+                    x:Name="hintTextBlock"
+                    Padding="10,10,10,10"
+                    Foreground="#fff"
+                    TextWrapping="WrapWholeWords"
+                    FontWeight="Bold"/>
+            </Border>
 
             <local:StatusExplainView
                 x:Name="statusYesView"
                 Status="YES"/>
 
-
             <local:StatusExplainView
+                x:Name="statusLimitedView"
                 Status="LIMITED"/>
 
             <local:StatusExplainView
+                x:Name="statusNoView"
                 Status="NO"/>
 
             <local:StatusExplainView
+                x:Name="statusUnknownView"
                 Status="UNKNOWN"/>
-            
+
         </StackPanel>
-        
+
     </Grid>
+    
 </app:BasePage>

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wheelmap_Windows.Extensions;
+using Wheelmap_Windows.Source.UI.Pages.Categories;
 using Wheelmap_Windows.Source.UI.Pages.Node;
+using Wheelmap_Windows.Source.UI.Pages.Status;
 using Wheelmap_Windows.UI.Pages.Base;
 using Wheelmap_Windows.Utils;
 using Wheelmap_Windows.Utils.Eventbus;
@@ -27,11 +29,12 @@ namespace Wheelmap_Windows.Source.UI {
                 } else {
                     bottomBar.Visibility = Visibility.Visible;
                 }
-                return SecondPage.Content != null || detailContainerFrame.Content != null;
+                return SecondPage.Content != null || detailContainerFrame.Content != null || phoneUIBottomSlideUp.Content != null;
             }
             return SecondPage.Content != null
                 || menuContainerFrame.Content != null
-                || detailContainerFrame.Content != null;
+                || detailContainerFrame.Content != null
+                ;
         }
         
         public override void GoBack() {
@@ -44,6 +47,11 @@ namespace Wheelmap_Windows.Source.UI {
             if (detailContainerFrame.Content != null) {
                 detailContainerFrame.Content = null;
                 UpdateTitle();
+                return;
+            }
+
+            if (phoneUIBottomSlideUp.Content != null) {
+                phoneUIBottomSlideUp.Content = null;
                 return;
             }
 
@@ -79,6 +87,19 @@ namespace Wheelmap_Windows.Source.UI {
         private bool ShowOnMenuContainerFrame(object sender, Type pageType) {
             ShowMenu(false);
 
+            bool ret;
+            if (CurrentSizeState == STATE_SMALL) {
+                ret = _ShowOnMenuContainerFrameSmall(sender, pageType);
+            } else {
+                ret = _ShowOnMenuContainerFrameNormal(sender, pageType);
+            }
+            
+            this.RefreshCanGoBack();
+            UpdateTitle();
+            return ret;
+        }
+
+        private bool _ShowOnMenuContainerFrameNormal(object sender, Type pageType) {
             if (menuContainerFrame.Content?.GetType() == pageType) {
                 // remove content
                 if (menuContainerFrame.Content is Page) {
@@ -86,8 +107,6 @@ namespace Wheelmap_Windows.Source.UI {
                 }
                 menuContainerFrame.Content = null;
                 mToggleGroup.SelectedItem = null;
-                this.RefreshCanGoBack();
-                UpdateTitle();
                 return false;
             }
 
@@ -96,19 +115,33 @@ namespace Wheelmap_Windows.Source.UI {
             if (Grid.GetColumn(menuContainerFrame) == Grid.GetColumn(detailContainerFrame)) {
                 detailContainerFrame.Content = null;
             }
-
-            this.RefreshCanGoBack();
-
+            
             if (sender is Panel) {
                 if (!mToggleGroup.Items.Contains(sender)) {
                     mToggleGroup.Items.Add(sender as Panel);
                 }
                 mToggleGroup.SelectedItem = (sender as Panel);
             }
+            phoneUIBottomSlideUp.Content = null;
 
-            UpdateTitle();
             return true;
 
+        }
+
+        private bool _ShowOnMenuContainerFrameSmall(object sender, Type pageType) {
+            if (!(pageType == typeof(CategoriesListPage)
+                 || pageType == typeof(StatusPage))) {
+                return _ShowOnMenuContainerFrameNormal(sender, pageType);
+            }
+
+            if (phoneUIBottomSlideUp.Content?.GetType() == pageType) {
+                phoneUIBottomSlideUp.Content = null;
+                return false;
+            }
+
+            phoneUIBottomSlideUp.Navigate(pageType);
+
+            return true;
         }
 
     }

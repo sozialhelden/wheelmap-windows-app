@@ -117,49 +117,66 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MENU_CATEGORY.Text" xml:space="preserve">
-    <value>Kategory</value>
+  <data name="STATUS_LIMITED" xml:space="preserve">
+    <value>Teilweise Rollstuhlgerecht</value>
   </data>
-  <data name="MENU_CREDITS.Text" xml:space="preserve">
-    <value>Credits</value>
+  <data name="STATUS_LIMITED_HINT_COUNT" xml:space="preserve">
+    <value>0</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
-  <data name="MENU_HELP.Text" xml:space="preserve">
-    <value>Mithelfen</value>
+  <data name="STATUS_NO" xml:space="preserve">
+    <value>Nicht Rollstuhlgerecht</value>
   </data>
-  <data name="MENU_LIST.Text" xml:space="preserve">
-    <value>Liste</value>
+  <data name="STATUS_NO_HINT_COUNT" xml:space="preserve">
+    <value>0</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
-  <data name="MENU_PROFILE.Text" xml:space="preserve">
-    <value>Profil</value>
+  <data name="STATUS_TOILET_LIMITED" xml:space="preserve">
+    <value>Teilweise Rollstuhlgerechtes WC</value>
   </data>
-  <data name="MENU_SETTINGS.Text" xml:space="preserve">
-    <value>Einstellungen</value>
+  <data name="STATUS_TOILET_NO" xml:space="preserve">
+    <value>Nicht Rollstuhlgerechtes WC</value>
   </data>
-  <data name="MENU_STATUS.Text" xml:space="preserve">
-    <value>Status</value>
+  <data name="STATUS_TOILET_UNKNOWN" xml:space="preserve">
+    <value>Status WC unbekannt</value>
   </data>
-  <data name="MENU_STATUS_INFO.Text" xml:space="preserve">
-    <value>Infos zum Markieren</value>
+  <data name="STATUS_TOILET_YES" xml:space="preserve">
+    <value>Rollstuhlgerechtes WC</value>
   </data>
-  <data name="MENU_WC.Text" xml:space="preserve">
-    <value>Toilette</value>
+  <data name="STATUS_UNKNOWN" xml:space="preserve">
+    <value>Status unbekannt</value>
   </data>
-  <data name="TITLE_HELP" xml:space="preserve">
-    <value>Mithelfen</value>
+  <data name="STATUS_UNKNOWN_HINT_COUNT" xml:space="preserve">
+    <value>0</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
-  <data name="TITLE_LIST" xml:space="preserve">
-    <value>Liste</value>
+  <data name="STATUS_WC_LIMITED_HINT_COUNT" xml:space="preserve">
+    <value>0</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
-  <data name="TITLE_MAP" xml:space="preserve">
-    <value>Karte</value>
+  <data name="STATUS_WC_NO_HINT_COUNT" xml:space="preserve">
+    <value>0</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
-  <data name="TITLE_PROFILE" xml:space="preserve">
-    <value>Profil</value>
+  <data name="STATUS_WC_UNKNOWN_HINT_COUNT" xml:space="preserve">
+    <value>0</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
-  <data name="TITLE_STATUS" xml:space="preserve">
-    <value>Status des Ortes</value>
+  <data name="STATUS_WC_YES_HINT_COUNT" xml:space="preserve">
+    <value>0</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
-  <data name="TITLE_WC" xml:space="preserve">
-    <value>Toiletten</value>
+  <data name="STATUS_YES" xml:space="preserve">
+    <value>Voll Rollstuhlgerecht</value>
+  </data>
+  <data name="STATUS_YES_HINT_0" xml:space="preserve">
+    <value>Eingang stufenlos erreichbar</value>
+  </data>
+  <data name="STATUS_YES_HINT_1" xml:space="preserve">
+    <value>Räume: alle stufenlos erreichbar (z.B. alle Kinosäle)</value>
+  </data>
+  <data name="STATUS_YES_HINT_COUNT" xml:space="preserve">
+    <value>2</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
 </root>

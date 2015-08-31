@@ -9,4 +9,10 @@ namespace Wheelmap_Windows.Utils {
         public const string FOLDER_MARKER_ICONS = "markericons";
         public const string FOLDER_COMBINED_ICONS = "combinedIcons";
     }
+
+    public class R {
+        public class File {
+            public const string STATUS = "Status";
+        }
+    }
 }

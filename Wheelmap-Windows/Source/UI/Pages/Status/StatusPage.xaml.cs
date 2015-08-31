@@ -17,8 +17,19 @@ using Windows.UI.Xaml.Navigation;
 namespace Wheelmap_Windows.Source.UI.Pages.Status {
     
     public sealed partial class StatusPage : BasePage {
+
         public StatusPage() {
             this.InitializeComponent();
+            WindowSizeStates.CurrentStateChanged += (sender, e) => OnStateChanged(WindowSizeStates.CurrentState);
+            OnStateChanged(WindowSizeStates.CurrentState);
+        }
+        
+        private void OnStateChanged(VisualState state) {
+            var showHints = state != STATE_SMALL;
+            statusYesView.ShowStatusHints = showHints;
+            statusLimitedView.ShowStatusHints = showHints;
+            statusNoView.ShowStatusHints = showHints;
+            statusUnknownView.ShowStatusHints = showHints;
         }
     }
 }

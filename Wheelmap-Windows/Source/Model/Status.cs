@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wheelmap_Windows.Extensions;
+using Wheelmap_Windows.Utils;
 using Windows.UI;
 
 namespace Wheelmap_Windows.Model {
+
     public enum Status {
         YES,
         NO,
@@ -49,13 +51,13 @@ namespace Wheelmap_Windows.Model {
         public static string GetLocalizedMessage(this Status status) {
             switch (status) {
                 case Status.YES:
-                    return "STATUS_YES".t();
+                    return "STATUS_YES".t(R.File.STATUS);
                 case Status.NO:
-                    return "STATUS_NO".t();
+                    return "STATUS_NO".t(R.File.STATUS);
                 case Status.LIMITED:
-                    return "STATUS_LIMITED".t();
+                    return "STATUS_LIMITED".t(R.File.STATUS);
                 case Status.UNKNOWN:
-                    return "STATUS_UNKNOWN".t();
+                    return "STATUS_UNKNOWN".t(R.File.STATUS);
                 default:
                     throw new Exception("unknown status type");
             }
@@ -64,15 +66,69 @@ namespace Wheelmap_Windows.Model {
         public static string GetLocalizedToiletMessage(this Status status) {
             switch (status) {
                 case Status.YES:
-                    return "STATUS_TOILET_YES".t();
+                    return "STATUS_TOILET_YES".t(R.File.STATUS);
                 case Status.NO:
-                    return "STATUS_TOILET_NO".t();
+                    return "STATUS_TOILET_NO".t(R.File.STATUS);
                 case Status.LIMITED:
-                    return "STATUS_TOILET_LIMITED".t();
+                    return "STATUS_TOILET_LIMITED".t(R.File.STATUS);
                 case Status.UNKNOWN:
-                    return "STATUS_TOILET_UNKNOWN".t();
+                    return "STATUS_TOILET_UNKNOWN".t(R.File.STATUS);
                 default:
                     throw new Exception("unknown status type");
+            }
+        }
+
+        public static string[] GetHints(this Status status, bool wc) {
+
+            int count = status.GetHintCount(wc);
+            string[] hints = new string[count];
+
+            string addForWc = wc ? "WC_" : "";
+            var key = "";
+            switch (status) {
+                case Status.YES:
+                    key = $"STATUS_{addForWc}YES_HINT_";
+                    break;
+                case Status.NO:
+                    key = $"STATUS_{addForWc}NO_HINT_";
+                    break;
+                case Status.LIMITED:
+                    key = $"STATUS_{addForWc}LIMITED_HINT_";
+                    break;
+                case Status.UNKNOWN:
+                    key = $"STATUS_{addForWc}UNKNOWN_HINT_";
+                    break;
+            }
+
+            for (int i=0; i<count ;i++) {
+                hints[i] = (key + i).t(R.File.STATUS);
+            }
+
+            return hints;
+        }
+
+        public static int GetHintCount(this Status status, bool wc) {
+            string addForWc = wc ? "WC_" : "";
+            string countKey = "";
+            switch (status) {
+                case Status.YES:
+                    countKey = $"STATUS_{addForWc}YES_HINT_COUNT";
+                    break;
+                case Status.NO:
+                    countKey = $"STATUS_{addForWc}NO_HINT_COUNT";
+                    break;
+                case Status.LIMITED:
+                    countKey = $"STATUS_{addForWc}LIMITED_HINT_COUNT";
+                    break;
+                case Status.UNKNOWN:
+                    countKey = $"STATUS_{addForWc}UNKNOWN_HINT_COUNT";
+                    break;
+            }
+            var countAsString = countKey.t(R.File.STATUS);
+            try {
+                return Int32.Parse(countAsString);
+            } catch {
+                return 0;
             }
         }
 

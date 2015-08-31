@@ -15,8 +15,6 @@ using Windows.UI.Xaml.Navigation;
 using Wheelmap_Windows.Model;
 using Windows.UI.Xaml.Media.Imaging;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
-
 namespace Wheelmap_Windows.Source.UI.Pages.Status {
     public sealed partial class StatusExplainView : UserControl {
 
@@ -28,8 +26,10 @@ namespace Wheelmap_Windows.Source.UI.Pages.Status {
             set {
                 _Selected = value;
                 UpdateSelectedState();
+                SelectedStateChanged?.Invoke(this, _Selected);
             }
         }
+        public event TypedEventHandler<StatusExplainView, bool> SelectedStateChanged;
 
 
         public Model.Status _Status;
@@ -81,6 +81,19 @@ namespace Wheelmap_Windows.Source.UI.Pages.Status {
                 statusTitle.Text = Status.GetLocalizedToiletMessage().ToUpper();
             } else {
                 statusTitle.Text = Status.GetLocalizedMessage().ToUpper();
+            }
+
+            UpdateHints();
+        }
+
+        private void UpdateHints() {
+            statusHintsContainer.Children.Clear();
+            string[] hints = Status.GetHints(IsWcStatus);
+            foreach(string hint in hints) {
+                TextBlock b = new TextBlock();
+                b.Text = "\u00B7 " + hint;
+                b.TextWrapping = TextWrapping.WrapWholeWords;
+                statusHintsContainer.Children.Add(b);
             }
         }
 
