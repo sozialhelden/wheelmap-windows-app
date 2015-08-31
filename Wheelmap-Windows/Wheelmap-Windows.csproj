@@ -107,11 +107,12 @@
     <Compile Include="Source\Api\Calls\IconDownloadRequest.cs" />
     <Compile Include="Source\Api\Calls\NodeApiClient.cs" />
     <Compile Include="Source\Api\Calls\PagedRequest.cs" />
-    <Compile Include="Source\Api\Model\Meta.cs" />
-    <Compile Include="Source\Api\Model\Node.cs" />
-    <Compile Include="Source\Api\Model\PagedRequests.cs" />
-    <Compile Include="Source\Api\Model\Models.cs" />
-    <Compile Include="Source\Api\Model\Status.cs" />
+    <Compile Include="Source\Model\Filter.cs" />
+    <Compile Include="Source\Model\Meta.cs" />
+    <Compile Include="Source\Model\Node.cs" />
+    <Compile Include="Source\Model\PagedRequests.cs" />
+    <Compile Include="Source\Model\Models.cs" />
+    <Compile Include="Source\Model\Status.cs" />
     <Compile Include="Source\UI\Pages\Base\BasePage.cs" />
     <Compile Include="Source\UI\Pages\Main\MainPage.Navigation.cs" />
     <Compile Include="Source\UI\Pages\Main\MainPage.VisualState.cs" />

@@ -4,7 +4,6 @@ using System.Linq;
 using Wheelmap_Windows.Api.Calls;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
-using Wheelmap_Windows.Source.Api.Model;
 using Wheelmap_Windows.Source.UI.Pages.ImagesDetail;
 using Wheelmap_Windows.UI.Pages.Base;
 using Windows.Devices.Geolocation;

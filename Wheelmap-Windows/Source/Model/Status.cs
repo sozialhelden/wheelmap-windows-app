@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Wheelmap_Windows.Extensions;
 using Windows.UI;
 
-namespace Wheelmap_Windows.Source.Api.Model {
+namespace Wheelmap_Windows.Model {
     public enum Status {
         YES,
         NO,
@@ -14,7 +14,7 @@ namespace Wheelmap_Windows.Source.Api.Model {
         UNKNOWN
     }
 
-    public static class Stati{
+    public static class Stati {
 
         public static Status From(string s) {
             switch (s) {

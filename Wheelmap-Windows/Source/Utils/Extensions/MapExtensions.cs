@@ -45,7 +45,7 @@ namespace Wheelmap_Windows.Utils.Extensions {
                 if (topLeft != null && bottomRight != null) {
                     return new GeoboundingBox(topLeft.Position, bottomRight.Position);
                 }
-            }catch(Exception e) {
+            }catch {
                 // bounds invalid
             }
             return null;

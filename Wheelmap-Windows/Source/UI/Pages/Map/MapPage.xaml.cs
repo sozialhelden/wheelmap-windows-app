@@ -155,9 +155,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
 
             var task = new NodesRequest(bbox).Query();
             task.ContinueWith((items) => {
-                var e = new NewNodesEvent();
-                e.nodes = items.Result;
-                BusProvider.DefaultInstance.Post(e);
+                DataHolder.Instance.Nodes = items.Result;
             });
         }
 
