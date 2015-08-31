@@ -72,7 +72,8 @@ namespace Wheelmap_Windows.Source.UI {
             foreach (Panel p in menuBottomPanel.Children) {
                 mToggleGroup.Items.Add(p);
             }
-            mToggleGroup.Delegate = (item, selected) => {
+
+            mToggleGroup.StateChanged += (item, selected) => {
                 if (item == null) {
                     return;
                 }
@@ -82,6 +83,7 @@ namespace Wheelmap_Windows.Source.UI {
                     item.Background = new SolidColorBrush(Color.FromArgb(0x00, 0x00, 0x00, 0x00));
                 }
             };
+
         }
         
         private void ShowMenu(bool show) {

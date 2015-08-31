@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Foundation;
 
 namespace Wheelmap_Windows.Utils {
 
@@ -13,13 +14,14 @@ namespace Wheelmap_Windows.Utils {
     public class ToggleGroup<T> {
 
         public delegate void ChangeState(T item, bool selected);
+        public event TypedEventHandler<T, bool> StateChanged;
 
         private T _SelectedItem;
         public T SelectedItem {
             set {
-                Delegate?.Invoke(_SelectedItem, false);
+                StateChanged.Invoke(_SelectedItem, false);
                 _SelectedItem = value;
-                Delegate?.Invoke(_SelectedItem, true);
+                StateChanged.Invoke(_SelectedItem, true);
             }
             get {
                 return _SelectedItem;
@@ -27,8 +29,6 @@ namespace Wheelmap_Windows.Utils {
         }
 
         public List<T> Items = new List<T>();
-
-        public ChangeState Delegate;
         
     }
 }
