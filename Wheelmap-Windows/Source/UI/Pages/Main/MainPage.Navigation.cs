@@ -103,7 +103,7 @@ namespace Wheelmap_Windows.Source.UI {
             if (menuContainerFrame.Content?.GetType() == pageType) {
 
                 var page = (menuContainerFrame.Content as BasePage);
-                if (page.Parameter == param) {
+                if (page.Parameter?.Equals(param) ?? true) {
                     // remove content
                     if (menuContainerFrame.Content is Page) {
                         (menuContainerFrame.Content as Page).Unregister();
@@ -150,7 +150,7 @@ namespace Wheelmap_Windows.Source.UI {
 
             if (phoneUIBottomSlideUp.Content?.GetType() == pageType) {
                 var page = (phoneUIBottomSlideUp.Content as BasePage);
-                if (page.Parameter == param) {
+                if (page.Parameter?.Equals(param) ?? true) {
                     phoneUIBottomSlideUp.Content = null;
                     return false;
                 } else {
