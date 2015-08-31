@@ -101,13 +101,27 @@ namespace Wheelmap_Windows.Source.UI {
 
         private bool _ShowOnMenuContainerFrameNormal(object sender, Type pageType, object param = null) {
             if (menuContainerFrame.Content?.GetType() == pageType) {
-                // remove content
-                if (menuContainerFrame.Content is Page) {
-                    (menuContainerFrame.Content as Page).Unregister();
+
+                var page = (menuContainerFrame.Content as BasePage);
+                if (page.Parameter == param) {
+                    // remove content
+                    if (menuContainerFrame.Content is Page) {
+                        (menuContainerFrame.Content as Page).Unregister();
+                    }
+                    menuContainerFrame.Content = null;
+                    mToggleGroup.SelectedItem = null;
+                    return false;
+                } else {
+
+                    if (sender is Panel) {
+                        if (!mToggleGroup.Items.Contains(sender)) {
+                            mToggleGroup.Items.Add(sender as Panel);
+                        }
+                        mToggleGroup.SelectedItem = (sender as Panel);
+                    }
+                    page.OnNewParams(param);
+                    return true;
                 }
-                menuContainerFrame.Content = null;
-                mToggleGroup.SelectedItem = null;
-                return false;
             }
 
             menuContainerFrame.Navigate(pageType, param);
@@ -135,8 +149,14 @@ namespace Wheelmap_Windows.Source.UI {
             }
 
             if (phoneUIBottomSlideUp.Content?.GetType() == pageType) {
-                phoneUIBottomSlideUp.Content = null;
-                return false;
+                var page = (phoneUIBottomSlideUp.Content as BasePage);
+                if (page.Parameter == param) {
+                    phoneUIBottomSlideUp.Content = null;
+                    return false;
+                } else {
+                    page.OnNewParams(param);
+                    return true;
+                }
             }
 
             phoneUIBottomSlideUp.Navigate(pageType, param);

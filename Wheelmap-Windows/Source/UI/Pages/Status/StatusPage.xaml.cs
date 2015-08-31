@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.UI.Pages.Base;
+using Wheelmap_Windows.Utils;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -16,14 +18,51 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Wheelmap_Windows.Source.UI.Pages.Status {
     
-    public sealed partial class StatusPage : BasePage {
+    public partial class StatusPage : BasePage {
+
+        public override string Title {
+            get {
+                return IsWcStatus ? "TITLE_WC".t().ToUpper() : "TITLE_STATUS".t().ToUpper();
+            }
+        }
+
+        public string Hint {
+            get {
+                return IsWcStatus ? "STATUS_TITLE_WC_HINT".t(R.File.STATUS) : "STATUS_TITLE_HINT".t(R.File.STATUS);
+            }
+        }
+
+        public bool IsWcStatus = true;
 
         public StatusPage() {
             this.InitializeComponent();
             WindowSizeStates.CurrentStateChanged += (sender, e) => OnStateChanged(WindowSizeStates.CurrentState);
             OnStateChanged(WindowSizeStates.CurrentState);
+            OnNewParams(true);
         }
-        
+
+        public override void OnNewParams(object args) {
+            base.OnNewParams(args);
+            if (args == null) {
+                return;
+            }
+            IsWcStatus = (bool) args;
+            statusYesView.IsWcStatus = IsWcStatus;
+            statusLimitedView.IsWcStatus = IsWcStatus;
+            statusNoView.IsWcStatus = IsWcStatus;
+            statusUnknownView.IsWcStatus = IsWcStatus;
+
+            if (IsWcStatus) {
+                statusLimitedView.Visibility = Visibility.Collapsed;
+            } else {
+                statusLimitedView.Visibility = Visibility.Visible;
+            }
+
+            titleTextBlock.Text = Title;
+            hintTextBlock.Text = Hint;
+
+        }
+
         private void OnStateChanged(VisualState state) {
             var showHints = state != STATE_SMALL;
             statusYesView.ShowStatusHints = showHints;

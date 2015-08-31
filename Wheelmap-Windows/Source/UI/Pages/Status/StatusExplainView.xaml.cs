@@ -43,7 +43,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Status {
             }
         }
 
-        public bool _IsWcStatus;
+        public bool _IsWcStatus = false;
         public bool IsWcStatus {
             get {
                 return _IsWcStatus;

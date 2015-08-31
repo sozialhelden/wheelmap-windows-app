@@ -60,7 +60,7 @@ namespace Wheelmap_Windows.Source.UI {
 
             if (menuContainerFrame.Content is StatusPage
                 || menuContainerFrame.Content is CategoriesListPage) {
-                var param = (phoneUIBottomSlideUp.Content as BasePage).Parameter;
+                var param = (menuContainerFrame.Content as BasePage).Parameter;
                 var type = menuContainerFrame.Content.GetType();
                 menuContainerFrame.Content = null;
                 phoneUIBottomSlideUp.Navigate(type, param);

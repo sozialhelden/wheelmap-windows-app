@@ -117,13 +117,11 @@ namespace Wheelmap_Windows.Source.UI {
         }
 
         private void ShowWCTapped(object sender, TappedRoutedEventArgs e) {
-            ShowMenu(false);
-            Debug.WriteLine("ShowWCTapped Clicked");
+            ShowOnMenuContainerFrame(sender, typeof(StatusPage), true);
         }
 
         private void ShowStatusTapped(object sender, TappedRoutedEventArgs e) {
-            ShowMenu(false);
-            ShowOnMenuContainerFrame(sender, typeof(StatusPage));
+            ShowOnMenuContainerFrame(sender, typeof(StatusPage), false);
         }
 
         private void ShowCategoryTapped(object sender, TappedRoutedEventArgs e) {

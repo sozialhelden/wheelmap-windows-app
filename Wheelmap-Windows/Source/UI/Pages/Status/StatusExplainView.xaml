@@ -33,6 +33,7 @@
                     x:Name="statusTitle"
                     Grid.Column="1"
                     FontWeight="Bold"
+                    TextWrapping="WrapWholeWords"
                     VerticalAlignment="Center"/>
 
                 <Image

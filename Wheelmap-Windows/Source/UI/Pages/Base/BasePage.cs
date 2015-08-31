@@ -28,9 +28,14 @@ namespace Wheelmap_Windows.UI.Pages.Base {
         public virtual void GoBack() {
         }
 
-        protected override void OnNavigatedFrom(NavigationEventArgs e) {
-            base.OnNavigatedFrom(e);
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
+            base.OnNavigatedTo(e);
             Parameter = e.Parameter;
+            OnNewParams(Parameter);
+        }
+
+        public virtual void OnNewParams(object args) {
+            Parameter = args;
         }
     }
 }

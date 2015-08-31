@@ -48,7 +48,9 @@
 
             <TextBlock
                 x:Name="titleTextBlock"
-                FontWeight="Bold"/>
+                Text="{Binding Title}"
+                FontWeight="Bold"
+                Margin="10,10,10,0"/>
 
             <Border 
                 x:Name="hintTextBlockContainer"
@@ -57,10 +59,10 @@
                 Margin="10,10,10,10">
                 <TextBlock
                     x:Name="hintTextBlock"
+                    Text="{Binding Hint}"
                     Padding="10,10,10,10"
                     Foreground="#fff"
-                    TextWrapping="WrapWholeWords"
-                    FontWeight="Bold"/>
+                    TextWrapping="WrapWholeWords"/>
             </Border>
 
             <local:StatusExplainView
