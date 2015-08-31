@@ -41,7 +41,7 @@ namespace Wheelmap_Windows.Utils {
         }
 
 
-        private List<Node> _Nodes;
+        private List<Node> _Nodes = new List<Node>();
 
         public List<Node> Nodes {
 
