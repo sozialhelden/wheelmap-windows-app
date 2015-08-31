@@ -61,6 +61,18 @@ namespace Wheelmap_Windows.Source.UI.Pages.Status {
             titleTextBlock.Text = Title;
             hintTextBlock.Text = Hint;
 
+            RestoreSelectionStates();
+        }
+
+        private void RestoreSelectionStates() {
+            var filter = DataHolder.Instance.Filter;
+            var set = IsWcStatus ? filter.FilterdWcStati : filter.FilterdStati;
+
+            statusYesView.Selected = !set.Contains(Model.Status.YES);
+            statusLimitedView.Selected = !set.Contains(Model.Status.LIMITED);
+            statusNoView.Selected = !set.Contains(Model.Status.NO);
+            statusUnknownView.Selected = !set.Contains(Model.Status.UNKNOWN);
+            
         }
 
         private void OnStateChanged(VisualState state) {
@@ -72,28 +84,35 @@ namespace Wheelmap_Windows.Source.UI.Pages.Status {
         }
 
         private void StatusExplainView_SelectedStateChanged(StatusExplainView sender, bool selected) {
+            bool changed = false;
             if (IsWcStatus) {
                 if (selected) {
                     if (DataHolder.Instance.Filter.FilterdWcStati.Contains(sender.Status)) {
                         DataHolder.Instance.Filter.FilterdWcStati.Remove(sender.Status);
+                        changed = true;
                     }
                 } else {
                     if (!DataHolder.Instance.Filter.FilterdWcStati.Contains(sender.Status)) {
                         DataHolder.Instance.Filter.FilterdWcStati.Add(sender.Status);
+                        changed = true;
                     }
                 }
             } else {
                 if (selected) {
                     if (DataHolder.Instance.Filter.FilterdStati.Contains(sender.Status)) {
                         DataHolder.Instance.Filter.FilterdStati.Remove(sender.Status);
+                        changed = true;
                     }
                 } else {
                     if (!DataHolder.Instance.Filter.FilterdStati.Contains(sender.Status)) {
                         DataHolder.Instance.Filter.FilterdStati.Add(sender.Status);
+                        changed = true;
                     }
                 }
             }
-            DataHolder.Instance.RefreshFilter();
+            if (changed) {
+                DataHolder.Instance.RefreshFilter();
+            }
         }
     }
 }
