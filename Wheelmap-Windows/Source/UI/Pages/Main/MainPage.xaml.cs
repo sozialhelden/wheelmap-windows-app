@@ -29,6 +29,7 @@ using Wheelmap_Windows.Source.UI.Pages.Categories;
 using Windows.Devices.Geolocation;
 using Wheelmap_Windows.UI.Pages.Base;
 using Windows.UI.ViewManagement;
+using Wheelmap_Windows.Source.UI.Pages.Status;
 
 namespace Wheelmap_Windows.Source.UI {
 
@@ -120,7 +121,7 @@ namespace Wheelmap_Windows.Source.UI {
 
         private void ShowStatusTapped(object sender, TappedRoutedEventArgs e) {
             ShowMenu(false);
-            Debug.WriteLine("ShowStatusTapped Clicked");
+            ShowOnMenuContainerFrame(sender, typeof(StatusPage));
         }
 
         private void ShowCategoryTapped(object sender, TappedRoutedEventArgs e) {

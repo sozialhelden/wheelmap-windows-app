@@ -141,6 +141,12 @@
     <Compile Include="Source\UI\Pages\Splashscreen\Splashscreen.xaml.cs">
       <DependentUpon>Splashscreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\UI\Pages\Status\StatusExplainView.xaml.cs">
+      <DependentUpon>StatusExplainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\UI\Pages\Status\StatusPage.xaml.cs">
+      <DependentUpon>StatusPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\Utils\BackDelegate.cs" />
     <Compile Include="Source\Utils\BulkObservableCollection.cs" />
     <Compile Include="Source\Utils\Constants.cs" />
@@ -173,6 +179,8 @@
     <Content Include="Assets\Images\ic_categories.png" />
     <Content Include="Assets\Images\ic_categories_active.png" />
     <Content Include="Assets\Images\ic_choose.png" />
+    <Content Include="Assets\Images\ic_choosen.png" />
+    <Content Include="Assets\Images\ic_choosen_active.png" />
     <Content Include="Assets\Images\ic_choose_active.png" />
     <Content Include="Assets\Images\ic_circle.png" />
     <Content Include="Assets\Images\ic_close_black.png" />
@@ -215,8 +223,6 @@
     <Content Include="Assets\Images\mapmarker\bg_status_no.png" />
     <Content Include="Assets\Images\mapmarker\bg_status_unknown.png" />
     <Content Include="Assets\Images\mapmarker\bg_status_yes.png" />
-    <Content Include="Assets\Images\Phone\ic_circle.png" />
-    <Content Include="Assets\Images\Phone\ic_circle_active.png" />
     <Content Include="Assets\Images\Phone\ic_green.png" />
     <Content Include="Assets\Images\Phone\ic_grey.png" />
     <Content Include="Assets\Images\Phone\ic_kategorie.png" />
@@ -291,6 +297,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\UI\Pages\Splashscreen\Splashscreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\UI\Pages\Status\StatusExplainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\UI\Pages\Status\StatusPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

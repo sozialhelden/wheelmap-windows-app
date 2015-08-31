@@ -42,8 +42,8 @@ namespace Wheelmap_Windows.Source.UI.Pages {
         private const byte ZOOMLEVEL_MIN = 16;
         private const byte ZOOMLEVEL_MAX = 14;
 
-        private Geopoint DEBUG_POSITION = new Geopoint(new BasicGeoposition() { Latitude = 52.5139845511952, Longitude = 13.3907276745181, Altitude = 0 });
-        private const int MAP_ZOOM_DEFAULT = 18; // Zoon 1 is world view
+        private Geopoint DEFAULT_POSITION = new Geopoint(new BasicGeoposition() { Latitude = 52.047783, Longitude = 13.0546663, Altitude = 0 });
+        private const double MAP_ZOOM_DEFAULT = 6.5; // Zoom 1 is world view
 
         int oldZoomLevel = 1;
         Geopoint lastRequestedPosition;
@@ -60,7 +60,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             mapControl.MapElementClick += MapControl_MapElementClick;
 
             mapControl.ZoomLevel = MAP_ZOOM_DEFAULT;
-            mapControl.Center = DEBUG_POSITION;
+            mapControl.Center = DEFAULT_POSITION;
             BusProvider.DefaultInstance.Register(this);
 
             myLocationOverlay = new MyLocationOverlay(mapControl);
@@ -204,6 +204,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             var point = LocationManager.Instance?.LastLocationEvent?.Args?.Position?.Coordinate?.Point;
             if (point != null) {
                 mapControl.Center = point;
+                mapControl.ZoomLevel = 17;
             }
         }
 

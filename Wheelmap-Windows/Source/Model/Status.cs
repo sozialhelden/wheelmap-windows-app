@@ -40,7 +40,7 @@ namespace Wheelmap_Windows.Model {
                 case Status.LIMITED:
                     return "ms-appx:///Assets/Images/ic_status_orange.png";
                 case Status.UNKNOWN:
-                    return "ms-appx:///Assets/Images/ic_unknown.png";
+                    return "ms-appx:///Assets/Images/ic_status_grey.png";
                 default:
                     throw new Exception("unknown status type");
             }
