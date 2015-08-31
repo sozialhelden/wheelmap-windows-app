@@ -67,18 +67,22 @@
 
             <local:StatusExplainView
                 x:Name="statusYesView"
+                SelectedStateChanged="StatusExplainView_SelectedStateChanged"
                 Status="YES"/>
 
             <local:StatusExplainView
                 x:Name="statusLimitedView"
+                SelectedStateChanged="StatusExplainView_SelectedStateChanged"
                 Status="LIMITED"/>
 
             <local:StatusExplainView
                 x:Name="statusNoView"
+                SelectedStateChanged="StatusExplainView_SelectedStateChanged"
                 Status="NO"/>
 
             <local:StatusExplainView
                 x:Name="statusUnknownView"
+                SelectedStateChanged="StatusExplainView_SelectedStateChanged"
                 Status="UNKNOWN"/>
 
         </StackPanel>

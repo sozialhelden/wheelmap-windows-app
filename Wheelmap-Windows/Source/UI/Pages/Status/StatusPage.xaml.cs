@@ -70,5 +70,30 @@ namespace Wheelmap_Windows.Source.UI.Pages.Status {
             statusNoView.ShowStatusHints = showHints;
             statusUnknownView.ShowStatusHints = showHints;
         }
+
+        private void StatusExplainView_SelectedStateChanged(StatusExplainView sender, bool selected) {
+            if (IsWcStatus) {
+                if (selected) {
+                    if (DataHolder.Instance.Filter.FilterdWcStati.Contains(sender.Status)) {
+                        DataHolder.Instance.Filter.FilterdWcStati.Remove(sender.Status);
+                    }
+                } else {
+                    if (!DataHolder.Instance.Filter.FilterdWcStati.Contains(sender.Status)) {
+                        DataHolder.Instance.Filter.FilterdWcStati.Add(sender.Status);
+                    }
+                }
+            } else {
+                if (selected) {
+                    if (DataHolder.Instance.Filter.FilterdStati.Contains(sender.Status)) {
+                        DataHolder.Instance.Filter.FilterdStati.Remove(sender.Status);
+                    }
+                } else {
+                    if (!DataHolder.Instance.Filter.FilterdStati.Contains(sender.Status)) {
+                        DataHolder.Instance.Filter.FilterdStati.Add(sender.Status);
+                    }
+                }
+            }
+            DataHolder.Instance.RefreshFilter();
+        }
     }
 }

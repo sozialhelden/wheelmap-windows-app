@@ -61,6 +61,10 @@ namespace Wheelmap_Windows.Utils {
         }
 
         public Filter Filter = new Filter();
+        public void RefreshFilter() {
+            // trigger filter and NewNodesEvent
+            Nodes = Nodes;
+        }
 
         private List<NodeType> _nodeTypes = new List<NodeType>();
         public List<NodeType> NodeTypes {

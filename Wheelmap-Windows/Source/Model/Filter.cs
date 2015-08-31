@@ -10,6 +10,7 @@ namespace Wheelmap_Windows.Model {
     public class Filter {
 
         public ISet<Status> FilterdStati = new SortedSet<Status>();
+        public ISet<Status> FilterdWcStati = new SortedSet<Status>();
         public ISet<long> FilteredCategoryIds = new SortedSet<long>();
 
         public List<Node> FilterNodes(ICollection<Node> items) {
@@ -17,6 +18,9 @@ namespace Wheelmap_Windows.Model {
 
             foreach(Node n in items) {
                 if (FilterdStati.Contains(Stati.From(n.wheelchairStatus))) {
+                    continue;
+                }
+                if (FilterdWcStati.Contains(Stati.From(n.wheelchairToiletStatus))) {
                     continue;
                 }
                 if (FilteredCategoryIds.Contains(n.category.id)) {
