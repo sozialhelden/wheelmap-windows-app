@@ -60,9 +60,10 @@ namespace Wheelmap_Windows.Source.UI {
 
             if (menuContainerFrame.Content is StatusPage
                 || menuContainerFrame.Content is CategoriesListPage) {
+                var param = (phoneUIBottomSlideUp.Content as BasePage).Parameter;
                 var type = menuContainerFrame.Content.GetType();
                 menuContainerFrame.Content = null;
-                phoneUIBottomSlideUp.Navigate(type, null);
+                phoneUIBottomSlideUp.Navigate(type, param);
             }
 
         }
@@ -78,9 +79,10 @@ namespace Wheelmap_Windows.Source.UI {
 
             if (phoneUIBottomSlideUp.Content is StatusPage
                 || phoneUIBottomSlideUp.Content is CategoriesListPage) {
+                var param = (phoneUIBottomSlideUp.Content as BasePage).Parameter;
                 var type = phoneUIBottomSlideUp.Content.GetType();
                 phoneUIBottomSlideUp.Content = null;
-                ShowOnMenuContainerFrame(null, type);
+                ShowOnMenuContainerFrame(null, type, param);
             }
         }
         

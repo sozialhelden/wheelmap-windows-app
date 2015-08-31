@@ -10,6 +10,8 @@ using Windows.UI.Xaml.Navigation;
 namespace Wheelmap_Windows.UI.Pages.Base {
     public class BasePage : Page, BackDelegate {
 
+        public object Parameter;
+
         public BasePage() {
         }
 
@@ -25,6 +27,10 @@ namespace Wheelmap_Windows.UI.Pages.Base {
 
         public virtual void GoBack() {
         }
-        
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e) {
+            base.OnNavigatedFrom(e);
+            Parameter = e.Parameter;
+        }
     }
 }

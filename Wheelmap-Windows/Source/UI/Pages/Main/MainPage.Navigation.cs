@@ -84,14 +84,14 @@ namespace Wheelmap_Windows.Source.UI {
         /**
          * returns true if page will be shown
          */
-        private bool ShowOnMenuContainerFrame(object sender, Type pageType) {
+        private bool ShowOnMenuContainerFrame(object sender, Type pageType, object param = null) {
             ShowMenu(false);
 
             bool ret;
             if (CurrentSizeState == STATE_SMALL) {
-                ret = _ShowOnMenuContainerFrameSmall(sender, pageType);
+                ret = _ShowOnMenuContainerFrameSmall(sender, pageType, param);
             } else {
-                ret = _ShowOnMenuContainerFrameNormal(sender, pageType);
+                ret = _ShowOnMenuContainerFrameNormal(sender, pageType, param);
             }
             
             this.RefreshCanGoBack();
@@ -99,7 +99,7 @@ namespace Wheelmap_Windows.Source.UI {
             return ret;
         }
 
-        private bool _ShowOnMenuContainerFrameNormal(object sender, Type pageType) {
+        private bool _ShowOnMenuContainerFrameNormal(object sender, Type pageType, object param = null) {
             if (menuContainerFrame.Content?.GetType() == pageType) {
                 // remove content
                 if (menuContainerFrame.Content is Page) {
@@ -110,7 +110,7 @@ namespace Wheelmap_Windows.Source.UI {
                 return false;
             }
 
-            menuContainerFrame.Navigate(pageType);
+            menuContainerFrame.Navigate(pageType, param);
 
             if (Grid.GetColumn(menuContainerFrame) == Grid.GetColumn(detailContainerFrame)) {
                 detailContainerFrame.Content = null;
@@ -128,10 +128,10 @@ namespace Wheelmap_Windows.Source.UI {
 
         }
 
-        private bool _ShowOnMenuContainerFrameSmall(object sender, Type pageType) {
+        private bool _ShowOnMenuContainerFrameSmall(object sender, Type pageType, object param = null) {
             if (!(pageType == typeof(CategoriesListPage)
                  || pageType == typeof(StatusPage))) {
-                return _ShowOnMenuContainerFrameNormal(sender, pageType);
+                return _ShowOnMenuContainerFrameNormal(sender, pageType, param);
             }
 
             if (phoneUIBottomSlideUp.Content?.GetType() == pageType) {
@@ -139,7 +139,7 @@ namespace Wheelmap_Windows.Source.UI {
                 return false;
             }
 
-            phoneUIBottomSlideUp.Navigate(pageType);
+            phoneUIBottomSlideUp.Navigate(pageType, param);
 
             return true;
         }
