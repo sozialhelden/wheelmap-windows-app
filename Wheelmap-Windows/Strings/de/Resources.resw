@@ -147,6 +147,9 @@
   <data name="MENU_WC.Text" xml:space="preserve">
     <value>Toilette</value>
   </data>
+  <data name="NO_NODES_FOUND" xml:space="preserve">
+    <value>keine Orte entsprechend der ausgewählten Kriterien oder Position gefunden</value>
+  </data>
   <data name="TITLE_HELP" xml:space="preserve">
     <value>Mithelfen</value>
   </data>

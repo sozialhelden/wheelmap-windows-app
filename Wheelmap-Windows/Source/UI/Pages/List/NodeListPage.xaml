@@ -38,6 +38,14 @@
         <!-- force parent to fill the full width-->
         <Canvas Width="999999"/>
 
+        <TextBlock
+            x:Name="emptyListTextBlock"
+            TextWrapping="WrapWholeWords"
+            Margin="20,20,20,20"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            TextAlignment="Center"/>
+
         <Grid
             x:Name="contentPanel">
 
@@ -57,6 +65,7 @@
                     x:Name="helpHintText"
                     TextWrapping="WrapWholeWords"
                     Margin="10,10,10,10"
+                    FontSize="12"
                     Foreground="#fff"/>
             </Border>
             

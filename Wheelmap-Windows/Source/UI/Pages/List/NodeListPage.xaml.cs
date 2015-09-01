@@ -40,6 +40,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
         public NodeListPage() {
             this.InitializeComponent();
             helpHintText.Text = "HELP_HINT".t();
+            emptyListTextBlock.Text = "NO_NODES_FOUND".t();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -99,11 +100,19 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
 
         [Subscribe]
         public void OnNewData(NewNodesEvent e) {
+
             if (Filter != null) {
                 SetData(Filter.FilterNodes(DataHolder.Instance.Nodes));
             } else {
                 SetData(e?.nodes);
-            } 
+            }
+
+            if (mItems.Count() <= 0) {
+                emptyListTextBlock.Visibility = Visibility.Visible;
+            } else {
+                emptyListTextBlock.Visibility = Visibility.Collapsed;
+            }
+
         }
 
         [Subscribe]
