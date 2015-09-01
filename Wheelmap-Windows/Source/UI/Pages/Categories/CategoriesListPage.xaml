@@ -45,6 +45,12 @@
             x:Name="listView"
             SelectionChanged="Item_Selected">
 
+            <ListView.ItemContainerTransitions>
+                <TransitionCollection>
+                    <!-- You can even omit this transition if desired -->
+                </TransitionCollection>
+            </ListView.ItemContainerTransitions>
+
             <ListView.Resources>
                 <DataTemplate x:Key="cell">
                     <Border BorderBrush="#444"  BorderThickness="0,0,0,1" >
@@ -61,7 +67,7 @@
                                 x:Name="category"
                                 TextWrapping="Wrap" 
                                 VerticalAlignment="Center"
-                                Text="{Binding localizedName}"
+                                Text="{Binding Category.localizedName}"
                                 Width="auto" FontSize="14"/>
 
                             <CheckBox
@@ -69,6 +75,7 @@
                                 MinWidth="20"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
+                                IsChecked="{Binding Selected, Mode=TwoWay}"
                                 Template="{StaticResource ResourceKey=CheckboxImageTemplate}"
                                 />
 

@@ -14,9 +14,10 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Wheelmap_Windows.Model;
 using Windows.UI.Xaml.Media.Imaging;
+using System.ComponentModel;
 
 namespace Wheelmap_Windows.Source.UI.Pages.Status {
-    public sealed partial class StatusExplainView : UserControl {
+    public sealed partial class StatusExplainView : UserControl, INotifyPropertyChanged {
 
         private bool _Selected = true;
         public bool Selected {
@@ -25,13 +26,15 @@ namespace Wheelmap_Windows.Source.UI.Pages.Status {
             }
             set {
                 _Selected = value;
-                UpdateSelectedState();
                 toggleStatusBox.IsChecked = value;
                 SelectedStateChanged?.Invoke(this, _Selected);
+                NotifyPropertyChanged(nameof(Selected));
             }
         }
-        public event TypedEventHandler<StatusExplainView, bool> SelectedStateChanged;
 
+        public event TypedEventHandler<StatusExplainView, bool> SelectedStateChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
         public Model.Status _Status;
         public Model.Status Status {
@@ -72,7 +75,6 @@ namespace Wheelmap_Windows.Source.UI.Pages.Status {
 
         public StatusExplainView() {
             this.InitializeComponent();
-            UpdateSelectedState();
         }
 
         private void UpdateStatus() {
@@ -96,10 +98,6 @@ namespace Wheelmap_Windows.Source.UI.Pages.Status {
                 b.TextWrapping = TextWrapping.WrapWholeWords;
                 statusHintsContainer.Children.Add(b);
             }
-        }
-
-        private void UpdateSelectedState() {
-            
         }
         
         private void ToggleStatus_Tapped(object sender, TappedRoutedEventArgs e) {

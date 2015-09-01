@@ -40,6 +40,7 @@
                     x:Name="toggleStatusBox"
                     Grid.Column="2"
                     MinWidth="20"
+                    IsChecked="{Binding Selected, Mode=TwoWay}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Template="{StaticResource ResourceKey=CheckboxImageTemplate}"/>

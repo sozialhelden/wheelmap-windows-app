@@ -53,7 +53,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Categories {
             }
             listView.Items.Clear();
             foreach (Model.Category n in data) {
-                listView.Items.Add(n);
+                listView.Items.Add(new CategoryListModel { Category = n});
             }
         }
     }
@@ -81,11 +81,28 @@ namespace Wheelmap_Windows.Source.UI.Pages.Categories {
                 if (_selected == value) {
                     return;
                 }
+                Log.d(this, "Selected: " + value);
                 _selected = value;
                 NotifyPropertyChanged(nameof(Selected));
+
+                if (Category != null) {
+                    var containsKey = DataHolder.Instance.Filter.FilteredCategoryIdntifier.Contains(Category.identifier);
+                    bool needsRefresh = false;
+                    if (_selected && containsKey) {
+                        DataHolder.Instance.Filter.FilteredCategoryIdntifier.Remove(Category.identifier);
+                        needsRefresh = true;
+                    } else if (!_selected && !containsKey) {
+                        DataHolder.Instance.Filter.FilteredCategoryIdntifier.Add(Category.identifier);
+                        needsRefresh = true;
+                    }
+                    if (needsRefresh) {
+                        DataHolder.Instance.RefreshFilter();
+                    }
+
+                }
             }
         }
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void NotifyPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
