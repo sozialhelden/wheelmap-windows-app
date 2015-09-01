@@ -26,9 +26,11 @@ namespace Wheelmap_Windows.Api.Calls {
         private const string TAG = "IconDownloadRequest";
         private const string ETAG_KEY = TAG + "_icons";
         
-        private const int ICON_HEIGHT = 66;
-        private const int ICON_WIDTH = 58;
-        private Rect destRectIcon = new Rect(7, 7, ICON_WIDTH - 14, ICON_WIDTH - 14);
+        // ICON_HEIGHT and ICON_WIDTH depends on the default MapIcon size
+        private const int ICON_HEIGHT = 33;
+        private const int ICON_WIDTH = 29;
+        
+        private Rect destRectIcon = new Rect(3, 3, ICON_WIDTH - 7, ICON_WIDTH - 7);
         private Rect destRectBG = new Rect(0, 0, ICON_WIDTH, ICON_HEIGHT);
 
         WriteableBitmap bitmapStateYes;
@@ -138,9 +140,9 @@ namespace Wheelmap_Windows.Api.Calls {
             
             var h = background.PixelHeight;
             var w = background.PixelWidth;
-            var merge = new WriteableBitmap(w, h);
+            var merge = new WriteableBitmap(ICON_WIDTH, ICON_HEIGHT);
             merge.Clear(Colors.Transparent);
-            merge.Blit(destRectBG, background, destRectBG);
+            merge.Blit(destRectBG, background, new Rect(0, 0, background.PixelWidth, background.PixelHeight));
             merge.Blit(destRectIcon, icon, new Rect(0, 0, icon.PixelWidth , icon.PixelHeight));
             
             IRandomAccessStream saveStream = await saveFile.OpenAsync(FileAccessMode.ReadWrite);
