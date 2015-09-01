@@ -26,6 +26,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Status {
             set {
                 _Selected = value;
                 UpdateSelectedState();
+                toggleStatusBox.IsChecked = value;
                 SelectedStateChanged?.Invoke(this, _Selected);
             }
         }
@@ -98,15 +99,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Status {
         }
 
         private void UpdateSelectedState() {
-            string toggleStatusImageUri;
-            if (Selected) {
-                toggleStatusImageUri = "ms-appx:///Assets/Images/ic_choosen_active.png";
-            } else {
-                toggleStatusImageUri = "ms-appx:///Assets/Images/ic_choosen.png";
-            }
-
-            toggleStatusImage.Source = new BitmapImage(new
-                      Uri(toggleStatusImageUri, UriKind.RelativeOrAbsolute));
+            
         }
         
         private void ToggleStatus_Tapped(object sender, TappedRoutedEventArgs e) {

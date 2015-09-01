@@ -18,11 +18,14 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.UI.Pages.Base;
+using System.ComponentModel;
 
 namespace Wheelmap_Windows.Source.UI.Pages.Categories {
     
     public sealed partial class CategoriesListPage : BasePage {
-        
+
+        BulkObservableCollection<CategoryListModel> mItems = new BulkObservableCollection<CategoryListModel>();
+
         public CategoriesListPage() {
             this.InitializeComponent();            
         }
@@ -53,5 +56,39 @@ namespace Wheelmap_Windows.Source.UI.Pages.Categories {
                 listView.Items.Add(n);
             }
         }
+    }
+
+    class CategoryListModel : INotifyPropertyChanged {
+
+        private Model.Category _category;
+        public Model.Category Category {
+            get {
+                return _category;
+            }
+            set {
+                _category = value;
+                Selected = !DataHolder.Instance.Filter.FilteredCategoryIdntifier.Contains(value.identifier);
+                NotifyPropertyChanged(nameof(Category));
+            }
+        }
+
+        private bool _selected;
+        public bool Selected {
+            get {
+                return _selected;
+            }
+            set {
+                if (_selected == value) {
+                    return;
+                }
+                _selected = value;
+                NotifyPropertyChanged(nameof(Selected));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void NotifyPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        
     }
 }

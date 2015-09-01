@@ -64,12 +64,12 @@
                                 Text="{Binding localizedName}"
                                 Width="auto" FontSize="14"/>
 
-                            <Image
-                                Grid.RowSpan="2"
+                            <CheckBox
                                 Grid.Column="1"
-                                Source="/Assets/Images/ic_tick.png"
-                                Height="40"
-                                Width="40"
+                                MinWidth="20"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Template="{StaticResource ResourceKey=CheckboxImageTemplate}"
                                 />
 
                         </Grid>
