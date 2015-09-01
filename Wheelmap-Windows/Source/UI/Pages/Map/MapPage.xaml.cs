@@ -38,12 +38,18 @@ namespace Wheelmap_Windows.Source.UI.Pages {
                 return "TITLE_MAP".t().ToUpper();
             }
         }
+        
+        private const byte ZOOMLEVEL_MAX = 16;
 
-        private const byte ZOOMLEVEL_MIN = 16;
-        private const byte ZOOMLEVEL_MAX = 14;
+        private const byte ZOOMLEVEL_MIN = 14;
 
+
+        // Center of Germany
         private Geopoint DEFAULT_POSITION = new Geopoint(new BasicGeoposition() { Latitude = 52.047783, Longitude = 13.0546663, Altitude = 0 });
-        private const double MAP_ZOOM_DEFAULT = 6.5; // Zoom 1 is world view
+
+        // Zoom 1 is world view
+        // on 6.5 you can see Germany
+        private const double MAP_ZOOM_DEFAULT = 6.5; 
 
         int oldZoomLevel = 1;
         Geopoint lastRequestedPosition;
@@ -93,7 +99,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             bool isZoomedEnough = true;
 
             // show or hide hint to zoom in
-            if (zoomLevel <= ZOOMLEVEL_MAX) {
+            if (zoomLevel <= ZOOMLEVEL_MIN) {
                 outOfZoomView.Visibility = Visibility.Visible;
             } else {
                 outOfZoomView.Visibility = Visibility.Collapsed;
@@ -140,7 +146,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
                 return;
             }
 
-            if (mapControl.ZoomLevel < ZOOMLEVEL_MIN) {
+            if (mapControl.ZoomLevel < ZOOMLEVEL_MAX) {
                 return;
             }
 

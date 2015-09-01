@@ -150,6 +150,9 @@
   <data name="NO_NODES_FOUND" xml:space="preserve">
     <value>keine Orte entsprechend der ausgewählten Kriterien oder Position gefunden</value>
   </data>
+  <data name="OutOfZoom.Text" xml:space="preserve">
+    <value>Zu weit entfernt um neue Orte zu laden</value>
+  </data>
   <data name="TITLE_HELP" xml:space="preserve">
     <value>Mithelfen</value>
   </data>
