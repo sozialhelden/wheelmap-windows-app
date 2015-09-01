@@ -10,7 +10,9 @@ using Wheelmap_Windows.UI.Pages.Base;
 using Wheelmap_Windows.Utils;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace Wheelmap_Windows.Source.UI {
 
@@ -66,6 +68,14 @@ namespace Wheelmap_Windows.Source.UI {
                 phoneUIBottomSlideUp.Navigate(type, param);
             }
 
+
+            detailContainerFrame.ContentTransitions = new TransitionCollection {
+                new EdgeUIThemeTransition { Edge = EdgeTransitionLocation.Bottom }
+            };
+
+
+            menuContainerFrame.ContentTransitions = new TransitionCollection { };
+
         }
 
         private void OnMediumState() {
@@ -84,6 +94,13 @@ namespace Wheelmap_Windows.Source.UI {
                 phoneUIBottomSlideUp.Content = null;
                 ShowOnMenuContainerFrame(null, type, param);
             }
+
+            menuContainerFrame.ContentTransitions = new TransitionCollection {
+                new EdgeUIThemeTransition { Edge = EdgeTransitionLocation.Left }
+            };
+            
+            detailContainerFrame.ContentTransitions = new TransitionCollection {};
+
         }
         
     }

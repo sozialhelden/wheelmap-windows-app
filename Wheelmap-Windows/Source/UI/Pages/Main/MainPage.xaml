@@ -337,7 +337,13 @@
                             Margin="0,0,0,48">
                             <Frame 
                                 x:Name="phoneUIBottomSlideUp"
-                                MaxHeight="300"/>
+                                MaxHeight="300">
+                                <Frame.ContentTransitions>
+                                    <TransitionCollection>
+                                        <EdgeUIThemeTransition Edge="Bottom"/>
+                                    </TransitionCollection>
+                                </Frame.ContentTransitions>
+                            </Frame>
 
 
                         </StackPanel>
@@ -368,8 +374,10 @@
 
             <CommandBar.Content>
                 <StackPanel Orientation="Vertical">
+                    
                     <!-- force container to be full with-->
                     <Canvas MinWidth="99999999"/>
+                    
                     <Grid
                         Height="48"
                         Margin="0,0,-48,0"

@@ -21,6 +21,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using Windows.Devices.Geolocation;
 using Wheelmap_Windows.UI.Pages.Base;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace Wheelmap_Windows.Source.UI.Pages.List {
     

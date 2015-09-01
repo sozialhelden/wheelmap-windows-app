@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wheelmap_Windows.Utils;
+using Wheelmap_Windows.Utils.Eventbus;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -34,6 +35,18 @@ namespace Wheelmap_Windows.UI.Pages.Base {
             OnNewParams(Parameter);
         }
 
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e) {
+            Log.d(this, "OnNavigatedFrom: " + e);
+            base.OnNavigatingFrom(e);
+            BusProvider.DefaultInstance.Unregister(this);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e) {
+            Log.d(this, "OnNavigatedFrom: " + e);
+            base.OnNavigatedFrom(e);
+            BusProvider.DefaultInstance.Unregister(this);
+        }
+        
         public virtual void OnNewParams(object args) {
             Parameter = args;
         }
