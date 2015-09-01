@@ -22,9 +22,10 @@ using System.Collections.Specialized;
 using Windows.Devices.Geolocation;
 using Wheelmap_Windows.UI.Pages.Base;
 using Windows.UI.Xaml.Media.Animation;
+using Wheelmap_Windows.Model;
 
 namespace Wheelmap_Windows.Source.UI.Pages.List {
-    
+
     public sealed partial class NodeListPage : BasePage {
 
         public override string Title {
@@ -33,24 +34,46 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
             }
         }
 
+        private Filter Filter;
         private BulkObservableCollection<Model.Node> mItems = new BulkObservableCollection<Model.Node>();
 
         public NodeListPage() {
-            this.InitializeComponent();    
+            this.InitializeComponent();
+            helpHintText.Text = "HELP_HINT".t();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
             listView.ItemsSource = mItems;
-            SetData(DataHolder.Instance.Nodes);
             BusProvider.DefaultInstance.Register(this);
         }
-        
+
+        public override void OnNewParams(object args) {
+            base.OnNewParams(args);
+            if (args == null) {
+                SetData(DataHolder.Instance.FilterdNodes);
+                helpHintTextBorder.Visibility = Visibility.Collapsed;
+            } else {
+                var param = args as NodeListPageArgs;
+                if (param.HelpMode) {
+                    Filter = new Filter();
+                    Filter.FilterdStati.Add(Model.Status.YES);
+                    Filter.FilterdStati.Add(Model.Status.LIMITED);
+                    Filter.FilterdStati.Add(Model.Status.NO);
+                    SetData(Filter.FilterNodes(DataHolder.Instance.Nodes));
+                    helpHintTextBorder.Visibility = Visibility.Visible;
+                } else {
+                    SetData(DataHolder.Instance.FilterdNodes);
+                    helpHintTextBorder.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
         protected override void OnNavigatedFrom(NavigationEventArgs e) {
             base.OnNavigatedFrom(e);
             this.Unregister();
         }
-       
+
         private void Node_Selected(object sender, SelectionChangedEventArgs e) {
             if (e.AddedItems.Count() <= 0) {
                 return;
@@ -60,7 +83,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
             newEvent.node = n;
             BusProvider.DefaultInstance.Post(newEvent);
         }
-        
+
         private void SetData(ICollection<Model.Node> data) {
             if (data == null) {
                 return;
@@ -76,7 +99,11 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
 
         [Subscribe]
         public void OnNewData(NewNodesEvent e) {
-            SetData(e?.nodes);
+            if (Filter != null) {
+                SetData(Filter.FilterNodes(DataHolder.Instance.Nodes));
+            } else {
+                SetData(e?.nodes);
+            } 
         }
 
         [Subscribe]
@@ -95,6 +122,23 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
             });
             var list = elist.ToList();
             return list;
+        }
+
+    }
+
+    public class NodeListPageArgs {
+
+        public bool HelpMode = false;
+
+        public override bool Equals(object obj) {
+            if (!(obj is NodeListPageArgs)) {
+                return false;
+            }
+            return HelpMode == (obj as NodeListPageArgs).HelpMode;
+        }
+
+        public override int GetHashCode() {
+            return HelpMode ? 0 : 1;
         }
 
     }

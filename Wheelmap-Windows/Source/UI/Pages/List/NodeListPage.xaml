@@ -28,54 +28,77 @@
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
-                        <Setter Target="listView.Margin" Value="0,48,0,0"/>
+                        <Setter Target="contentPanel.Margin" Value="0,48,0,0"/>
                     </VisualState.Setters>
                 </VisualState>
 
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        
+
         <!-- force parent to fill the full width-->
         <Canvas Width="999999"/>
 
-        <ListView 
-            x:Name="listView"
-            SelectionChanged="Node_Selected">
+        <Grid
+            x:Name="contentPanel">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             
-            <ListView.ItemContainerTransitions>
-                <TransitionCollection>
-                    <!-- You can even omit this transition if desired -->
-                </TransitionCollection>
-            </ListView.ItemContainerTransitions>
+            <Border 
+                x:Name="helpHintTextBorder"
+                Grid.Row="0"
+                Background="{StaticResource ResourceKey=PrimaryColor}" 
+                CornerRadius="10,10,10,10"
+                Margin="10,10,10,10"
+                Visibility="Collapsed">
+                <TextBlock
+                    x:Name="helpHintText"
+                    TextWrapping="WrapWholeWords"
+                    Margin="10,10,10,10"
+                    Foreground="#fff"/>
+            </Border>
             
-            <ListView.Resources>
-                <DataTemplate x:Key="nodeCell">
-                    <Border BorderBrush="#444"  BorderThickness="0,0,0,1" >
-                        <Grid Margin="-5,5,0,2" >
+            <ListView 
+                x:Name="listView"
+                Grid.Row="1"
+                SelectionChanged="Node_Selected">
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
+                <ListView.ItemContainerTransitions>
+                    <TransitionCollection>
+                        <!-- You can even omit this transition if desired -->
+                    </TransitionCollection>
+                </ListView.ItemContainerTransitions>
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
+                <ListView.Resources>
+                    <DataTemplate x:Key="nodeCell">
+                        <Border BorderBrush="#444"  BorderThickness="0,0,0,1" >
+                            <Grid Margin="-5,5,0,2" >
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
 
-                            <Image
+                                <Image
                                 Grid.RowSpan="2"
                                 Grid.Column="0"
                                 Height="32"
                                 Width="32"
                                 Margin="10,10,10,10"
                                 Source="{Binding MapIconFileUriString}">
-                            </Image>
+                                </Image>
 
-                            <TextBlock 
+                                <TextBlock 
                                 Grid.ColumnSpan="2"
                                 Grid.Column="1"
                                 Grid.Row="0"
@@ -86,7 +109,7 @@
                                 MaxLines="2"
                                 Width="auto" FontSize="14"/>
 
-                            <TextBlock 
+                                <TextBlock 
                                 Grid.Column="1"
                                 Grid.Row="1"
                                 x:Name="category"
@@ -95,7 +118,7 @@
                                 Text="{Binding category.localizedName}"
                                 Width="auto" FontSize="14"/>
 
-                            <TextBlock 
+                                <TextBlock 
                                 Grid.Column="2"
                                 Grid.Row="1"
                                 TextWrapping="Wrap" 
@@ -103,7 +126,7 @@
                                 Text="{Binding DistanceString}"
                                 Width="auto" FontSize="10"/>
 
-                            <Image
+                                <Image
                                 Grid.RowSpan="2"
                                 Grid.Column="3"
                                 Source="/Assets/Images/ic_more.png"
@@ -111,21 +134,22 @@
                                 Width="40"
                                 />
 
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListView.Resources>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.Resources>
 
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                </Style>
-            </ListView.ItemContainerStyle>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
 
-            <ListView.ItemTemplate>
-                <StaticResource ResourceKey="nodeCell"/>
-            </ListView.ItemTemplate>
-            
-        </ListView>
+                <ListView.ItemTemplate>
+                    <StaticResource ResourceKey="nodeCell"/>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </Grid>
     </Grid>
 </app:BasePage>

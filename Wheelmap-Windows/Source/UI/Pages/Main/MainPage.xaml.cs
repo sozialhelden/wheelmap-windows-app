@@ -117,8 +117,7 @@ namespace Wheelmap_Windows.Source.UI {
         }
 
         private void ShowHelpTapped(object sender, TappedRoutedEventArgs e) {
-            ShowMenu(false);
-            Debug.WriteLine("ShowHelpTapped Clicked");
+            ShowOnMenuContainerFrame(sender, typeof(NodeListPage), new NodeListPageArgs { HelpMode = true});
         }
 
         private void ShowWCTapped(object sender, TappedRoutedEventArgs e) {

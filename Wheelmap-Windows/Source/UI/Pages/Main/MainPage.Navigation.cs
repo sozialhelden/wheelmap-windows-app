@@ -103,7 +103,7 @@ namespace Wheelmap_Windows.Source.UI {
             if (menuContainerFrame.Content?.GetType() == pageType) {
 
                 var page = (menuContainerFrame.Content as BasePage);
-                if (page.Parameter?.Equals(param) ?? true) {
+                if (page.Parameter?.Equals(param) ?? param == page.Parameter) {
                     // remove content
                     if (menuContainerFrame.Content is Page) {
                         (menuContainerFrame.Content as Page).Unregister();
@@ -112,15 +112,7 @@ namespace Wheelmap_Windows.Source.UI {
                     mToggleGroup.SelectedItem = null;
                     return false;
                 } else {
-
-                    if (sender is Panel) {
-                        if (!mToggleGroup.Items.Contains(sender)) {
-                            mToggleGroup.Items.Add(sender as Panel);
-                        }
-                        mToggleGroup.SelectedItem = (sender as Panel);
-                    }
-                    page.OnNewParams(param);
-                    return true;
+                    menuContainerFrame.Content = null;
                 }
             }
 
@@ -150,12 +142,11 @@ namespace Wheelmap_Windows.Source.UI {
 
             if (phoneUIBottomSlideUp.Content?.GetType() == pageType) {
                 var page = (phoneUIBottomSlideUp.Content as BasePage);
-                if (page.Parameter?.Equals(param) ?? true) {
+                if (page.Parameter?.Equals(param) ?? page.Parameter == param) {
                     phoneUIBottomSlideUp.Content = null;
                     return false;
                 } else {
-                    page.OnNewParams(param);
-                    return true;
+                    phoneUIBottomSlideUp.Content = null;
                 }
             }
 
