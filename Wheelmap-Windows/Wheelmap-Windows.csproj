@@ -148,6 +148,7 @@
       <DependentUpon>StatusPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Source\Utils\BackDelegate.cs" />
+    <Compile Include="Source\Utils\BiDirectionalMap.cs" />
     <Compile Include="Source\Utils\BulkObservableCollection.cs" />
     <Compile Include="Source\Utils\Constants.cs" />
     <Compile Include="Source\Utils\DataHolder.cs" />

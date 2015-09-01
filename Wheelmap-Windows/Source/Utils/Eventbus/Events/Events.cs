@@ -17,6 +17,7 @@ namespace Wheelmap_Windows.Utils.Eventbus.Events {
 
     public class NewNodesEvent {
         public List<Model.Node> nodes;
+        public bool RefreshAll;
     }
 
     public class LocationChangedEvent {

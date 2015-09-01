@@ -64,6 +64,11 @@ namespace Wheelmap_Windows.Source.UI {
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
+            base.OnNavigatedTo(e);
+            BusProvider.DefaultInstance.Register(this);
+        }
+
         private void InitToggleGroup() {
             mToggleGroup = new ToggleGroup<Panel>();
             foreach (Panel p in menuTopPanel.Children) {

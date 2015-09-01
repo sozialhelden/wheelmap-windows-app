@@ -109,5 +109,17 @@ namespace Wheelmap_Windows.Model {
         public override string ToString() {
             return $"Node: Id={id} Name={name}";
         }
+
+        public override int GetHashCode() {
+            return (int) id;
+        }
+
+        public override bool Equals(object obj) {
+            if ( !(obj is Node)) {
+                return false;
+            }
+            return id == (obj as Node).id;
+        }
+
     }
 }

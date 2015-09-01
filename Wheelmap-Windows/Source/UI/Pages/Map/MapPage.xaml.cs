@@ -49,8 +49,8 @@ namespace Wheelmap_Windows.Source.UI.Pages {
         Geopoint lastRequestedPosition;
         MyLocationOverlay myLocationOverlay;
 
-        Dictionary<MapElement, Model.Node> nodeMapIcons = new Dictionary<MapElement, Model.Node>();
-
+        BiDirectionalMap<Model.Node, MapElement> nodeElementMap = new BiDirectionalMap<Model.Node, MapElement>();
+        
         public MapPage() {
             this.InitializeComponent();
 
@@ -61,17 +61,21 @@ namespace Wheelmap_Windows.Source.UI.Pages {
 
             mapControl.ZoomLevel = MAP_ZOOM_DEFAULT;
             mapControl.Center = DEFAULT_POSITION;
-            BusProvider.DefaultInstance.Register(this);
 
             myLocationOverlay = new MyLocationOverlay(mapControl);
 
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
+            base.OnNavigatedTo(e);
+            BusProvider.DefaultInstance.Register(this);
         }
 
         private void MapControl_MapElementClick(MapControl sender, MapElementClickEventArgs args) {
             Debug.WriteLine("MapElementClick: " + sender + "-" + args.MapElements.First());
 
             if (args?.MapElements?.Count > 0) {
-                var node = nodeMapIcons[args.MapElements.First()];
+                var node = nodeElementMap.Get(args.MapElements.First());
                 SelectedNodeChangedEvent e = new SelectedNodeChangedEvent();
                 e.node = node;
                 BusProvider.DefaultInstance.Post(e);
@@ -161,10 +165,36 @@ namespace Wheelmap_Windows.Source.UI.Pages {
 
         [Subscribe]
         public void OnNewData(NewNodesEvent e) {
-            nodeMapIcons.Clear();
-            mapControl.MapElements.Clear();
-            foreach (Model.Node n in e.nodes) {
-                AddNewMapIcons(n);
+            if (!e.RefreshAll) {
+                // avoid flickering of the MapIcons by Remove or Add only the Elements which are needed
+
+                // collection of all mapElemements which should be removed
+                ICollection<MapElement> elementToRemove = new List<MapElement>(mapControl.MapElements);
+
+                foreach (Model.Node n in e.nodes) {
+                    // check if node already exists on the map
+                    if (nodeElementMap.Contains(n)) {
+                        // this element should not be removed
+                        elementToRemove.Remove(nodeElementMap.Get(n));
+                    } else {
+                        // create new element
+                        AddNewMapIcons(n);
+                    }
+                }
+
+                // remove all outdated mapelements
+                foreach (MapElement element in elementToRemove) {
+                    mapControl.MapElements.Remove(element);
+                    nodeElementMap.Remove(element);
+                }
+                elementToRemove.Clear();
+            } else {
+                nodeElementMap.Clear();
+                mapControl.MapElements.Clear();
+                // refresh all
+                foreach (Model.Node n in e.nodes) {
+                    AddNewMapIcons(n);
+                }
             }
         }
 
@@ -182,7 +212,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             
             mapIcon.Image = RandomAccessStreamReference.CreateFromUri(node.MapIconFileUri);
             mapControl.MapElements.Add(mapIcon);
-            nodeMapIcons.Add(mapIcon, node);
+            nodeElementMap.Add(node, mapIcon);
             
         }
 

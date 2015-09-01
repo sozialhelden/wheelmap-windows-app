@@ -53,8 +53,10 @@ namespace Wheelmap_Windows.Utils {
             set {
                 _Nodes = value;
                 _FilterdNodes = Filter.FilterNodes(_Nodes);
-                var e = new NewNodesEvent();
-                e.nodes = _FilterdNodes;
+                var e = new NewNodesEvent() {
+                    nodes = _FilterdNodes,
+                    RefreshAll = true
+                };
                 BusProvider.DefaultInstance.Post(e);
             }
 
@@ -62,8 +64,12 @@ namespace Wheelmap_Windows.Utils {
 
         public Filter Filter = new Filter();
         public void RefreshFilter() {
-            // trigger filter and NewNodesEvent
-            Nodes = Nodes;
+            _FilterdNodes = Filter.FilterNodes(_Nodes);
+            var e = new NewNodesEvent() {
+                nodes = _FilterdNodes,
+                RefreshAll = false
+            };
+            BusProvider.DefaultInstance.Post(e);
         }
 
         private List<NodeType> _nodeTypes = new List<NodeType>();
