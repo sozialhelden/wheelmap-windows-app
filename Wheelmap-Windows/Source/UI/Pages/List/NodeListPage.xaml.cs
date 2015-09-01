@@ -95,6 +95,12 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
                 mItems.Clear();
                 mItems.AddAll(orderedData);
             });
+            
+            if (mItems.Count() <= 0) {
+                emptyListTextBlock.Visibility = Visibility.Visible;
+            } else {
+                emptyListTextBlock.Visibility = Visibility.Collapsed;
+            }
 
         }
 
@@ -106,13 +112,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
             } else {
                 SetData(e?.nodes);
             }
-
-            if (mItems.Count() <= 0) {
-                emptyListTextBlock.Visibility = Visibility.Visible;
-            } else {
-                emptyListTextBlock.Visibility = Visibility.Collapsed;
-            }
-
+            
         }
 
         [Subscribe]
