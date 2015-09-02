@@ -73,6 +73,10 @@ namespace Wheelmap_Windows.Utils {
             Prefs.SaveFilter(Filter);
             BusProvider.DefaultInstance.Post(e);
 
+            var filterChangedEvent = new FilterChangedEvent {
+                Filter = Filter
+            };
+            BusProvider.DefaultInstance.Post(filterChangedEvent);
         }
 
         private List<NodeType> _nodeTypes = new List<NodeType>();

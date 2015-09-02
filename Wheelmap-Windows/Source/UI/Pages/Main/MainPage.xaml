@@ -135,10 +135,21 @@
                         Orientation="Horizontal"
                         Tapped="ShowWCTapped">
 
-                            <Image
-                            Source="/Assets/Images/ic_wc.png"
-                            Width="50" 
-                            Height="50" />
+                            <Grid
+                                Width="50" 
+                                Height="50">
+
+                                <!-- avoid ui flickering when switching between images -->
+                                <Image
+                                    x:Name="sideMenuWCStatusImage"
+                                    Source="/Assets/Images/ic_wc.png"/>
+
+                                <Image
+                                    x:Name="sideMenuWCStatusImageActive"
+                                    Source="/Assets/Images/ic_wc_active.png"
+                                    Visibility="Collapsed"/>
+
+                            </Grid>
 
                             <TextBlock 
                             x:Uid="MENU_WC"
@@ -152,11 +163,22 @@
                         Orientation="Horizontal"
                         Tapped="ShowStatusTapped">
 
-                            <Image
-                            Source="/Assets/Images/ic_status.png"
-                            Width="50" 
-                            Height="50" />
+                            <Grid
+                                Width="50" 
+                                Height="50">
+                                
+                                <!-- avoid ui flickering when switching between images -->
+                                <Image
+                                    x:Name="sideMenuStatusImage"
+                                    Source="/Assets/Images/ic_status.png"/>
 
+                                <Image
+                                    x:Name="sideMenuStatusImageActive"
+                                    Source="/Assets/Images/ic_status_active.png"
+                                    Visibility="Collapsed"/>
+
+                            </Grid>
+                            
                             <TextBlock 
                             x:Uid="MENU_STATUS"
                             Text="Status"
@@ -169,10 +191,21 @@
                         Orientation="Horizontal"
                         Tapped="ShowCategoryTapped">
 
-                            <Image
-                            Source="/Assets/Images/ic_categories.png"
-                            Width="50" 
-                            Height="50" />
+                            <Grid
+                                Width="50" 
+                                Height="50">
+                                <!-- avoid ui flickering when switching between images -->
+                                <Image
+                                    x:Name="sideMenuCategoryImage"
+                                    Source="/Assets/Images/ic_categories.png" 
+                                    />
+                                <Image
+                                    x:Name="sideMenuCategoryImageActive"
+                                    Source="/Assets/Images/ic_categories_active.png"
+                                    Visibility="Collapsed"
+                                    />
+                                
+                            </Grid>
 
                             <TextBlock 
                             x:Uid="MENU_CATEGORY"
@@ -392,25 +425,47 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image
+                        <Grid
                             Grid.Column="1"
-                            Tapped="ShowWCTapped"
-                            Source="/Assets/Images/Phone/ic_wc.png"/>
+                            Tapped="ShowWCTapped">
+                            
+                            <Image
+                                Source="/Assets/Images/Phone/ic_wc.png"/>
+                            
+                            <Image
+                                Source="/Assets/Images/Phone/ic_wc.png"/>
+                            
+                        </Grid>
 
-                        <Image
+                        <Grid
                             Grid.Column="2"
-                            Tapped="ShowStatusTapped"
-                            Source="/Assets/Images/Phone/ic_status.png"/>
+                            Tapped="ShowStatusTapped">
+                            <Image
+                                x:Name="appBarStatus"
+                                Source="/Assets/Images/Phone/ic_status.png"/>
+                            <Image
+                                x:Name="appBarStatusActive"
+                                Source="/Assets/Images/Phone/ic_status_select.png"/>
+                        </Grid>
 
-                        <Image
+                        <Grid
                             Grid.Column="3"
-                            Tapped="ShowCategoryTapped"
-                            Source="/Assets/Images/Phone/ic_kategorie.png"/>
+                            Tapped="ShowCategoryTapped">
 
-                        <Image
+                            <Image
+                                Source="/Assets/Images/Phone/ic_kategorie.png"/>
+                            <Image
+                                Source="/Assets/Images/Phone/ic_kategorie.png"/>
+                            
+                        </Grid>
+
+
+                        <Grid
                             Grid.Column="4"
-                            Tapped="ShowMyLocationTapped"
-                            Source="/Assets/Images/Phone/ic_location.png"/>
+                            Tapped="ShowMyLocationTapped">
+                            <Image
+                                Source="/Assets/Images/Phone/ic_location.png"/>
+                        </Grid>
 
                     </Grid>
 

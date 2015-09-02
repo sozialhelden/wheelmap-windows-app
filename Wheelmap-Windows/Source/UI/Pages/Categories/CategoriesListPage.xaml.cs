@@ -67,7 +67,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Categories {
             }
             set {
                 _category = value;
-                Selected = !DataHolder.Instance.Filter.FilteredCategoryIdntifier.Contains(value.identifier);
+                Selected = !DataHolder.Instance.Filter.FilteredCategoryIdentifier.Contains(value.identifier);
                 NotifyPropertyChanged(nameof(Category));
             }
         }
@@ -86,13 +86,13 @@ namespace Wheelmap_Windows.Source.UI.Pages.Categories {
                 NotifyPropertyChanged(nameof(Selected));
 
                 if (Category != null) {
-                    var containsKey = DataHolder.Instance.Filter.FilteredCategoryIdntifier.Contains(Category.identifier);
+                    var containsKey = DataHolder.Instance.Filter.FilteredCategoryIdentifier.Contains(Category.identifier);
                     bool needsRefresh = false;
                     if (_selected && containsKey) {
-                        DataHolder.Instance.Filter.FilteredCategoryIdntifier.Remove(Category.identifier);
+                        DataHolder.Instance.Filter.FilteredCategoryIdentifier.Remove(Category.identifier);
                         needsRefresh = true;
                     } else if (!_selected && !containsKey) {
-                        DataHolder.Instance.Filter.FilteredCategoryIdntifier.Add(Category.identifier);
+                        DataHolder.Instance.Filter.FilteredCategoryIdentifier.Add(Category.identifier);
                         needsRefresh = true;
                     }
                     if (needsRefresh) {

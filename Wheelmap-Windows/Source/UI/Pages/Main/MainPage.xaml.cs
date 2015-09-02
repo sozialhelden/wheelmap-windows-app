@@ -31,6 +31,7 @@ using Wheelmap_Windows.UI.Pages.Base;
 using Windows.UI.ViewManagement;
 using Wheelmap_Windows.Source.UI.Pages.Status;
 using Wheelmap_Windows.Source.UI.Pages.Profile;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Wheelmap_Windows.Source.UI {
 
@@ -63,6 +64,8 @@ namespace Wheelmap_Windows.Source.UI {
             
             // important to keep the page state
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
+
+            FilterChanged(new FilterChangedEvent { Filter = DataHolder.Instance.Filter });
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -170,5 +173,39 @@ namespace Wheelmap_Windows.Source.UI {
             SetTitle(mMapPage.Title);
         }
         
+        [Subscribe]
+        public void FilterChanged(FilterChangedEvent e) {
+            if (e.Filter.FilteredCategoryIdentifier.Count() > 0) {
+                sideMenuCategoryImage.Visibility = Visibility.Collapsed;
+                sideMenuCategoryImageActive.Visibility = Visibility.Visible;
+            } else {
+                sideMenuCategoryImage.Visibility = Visibility.Visible;
+                sideMenuCategoryImageActive.Visibility = Visibility.Collapsed;
+            }
+
+            if (e.Filter.FilterdStati.Count() > 0) {
+                sideMenuStatusImage.Visibility = Visibility.Collapsed;
+                sideMenuStatusImageActive.Visibility = Visibility.Visible;
+
+                appBarStatus.Visibility = Visibility.Collapsed;
+                appBarStatusActive.Visibility = Visibility.Visible;
+            } else {
+                sideMenuStatusImage.Visibility = Visibility.Visible;
+                sideMenuStatusImageActive.Visibility = Visibility.Collapsed;
+                
+                appBarStatus.Visibility = Visibility.Visible;
+                appBarStatusActive.Visibility = Visibility.Collapsed;
+            }
+
+
+            if (e.Filter.FilterdWcStati.Count() > 0) {
+                sideMenuWCStatusImage.Visibility = Visibility.Collapsed;
+                sideMenuWCStatusImageActive.Visibility = Visibility.Visible;
+            } else {
+                sideMenuWCStatusImage.Visibility = Visibility.Visible;
+                sideMenuWCStatusImageActive.Visibility = Visibility.Collapsed;
+            }
+        }
+
     }
 }

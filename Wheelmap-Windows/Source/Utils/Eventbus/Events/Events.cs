@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wheelmap_Windows.Model;
 using Windows.Devices.Geolocation;
 
 namespace Wheelmap_Windows.Utils.Eventbus.Events {
@@ -24,4 +25,9 @@ namespace Wheelmap_Windows.Utils.Eventbus.Events {
         public Geolocator Sender;
         public PositionChangedEventArgs Args;
     }
+
+    public class FilterChangedEvent {
+        public Filter Filter;
+    }
+
 }
