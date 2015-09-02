@@ -1,0 +1,66 @@
+﻿<app:BasePage
+    xmlns:app="using:Wheelmap_Windows.UI.Pages.Base"
+    x:Class="Wheelmap_Windows.Source.UI.Pages.Profile.ProfilePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Wheelmap_Windows.Source.UI.Pages.Profile"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid
+        RequestedTheme="Light"
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowSizeStates">
+
+                <!-- tablet / desktop -->
+                <VisualState x:Name="STATE_MEDIUM">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+
+                <!-- phone -->
+                <VisualState x:Name="STATE_SMALL">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="contentPanel.Margin" Value="0,48,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <!-- force parent to fill the full width-->
+        <Canvas Width="999999"/>
+        
+        <ScrollViewer
+            x:Name="contentPanel"
+            Padding="10,10,10,10">
+
+            <StackPanel
+                Padding="10,10,10,10">
+
+                <Image
+                    Source="/Assets/Images/credits_logo.png"
+                    MaxWidth="200"
+                    Margin="10,10,10,10"/>
+
+                <Button
+                    Content="Login"
+                    Click="Button_Click">
+                    
+                </Button>
+                
+
+            </StackPanel>
+            
+        </ScrollViewer>
+        
+    </Grid>
+</app:BasePage>

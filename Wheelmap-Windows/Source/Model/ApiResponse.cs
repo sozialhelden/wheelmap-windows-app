@@ -56,4 +56,8 @@ namespace Wheelmap_Windows.Api.Model {
         public override NodeType[] GetItems() => node_types;
 
     }
+
+    public class UserAuthenticateResponse {
+        public User user;
+    }
 }

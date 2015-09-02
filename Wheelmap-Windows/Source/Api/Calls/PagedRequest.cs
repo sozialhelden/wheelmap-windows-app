@@ -90,4 +90,5 @@ namespace Wheelmap_Windows.Api.Calls {
         protected abstract string GetUrl(int page);
      
     }
+
 }

@@ -30,6 +30,7 @@ using Windows.Devices.Geolocation;
 using Wheelmap_Windows.UI.Pages.Base;
 using Windows.UI.ViewManagement;
 using Wheelmap_Windows.Source.UI.Pages.Status;
+using Wheelmap_Windows.Source.UI.Pages.Profile;
 
 namespace Wheelmap_Windows.Source.UI {
 
@@ -139,8 +140,7 @@ namespace Wheelmap_Windows.Source.UI {
         }
 
         private void ShowProfileTapped(object sender, TappedRoutedEventArgs e) {
-            ShowMenu(false);
-            Debug.WriteLine("ShowProfileTapped Clicked");
+            ShowOnMenuContainerFrame(sender, typeof(ProfilePage));
         }
 
         private void ShowSettingsTapped(object sender, TappedRoutedEventArgs e) {

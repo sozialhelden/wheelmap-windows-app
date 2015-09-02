@@ -107,12 +107,14 @@
     <Compile Include="Source\Api\Calls\IconDownloadRequest.cs" />
     <Compile Include="Source\Api\Calls\NodeApiClient.cs" />
     <Compile Include="Source\Api\Calls\PagedRequest.cs" />
+    <Compile Include="Source\Api\Calls\UserRequest.cs" />
     <Compile Include="Source\Model\Filter.cs" />
     <Compile Include="Source\Model\Meta.cs" />
     <Compile Include="Source\Model\Node.cs" />
-    <Compile Include="Source\Model\PagedRequests.cs" />
+    <Compile Include="Source\Model\ApiResponse.cs" />
     <Compile Include="Source\Model\Models.cs" />
     <Compile Include="Source\Model\Status.cs" />
+    <Compile Include="Source\Model\User.cs" />
     <Compile Include="Source\UI\Pages\Base\BasePage.cs" />
     <Compile Include="Source\UI\Pages\Main\MainPage.Navigation.cs" />
     <Compile Include="Source\UI\Pages\Main\MainPage.VisualState.cs" />
@@ -136,6 +138,9 @@
     <Compile Include="Source\UI\Pages\Map\MyLocationOverlay.cs" />
     <Compile Include="Source\UI\Pages\Node\NodeDetailPage.xaml.cs">
       <DependentUpon>NodeDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\UI\Pages\Profile\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Source\UI\Pages\Splashscreen\SplashScreen.LoadData.cs" />
     <Compile Include="Source\UI\Pages\Splashscreen\Splashscreen.xaml.cs">
@@ -163,7 +168,7 @@
     <Compile Include="Source\Utils\GeoMath.cs" />
     <Compile Include="Source\Utils\LocationManager.cs" />
     <Compile Include="Source\Utils\Log.cs" />
-    <Compile Include="Source\Utils\Preferences\ApiPreferences.cs" />
+    <Compile Include="Source\Utils\Preferences\Preferences.cs" />
     <Compile Include="Source\Utils\Threads\LimitedConcurrencyLevelTaskScheduler.cs" />
     <Compile Include="Source\Utils\ToggleGroup.cs" />
     <Compile Include="Source\Utils\ZipHelper.cs" />
@@ -175,9 +180,11 @@
     <PRIResource Include="Strings\en-US\Resources.resw" />
     <PRIResource Include="Strings\de\Resources.resw" />
     <PRIResource Include="Strings\de\Status.resw" />
+    <PRIResource Include="Strings\de\Profile.resw" />
     <None Include="Wheelmap-Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\credits_logo.png" />
     <Content Include="Assets\Images\ic_camera.png" />
     <Content Include="Assets\Images\ic_categories.png" />
     <Content Include="Assets\Images\ic_categories_active.png" />
@@ -301,6 +308,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\UI\Pages\Node\NodeDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\UI\Pages\Profile\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

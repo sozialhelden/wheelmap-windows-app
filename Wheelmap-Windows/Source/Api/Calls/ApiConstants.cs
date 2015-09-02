@@ -12,6 +12,8 @@ namespace Wheelmap_Windows.Api.Calls {
         public const string END_POINT_CATEGORY = "/api/categories";
         public const string END_POINT_ASSETS = "/api/assets";
         public const string END_POINT_NODE_TYPES = "/api/node_types";
+        public const string END_POINT_USER_AUTHENTICATE = "/api/users/authenticate";
+        public const string END_POINT_USER_TERMS_ACCEPTED = "/api/users/accept_terms";
     }
     
 }
