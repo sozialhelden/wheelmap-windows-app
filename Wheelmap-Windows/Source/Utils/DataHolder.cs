@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Utils.Eventbus;
 using Wheelmap_Windows.Utils.Eventbus.Events;
+using Wheelmap_Windows.Utils.Preferences;
 
 namespace Wheelmap_Windows.Utils {
 
@@ -69,7 +70,9 @@ namespace Wheelmap_Windows.Utils {
                 nodes = _FilterdNodes,
                 RefreshAll = false
             };
+            Prefs.SaveFilter(Filter);
             BusProvider.DefaultInstance.Post(e);
+
         }
 
         private List<NodeType> _nodeTypes = new List<NodeType>();
@@ -92,6 +95,7 @@ namespace Wheelmap_Windows.Utils {
 
         private DataHolder() {
             BusProvider.DefaultInstance.Register(this);
+            Filter = Prefs.RestoreFilter() ?? new Filter();
         }
         
         [Subscribe]

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wheelmap_Windows.Model;
 using Windows.Storage;
 
 namespace Wheelmap_Windows.Utils.Preferences {
@@ -23,8 +24,9 @@ namespace Wheelmap_Windows.Utils.Preferences {
 
     public class Prefs {
 
-        private static ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+        private static ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         const string KEY_CURRENTUSER = "CurrentUser";
+        const string KEY_FILTER = "Filter";
 
         public static Model.User GetCurrentUser() {
             string userJson = localSettings.Values[KEY_CURRENTUSER] as string;
@@ -42,6 +44,23 @@ namespace Wheelmap_Windows.Utils.Preferences {
             }
             var json = JsonConvert.SerializeObject(user);
             localSettings.Values[KEY_CURRENTUSER] = json;
+        }
+
+        public static void SaveFilter(Filter filter) {
+            if (filter == null) {
+                localSettings.Values[KEY_FILTER] = null;
+            }
+            var json = JsonConvert.SerializeObject(filter);
+            localSettings.Values[KEY_FILTER] = json;
+        }
+        
+        public static Filter RestoreFilter() {
+            string json = localSettings.Values[KEY_FILTER] as string;
+            if (json != null) {
+                return JsonConvert.DeserializeObject<Filter>(json); ;
+            } else {
+                return null;
+            }
         }
     }
 }
