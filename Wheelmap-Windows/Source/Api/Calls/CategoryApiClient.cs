@@ -24,7 +24,7 @@ namespace Wheelmap_Windows.Api.Calls {
             string pageParam = "page=" + page;
             string pageSizeParam = "page_size=" + PAGE_SIZE;
             string url = BuildConfig.API_BASEURL + ApiConstants.END_POINT_CATEGORY + "?"
-                + BuildConfig.API_KEY_PARAM + "&"
+                + ApiConstants.API_KEY_PARAM + "&"
                 + pageSizeParam + "&"
                 + page + "&"
                 + localeParam;

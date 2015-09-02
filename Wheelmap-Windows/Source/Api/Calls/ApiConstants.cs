@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wheelmap_Windows.Model;
 
 namespace Wheelmap_Windows.Api.Calls {
 
@@ -14,6 +15,17 @@ namespace Wheelmap_Windows.Api.Calls {
         public const string END_POINT_NODE_TYPES = "/api/node_types";
         public const string END_POINT_USER_AUTHENTICATE = "/api/users/authenticate";
         public const string END_POINT_USER_TERMS_ACCEPTED = "/api/users/accept_terms";
+
+
+        public static string API_KEY_PARAM {
+            get {
+                // use api token of the user if possible
+                if (User.CurrentUser?.apiKey != null) {
+                    return "api_key=" + User.CurrentUser?.apiKey;
+                }
+                return "api_key=" + BuildConfig.API_KEY;
+            }
+        }
     }
     
 }

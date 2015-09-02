@@ -9,17 +9,7 @@ namespace Wheelmap_Windows {
     static class BuildConfig {
 
         public const string API_KEY = "jWeAsb34CJq4yVAryjtc";
-
-        public static string API_KEY_PARAM {
-            get {
-                // use api token of the user if possible
-                if (User.CurrentUser?.apiKey != null) {
-                    return "api_key=" + User.CurrentUser?.apiKey;
-                }
-                return "api_key=" + API_KEY;
-            }
-        }
-
+        
         // API ENDPOINT
 #if DEBUG
         public const string API_BASEURL = "http://staging.wheelmap.org";
