@@ -11,7 +11,7 @@ using Wheelmap_Windows.Utils.Preferences;
 namespace Wheelmap_Windows.Utils {
 
     /**
-     * core compontent to store all queried data from the api for other components
+     * core component to store all queried data from the api for other components
      */
     public sealed class DataHolder {
         
