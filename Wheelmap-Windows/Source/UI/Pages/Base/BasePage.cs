@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wheelmap_Windows.Source.UI;
 using Wheelmap_Windows.Utils;
 using Wheelmap_Windows.Utils.Eventbus;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -28,7 +30,7 @@ namespace Wheelmap_Windows.UI.Pages.Base {
 
         public virtual void GoBack() {
         }
-
+        
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
             Parameter = e.Parameter;
@@ -49,6 +51,13 @@ namespace Wheelmap_Windows.UI.Pages.Base {
         
         public virtual void OnNewParams(object args) {
             Parameter = args;
+        }
+
+        public virtual void ShowOnDetailFrame(Type type, object args = null) {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame.Content is MainPage) {
+                (rootFrame.Content as MainPage).ShowOnDetailFrame(type, args);
+            }
         }
     }
 }

@@ -61,7 +61,7 @@ namespace Wheelmap_Windows.Utils.Eventbus {
                         }
                     }
                 }
-            ).forget();
+            ).Forget();
 
         }
         

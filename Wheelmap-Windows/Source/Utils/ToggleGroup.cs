@@ -14,6 +14,7 @@ namespace Wheelmap_Windows.Utils {
     public class ToggleGroup<T> {
 
         public delegate void ChangeState(T item, bool selected);
+
         public event TypedEventHandler<T, bool> StateChanged;
 
         private T _SelectedItem;

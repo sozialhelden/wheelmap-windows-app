@@ -139,6 +139,9 @@
     <Compile Include="Source\UI\Pages\Node\NodeDetailPage.xaml.cs">
       <DependentUpon>NodeDetailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\UI\Pages\Profile\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\UI\Pages\Profile\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
@@ -171,6 +174,7 @@
     <Compile Include="Source\Utils\Preferences\Preferences.cs" />
     <Compile Include="Source\Utils\Threads\LimitedConcurrencyLevelTaskScheduler.cs" />
     <Compile Include="Source\Utils\ToggleGroup.cs" />
+    <Compile Include="Source\Utils\Utils.cs" />
     <Compile Include="Source\Utils\ZipHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +314,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\UI\Pages\Node\NodeDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\UI\Pages\Profile\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

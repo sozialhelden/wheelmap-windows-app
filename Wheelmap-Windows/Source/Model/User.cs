@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wheelmap_Windows.Utils.Eventbus;
+using Wheelmap_Windows.Utils.Eventbus.Events;
 using Wheelmap_Windows.Utils.Preferences;
 
 namespace Wheelmap_Windows.Model {
@@ -31,7 +33,11 @@ namespace Wheelmap_Windows.Model {
                 return _currentUser;
             }
             set {
-                _currentUser = value;
+
+                if (_currentUser != value) {
+                    _currentUser = value;
+                    BusProvider.DefaultInstance.Post(new UserChangedEvent { User = value });
+                }
                 Prefs.SetCurrentUser(_currentUser);
             }
         }

@@ -455,10 +455,10 @@
                             Tapped="ShowCategoryTapped">
 
                             <Image
-                                x:Name="appBarCategorie"
+                                x:Name="appBarCategory"
                                 Source="/Assets/Images/Phone/ic_kategorie.png"/>
                             <Image
-                                x:Name="appBarCategorieActive"
+                                x:Name="appBarCategoryActive"
                                 Source="/Assets/Images/Phone/ic_kategorie_select.png"/>
                             
                         </Grid>

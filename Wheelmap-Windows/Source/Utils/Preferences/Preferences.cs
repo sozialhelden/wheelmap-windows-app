@@ -27,6 +27,7 @@ namespace Wheelmap_Windows.Utils.Preferences {
         private static ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         const string KEY_CURRENTUSER = "CurrentUser";
         const string KEY_FILTER = "Filter";
+        const string KEY_INSTALL_ID = "KEY_INSTALL_ID";
 
         public static Model.User GetCurrentUser() {
             string userJson = localSettings.Values[KEY_CURRENTUSER] as string;
@@ -61,6 +62,15 @@ namespace Wheelmap_Windows.Utils.Preferences {
             } else {
                 return null;
             }
+        }
+        
+        public static String GetInstallId() {
+            string id = localSettings.Values[KEY_INSTALL_ID] as string;
+            if (id == null) {
+                id = Guid.NewGuid().ToString();
+                localSettings.Values[KEY_INSTALL_ID] = id;
+            }
+            return id;
         }
     }
 }

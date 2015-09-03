@@ -14,15 +14,15 @@ namespace Wheelmap_Windows.Extensions {
         
         // use this to ignore the warning to await for the result
         // for fire and forget
-        public static void forget(this IAsyncAction e) { }
-
-        public static void forget(this Task e) { }
+        public static void Forget(this IAsyncAction e) { }
+        public static void Forget<T>(this IAsyncOperation<T> e) { }
+        public static void Forget(this Task e) { }
 
         public static void ContinueWithOnMainThread<T>(this Task<T> e, Action<Task<T>> continuationAction) {
             e.ContinueWith((task) => {
                 CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                     continuationAction.Invoke(task);
-                }).forget();
+                }).Forget();
             });
         }
 

@@ -245,7 +245,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
         }
 
         private void OnCompass_Click(object sender, RoutedEventArgs e) {
-            mapControl.TryRotateToAsync(0).AsTask().forget();
+            mapControl.TryRotateToAsync(0).AsTask().Forget();
         }
 
     }

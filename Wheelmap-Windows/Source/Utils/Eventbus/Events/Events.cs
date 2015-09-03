@@ -30,4 +30,7 @@ namespace Wheelmap_Windows.Utils.Eventbus.Events {
         public Filter Filter;
     }
 
+    public class UserChangedEvent {
+        public User User;
+    }
 }

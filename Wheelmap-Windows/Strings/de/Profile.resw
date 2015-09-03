@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="OSMRegistration" xml:space="preserve">
+    <value>Neu bei OSM registrieren</value>
+  </data>
   <data name="PROFILE_HINT_LOGIN" xml:space="preserve">
     <value>Um dich bei Wheelmap einzuloggen benötigst du ein Nutzerkonto bei OpenStreetMap (OSM).</value>
   </data>
@@ -125,5 +128,17 @@
   </data>
   <data name="PROFILE_LOGIN" xml:space="preserve">
     <value>Mit meinem OSM-Account einloggen</value>
+  </data>
+  <data name="SignedIn" xml:space="preserve">
+    <value>Eingeloggt</value>
+  </data>
+  <data name="SignedInAs" xml:space="preserve">
+    <value>Eingelogged als {0}</value>
+  </data>
+  <data name="StepsToOSMAccount" xml:space="preserve">
+    <value>Vier Schritte zum Login: 
+1. Auf “Weiter zur OSM” klicken und dort OSM-Nutzerkonto anlegen 
+2. Email-Programm öffnen und Bestätigungslink klicken 
+3. Wheelmap-App öffnen \n4. Mit dem OSM-Nutzerkonto (Nutzernamen &amp; Passwort) einloggen</value>
   </data>
 </root>

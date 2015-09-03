@@ -155,5 +155,15 @@ namespace Wheelmap_Windows.Source.UI {
             return true;
         }
 
+        public override void ShowOnDetailFrame(Type type, object args) {
+            detailContainerFrame.Navigate(type, args);
+            this.RefreshCanGoBack();
+        }
+
+        [Subscribe]
+        public void OnUserChanged(UserChangedEvent e) {
+            detailContainerFrame.Content = null;
+        }
+
     }
 }

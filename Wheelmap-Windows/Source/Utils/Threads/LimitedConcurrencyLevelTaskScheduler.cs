@@ -72,7 +72,7 @@ namespace Wheelmap_Windows.Source.Utils.Threads {
                 }
                 // We're done processing items on the current thread
                 finally { _currentThreadIsProcessingItems = false; }
-            }).forget();
+            }).Forget();
         }
 
         // Attempts to execute the specified task on the current thread. 

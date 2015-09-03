@@ -218,6 +218,6 @@ namespace Wheelmap_Windows.Source.UI {
                 appBarWCStatusActive.Visibility = Visibility.Collapsed;
             }
         }
-
+    
     }
 }
