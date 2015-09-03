@@ -178,9 +178,15 @@ namespace Wheelmap_Windows.Source.UI {
             if (e.Filter.FilteredCategoryIdentifier.Count() > 0) {
                 sideMenuCategoryImage.Visibility = Visibility.Collapsed;
                 sideMenuCategoryImageActive.Visibility = Visibility.Visible;
+
+                appBarCategory.Visibility = Visibility.Collapsed;
+                appBarCategoryActive.Visibility = Visibility.Visible;
             } else {
                 sideMenuCategoryImage.Visibility = Visibility.Visible;
                 sideMenuCategoryImageActive.Visibility = Visibility.Collapsed;
+
+                appBarCategory.Visibility = Visibility.Visible;
+                appBarCategoryActive.Visibility = Visibility.Collapsed;
             }
 
             if (e.Filter.FilterdStati.Count() > 0) {
@@ -201,9 +207,15 @@ namespace Wheelmap_Windows.Source.UI {
             if (e.Filter.FilterdWcStati.Count() > 0) {
                 sideMenuWCStatusImage.Visibility = Visibility.Collapsed;
                 sideMenuWCStatusImageActive.Visibility = Visibility.Visible;
+
+                appBarWCStatus.Visibility = Visibility.Collapsed;
+                appBarWCStatusActive.Visibility = Visibility.Visible;
             } else {
                 sideMenuWCStatusImage.Visibility = Visibility.Visible;
                 sideMenuWCStatusImageActive.Visibility = Visibility.Collapsed;
+
+                appBarWCStatus.Visibility = Visibility.Visible;
+                appBarWCStatusActive.Visibility = Visibility.Collapsed;
             }
         }
 

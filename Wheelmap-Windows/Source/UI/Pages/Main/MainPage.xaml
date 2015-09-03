@@ -428,12 +428,14 @@
                         <Grid
                             Grid.Column="1"
                             Tapped="ShowWCTapped">
-                            
+
                             <Image
+                                x:Name="appBarWCStatus"
                                 Source="/Assets/Images/Phone/ic_wc.png"/>
-                            
+
                             <Image
-                                Source="/Assets/Images/Phone/ic_wc.png"/>
+                                x:Name="appBarWCStatusActive"
+                                Source="/Assets/Images/Phone/ic_wc_select.png"/>
                             
                         </Grid>
 
@@ -453,9 +455,11 @@
                             Tapped="ShowCategoryTapped">
 
                             <Image
+                                x:Name="appBarCategorie"
                                 Source="/Assets/Images/Phone/ic_kategorie.png"/>
                             <Image
-                                Source="/Assets/Images/Phone/ic_kategorie.png"/>
+                                x:Name="appBarCategorieActive"
+                                Source="/Assets/Images/Phone/ic_kategorie_select.png"/>
                             
                         </Grid>
 

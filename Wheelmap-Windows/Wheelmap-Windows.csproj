@@ -237,6 +237,7 @@
     <Content Include="Assets\Images\Phone\ic_grey.png" />
     <Content Include="Assets\Images\Phone\ic_kategorie.png" />
     <Content Include="Assets\Images\Phone\ic_kategorie_active.png" />
+    <Content Include="Assets\Images\Phone\ic_kategorie_select.png" />
     <Content Include="Assets\Images\Phone\ic_list.png" />
     <Content Include="Assets\Images\Phone\ic_list_grey.png" />
     <Content Include="Assets\Images\Phone\ic_location.png" />
@@ -260,6 +261,7 @@
     <Content Include="Assets\Images\Phone\ic_status_white.png" />
     <Content Include="Assets\Images\Phone\ic_wc.png" />
     <Content Include="Assets\Images\Phone\ic_wc_active.png" />
+    <Content Include="Assets\Images\Phone\ic_wc_select.png" />
     <Content Include="Commands.xml">
       <SubType>Designer</SubType>
     </Content>

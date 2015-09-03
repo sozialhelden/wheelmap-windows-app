@@ -66,17 +66,19 @@ namespace Wheelmap_Windows.Utils {
         public Filter Filter = new Filter();
         public void RefreshFilter() {
             _FilterdNodes = Filter.FilterNodes(_Nodes);
+
+            var filterChangedEvent = new FilterChangedEvent {
+                Filter = Filter
+            };
+            BusProvider.DefaultInstance.Post(filterChangedEvent);
+
             var e = new NewNodesEvent() {
                 nodes = _FilterdNodes,
                 RefreshAll = false
             };
             Prefs.SaveFilter(Filter);
             BusProvider.DefaultInstance.Post(e);
-
-            var filterChangedEvent = new FilterChangedEvent {
-                Filter = Filter
-            };
-            BusProvider.DefaultInstance.Post(filterChangedEvent);
+            
         }
 
         private List<NodeType> _nodeTypes = new List<NodeType>();
