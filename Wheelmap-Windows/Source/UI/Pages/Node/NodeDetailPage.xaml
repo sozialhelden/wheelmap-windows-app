@@ -22,13 +22,12 @@
             </Grid.RowDefinitions>
 
             <ScrollViewer
-            Grid.Row="0"
-            VerticalScrollMode="Auto"
-            VerticalScrollBarVisibility="Hidden">
+                x:Name="scrollViewer"
+                Grid.Row="0">
                 <StackPanel
-                Padding="10,10,10,10"
-                Width="Auto"
-                MinWidth="200">
+                    Padding="10,10,10,10"
+                    Width="Auto"
+                    MinWidth="200">
 
                     <Maps:MapControl
                     Background="Transparent"

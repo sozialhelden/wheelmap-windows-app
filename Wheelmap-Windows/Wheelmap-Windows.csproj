@@ -167,6 +167,7 @@
     <Compile Include="Source\Utils\Extensions\Extensions.cs" />
     <Compile Include="Source\Utils\Extensions\Localization.cs" />
     <Compile Include="Source\Utils\Extensions\MapExtensions.cs" />
+    <Compile Include="Source\Utils\Extensions\ViewExtensions.cs" />
     <Compile Include="Source\Utils\Extensions\WebRequestExtensions.cs" />
     <Compile Include="Source\Utils\GeoMath.cs" />
     <Compile Include="Source\Utils\LocationManager.cs" />

@@ -44,6 +44,7 @@
             <Grid
                 x:Name="loginPanel">
                 <ScrollViewer
+                    x:Name="loginPanelScrollViewer"
                     Padding="10,10,10,10">
 
                     <StackPanel

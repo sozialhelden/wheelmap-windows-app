@@ -31,6 +31,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
         public NodeDetailPage() {
             this.InitializeComponent();
+            scrollViewer.HideVerticalScrollBarsIfContentFits();
             //mapControl.SetOsmTileSource();
         }
 

@@ -30,6 +30,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Profile {
             UserChanged(new UserChangedEvent { User = User.CurrentUser });
             BusProvider.DefaultInstance.Register(this);
             InitLocalizations();
+            loginPanelScrollViewer.HideVerticalScrollBarsIfContentFits();
         }
 
         private void InitLocalizations() {
