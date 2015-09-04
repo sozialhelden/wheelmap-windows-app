@@ -39,13 +39,23 @@ namespace Wheelmap_Windows.Source.UI {
         
         public override void GoBack() {
             if (SecondPage.Content != null) {
-                SecondPage.Content = null;
+                if (SecondPage.CanGoBack) {
+                    SecondPage.GoBack();
+                } else {
+                    SecondPage.Content = null;
+                }
                 UpdateTitle();
                 return;
             }
 
             if (detailContainerFrame.Content != null) {
-                detailContainerFrame.Content = null;
+                if (detailContainerFrame.CanGoBack 
+                    // the user should always be able to go back from the NodeDetailPage
+                    && !(detailContainerFrame.Content is NodeDetailPage)) {
+                    detailContainerFrame.GoBack();
+                } else { 
+                    detailContainerFrame.Content = null;
+                }
                 UpdateTitle();
                 return;
             }
@@ -101,9 +111,13 @@ namespace Wheelmap_Windows.Source.UI {
 
         private bool _ShowOnMenuContainerFrameNormal(object sender, Type pageType, object param = null) {
             if (menuContainerFrame.Content?.GetType() == pageType) {
-
+               
                 var page = (menuContainerFrame.Content as BasePage);
                 if (page.Parameter?.Equals(param) ?? param == page.Parameter) {
+                    if (CurrentSizeState == STATE_SMALL) {
+                        // on small screens the menuContainerFrame works like an tabbar
+                        return true;
+                    }
                     // remove content
                     if (menuContainerFrame.Content is Page) {
                         (menuContainerFrame.Content as Page).Unregister();
@@ -112,7 +126,9 @@ namespace Wheelmap_Windows.Source.UI {
                     mToggleGroup.SelectedItem = null;
                     return false;
                 } else {
-                    menuContainerFrame.Content = null;
+                    if (CurrentSizeState != STATE_SMALL) {
+                        menuContainerFrame.Content = null;
+                    }
                 }
             }
 
