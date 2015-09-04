@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 using Wheelmap_Windows.Extensions;
 using Windows.UI.Xaml.Media.Imaging;
 using Wheelmap_Windows.Api.Calls;
+using Windows.UI;
 
 namespace Wheelmap_Windows.Source.UI.Pages.Node {
     
@@ -171,8 +172,9 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             node.phone = phoneNumberTextBox.Text.Trim();
             node.website = websiteTextBox.Text.Trim();
 
-            new NodeEditRequest(node).Execute().ContinueWith(task => {
-                
+            //progressBar.Visibility = Visibility.Visible;
+            new NodeEditRequest(node).Execute().ContinueWithOnDispatcher(Dispatcher, task => {
+                progressBar.Visibility = Visibility.Collapsed; 
             });
         }
 

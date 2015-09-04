@@ -114,7 +114,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
         private void InitImages(Model.Node node) {
             listView.Items.Clear();
-            new PhotosRequest(node).Query().ContinueWithOnMainThread((photos) => {
+            new PhotosRequest(node).Query().ContinueWithOnDispatcher(Dispatcher, (photos) => {
                 if (CurrentNode != node) {
                     return;
                 }

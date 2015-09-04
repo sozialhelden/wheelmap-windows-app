@@ -18,9 +18,9 @@ namespace Wheelmap_Windows.Extensions {
         public static void Forget<T>(this IAsyncOperation<T> e) { }
         public static void Forget(this Task e) { }
 
-        public static void ContinueWithOnMainThread<T>(this Task<T> e, Action<Task<T>> continuationAction) {
+        public static void ContinueWithOnDispatcher<T>(this Task<T> e, CoreDispatcher dispatcher, Action<Task<T>> continuationAction) {
             e.ContinueWith((task) => {
-                CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+                dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                     continuationAction.Invoke(task);
                 }).Forget();
             });

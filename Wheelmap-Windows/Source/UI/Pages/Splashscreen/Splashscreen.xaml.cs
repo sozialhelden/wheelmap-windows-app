@@ -55,7 +55,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Splashscreen {
         }
 
         async void RestoreStateAsync(bool loadState) {
-            LoadData().ContinueWithOnMainThread((task) => {
+            LoadData().ContinueWithOnDispatcher(Dispatcher, (task) => {
                 DismissExtendedSplash();
             });
         }
