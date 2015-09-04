@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Wheelmap_Windows.Extensions;
 using Windows.UI.Xaml.Media.Imaging;
+using Wheelmap_Windows.Api.Calls;
 
 namespace Wheelmap_Windows.Source.UI.Pages.Node {
     
@@ -107,17 +108,17 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
         private void initStatus(Model.Node node) {
 
-            var status = Stati.From(node?.wheelchairStatus);
-            statusBgBorder.Background = new SolidColorBrush(status.GetColor());
-            statusTextBlock.Text = status.GetLocalizedMessage();
+            wheelchairStatus = Stati.From(node?.wheelchairStatus);
+            statusBgBorder.Background = new SolidColorBrush(wheelchairStatus.Value.GetColor());
+            statusTextBlock.Text = wheelchairStatus?.GetLocalizedMessage();
             statusImage.Source = new BitmapImage(new
-                          Uri(status.GetImage(), UriKind.RelativeOrAbsolute));
+                          Uri(wheelchairStatus?.GetImage(), UriKind.RelativeOrAbsolute));
 
-            var toiletStatus = Stati.From(node?.wheelchairToiletStatus);
-            statusToiletBgBorder.Background = new SolidColorBrush(toiletStatus.GetColor());
-            statusToiletTextBlock.Text = toiletStatus.GetLocalizedToiletMessage();
+            wheelchairWCStatus = Stati.From(node?.wheelchairToiletStatus);
+            statusToiletBgBorder.Background = new SolidColorBrush(wheelchairWCStatus.Value.GetColor());
+            statusToiletTextBlock.Text = wheelchairWCStatus?.GetLocalizedToiletMessage();
             statusToiletImage.Source = new BitmapImage(new
-                          Uri(toiletStatus.GetImage(), UriKind.RelativeOrAbsolute));
+                          Uri(wheelchairWCStatus?.GetImage(), UriKind.RelativeOrAbsolute));
 
         }
 
@@ -138,9 +139,13 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             if (wheelchairStatus == null) {
                 return false;
             }
-            
+
+            if (wheelchairWCStatus == null) {
+                return false;
+            }
+
             // TODO check for position
-            
+
             return true;
         }
 
@@ -165,11 +170,15 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             node.city = cityTextBox.Text.Trim();
             node.phone = phoneNumberTextBox.Text.Trim();
             node.website = websiteTextBox.Text.Trim();
-            
+
+            new NodeEditRequest(node).Execute().ContinueWith(task => {
+                
+            });
         }
 
         private void positionTextBox_Tapped(object sender, TappedRoutedEventArgs e) {
             Log.d(this, "positionTextBox_Tapped");
+
         }
     }
 }

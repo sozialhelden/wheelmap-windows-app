@@ -60,4 +60,14 @@ namespace Wheelmap_Windows.Api.Model {
     public class UserAuthenticateResponse {
         public User user;
     }
+
+    public class NodeEditResponse {
+        public string message;
+
+        public bool IsOk {
+            get {
+                return "OK".Equals(message);
+            }
+        }
+    }
 }
