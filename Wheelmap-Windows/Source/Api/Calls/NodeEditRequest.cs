@@ -13,8 +13,47 @@ using Newtonsoft.Json;
  * http://wheelmap.org/ja/api/docs/resources/nodes
  */
 namespace Wheelmap_Windows.Api.Calls {
+    
+    public class NodeEditRequest {
 
-    class NodeEditHelper {
+        Node node;
+
+        public NodeEditRequest(Node  node) {
+            this.node = node;
+        }
+
+        public async Task<bool> Execute() {
+            try {
+                return await execute();
+            } catch {
+                return false;
+            }
+        }
+        
+        private async Task<bool> execute() {
+            using (var client = new HttpClient()) {
+                string url = GetUrl();
+                Log.d(this, "Post to: " + url);
+
+                var values = NodeToParams(node);
+                var content = new FormUrlEncodedContent(values);
+                HttpResponseMessage responseMessage;
+                if (node.id <= 0) {
+                    responseMessage = await client.PostAsync(url, content);
+                } else {
+                    responseMessage = await client.PutAsync(url, content);
+                }
+                var responseString = await responseMessage.Content.ReadAsStringAsync();
+                var editResponse = JsonConvert.DeserializeObject<NodeEditResponse>(responseString);
+                return editResponse.IsOk;
+            }
+        }
+
+        protected string GetUrl() {
+            string url = BuildConfig.API_BASEURL + String.Format(ApiConstants.END_POINT_NODE_EDIT, node.id) + "?"
+                + ApiConstants.API_KEY_PARAM;
+            return url;
+        }
 
         public static IDictionary<string, string> NodeToParams(Node n) {
             var dic = new Dictionary<string, string> {
@@ -32,7 +71,7 @@ namespace Wheelmap_Windows.Api.Calls {
             if (n.wheelchairDescription != null) {
                 dic.Add("wheelchair_description", n.wheelchairDescription);
             }
-            
+
             // TODO how to change wheelchairWCStatus
 
             if (n.street != null) {
@@ -62,42 +101,6 @@ namespace Wheelmap_Windows.Api.Calls {
             return dic;
         }
 
-    }
-
-    public class NodeEditRequest {
-
-        Node node;
-
-        public NodeEditRequest(Node  node) {
-            this.node = node;
-        }
-
-        public async Task<bool> Execute() {
-
-            using (var client = new HttpClient()) {
-                string url = GetUrl();
-                Log.d(this, "Post to: " + url);
-
-                var values = NodeEditHelper.NodeToParams(node);
-                var content = new FormUrlEncodedContent(values);
-                HttpResponseMessage responseMessage;
-                if (node.id <= 0) {
-                    responseMessage = await client.PostAsync(url, content);
-                } else {
-                    responseMessage = await client.PutAsync(url, content);
-                }
-                var responseString = await responseMessage.Content.ReadAsStringAsync();
-                var editResponse = JsonConvert.DeserializeObject<NodeEditResponse>(responseString);
-                return editResponse.IsOk;
-            }
-
-        }
-
-        protected string GetUrl() {
-            string url = BuildConfig.API_BASEURL + String.Format(ApiConstants.END_POINT_NODE_EDIT, node.id) + "?"
-                + ApiConstants.API_KEY_PARAM;
-            return url;
-        }
 
     }
 }
