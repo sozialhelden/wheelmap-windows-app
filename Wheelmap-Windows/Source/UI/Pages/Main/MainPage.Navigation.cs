@@ -36,7 +36,7 @@ namespace Wheelmap_Windows.Source.UI {
                 || detailContainerFrame.Content != null
                 ;
         }
-        
+
         public override void GoBack() {
             if (SecondPage.Content != null) {
                 if (SecondPage.CanGoBack) {
@@ -49,11 +49,11 @@ namespace Wheelmap_Windows.Source.UI {
             }
 
             if (detailContainerFrame.Content != null) {
-                if (detailContainerFrame.CanGoBack 
+                if (detailContainerFrame.CanGoBack
                     // the user should always be able to go back from the NodeDetailPage
                     && !(detailContainerFrame.Content is NodeDetailPage)) {
                     detailContainerFrame.GoBack();
-                } else { 
+                } else {
                     detailContainerFrame.Content = null;
                 }
                 UpdateTitle();
@@ -72,7 +72,7 @@ namespace Wheelmap_Windows.Source.UI {
                 return;
             }
         }
-        
+
         public void NavigateSecondPage(Type page, object args = null) {
             //SecondPage.Navigate(page, args);
             (App.Current as App).Navigate(page, args);
@@ -86,11 +86,11 @@ namespace Wheelmap_Windows.Source.UI {
             } else {
                 detailContainerFrame.Navigate(typeof(NodeDetailPage), e.node);
             }
-            
+
             this.RefreshCanGoBack();
-            
+
         }
-        
+
         /**
          * returns true if page will be shown
          */
@@ -103,7 +103,7 @@ namespace Wheelmap_Windows.Source.UI {
             } else {
                 ret = _ShowOnMenuContainerFrameNormal(sender, pageType, param);
             }
-            
+
             this.RefreshCanGoBack();
             UpdateTitle();
             return ret;
@@ -111,7 +111,7 @@ namespace Wheelmap_Windows.Source.UI {
 
         private bool _ShowOnMenuContainerFrameNormal(object sender, Type pageType, object param = null) {
             if (menuContainerFrame.Content?.GetType() == pageType) {
-               
+
                 var page = (menuContainerFrame.Content as BasePage);
                 if (page.Parameter?.Equals(param) ?? param == page.Parameter) {
                     if (CurrentSizeState == STATE_SMALL) {
@@ -137,7 +137,7 @@ namespace Wheelmap_Windows.Source.UI {
             if (Grid.GetColumn(menuContainerFrame) == Grid.GetColumn(detailContainerFrame)) {
                 detailContainerFrame.Content = null;
             }
-            
+
             if (sender is Panel) {
                 if (!mToggleGroup.Items.Contains(sender)) {
                     mToggleGroup.Items.Add(sender as Panel);
