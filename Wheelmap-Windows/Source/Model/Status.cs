@@ -19,6 +19,9 @@ namespace Wheelmap_Windows.Model {
     public static class Stati {
 
         public static Status From(string s) {
+            if (s == null) {
+                return Status.UNKNOWN;
+            }
             switch (s) {
                 case "unknown":
                     return Status.UNKNOWN;

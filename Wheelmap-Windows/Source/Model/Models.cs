@@ -22,7 +22,13 @@ namespace Wheelmap_Windows.Model {
         [JsonProperty(PropertyName = "localized_name")]
         public string localizedName {
             get {
-                return _localizedName;
+                if (_localizedName != null) {
+                    return _localizedName;
+                }
+                if (DataHolder.Instance.NodeTypeById.ContainsKey(id)) {
+                    return DataHolder.Instance.NodeTypeById[id].localizedName;
+                }
+                return identifier;
             }
             set {
                 _localizedName = value;

@@ -5,6 +5,7 @@ using Wheelmap_Windows.Api.Calls;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Source.UI.Pages.ImagesDetail;
+using Wheelmap_Windows.Source.UI.Pages.Profile;
 using Wheelmap_Windows.UI.Pages.Base;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
@@ -109,7 +110,6 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             statusToiletTextBlock.Text = toiletStatus.GetLocalizedToiletMessage();
             statusToiletImage.Source = new BitmapImage(new
                           Uri(toiletStatus.GetImage(), UriKind.RelativeOrAbsolute));
-
         }
 
         private void InitImages(Model.Node node) {
@@ -157,6 +157,15 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 return;
             }
             
+        }
+
+        private void Edit_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
+            if (User.CurrentUser != null) {
+                ShowOnDetailFrame(typeof(NodeEditPage), CurrentNode);
+            } else {
+                // show login page when user not already logged in
+                ShowOnDetailFrame(typeof(LoginPage));
+            }
         }
     }
     

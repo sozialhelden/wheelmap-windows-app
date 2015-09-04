@@ -178,7 +178,7 @@ namespace Wheelmap_Windows.Source.UI {
 
         [Subscribe]
         public void OnUserChanged(UserChangedEvent e) {
-            detailContainerFrame.Content = null;
+            GoBack();
         }
 
     }

@@ -219,6 +219,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Image
+                        Tapped="Edit_Tapped"
                 Grid.Column="0"
                 Source="/Assets/Images/ic_edit.png"
                 Height="40"

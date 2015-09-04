@@ -139,6 +139,9 @@
     <Compile Include="Source\UI\Pages\Node\NodeDetailPage.xaml.cs">
       <DependentUpon>NodeDetailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\UI\Pages\Node\NodeEditPage.xaml.cs">
+      <DependentUpon>NodeEditPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\UI\Pages\Profile\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -186,6 +189,7 @@
     <PRIResource Include="Strings\de\Resources.resw" />
     <PRIResource Include="Strings\de\Status.resw" />
     <PRIResource Include="Strings\de\Profile.resw" />
+    <PRIResource Include="Strings\de\Node.resw" />
     <None Include="Wheelmap-Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -315,6 +319,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\UI\Pages\Node\NodeDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\UI\Pages\Node\NodeEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

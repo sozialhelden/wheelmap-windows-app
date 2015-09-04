@@ -14,6 +14,7 @@ namespace Wheelmap_Windows.Utils {
 
     public class R {
         public class File {
+            public const string NODE = "Node";
             public const string STATUS = "Status";
             public const string PROFILE = "Profile";
         }

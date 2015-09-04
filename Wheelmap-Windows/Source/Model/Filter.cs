@@ -14,6 +14,7 @@ namespace Wheelmap_Windows.Model {
         public ISet<string> FilteredCategoryIdentifier = new SortedSet<string>();
 
         public List<Node> FilterNodes(ICollection<Node> items) {
+
             List<Node> newList = new List<Node>();
 
             foreach(Node n in items) {

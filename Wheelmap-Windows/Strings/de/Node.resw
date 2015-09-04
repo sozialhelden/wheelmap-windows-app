@@ -117,64 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="HELP_HINT" xml:space="preserve">
-    <value>Hilf mit und markiere die Rollstuhlgerechtigkeit dieser Orte in deiner Nähe.</value>
+  <data name="ADDRESS_TITLE.Text" xml:space="preserve">
+    <value>Adresse</value>
   </data>
-  <data name="MENU_CATEGORY.Text" xml:space="preserve">
-    <value>Kategory</value>
+  <data name="INPUT_ADDRESS.PlaceholderText" xml:space="preserve">
+    <value>Adresse</value>
   </data>
-  <data name="MENU_CREDITS.Text" xml:space="preserve">
-    <value>Credits</value>
+  <data name="INPUT_CATEGORY.PlaceholderText" xml:space="preserve">
+    <value>Kategorie</value>
   </data>
-  <data name="MENU_HELP.Text" xml:space="preserve">
-    <value>Mithelfen</value>
+  <data name="INPUT_CITY.PlaceholderText" xml:space="preserve">
+    <value>Stadt</value>
   </data>
-  <data name="MENU_LIST.Text" xml:space="preserve">
-    <value>Liste</value>
+  <data name="INPUT_COMMENT.PlaceholderText" xml:space="preserve">
+    <value>Kommentar</value>
   </data>
-  <data name="MENU_PROFILE.Text" xml:space="preserve">
-    <value>Profil</value>
+  <data name="INPUT_HOUSE_NUMBER.PlaceholderText" xml:space="preserve">
+    <value>Nummer</value>
   </data>
-  <data name="MENU_SETTINGS.Text" xml:space="preserve">
-    <value>Einstellungen</value>
+  <data name="INPUT_NAME.PlaceholderText" xml:space="preserve">
+    <value>Name</value>
   </data>
-  <data name="MENU_STATUS.Text" xml:space="preserve">
-    <value>Status</value>
+  <data name="INPUT_NODE_TYPE.PlaceholderText" xml:space="preserve">
+    <value>Ortstyp</value>
   </data>
-  <data name="MENU_STATUS_INFO.Text" xml:space="preserve">
-    <value>Infos zum Markieren</value>
+  <data name="INPUT_PHONE.PlaceholderText" xml:space="preserve">
+    <value>Telefon</value>
   </data>
-  <data name="MENU_WC.Text" xml:space="preserve">
-    <value>Toilette</value>
+  <data name="INPUT_PLZ.PlaceholderText" xml:space="preserve">
+    <value>PLZ</value>
   </data>
-  <data name="NO_NODES_FOUND" xml:space="preserve">
-    <value>keine Orte entsprechend der ausgewählten Kriterien oder Position gefunden</value>
+  <data name="INPUT_POSITION.PlaceholderText" xml:space="preserve">
+    <value>Position</value>
   </data>
-  <data name="OutOfZoom.Text" xml:space="preserve">
-    <value>Zu weit entfernt um neue Orte zu laden</value>
+  <data name="INPUT_STREET.PlaceholderText" xml:space="preserve">
+    <value>Straße</value>
   </data>
-  <data name="TITLE_EDIT" xml:space="preserve">
-    <value>Ort bearbeiten</value>
+  <data name="INPUT_WEBSITE.PlaceholderText" xml:space="preserve">
+    <value>Webseite</value>
   </data>
-  <data name="TITLE_HELP" xml:space="preserve">
-    <value>Mithelfen</value>
-  </data>
-  <data name="TITLE_LIST" xml:space="preserve">
-    <value>Liste</value>
-  </data>
-  <data name="TITLE_MAP" xml:space="preserve">
-    <value>Karte</value>
-  </data>
-  <data name="TITLE_NEW" xml:space="preserve">
-    <value>Ort hinzufügen</value>
-  </data>
-  <data name="TITLE_PROFILE" xml:space="preserve">
-    <value>Profil</value>
-  </data>
-  <data name="TITLE_STATUS" xml:space="preserve">
-    <value>Status des Ortes</value>
-  </data>
-  <data name="TITLE_WC" xml:space="preserve">
-    <value>Toiletten</value>
+  <data name="SAVE" xml:space="preserve">
+    <value>Speichern</value>
   </data>
 </root>
