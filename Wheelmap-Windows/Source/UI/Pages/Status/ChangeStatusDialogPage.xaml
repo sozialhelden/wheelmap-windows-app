@@ -11,7 +11,8 @@
     <Grid 
         RequestedTheme="Light">
 
-        <StackPanel>
+        <ScrollViewer>
+            <StackPanel>
             
             <local:StatusExplainView
                 x:Name="statusYesView"
@@ -25,7 +26,8 @@
                 x:Name="statusNoView"
                 Status="NO"/>
             
-        </StackPanel>
-        
+            </StackPanel>
+        </ScrollViewer>
+
     </Grid>
 </app:BasePage>
