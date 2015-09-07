@@ -325,6 +325,7 @@
                                     Grid.Column="2"
                                     Height="48"
                                     Width="48"
+                                    Tapped="AddNewNode_Tapped"
                                     Source="/Assets/Images/Phone/ic_neu.png"/>
 
                             </Grid>

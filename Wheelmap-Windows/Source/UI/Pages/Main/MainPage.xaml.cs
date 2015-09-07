@@ -202,8 +202,7 @@ namespace Wheelmap_Windows.Source.UI {
                 appBarStatus.Visibility = Visibility.Visible;
                 appBarStatusActive.Visibility = Visibility.Collapsed;
             }
-
-
+            
             if (e.Filter.FilterdWcStati.Count() > 0) {
                 sideMenuWCStatusImage.Visibility = Visibility.Collapsed;
                 sideMenuWCStatusImageActive.Visibility = Visibility.Visible;
@@ -218,6 +217,9 @@ namespace Wheelmap_Windows.Source.UI {
                 appBarWCStatusActive.Visibility = Visibility.Collapsed;
             }
         }
-    
+
+        private void AddNewNode_Tapped(object sender, TappedRoutedEventArgs e) {
+            this.ShowOnDetailFrame(typeof(NodeEditPage));
+        }
     }
 }

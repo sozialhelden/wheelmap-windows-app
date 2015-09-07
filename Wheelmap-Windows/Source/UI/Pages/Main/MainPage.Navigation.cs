@@ -171,7 +171,7 @@ namespace Wheelmap_Windows.Source.UI {
             return true;
         }
 
-        public override void ShowOnDetailFrame(Type type, object args) {
+        public override void ShowOnDetailFrame(Type type, object args = null) {
             detailContainerFrame.Navigate(type, args);
             this.RefreshCanGoBack();
         }
