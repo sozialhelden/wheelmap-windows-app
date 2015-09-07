@@ -50,7 +50,6 @@ namespace Wheelmap_Windows.Source.UI {
 
             if (detailContainerFrame.Content != null) {
                 if (detailContainerFrame.CanGoBack
-                    && detailContainerFrame.BackStackDepth > 1
                     // the user should always be able to go back from the NodeDetailPage
                     && !(detailContainerFrame.Content is NodeDetailPage)) {
                     detailContainerFrame.GoBack();
@@ -175,7 +174,17 @@ namespace Wheelmap_Windows.Source.UI {
         }
 
         public override void ShowOnDetailFrame(Type type, object args = null) {
+            Log.d(TAG, "canGoBack: " + detailContainerFrame.CanGoBack);
+            var contentEmpty = detailContainerFrame.Content == null;
             detailContainerFrame.Navigate(type, args);
+
+            if (contentEmpty) {
+                detailContainerFrame.BackStack.Clear();
+            }
+            foreach (var s in detailContainerFrame.BackStack) {
+                Log.d(TAG,s.NavigationTransitionInfo);
+            }
+            Log.d(TAG, "canGoBack: " + detailContainerFrame.CanGoBack);
             this.RefreshCanGoBack();
         }
 
