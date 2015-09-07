@@ -174,17 +174,14 @@ namespace Wheelmap_Windows.Source.UI {
         }
 
         public override void ShowOnDetailFrame(Type type, object args = null) {
-            Log.d(TAG, "canGoBack: " + detailContainerFrame.CanGoBack);
             var contentEmpty = detailContainerFrame.Content == null;
             detailContainerFrame.Navigate(type, args);
 
+            // workaround to fix back handling
             if (contentEmpty) {
                 detailContainerFrame.BackStack.Clear();
             }
-            foreach (var s in detailContainerFrame.BackStack) {
-                Log.d(TAG,s.NavigationTransitionInfo);
-            }
-            Log.d(TAG, "canGoBack: " + detailContainerFrame.CanGoBack);
+
             this.RefreshCanGoBack();
         }
 
