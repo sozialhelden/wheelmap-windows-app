@@ -15,9 +15,10 @@ using Windows.UI.Xaml.Navigation;
 using Wheelmap_Windows.Model;
 using Windows.UI.Xaml.Media.Imaging;
 using System.ComponentModel;
+using Wheelmap_Windows.Source.Utils.Interfaces;
 
 namespace Wheelmap_Windows.Source.UI.Pages.Status {
-    public sealed partial class StatusExplainView : UserControl, INotifyPropertyChanged {
+    public sealed partial class StatusExplainView : UserControl, Selectable {
 
         private bool _Selected = true;
         public bool Selected {

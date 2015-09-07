@@ -19,6 +19,7 @@ using Wheelmap_Windows.Extensions;
 using Windows.UI.Xaml.Media.Imaging;
 using Wheelmap_Windows.Api.Calls;
 using Windows.UI;
+using Wheelmap_Windows.Source.UI.Pages.Status;
 
 namespace Wheelmap_Windows.Source.UI.Pages.Node {
     
@@ -110,17 +111,20 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
         private void initStatus(Model.Node node) {
 
             wheelchairStatus = Stati.From(node?.wheelchairStatus);
+            wheelchairWCStatus = Stati.From(node?.wheelchairToiletStatus);
+            updateStati();
+        }
+
+        private void updateStati() {
             statusBgBorder.Background = new SolidColorBrush(wheelchairStatus.Value.GetColor());
             statusTextBlock.Text = wheelchairStatus?.GetLocalizedMessage();
             statusImage.Source = new BitmapImage(new
                           Uri(wheelchairStatus?.GetImage(), UriKind.RelativeOrAbsolute));
 
-            wheelchairWCStatus = Stati.From(node?.wheelchairToiletStatus);
             statusToiletBgBorder.Background = new SolidColorBrush(wheelchairWCStatus.Value.GetColor());
             statusToiletTextBlock.Text = wheelchairWCStatus?.GetLocalizedToiletMessage();
             statusToiletImage.Source = new BitmapImage(new
                           Uri(wheelchairWCStatus?.GetImage(), UriKind.RelativeOrAbsolute));
-
         }
 
         private bool CheckIfAllRequiredFieldsAreValid() {
@@ -181,6 +185,22 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
         private void positionTextBox_Tapped(object sender, TappedRoutedEventArgs e) {
             Log.d(this, "positionTextBox_Tapped");
+            
         }
+        
+        private void status_Tapped(object sender, TappedRoutedEventArgs e) {
+            ChangeStatusDialogPage.ShowInDialog(new ChangeStatusDialogPageArgs { status = wheelchairStatus ?? Model.Status.UNKNOWN, isInWcMode = false }, (status) => {
+                wheelchairStatus = status;
+                updateStati();
+            });
+        }
+
+        private void statusToilet_Tapped(object sender, TappedRoutedEventArgs e) {
+            ChangeStatusDialogPage.ShowInDialog(new ChangeStatusDialogPageArgs { status = wheelchairWCStatus ?? Model.Status.UNKNOWN, isInWcMode = true }, (status) => {
+                wheelchairWCStatus = status;
+                updateStati();
+            });
+        }
+        
     }
 }

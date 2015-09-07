@@ -153,13 +153,16 @@
     <Compile Include="Source\UI\Pages\Splashscreen\Splashscreen.xaml.cs">
       <DependentUpon>Splashscreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\UI\Pages\Status\ChangeStatusDialogPage.xaml.cs">
+      <DependentUpon>ChangeStatusDialogPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\UI\Pages\Status\StatusExplainView.xaml.cs">
       <DependentUpon>StatusExplainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Source\UI\Pages\Status\StatusPage.xaml.cs">
       <DependentUpon>StatusPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Source\Utils\BackDelegate.cs" />
+    <Compile Include="Source\Utils\Interfaces\BackDelegate.cs" />
     <Compile Include="Source\Utils\BiDirectionalMap.cs" />
     <Compile Include="Source\Utils\BulkObservableCollection.cs" />
     <Compile Include="Source\Utils\Constants.cs" />
@@ -174,6 +177,7 @@
     <Compile Include="Source\Utils\Extensions\ViewExtensions.cs" />
     <Compile Include="Source\Utils\Extensions\WebRequestExtensions.cs" />
     <Compile Include="Source\Utils\GeoMath.cs" />
+    <Compile Include="Source\Utils\Interfaces\Selectable.cs" />
     <Compile Include="Source\Utils\LocationManager.cs" />
     <Compile Include="Source\Utils\Log.cs" />
     <Compile Include="Source\Utils\Preferences\Preferences.cs" />
@@ -336,6 +340,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\UI\Pages\Splashscreen\Splashscreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\UI\Pages\Status\ChangeStatusDialogPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

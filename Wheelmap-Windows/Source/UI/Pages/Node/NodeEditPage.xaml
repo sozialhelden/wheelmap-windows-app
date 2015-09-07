@@ -61,6 +61,7 @@
                     </Grid>
 
                     <Border
+                        Tapped="status_Tapped"
                         Margin="0,10,0,0"
                         x:Name="statusBgBorder"
                         Background="Gray"
@@ -100,6 +101,7 @@
                     </Border>
 
                     <Border 
+                        Tapped="statusToilet_Tapped"
                         x:Name="statusToiletBgBorder"
                         Background="Gray"
                         Margin="0,10,0,0"
