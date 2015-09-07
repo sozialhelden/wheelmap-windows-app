@@ -18,7 +18,7 @@
                 <!-- tablet / desktop -->
                 <VisualState x:Name="STATE_MEDIUM">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="640"/>
+                        <AdaptiveTrigger MinWindowWidth="700"/>
                     </VisualState.StateTriggers>
                 </VisualState>
 
@@ -45,7 +45,7 @@
                 x:Name="loginPanel">
                 <ScrollViewer
                     x:Name="loginPanelScrollViewer"
-                    Padding="10,10,10,10">
+                    Padding="10,0,10,0">
 
                     <StackPanel
                         Padding="10,10,10,10">

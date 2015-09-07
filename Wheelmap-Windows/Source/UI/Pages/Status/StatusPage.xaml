@@ -19,7 +19,7 @@
                 <!-- tablet / desktop -->
                 <VisualState x:Name="STATE_MEDIUM">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="640"/>
+                        <AdaptiveTrigger MinWindowWidth="700"/>
                     </VisualState.StateTriggers>
                 </VisualState>
 

@@ -15,6 +15,7 @@ using Windows.ApplicationModel.VoiceCommands;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Display;
 using Windows.Media.SpeechRecognition;
 using Windows.Storage;
 using Windows.UI;
@@ -109,6 +110,11 @@ namespace Wheelmap_Windows
 
             // set min dimensions for window
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(320, 500));
+
+            // prevent app from rotating to landscale when running on a phone
+            if (Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Mobile") {
+                DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait;
+            }
 
         }
 
@@ -222,6 +228,13 @@ namespace Wheelmap_Windows
             titleBar.ButtonBackgroundColor = bgColor;
             titleBar.ButtonForegroundColor = Colors.White;
             titleBar.ButtonInactiveBackgroundColor = bgColor;
+
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar")) {
+                var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+                statusBar.BackgroundColor = bgColor;
+                statusBar.BackgroundOpacity = 1;
+                statusBar.ForegroundColor = Colors.White;
+            }
         }
 
         /// <summary>

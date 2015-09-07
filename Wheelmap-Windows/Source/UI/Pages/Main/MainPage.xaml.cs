@@ -58,9 +58,6 @@ namespace Wheelmap_Windows.Source.UI {
             
             InitVisualState();
             UpdateTitle();
-
-            // enable Overlay mode for Page.BottomAppBar
-            ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
             
             // important to keep the page state
             this.NavigationCacheMode = NavigationCacheMode.Enabled;

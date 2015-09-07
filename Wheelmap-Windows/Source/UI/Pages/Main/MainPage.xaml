@@ -35,7 +35,7 @@
                 <VisualState x:Name="STATE_MEDIUM">
 
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="640"/>
+                        <AdaptiveTrigger MinWindowWidth="700"/>
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
@@ -369,7 +369,7 @@
                             RelativePanel.AlignBottomWithPanel="True"
                             RelativePanel.AlignRightWithPanel="True"
                             RelativePanel.AlignLeftWithPanel="True"
-                            Margin="0,0,0,48">
+                            Margin="0,0,0,0">
                             <Frame 
                                 x:Name="phoneUIBottomSlideUp"
                                 MaxHeight="300">

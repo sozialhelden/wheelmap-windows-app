@@ -4,7 +4,7 @@
     xmlns:local="using:Wheelmap_Windows.Resources">
 
     <SolidColorBrush x:Key="PrimaryColor" Color="#2c3b49"/>
-    <SolidColorBrush x:Key="AppBarBackgroundColor" Color="#CCF0F0F0"/>
+    <SolidColorBrush x:Key="AppBarBackgroundColor" Color="#EEF0F0F0"/>
 
     <SolidColorBrush x:Key="StatusYes" Color="#99c15c"/>
     <SolidColorBrush x:Key="StatusLimited" Color="#ed9b56"/>
