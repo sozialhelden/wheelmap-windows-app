@@ -120,15 +120,27 @@
   <data name="STATUS_LIMITED" xml:space="preserve">
     <value>Teilweise Rollstuhlgerecht</value>
   </data>
+  <data name="STATUS_LIMITED_HINT_0" xml:space="preserve">
+    <value>Eingang: maximal eine Stufe, die nicht höher als 7cm ist (etwa eine Handbreite)</value>
+  </data>
+  <data name="STATUS_LIMITED_HINT_1" xml:space="preserve">
+    <value>Räume: die wichtigsten sind stufenlos erreichbar (z.B. alle Kinosäle)</value>
+  </data>
   <data name="STATUS_LIMITED_HINT_COUNT" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
     <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
   <data name="STATUS_NO" xml:space="preserve">
     <value>Nicht Rollstuhlgerecht</value>
   </data>
+  <data name="STATUS_NO_HINT_0" xml:space="preserve">
+    <value>Eingang: Stufe die höher als 7cm ist (etwa eine Handbreite)</value>
+  </data>
+  <data name="STATUS_NO_HINT_1" xml:space="preserve">
+    <value>Räume: nicht stufenlos erreichbar</value>
+  </data>
   <data name="STATUS_NO_HINT_COUNT" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
     <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
   <data name="STATUS_TITLE_HINT" xml:space="preserve">
@@ -152,8 +164,11 @@
   <data name="STATUS_UNKNOWN" xml:space="preserve">
     <value>Status unbekannt</value>
   </data>
+  <data name="STATUS_UNKNOWN_HINT_0" xml:space="preserve">
+    <value>Die Rollstuhlgerechtigkeit des Ortes ist bisher unbekannt und muss noch markiert werden.</value>
+  </data>
   <data name="STATUS_UNKNOWN_HINT_COUNT" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
     <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
   <data name="STATUS_WC_LIMITED_HINT_COUNT" xml:space="preserve">
@@ -164,12 +179,30 @@
     <value>0</value>
     <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
+  <data name="STATUS_WC_UNKNOWN_HINT_0" xml:space="preserve">
+    <value>Hilf mit und markiere den Toiletten-Status!</value>
+  </data>
   <data name="STATUS_WC_UNKNOWN_HINT_COUNT" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
     <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
+  <data name="STATUS_WC_YES_HINT_0" xml:space="preserve">
+    <value>Durchgang Tür mind. 90 cm</value>
+  </data>
+  <data name="STATUS_WC_YES_HINT_1" xml:space="preserve">
+    <value>Bewegungsfläche mind. 150 cm x 150 cm</value>
+  </data>
+  <data name="STATUS_WC_YES_HINT_2" xml:space="preserve">
+    <value>WC-Becken mit größerer Sitzhöhe</value>
+  </data>
+  <data name="STATUS_WC_YES_HINT_3" xml:space="preserve">
+    <value>Stützklappgriffe o.ä.</value>
+  </data>
+  <data name="STATUS_WC_YES_HINT_4" xml:space="preserve">
+    <value>Unterfahrbares Waschbecken</value>
+  </data>
   <data name="STATUS_WC_YES_HINT_COUNT" xml:space="preserve">
-    <value>0</value>
+    <value>5</value>
     <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
   <data name="STATUS_YES" xml:space="preserve">
