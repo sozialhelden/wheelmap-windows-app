@@ -102,7 +102,9 @@ namespace Wheelmap_Windows
             SetUpTitleBar();
             SystemNavigationManager.GetForCurrentView().BackRequested += (source, args) => GoBack();
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons")) {
-                Windows.Phone.UI.Input.HardwareButtons.BackPressed += (source, args) => GoBack();
+                Windows.Phone.UI.Input.HardwareButtons.BackPressed += (source, args) => {
+                    args.Handled = GoBack();
+                };
             }
 
             // set min dimensions for window
@@ -157,23 +159,33 @@ namespace Wheelmap_Windows
             RefreshBackStatus();
         }
 
-        public void GoBack() {
+        /**
+         * returns true if back was handled
+         */
+        public bool GoBack() {
+            bool handled = false;
             Frame rootFrame = Window.Current.Content as Frame;
             if (rootFrame.Content is BackDelegate) {
                 var backhandling = rootFrame.Content as BackDelegate;
                 if (backhandling.CanGoBack()) {
                     backhandling.GoBack();
+                    handled = true;
                     RefreshBackStatus();
-                    return;
+                    return handled;
                 }
             }
             if (rootFrame.CanGoBack) {
                 rootFrame.GoBack();
+                handled = true;
             }
             RefreshBackStatus();
+            return handled;
         }
-
-        public void RefreshBackStatus() {
+        
+        /**
+         * returns true if back button is shown
+         */
+        public bool RefreshBackStatus() {
             bool canGoBack = false;
             Frame rootFrame = Window.Current.Content as Frame;
             if (rootFrame.Content is BackDelegate) {
@@ -188,8 +200,10 @@ namespace Wheelmap_Windows
 
             if (canGoBack) {
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+                return true;
             } else {
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+                return false;
             }
 
         }
