@@ -36,6 +36,24 @@ namespace Wheelmap_Windows.Model {
             }
         }
 
+        /**
+         * returns the string used bei the api to identify the status
+         */
+        public static string ToApiString(this Status status) {
+            switch (status) {
+                case Status.YES:
+                    return "yes";
+                case Status.NO:
+                    return "no";
+                case Status.LIMITED:
+                    return "limited";
+                case Status.UNKNOWN:
+                    return "unknown";
+                default:
+                    throw new Exception("unknown type: " + status);
+            }
+        }
+
         public static string GetImage(this Status status) {
             switch (status) {
                 case Status.YES:

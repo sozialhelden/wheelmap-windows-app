@@ -134,6 +134,9 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                           Uri(wheelchairWCStatus?.GetImage(), UriKind.RelativeOrAbsolute));
         }
 
+        /**
+         * checks if all required field are set to save this node
+         */
         private bool CheckIfAllRequiredFieldsAreValid() {
 
             if (categoryComboBox.SelectedItem == null) {
@@ -156,7 +159,13 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 return false;
             }
 
-            // TODO check for position
+            if (position == null) {
+                return false;
+            }
+
+            if (wheelchairStatus == null || wheelchairStatus == Model.Status.UNKNOWN) {
+                return false;
+            }
 
             return true;
         }
@@ -182,6 +191,10 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             node.city = cityTextBox.Text.Trim();
             node.phone = phoneNumberTextBox.Text.Trim();
             node.website = websiteTextBox.Text.Trim();
+            node.wheelchairStatus = wheelchairStatus.Value.ToApiString();
+            node.wheelchairToiletStatus = wheelchairWCStatus.Value.ToApiString();
+            node.lat = position.Value.Latitude;
+            node.lon = position.Value.Longitude;
 
             progressBar.Visibility = Visibility.Visible;
             new NodeEditRequest(node).Execute().ContinueWithOnDispatcher(Dispatcher, task => {
