@@ -69,7 +69,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
             streetTextBox.Text = node?.street ?? "";
             houseNumberTextBox.Text = node?.housenumber ?? "";
-            positionTextBox.Text = node?.postcode ?? "";
+            plzTextBox.Text = node?.postcode ?? "";
             cityTextBox.Text = node?.city ?? "";
             websiteTextBox.Text = node?.website ?? "";
 
@@ -174,13 +174,13 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
             progressBar.Visibility = Visibility.Visible;
             new NodeEditRequest(node).Execute().ContinueWithOnDispatcher(Dispatcher, task => {
-                progressBar.Visibility = Visibility.Collapsed; 
+                progressBar.Visibility = Visibility.Collapsed;
+                GoBack();
             },2000);
         }
 
         private void positionTextBox_Tapped(object sender, TappedRoutedEventArgs e) {
             Log.d(this, "positionTextBox_Tapped");
-
         }
     }
 }

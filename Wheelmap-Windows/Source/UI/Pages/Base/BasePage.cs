@@ -29,6 +29,10 @@ namespace Wheelmap_Windows.UI.Pages.Base {
         }
 
         public virtual void GoBack() {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame.Content is BackDelegate && rootFrame.Content != this) {
+                (rootFrame.Content as BackDelegate).GoBack();
+            }
         }
         
         protected override void OnNavigatedTo(NavigationEventArgs e) {
