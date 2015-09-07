@@ -45,11 +45,11 @@ namespace Wheelmap_Windows.Source.UI.Pages {
 
 
         // Center of Germany
-        private Geopoint DEFAULT_POSITION = new Geopoint(new BasicGeoposition() { Latitude = 52.047783, Longitude = 13.0546663, Altitude = 0 });
+        public static Geopoint DEFAULT_POSITION = new Geopoint(new BasicGeoposition() { Latitude = 52.047783, Longitude = 13.0546663, Altitude = 0 });
 
         // Zoom 1 is world view
         // on 6.5 you can see Germany
-        private const double MAP_ZOOM_DEFAULT = 6.5; 
+        public const double MAP_ZOOM_DEFAULT = 6.5; 
 
         int oldZoomLevel = 1;
         Geopoint lastRequestedPosition;

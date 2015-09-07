@@ -156,6 +156,9 @@
   <data name="INPUT_WEBSITE.PlaceholderText" xml:space="preserve">
     <value>Webseite</value>
   </data>
+  <data name="POSITION" xml:space="preserve">
+    <value>Position: ({0}:{1})</value>
+  </data>
   <data name="SAVE" xml:space="preserve">
     <value>Speichern</value>
   </data>

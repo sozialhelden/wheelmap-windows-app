@@ -20,6 +20,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Wheelmap_Windows.Api.Calls;
 using Windows.UI;
 using Wheelmap_Windows.Source.UI.Pages.Status;
+using Windows.Devices.Geolocation;
 
 namespace Wheelmap_Windows.Source.UI.Pages.Node {
     
@@ -41,6 +42,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
         Model.Status? wheelchairStatus;
         Model.Status? wheelchairWCStatus;
+        BasicGeoposition? position;
 
         public NodeEditPage() {
             this.InitializeComponent();
@@ -61,8 +63,13 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
         public override void OnNewParams(object args) {
             base.OnNewParams(args);
             node = args as Model.Node;
-
-
+            if (node != null) {
+                position = new BasicGeoposition {
+                    Latitude = node.lat,
+                    Longitude = node.lon
+                };
+                positionTextBox.Text = String.Format("POSITION".t(R.File.NODE), position?.Latitude, position?.Longitude);
+            }
             titleTextBlock.Text = Title;
             initCategoryComboBox();
             initStatus(node);
@@ -184,8 +191,19 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
         }
 
         private void positionTextBox_Tapped(object sender, TappedRoutedEventArgs e) {
-            Log.d(this, "positionTextBox_Tapped");
-            
+
+            PositionChooserDialogPageArgs args = null;
+            if (position != null) {
+                args = new PositionChooserDialogPageArgs {
+                    lat = position.Value.Latitude,
+                    lon = position.Value.Longitude
+                };
+            }
+
+            PositionChooserDialogPage.ShowInDialog(args, (position) => {
+                this.position = position;
+                positionTextBox.Text = String.Format("POSITION".t(R.File.NODE), position.Latitude, position.Longitude);
+            });
         }
         
         private void status_Tapped(object sender, TappedRoutedEventArgs e) {

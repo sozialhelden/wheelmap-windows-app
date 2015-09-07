@@ -15,8 +15,7 @@
         <!-- force parent to fill the full width-->
         <Canvas Width="999999"/>
 
-        <Grid
-                Padding="10,0,10,0">
+        <Grid>
             <Grid.RowDefinitions>
 
                 <RowDefinition Height="*"/>
@@ -24,10 +23,10 @@
 
             </Grid.RowDefinitions>
             <ScrollViewer
-            x:Name="scrollViewer">
+                x:Name="scrollViewer">
 
                 <StackPanel
-                    Padding="0,10,0,0"
+                    Padding="10,10,10,0"
                     Grid.Row="0">
 
                     <TextBlock
@@ -217,7 +216,8 @@
 
 
             <StackPanel
-                    Grid.Row="1">
+                Padding="10,10,10,0"
+                Grid.Row="1">
 
                 <Button
                     x:Name="saveButton"

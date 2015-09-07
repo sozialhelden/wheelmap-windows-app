@@ -143,6 +143,9 @@
     <Compile Include="Source\UI\Pages\Node\NodeEditPage.xaml.cs">
       <DependentUpon>NodeEditPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\UI\Pages\Node\PositionChooserDialogPage.xaml.cs">
+      <DependentUpon>PositionChooserDialogPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\UI\Pages\Profile\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -247,6 +250,7 @@
     <Content Include="Assets\Images\mapmarker\bg_status_no.png" />
     <Content Include="Assets\Images\mapmarker\bg_status_unknown.png" />
     <Content Include="Assets\Images\mapmarker\bg_status_yes.png" />
+    <Content Include="Assets\Images\ic_positon_chooser.png" />
     <Content Include="Assets\Images\Phone\ic_green.png" />
     <Content Include="Assets\Images\Phone\ic_grey.png" />
     <Content Include="Assets\Images\Phone\ic_kategorie.png" />
@@ -328,6 +332,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\UI\Pages\Node\NodeEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\UI\Pages\Node\PositionChooserDialogPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

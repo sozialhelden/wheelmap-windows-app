@@ -1,0 +1,97 @@
+﻿<app:BasePage
+    xmlns:app="using:Wheelmap_Windows.UI.Pages.Base"
+    x:Class="Wheelmap_Windows.Source.UI.Pages.Node.PositionChooserDialogPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Wheelmap_Windows.Source.UI.Pages.Node"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    mc:Ignorable="d">
+
+    <Grid
+        x:Name="rootPanel"
+        MinHeight="400">
+
+        <!-- force parent to fill the full width-->
+        <Canvas Width="999999"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Maps:MapControl x:Name="mapControl"/>
+
+                <StackPanel 
+            x:Name="sideMapControls"
+            Orientation="Vertical"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Width="Auto"
+            Height="Auto"
+            Background="#7000"
+            Margin="10,10,10,10">
+
+
+                    <Image
+                Height="40"
+                Width="40"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Tapped="OnCompass_Click"
+                Source="/Assets/Images/ic_north.png"
+                />
+
+                    <Image
+                Height="40"
+                Width="40"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Tapped="OnMyPosition_Click"
+                Source="/Assets/Images/ic_circle.png"
+                />
+
+                    <Image
+                Height="40"
+                Width="40"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Tapped="ZoomIn_Click"
+                Source="/Assets/Images/ic_plus.png"
+                />
+
+                    <Image 
+                Height="40"
+                Width="40"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Source="/Assets/Images/ic_minus.png"
+                Tapped="ZoomOut_Click"/>
+
+                </StackPanel>
+
+                <Image
+            Height="38"
+            Width="38"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Source="/Assets/Images/ic_positon_chooser.png"/>
+
+            </Grid>
+
+            <TextBlock
+                Grid.Row="1"
+                Height="20"
+                TextWrapping="WrapWholeWords"
+                TextAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="12"
+                x:Name="currentPositionTextBlock"/>
+
+        </Grid>
+
+    </Grid>
+</app:BasePage>
