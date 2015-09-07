@@ -8,10 +8,25 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="#fff">
-        <Image x:Name="extendedSplashImage" Source="/Assets/SplashScreen.png"/>
-        <Canvas>
-            <ProgressRing Name="splashProgressRing" IsActive="True" Width="20" HorizontalAlignment="Center"/>
-        </Canvas>
+    <Grid>
+        <RelativePanel>
+            <Viewbox
+                x:Name="box"
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.AlignVerticalCenterWithPanel="True">
+
+                <Image x:Name="extendedSplashImage" 
+                    Source="/Assets/SplashScreen.png"/>
+            </Viewbox>
+            <ProgressRing 
+                RelativePanel.AlignBottomWithPanel="True"
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                Margin="20,20,20,100"
+                Name="splashProgressRing" 
+                IsActive="True" 
+                Width="20" 
+                HorizontalAlignment="Center"/>
+        </RelativePanel>
+
     </Grid>
 </app:BasePage>
