@@ -172,10 +172,10 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             node.phone = phoneNumberTextBox.Text.Trim();
             node.website = websiteTextBox.Text.Trim();
 
-            //progressBar.Visibility = Visibility.Visible;
+            progressBar.Visibility = Visibility.Visible;
             new NodeEditRequest(node).Execute().ContinueWithOnDispatcher(Dispatcher, task => {
                 progressBar.Visibility = Visibility.Collapsed; 
-            });
+            },2000);
         }
 
         private void positionTextBox_Tapped(object sender, TappedRoutedEventArgs e) {

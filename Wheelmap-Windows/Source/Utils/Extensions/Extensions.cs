@@ -18,8 +18,13 @@ namespace Wheelmap_Windows.Extensions {
         public static void Forget<T>(this IAsyncOperation<T> e) { }
         public static void Forget(this Task e) { }
 
-        public static void ContinueWithOnDispatcher<T>(this Task<T> e, CoreDispatcher dispatcher, Action<Task<T>> continuationAction) {
+        public static void ContinueWithOnDispatcher<T>(this Task<T> e, CoreDispatcher dispatcher, Action<Task<T>> continuationAction, long minTime = 0) {
+            long time = DateTime.Now.Ticks / 10000;
             e.ContinueWith((task) => {
+                long timeDif = (DateTime.Now.Ticks / 10000) - time;
+                if (timeDif < minTime) {
+                    Task.Delay((int) (minTime - timeDif)).Wait();
+                }
                 dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                     continuationAction.Invoke(task);
                 }).Forget();
