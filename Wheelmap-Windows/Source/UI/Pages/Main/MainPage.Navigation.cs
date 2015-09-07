@@ -50,10 +50,13 @@ namespace Wheelmap_Windows.Source.UI {
 
             if (detailContainerFrame.Content != null) {
                 if (detailContainerFrame.CanGoBack
+                    && detailContainerFrame.BackStackDepth > 1
                     // the user should always be able to go back from the NodeDetailPage
                     && !(detailContainerFrame.Content is NodeDetailPage)) {
                     detailContainerFrame.GoBack();
                 } else {
+                    detailContainerFrame.ForwardStack.Clear();
+                    detailContainerFrame.BackStack.Clear();
                     detailContainerFrame.Content = null;
                 }
                 UpdateTitle();
@@ -84,7 +87,7 @@ namespace Wheelmap_Windows.Source.UI {
             if (detailContainerFrame.Content is NodeDetailPage) {
                 (detailContainerFrame.Content as NodeDetailPage).SetNode(e.node);
             } else {
-                detailContainerFrame.Navigate(typeof(NodeDetailPage), e.node);
+                ShowOnDetailFrame(typeof(NodeDetailPage), e.node);
             }
 
             this.RefreshCanGoBack();
