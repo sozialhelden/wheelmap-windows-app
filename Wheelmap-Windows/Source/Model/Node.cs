@@ -15,6 +15,9 @@ namespace Wheelmap_Windows.Model {
      * @see related api http://wheelmap.org/api/docs/resources/nodes
      */
     public class Node : INotifyPropertyChanged {
+        
+        //---------------------------------------- API PROPERTIES ----------------------------------------//
+
 
         [PrimaryKey]
         public long id { get; set; }
@@ -63,6 +66,17 @@ namespace Wheelmap_Windows.Model {
 
         //The node's phone number. In case there is a real phone number to call, for example in a restaurant. Use the international format: +49 30 123456-78
         public string phone { get; set; }
+
+
+        //---------------------------------------- APP PRIVATE PROPERTIES ----------------------------------------//
+
+        /*// indicates if this node has been changed by the user
+        public DirtyState DirtyState { get; set; } = DirtyState.CLEAN;
+
+        // the time this node has been saved
+        public long StoreTimestamp { get; set; }
+        */
+        //---------------------------------------- CALCULATED PROPERTIES ----------------------------------------//
 
         // calculated distance in meters
         public double _Distance = -1;
@@ -130,5 +144,11 @@ namespace Wheelmap_Windows.Model {
             return id == (obj as Node).id;
         }
 
+    }
+
+    public enum DirtyState {
+        DIRTY_ALL,
+        DIRTY_STATE,
+        CLEAN
     }
 }
