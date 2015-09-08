@@ -64,6 +64,7 @@ namespace Wheelmap_Windows.Source.UI {
 
             if (phoneUIBottomSlideUp.Content != null) {
                 phoneUIBottomSlideUp.Content = null;
+                backgroundOverlay.Visibility = Visibility.Collapsed;
                 return;
             }
 
@@ -147,6 +148,7 @@ namespace Wheelmap_Windows.Source.UI {
                 mToggleGroup.SelectedItem = (sender as Panel);
             }
             phoneUIBottomSlideUp.Content = null;
+            backgroundOverlay.Visibility = Visibility.Collapsed;
 
             return true;
 
@@ -162,13 +164,16 @@ namespace Wheelmap_Windows.Source.UI {
                 var page = (phoneUIBottomSlideUp.Content as BasePage);
                 if (page.Parameter?.Equals(param) ?? page.Parameter == param) {
                     phoneUIBottomSlideUp.Content = null;
+                    backgroundOverlay.Visibility = Visibility.Collapsed;
                     return false;
                 } else {
                     phoneUIBottomSlideUp.Content = null;
+                    backgroundOverlay.Visibility = Visibility.Collapsed;
                 }
             }
 
             phoneUIBottomSlideUp.Navigate(pageType, param);
+            backgroundOverlay.Visibility = Visibility.Visible;
 
             return true;
         }

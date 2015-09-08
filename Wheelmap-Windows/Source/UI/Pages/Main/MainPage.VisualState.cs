@@ -66,6 +66,7 @@ namespace Wheelmap_Windows.Source.UI {
                 var type = menuContainerFrame.Content.GetType();
                 menuContainerFrame.Content = null;
                 phoneUIBottomSlideUp.Navigate(type, param);
+                backgroundOverlay.Visibility = Visibility.Visible;
             }
 
 
@@ -92,6 +93,7 @@ namespace Wheelmap_Windows.Source.UI {
                 var param = (phoneUIBottomSlideUp.Content as BasePage).Parameter;
                 var type = phoneUIBottomSlideUp.Content.GetType();
                 phoneUIBottomSlideUp.Content = null;
+                backgroundOverlay.Visibility = Visibility.Collapsed;
                 ShowOnMenuContainerFrame(null, type, param);
             }
 

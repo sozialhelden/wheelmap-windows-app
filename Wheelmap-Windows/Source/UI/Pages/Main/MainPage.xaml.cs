@@ -218,5 +218,10 @@ namespace Wheelmap_Windows.Source.UI {
         private void AddNewNode_Tapped(object sender, TappedRoutedEventArgs e) {
             this.ShowOnDetailFrame(typeof(NodeEditPage));
         }
+
+        private void TappedInBackground(object sender, TappedRoutedEventArgs e) {
+            GoBack();
+        }
+        
     }
 }

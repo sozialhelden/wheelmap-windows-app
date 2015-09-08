@@ -362,6 +362,19 @@
                                 Source="/Assets/Images/Phone/ic_profile.png"/>
                         </Grid>
 
+
+                        <!-- used to register a tap on the background to close phoneUIBottomSlideUp-->
+                        <StackPanel
+                            x:Name="backgroundOverlay"
+                            Tapped="TappedInBackground"
+                            Visibility="Collapsed"
+                            Background="Transparent"
+                            RelativePanel.AlignTopWithPanel="True"
+                            RelativePanel.AlignBottomWithPanel="True"
+                            RelativePanel.AlignRightWithPanel="True"
+                            RelativePanel.AlignLeftWithPanel="True"/>
+
+
                         <StackPanel
                             x:Name="phoneUIControlsBottom"
                             Background="{StaticResource ResourceKey=AppBarBackgroundColor}"
@@ -379,7 +392,6 @@
                                     </TransitionCollection>
                                 </Frame.ContentTransitions>
                             </Frame>
-
 
                         </StackPanel>
 
