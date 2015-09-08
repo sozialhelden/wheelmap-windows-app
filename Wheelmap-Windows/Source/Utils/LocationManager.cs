@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wheelmap_Windows.Api.Calls;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Utils.Eventbus;
 using Wheelmap_Windows.Utils.Eventbus.Events;
@@ -53,6 +54,15 @@ namespace Wheelmap_Windows.Utils {
 
         private void Geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args) {
             Log.d(TAG, "NewLocation: " + args?.Position?.Coordinate?.Point?.Position.Latitude+":"+args?.Position?.Coordinate?.Point?.Position.Longitude);
+
+            if (!DataHolder.Instance.HadData) {
+                DataHolder.Instance.HadData = true;
+                /*var task = new NodesRequest(GeoMath.CalculateBoundingBox(args.Position.Coordinate.Point, 0.8)).Query();
+                task.ContinueWith((items) => {
+                    DataHolder.Instance.Nodes = items.Result;
+                });*/
+            }
+
             LocationChangedEvent e = new LocationChangedEvent() {
                 Sender = sender,
                 Args = args

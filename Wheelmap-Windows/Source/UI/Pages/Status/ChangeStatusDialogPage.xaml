@@ -12,20 +12,21 @@
         RequestedTheme="Light">
 
         <ScrollViewer>
-            <StackPanel>
-            
-            <local:StatusExplainView
+            <StackPanel
+                Margin="{ThemeResource ContentDialogContentMargin}">
+
+                <local:StatusExplainView
                 x:Name="statusYesView"
                 Status="YES"/>
 
-            <local:StatusExplainView
+                <local:StatusExplainView
                 x:Name="statusLimitedView"
                 Status="LIMITED"/>
 
-            <local:StatusExplainView
+                <local:StatusExplainView
                 x:Name="statusNoView"
                 Status="NO"/>
-            
+
             </StackPanel>
         </ScrollViewer>
 

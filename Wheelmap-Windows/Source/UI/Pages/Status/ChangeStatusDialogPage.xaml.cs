@@ -69,7 +69,9 @@ namespace Wheelmap_Windows.Source.UI.Pages.Status {
         }
 
         public static void ShowInDialog(ChangeStatusDialogPageArgs args, Action<Model.Status> finishedAction) {
+
             var dialog = new ContentDialog() {
+                Template = Application.Current.Resources["MyContentDialogControlTemplate"] as ControlTemplate,
                 //Title = "Lorem Ipsum",
                 //MaxWidth = this.ActualWidth // Required for Mobile!
                 RequestedTheme = ElementTheme.Light

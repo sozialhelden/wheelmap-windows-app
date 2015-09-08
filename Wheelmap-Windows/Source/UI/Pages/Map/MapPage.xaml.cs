@@ -69,7 +69,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             mapControl.Center = DEFAULT_POSITION;
 
             myLocationOverlay = new MyLocationOverlay(mapControl);
-
+            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -203,7 +203,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
                 }
             }
         }
-
+        
         private void AddNewMapIcons(Model.Node node) {
 
             var geopoint = new Geopoint(new BasicGeoposition() {

@@ -52,6 +52,7 @@ namespace Wheelmap_Windows.Utils {
 
             // filter list and notify all other components using the Bussystem
             set {
+                HadData = true;
                 _Nodes = value;
                 _FilterdNodes = Filter.FilterNodes(_Nodes);
                 var e = new NewNodesEvent() {
@@ -62,6 +63,12 @@ namespace Wheelmap_Windows.Utils {
             }
 
         }
+
+        /**
+         * indicates if dataholder ever had nodes
+         * this is important to fetch data at the app start for the current user position
+         */
+        public bool HadData { get; set; } = false;
 
         public Filter Filter = new Filter();
         public void RefreshFilter() {

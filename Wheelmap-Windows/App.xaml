@@ -11,6 +11,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Constants.xaml"/>
                 <ResourceDictionary Source="Resources/CheckBoxStyle.xaml"/>
+                <ResourceDictionary Source="Resources/ContentDialog.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

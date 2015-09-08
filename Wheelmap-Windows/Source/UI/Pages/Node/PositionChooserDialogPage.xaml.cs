@@ -75,6 +75,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
         public static void ShowInDialog(PositionChooserDialogPageArgs args, Action<BasicGeoposition> finishedAction) {
             var dialog = new ContentDialog() {
+                Template = Application.Current.Resources["MyContentDialogControlTemplate"] as ControlTemplate,
                 RequestedTheme = ElementTheme.Light
             };
             dialog.Padding = new Thickness(-10, -10, -10, -10);
