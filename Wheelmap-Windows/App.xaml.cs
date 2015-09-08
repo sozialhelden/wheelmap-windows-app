@@ -101,11 +101,11 @@ namespace Wheelmap_Windows
 
         private void InitWindow() {
             SetUpTitleBar();
-            SystemNavigationManager.GetForCurrentView().BackRequested += (source, args) => GoBack();
+            SystemNavigationManager.GetForCurrentView().BackRequested -= App_BackRequested;
+            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons")) {
-                Windows.Phone.UI.Input.HardwareButtons.BackPressed += (source, args) => {
-                    args.Handled = GoBack();
-                };
+                Windows.Phone.UI.Input.HardwareButtons.BackPressed -= HardwareButtons_BackPressed;
+                Windows.Phone.UI.Input.HardwareButtons.BackPressed += HardwareButtons_BackPressed;
             }
 
             // set min dimensions for window
@@ -116,6 +116,14 @@ namespace Wheelmap_Windows
                 DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait;
             }
 
+        }
+
+        private void App_BackRequested(object sender, BackRequestedEventArgs e) {
+            e.Handled = GoBack();
+        }
+
+        private void HardwareButtons_BackPressed(object sender, Windows.Phone.UI.Input.BackPressedEventArgs e) {
+            e.Handled = GoBack();
         }
 
         private void ShowMainPage(IActivatedEventArgs args) {
