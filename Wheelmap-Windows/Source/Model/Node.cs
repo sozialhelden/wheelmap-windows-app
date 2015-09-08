@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +16,7 @@ namespace Wheelmap_Windows.Model {
      */
     public class Node : INotifyPropertyChanged {
 
+        [PrimaryKey]
         public long id { get; set; }
 
         //The node's latitude in degrees as float.
@@ -25,8 +28,10 @@ namespace Wheelmap_Windows.Model {
         public string name { get; set; }
 
         [JsonProperty(PropertyName = "node_type")]
+        [OneToMany]
         public NodeType nodeType { get; set; }
 
+        [OneToMany]
         public Category category { get; set; }
 
         //The node's wheelchair status, must be one of [yes, no, limited, unknown]
@@ -61,6 +66,7 @@ namespace Wheelmap_Windows.Model {
 
         // calculated distance in meters
         public double _Distance = -1;
+        [Ignore]
         public double Distance {
             get {
                 return _Distance;
@@ -71,6 +77,7 @@ namespace Wheelmap_Windows.Model {
             }
         }
 
+        [Ignore]
         public string DistanceString {
             get {
                 if (Distance < 0) {
@@ -83,7 +90,8 @@ namespace Wheelmap_Windows.Model {
                 }
             }
         }
-        
+
+        [Ignore]
         public string MapIconFileUriString {
             get {
                 var fileName = wheelchairStatus + "_" + nodeType.icon;
@@ -92,6 +100,7 @@ namespace Wheelmap_Windows.Model {
             }
         }
 
+        [Ignore]
         public Uri MapIconFileUri {
             get {
                 return new Uri(MapIconFileUriString);

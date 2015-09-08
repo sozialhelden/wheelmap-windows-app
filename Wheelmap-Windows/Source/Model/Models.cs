@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +14,13 @@ using Windows.UI.Xaml.Media.Imaging;
 namespace Wheelmap_Windows.Model {
     
     public class NodeType {
+
+        [PrimaryKey]
         public int id { get; set; }
 
         public int category_id { get; set; }
+
+        [OneToMany]
         public Category category { get; set; }
 
         private string _localizedName;
@@ -60,6 +66,8 @@ namespace Wheelmap_Windows.Model {
     }
 
     public class Category {
+
+        [PrimaryKey]
         public long id { get; set; }
         public string identifier { get; set; }
 

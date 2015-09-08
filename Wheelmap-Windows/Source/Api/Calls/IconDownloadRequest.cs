@@ -40,6 +40,10 @@ namespace Wheelmap_Windows.Api.Calls {
         
         public async Task<bool> Query() {
             var assets = await new AssetsRequest().Query();
+            if (assets?.Count <= 0) {
+                // we have some data in the cache
+                return ApiPreferences.GetEtag(ETAG_KEY) != null;
+            }
             var iconsType = "icons";
             foreach (Asset asset in assets) {
                 if (asset.type == iconsType) {
@@ -49,8 +53,7 @@ namespace Wheelmap_Windows.Api.Calls {
                     try {
                         // check if folder already exists
                         folder = await local.GetFolderAsync(folderName);
-                    }
-                    catch { }
+                    }catch { }
                     if (folder != null) {
                         // check if update is needed
                         if ((asset.modified_at+"") == ApiPreferences.GetEtag(ETAG_KEY)) {

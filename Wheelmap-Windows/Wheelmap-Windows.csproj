@@ -12,7 +12,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10000.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.10042.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
@@ -109,6 +109,7 @@
     <Compile Include="Source\Api\Calls\NodeEditRequest.cs" />
     <Compile Include="Source\Api\Calls\PagedRequest.cs" />
     <Compile Include="Source\Api\Calls\UserRequest.cs" />
+    <Compile Include="Source\Model\Database.cs" />
     <Compile Include="Source\Model\Filter.cs" />
     <Compile Include="Source\Model\Meta.cs" />
     <Compile Include="Source\Model\Node.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Source\UI\Pages\Status\StatusPage.xaml.cs">
       <DependentUpon>StatusPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\Utils\Extensions\DatabaseExtensions.cs" />
     <Compile Include="Source\Utils\Interfaces\BackDelegate.cs" />
     <Compile Include="Source\Utils\BiDirectionalMap.cs" />
     <Compile Include="Source\Utils\BulkObservableCollection.cs" />
@@ -371,11 +373,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="SQLite.UAP.2015, Version=3.8.11.1">
+      <Name>SQLite for Universal App Platform</Name>
+    </SDKReference>
     <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

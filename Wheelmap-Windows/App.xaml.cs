@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Source.UI;
 using Wheelmap_Windows.Source.UI.Pages.Splashscreen;
 using Wheelmap_Windows.Utils;
@@ -92,9 +93,11 @@ namespace Wheelmap_Windows
                 ShowMainPage(args);
             }
             Window.Current.Activate();
+            
         }
 
         private void InitMangers() {
+            var _ = Database.Instance;
             DataHolder.Init();
             LocationManager.Init();
         }
@@ -127,8 +130,7 @@ namespace Wheelmap_Windows
         }
 
         private void ShowMainPage(IActivatedEventArgs args) {
-
-
+            
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
