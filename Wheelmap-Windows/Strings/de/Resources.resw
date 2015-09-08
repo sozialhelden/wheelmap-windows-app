@@ -177,4 +177,7 @@
   <data name="TITLE_WC" xml:space="preserve">
     <value>Toiletten</value>
   </data>
+  <data name="UNKNOWN_ERROR" xml:space="preserve">
+    <value>Fehler. Bitte prüfe deine Internetverbindung.</value>
+  </data>
 </root>

@@ -21,6 +21,7 @@ using Wheelmap_Windows.Api.Calls;
 using Windows.UI;
 using Wheelmap_Windows.Source.UI.Pages.Status;
 using Windows.Devices.Geolocation;
+using Windows.UI.Popups;
 
 namespace Wheelmap_Windows.Source.UI.Pages.Node {
     
@@ -199,8 +200,24 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             progressBar.Visibility = Visibility.Visible;
             new NodeEditRequest(node).Execute().ContinueWithOnDispatcher(Dispatcher, task => {
                 progressBar.Visibility = Visibility.Collapsed;
-                GoBack();
-            },2000);
+                if (task.Result.IsOk) {
+                    GoBack();
+                } else {
+
+                    // show error dialog with messages from backend
+
+                    var content = "";
+                    foreach (var key in task.Result.error) {
+                        foreach (string value in key.Value) {
+                            content += "\u00B7 " + value + "\n";
+                        }
+                    }
+
+                    MessageDialog dialog = new MessageDialog(content);
+                    dialog.ShowAsync().Forget();
+
+                }
+            }, 2000);
         }
 
         private void positionTextBox_Tapped(object sender, TappedRoutedEventArgs e) {
