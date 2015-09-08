@@ -25,6 +25,7 @@
 
                     <VisualState.Setters>
                         <Setter Target="sideMapControls.Visibility" Value="Collapsed"/>
+                        <Setter Target="addNewNodeButton.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -90,6 +91,16 @@
             Padding="10,10,10,10">
             <TextBlock x:Uid="OutOfZoom"/>
         </Border>
+
+        <Image
+            x:Name="addNewNodeButton"
+            Tapped="addNewNodeButton_Tapped"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Margin="10,10,10,10"
+            Source="/Assets/Images/ic_add_new_node.png"
+            Height="48"
+            Width="48"/>
 
     </Grid>
 </app:BasePage>

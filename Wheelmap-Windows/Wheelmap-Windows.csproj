@@ -202,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Images\credits_logo.png" />
+    <Content Include="Assets\Images\ic_add_new_node.png" />
     <Content Include="Assets\Images\ic_camera.png" />
     <Content Include="Assets\Images\ic_categories.png" />
     <Content Include="Assets\Images\ic_categories_active.png" />

@@ -8,6 +8,7 @@ using Wheelmap_Windows.Api.Calls;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Source.UI.Pages.Map;
+using Wheelmap_Windows.Source.UI.Pages.Node;
 using Wheelmap_Windows.UI.Pages.Base;
 using Wheelmap_Windows.Utils;
 using Wheelmap_Windows.Utils.Eventbus;
@@ -248,6 +249,9 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             mapControl.TryRotateToAsync(0).AsTask().Forget();
         }
 
+        private void addNewNodeButton_Tapped(object sender, TappedRoutedEventArgs e) {
+            ShowOnDetailFrame(typeof(NodeEditPage));
+        }
     }
 
 }
