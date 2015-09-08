@@ -43,7 +43,7 @@ namespace Wheelmap_Windows.Api.Calls {
                 var values = NodeToParams(node);
                 var content = new FormUrlEncodedContent(values);
                 HttpResponseMessage responseMessage;
-                if (node.id <= 0) {
+                if (node.wm_id <= 0) {
                     Log.d(this, "Create Node " + url);
                     responseMessage = await client.PostAsync(url, content);
                 } else {
@@ -57,7 +57,7 @@ namespace Wheelmap_Windows.Api.Calls {
         }
 
         protected string GetUrl() {
-            var endPoint = node.id > 0 ? String.Format(ApiConstants.END_POINT_NODE_EDIT, node.id) : ApiConstants.END_POINT_NODE_CREATE;
+            var endPoint = node.wm_id > 0 ? String.Format(ApiConstants.END_POINT_NODE_EDIT, node.wm_id) : ApiConstants.END_POINT_NODE_CREATE;
             string localeParam = "locale=" + CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             string url = BuildConfig.API_BASEURL + endPoint + "?"
                 + ApiConstants.API_KEY_PARAM + "&"

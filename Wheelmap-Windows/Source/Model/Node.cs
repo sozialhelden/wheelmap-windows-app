@@ -15,12 +15,14 @@ namespace Wheelmap_Windows.Model {
      * @see related api http://wheelmap.org/api/docs/resources/nodes
      */
     public class Node : INotifyPropertyChanged {
-        
+
+        [PrimaryKey, AutoIncrement]
+        public long _ID { get; set; }
+
         //---------------------------------------- API PROPERTIES ----------------------------------------//
 
-
-        [PrimaryKey]
-        public long id { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public long wm_id { get; set; }
 
         //The node's latitude in degrees as float.
         public double lat { get; set; }
@@ -70,16 +72,18 @@ namespace Wheelmap_Windows.Model {
 
         //---------------------------------------- APP PRIVATE PROPERTIES ----------------------------------------//
 
-        /*// indicates if this node has been changed by the user
+        public NodeTag NodeTag { get; set; } = NodeTag.RETRIEVED;
+
+        // indicates if this node has been changed by the user
         public DirtyState DirtyState { get; set; } = DirtyState.CLEAN;
 
         // the time this node has been saved
         public long StoreTimestamp { get; set; }
-        */
+        
         //---------------------------------------- CALCULATED PROPERTIES ----------------------------------------//
 
         // calculated distance in meters
-        public double _Distance = -1;
+        private double _Distance = -1;
         [Ignore]
         public double Distance {
             get {
@@ -91,7 +95,7 @@ namespace Wheelmap_Windows.Model {
             }
         }
 
-        [Ignore]
+        [Ignore, JsonIgnore]
         public string DistanceString {
             get {
                 if (Distance < 0) {
@@ -105,7 +109,7 @@ namespace Wheelmap_Windows.Model {
             }
         }
 
-        [Ignore]
+        [Ignore, JsonIgnore]
         public string MapIconFileUriString {
             get {
                 var fileName = wheelchairStatus + "_" + nodeType.icon;
@@ -114,7 +118,7 @@ namespace Wheelmap_Windows.Model {
             }
         }
 
-        [Ignore]
+        [Ignore, JsonIgnore]
         public Uri MapIconFileUri {
             get {
                 return new Uri(MapIconFileUriString);
@@ -130,18 +134,19 @@ namespace Wheelmap_Windows.Model {
         }
 
         public override string ToString() {
-            return $"Node: Id={id} Name={name}";
+            return $"Node: Id={wm_id} Name={name}";
         }
 
         public override int GetHashCode() {
-            return (int) id;
+            return (int) wm_id;
         }
 
         public override bool Equals(object obj) {
             if ( !(obj is Node)) {
                 return false;
             }
-            return id == (obj as Node).id;
+            var n = obj as Node;
+            return wm_id == n.wm_id;
         }
 
     }
@@ -150,5 +155,11 @@ namespace Wheelmap_Windows.Model {
         DIRTY_ALL,
         DIRTY_STATE,
         CLEAN
+    }
+
+    public enum NodeTag {
+        RETRIEVED,
+        COPY,
+        TEMP
     }
 }

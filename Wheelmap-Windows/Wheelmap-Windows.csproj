@@ -109,7 +109,8 @@
     <Compile Include="Source\Api\Calls\NodeEditRequest.cs" />
     <Compile Include="Source\Api\Calls\PagedRequest.cs" />
     <Compile Include="Source\Api\Calls\UserRequest.cs" />
-    <Compile Include="Source\Model\Database.cs" />
+    <Compile Include="Source\Model\Database\Database.cs" />
+    <Compile Include="Source\Model\Database\NodesHelper.cs" />
     <Compile Include="Source\Model\Filter.cs" />
     <Compile Include="Source\Model\Meta.cs" />
     <Compile Include="Source\Model\Node.cs" />
