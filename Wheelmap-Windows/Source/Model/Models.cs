@@ -15,8 +15,9 @@ namespace Wheelmap_Windows.Model {
     
     public class NodeType {
 
+        [JsonProperty(PropertyName = "id")]
         [PrimaryKey]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         public int category_id { get; set; }
 
@@ -31,8 +32,8 @@ namespace Wheelmap_Windows.Model {
                 if (_localizedName != null) {
                     return _localizedName;
                 }
-                if (DataHolder.Instance.NodeTypeById.ContainsKey(id)) {
-                    return DataHolder.Instance.NodeTypeById[id].localizedName;
+                if (DataHolder.Instance.NodeTypeById.ContainsKey(Id)) {
+                    return DataHolder.Instance.NodeTypeById[Id].localizedName;
                 }
                 return identifier;
             }
@@ -48,8 +49,8 @@ namespace Wheelmap_Windows.Model {
                 if (_icon != null) {
                     return _icon;
                 }
-                if (DataHolder.Instance.NodeTypeById.ContainsKey(id)) {
-                    var type = DataHolder.Instance.NodeTypeById[id];
+                if (DataHolder.Instance.NodeTypeById.ContainsKey(Id)) {
+                    var type = DataHolder.Instance.NodeTypeById[Id];
                     if (type == this) {
                         return null;
                     }
@@ -67,8 +68,9 @@ namespace Wheelmap_Windows.Model {
 
     public class Category {
 
+        [JsonProperty(PropertyName = "id")]
         [PrimaryKey]
-        public long id { get; set; }
+        public int Id { get; set; }
         public string identifier { get; set; }
 
         private string _localizedName;

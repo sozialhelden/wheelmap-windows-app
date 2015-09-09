@@ -15,12 +15,14 @@ namespace Wheelmap_Windows.Model {
      * @see related api http://wheelmap.org/api/docs/resources/nodes
      */
     public class Node : INotifyPropertyChanged {
-        
+
+        [PrimaryKey, AutoIncrement]
+        public long _ID { get; set; }
+
         //---------------------------------------- API PROPERTIES ----------------------------------------//
 
-
-        [PrimaryKey]
-        public long id { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public long wm_id { get; set; }
 
         //The node's latitude in degrees as float.
         public double lat { get; set; }
@@ -30,11 +32,15 @@ namespace Wheelmap_Windows.Model {
 
         public string name { get; set; }
 
+        [ForeignKey(typeof(NodeType))]     // Specify the foreign key
+        public int nodeTypeId { get; set; }
         [JsonProperty(PropertyName = "node_type")]
-        [OneToMany]
+        [ManyToOne]
         public NodeType nodeType { get; set; }
 
-        [OneToMany]
+        [ForeignKey(typeof(Category))]     // Specify the foreign key
+        public int categoryId { get; set; }
+        [ManyToOne]
         public Category category { get; set; }
 
         //The node's wheelchair status, must be one of [yes, no, limited, unknown]
@@ -70,16 +76,18 @@ namespace Wheelmap_Windows.Model {
 
         //---------------------------------------- APP PRIVATE PROPERTIES ----------------------------------------//
 
-        /*// indicates if this node has been changed by the user
+        public NodeTag NodeTag { get; set; } = NodeTag.RETRIEVED;
+
+        // indicates if this node has been changed by the user
         public DirtyState DirtyState { get; set; } = DirtyState.CLEAN;
 
         // the time this node has been saved
         public long StoreTimestamp { get; set; }
-        */
+        
         //---------------------------------------- CALCULATED PROPERTIES ----------------------------------------//
 
         // calculated distance in meters
-        public double _Distance = -1;
+        private double _Distance = -1;
         [Ignore]
         public double Distance {
             get {
@@ -91,7 +99,7 @@ namespace Wheelmap_Windows.Model {
             }
         }
 
-        [Ignore]
+        [Ignore, JsonIgnore]
         public string DistanceString {
             get {
                 if (Distance < 0) {
@@ -105,16 +113,16 @@ namespace Wheelmap_Windows.Model {
             }
         }
 
-        [Ignore]
+        [Ignore, JsonIgnore]
         public string MapIconFileUriString {
             get {
-                var fileName = wheelchairStatus + "_" + nodeType.icon;
+                var fileName = wheelchairStatus + "_" + (nodeType?.icon ?? ".png");
                 var uri = $"ms-appdata:///local/{Constants.FOLDER_MARKER_ICONS}/{Constants.FOLDER_COMBINED_ICONS}/{fileName}";
                 return uri;
             }
         }
 
-        [Ignore]
+        [Ignore, JsonIgnore]
         public Uri MapIconFileUri {
             get {
                 return new Uri(MapIconFileUriString);
@@ -130,25 +138,32 @@ namespace Wheelmap_Windows.Model {
         }
 
         public override string ToString() {
-            return $"Node: Id={id} Name={name}";
+            return $"Node: Id={wm_id} Name={name}";
         }
 
         public override int GetHashCode() {
-            return (int) id;
+            return (int) wm_id;
         }
 
         public override bool Equals(object obj) {
             if ( !(obj is Node)) {
                 return false;
             }
-            return id == (obj as Node).id;
+            var n = obj as Node;
+            return wm_id == n.wm_id;
         }
 
     }
 
     public enum DirtyState {
-        DIRTY_ALL,
+        CLEAN,
         DIRTY_STATE,
-        CLEAN
+        DIRTY_ALL,
+    }
+
+    public enum NodeTag {
+        RETRIEVED,
+        COPY,
+        TEMP
     }
 }

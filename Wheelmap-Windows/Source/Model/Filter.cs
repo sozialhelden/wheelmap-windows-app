@@ -24,7 +24,7 @@ namespace Wheelmap_Windows.Model {
                 if (FilterdWcStati.Contains(Stati.From(n.wheelchairToiletStatus))) {
                     continue;
                 }
-                if (FilteredCategoryIdentifier.Contains(n.category.identifier)) {
+                if (n.category?.identifier != null && FilteredCategoryIdentifier.Contains(n.category.identifier)) {
                     continue;
                 }
                 newList.Add(n);
