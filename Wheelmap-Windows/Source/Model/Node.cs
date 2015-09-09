@@ -32,11 +32,15 @@ namespace Wheelmap_Windows.Model {
 
         public string name { get; set; }
 
+        [ForeignKey(typeof(NodeType))]     // Specify the foreign key
+        public int nodeTypeId { get; set; }
         [JsonProperty(PropertyName = "node_type")]
-        [OneToMany]
+        [ManyToOne]
         public NodeType nodeType { get; set; }
 
-        [OneToMany]
+        [ForeignKey(typeof(Category))]     // Specify the foreign key
+        public int categoryId { get; set; }
+        [ManyToOne]
         public Category category { get; set; }
 
         //The node's wheelchair status, must be one of [yes, no, limited, unknown]

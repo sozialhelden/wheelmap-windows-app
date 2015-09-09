@@ -97,7 +97,7 @@ namespace Wheelmap_Windows.Utils {
                 _nodeTypes = value;
                 NodeTypeById.Clear();
                 foreach(NodeType type in value) {
-                    NodeTypeById.Add(type.id, type);
+                    NodeTypeById.Add(type.Id, type);
                 }
             }
         }

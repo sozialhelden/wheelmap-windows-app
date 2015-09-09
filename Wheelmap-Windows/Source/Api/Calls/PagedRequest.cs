@@ -13,27 +13,38 @@ using Wheelmap_Windows.Utils.Extensions;
 namespace Wheelmap_Windows.Api.Calls {
 
     public abstract class PagedRequest<T, K> where T : PagedResponse<K> {
-
-        protected string TAG = "PagesRequest";
+        
         private TaskFactory mTaskFactory;
 
         public PagedRequest() : this(null) {
         }
 
         public PagedRequest(TaskFactory factory) {
-            TAG = GetType().Name;
             mTaskFactory = factory;
         }
 
         // For pagination, how many results to return per page. Default is 200. Max is 500.
         public const int PAGE_SIZE = 500;
 
-        public virtual Task<List<K>> Query() {
+        public virtual async Task<List<K>> Query() {
+            var start = DateTime.Now;
+
+            Task<List<K>> task;
             if (mTaskFactory != null) {
-                return mTaskFactory.StartNew(QueryPages);
+                task = mTaskFactory.StartNew(QueryPages);
             } else {
-                return Task.Run(() => QueryPages());
+                task = Task.Run(() => QueryPages());
             }
+            var result = await task;
+
+            Log.i(this, "QueryTime: " + (DateTime.Now - start));
+            start = DateTime.Now;
+
+            result = await prepareData(result);
+
+            Log.i(this, "DataPrepareTime: " + (DateTime.Now - start));
+
+            return result;
         }
         
         /**
@@ -56,7 +67,7 @@ namespace Wheelmap_Windows.Api.Calls {
                     numPages = resp.meta.numPages;
                     items.AddAll(resp.GetItems());
                     if (page == 1) {
-                        Log.d(TAG, "Query: numPages = " + numPages + ": items: " + resp.meta.itemCountTotal);
+                        Log.d(this, "Query: numPages = " + numPages + ": items: " + resp.meta.itemCountTotal);
                     }
                 } catch {
                     return null;
@@ -72,7 +83,7 @@ namespace Wheelmap_Windows.Api.Calls {
             if (url == null) {
                 return null;
             }
-            Log.d(TAG, url);
+            Log.d(this, url);
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             WebResponse response = request.GetResponse();
@@ -88,6 +99,13 @@ namespace Wheelmap_Windows.Api.Calls {
          * return the url to fetch for the next page
          */
         protected abstract string GetUrl(int page);
+
+        /**
+         * prepare data if needed
+         */
+        protected virtual async Task<List<K>> prepareData(List<K> items) {
+            return items;
+        }
      
     }
 

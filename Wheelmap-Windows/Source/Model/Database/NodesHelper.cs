@@ -3,13 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wheelmap_Window.Extensions;
 
 namespace Wheelmap_Windows.Model {
+    
     public static class Nodes {
 
-    }
+        const long TIME_TO_DELETE_FOR_PENDING = 10 * 60 * 1000;
 
-    public static class NodeExtensions {
+        public static void Save(this Node n) {
+            if (n.NodeTag != NodeTag.RETRIEVED) {
+                // time in ms
+                n.StoreTimestamp = DateTime.Now.Ticks / 10000;
+            }
+            Database.Instance.InsertOrReplace(n);
+        }
+
+        public static void CleanUpOldCopies(bool force = false) {
+            long now = DateTime.Now.Ticks / 10000;
+            long deleteTime;
+            if (!force) {
+                deleteTime = now - TIME_TO_DELETE_FOR_PENDING;
+            } else {
+                deleteTime = now;
+            }
+            Database.Instance.Table<Node>().Delete(x =>  x.NodeTag != NodeTag.RETRIEVED && x.StoreTimestamp < deleteTime);
+        }
+
+        public static void DeleteRetrievedData() {
+            Database.Instance.Table<Node>().Delete(x => x.NodeTag == NodeTag.RETRIEVED);
+        }
 
         /**
          * creates a copy of the node without the _ID

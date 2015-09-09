@@ -108,7 +108,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             nodeTypes.Clear();
             nodeTypeComboBox.Items.Clear();
             foreach (var type in DataHolder.Instance.NodeTypes) {
-                if (type.category_id == c.id) {
+                if (type.category_id == c.Id) {
                     nodeTypes.Add(type);
                     nodeTypeComboBox.Items.Add(type.localizedName);
                 }

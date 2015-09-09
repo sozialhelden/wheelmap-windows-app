@@ -13,6 +13,9 @@ using Wheelmap_Windows.Source.Utils.Threads;
 using Wheelmap_Windows.Utils.Extensions;
 using Windows.Devices.Geolocation;
 using Windows.System.Threading;
+using SQLiteNetExtensions.Attributes;
+using SQLiteNetExtensions.Exceptions;
+using SQLiteNetExtensions.Extensions;
 
 /**
  * contains all methods to query Node from the Wheelmap Api
@@ -38,7 +41,34 @@ namespace Wheelmap_Windows.Api.Calls {
             lcts.ClearTasks();
             return base.Query();
         }
-        
+
+        protected override async Task<List<Node>> prepareData(List<Node> items) {
+            if (items == null) {
+                return null;
+            }
+
+            List<Node> newList = items;
+            Database.Instance.RunInTransaction(() => {
+                // remove all old or outdated data
+                Nodes.CleanUpOldCopies();
+
+                Nodes.DeleteRetrievedData();
+
+                // insert all nodes to database
+                Database.Instance.InsertAllWithChildren(items);
+
+                // query all notes from database to also get all cached data
+                var groups = from x in Database.Instance.Table<Node>() group x by x.wm_id;
+                IEnumerable<Node> smths = groups.SelectMany(group => group);
+                newList = smths.ToList();
+                foreach (var n in newList) {
+                    Database.Instance.GetChildren(n);
+                }
+            });
+
+            return newList;
+        }
+
         protected override string GetUrl(int page) {
             string pageParam = "page=" + page;
             string pageSizeParam = "page_size=" + PAGE_SIZE;
@@ -82,13 +112,13 @@ namespace Wheelmap_Windows.Api.Calls {
         protected override string GetUrl(int page) {
             string pageParam = "page=" + page;
             string pageSizeParam = "page_size=" + PAGE_SIZE;
-            string url = BuildConfig.API_BASEURL + String.Format(ApiConstants.END_POINT_PHOTOS,node.wm_id)+ "?"
+            string url = BuildConfig.API_BASEURL + String.Format(ApiConstants.END_POINT_PHOTOS, node.wm_id) + "?"
                 + ApiConstants.API_KEY_PARAM + "&"
                 + pageSizeParam + "&"
                 + pageParam;
             return url;
         }
-        
+
     }
 
 }

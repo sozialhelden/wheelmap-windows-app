@@ -145,7 +145,7 @@ namespace Wheelmap_Windows.Api.Calls {
             var w = background.PixelWidth;
             var merge = new WriteableBitmap(ICON_WIDTH, ICON_HEIGHT);
             merge.Clear(Colors.Transparent);
-            merge.Blit(destRectBG, background, new Rect(0, 0, background.PixelWidth, background.PixelHeight));
+            merge.Blit(destRectBG, background, new Rect(0, 0, w, h));
             merge.Blit(destRectIcon, icon, new Rect(0, 0, icon.PixelWidth , icon.PixelHeight));
             
             IRandomAccessStream saveStream = await saveFile.OpenAsync(FileAccessMode.ReadWrite);
