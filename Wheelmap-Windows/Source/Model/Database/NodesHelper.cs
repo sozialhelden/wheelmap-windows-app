@@ -28,6 +28,20 @@ namespace Wheelmap_Windows.Model {
             return node;
         }
 
+        /**
+         * queries all entries but ignores doublicated nodes
+         */
+        public static List<Node> QueryAllDistinct() {
+            var groups = from x in Database.Instance.Table<Node>() group x by x.wm_id;
+            List<Node> newList = new List<Node>();
+            foreach (var group in groups) {
+                var node = group.OrderBy(x => x.NodeTag).Last();
+                Database.Instance.GetChildren(node);
+                newList.Add(node);
+            }
+            return newList;
+        }
+
         public static void CleanUpOldCopies(bool force = false) {
             long now = DateUtils.GetTimeInMilliseconds();
             long deleteTime;

@@ -109,6 +109,7 @@ namespace Wheelmap_Windows.Utils {
         private DataHolder() {
             BusProvider.DefaultInstance.Register(this);
             Filter = Prefs.RestoreFilter() ?? new Filter();
+            Nodes = Model.Nodes.QueryAllDistinct();
         }
         
         [Subscribe]

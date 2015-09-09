@@ -58,13 +58,8 @@ namespace Wheelmap_Windows.Api.Calls {
                 Database.Instance.InsertAllWithChildren(items);
 
                 // query all notes from database to also get all cached data
-                var groups = from x in Database.Instance.Table<Node>() group x by x.wm_id;
-                newList = new List<Node>();
-                foreach (var group in groups) {
-                    var node = group.OrderBy(x => x.NodeTag).Last();
-                    Database.Instance.GetChildren(node);
-                    newList.Add(node);
-                }
+                newList = Nodes.QueryAllDistinct();
+
             });
 
             return newList;
