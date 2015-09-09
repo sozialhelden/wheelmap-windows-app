@@ -72,7 +72,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 websideButton.Visibility = Visibility.Collapsed;
             }
 
-            categoryNameTextBlock.Text = n.category.localizedName;
+            categoryNameTextBlock.Text = n.category?.localizedName ?? "";
             distanceTextBlock.Text = n.DistanceString;
 
         }

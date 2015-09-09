@@ -59,10 +59,11 @@ namespace Wheelmap_Windows.Api.Calls {
 
                 // query all notes from database to also get all cached data
                 var groups = from x in Database.Instance.Table<Node>() group x by x.wm_id;
-                IEnumerable<Node> smths = groups.SelectMany(group => group);
-                newList = smths.ToList();
-                foreach (var n in newList) {
-                    Database.Instance.GetChildren(n);
+                newList = new List<Node>();
+                foreach (var group in groups) {
+                    var node = group.OrderBy(x => x.NodeTag).Last();
+                    Database.Instance.GetChildren(node);
+                    newList.Add(node);
                 }
             });
 

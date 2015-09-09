@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wheelmap_Window.Extensions;
+using SQLiteNetExtensions.Extensions;
 
 namespace Wheelmap_Windows.Model {
     
     public static class Nodes {
 
+        // remember modified nodes for 10 minutes
         const long TIME_TO_DELETE_FOR_PENDING = 10 * 60 * 1000;
 
         public static void Save(this Node n) {
@@ -16,7 +18,7 @@ namespace Wheelmap_Windows.Model {
                 // time in ms
                 n.StoreTimestamp = DateTime.Now.Ticks / 10000;
             }
-            Database.Instance.InsertOrReplace(n);
+            Database.Instance.InsertOrReplaceWithChildren(n);
         }
 
         public static void CleanUpOldCopies(bool force = false) {

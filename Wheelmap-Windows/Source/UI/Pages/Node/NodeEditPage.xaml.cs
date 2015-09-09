@@ -81,6 +81,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             plzTextBox.Text = node?.postcode ?? "";
             cityTextBox.Text = node?.city ?? "";
             websiteTextBox.Text = node?.website ?? "";
+            commentTextBox.Text = node?.wheelchairDescription ?? "";
 
         }
 
@@ -174,13 +175,18 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
         private void saveButton_Click(object sender, RoutedEventArgs e) {
 
             if (!CheckIfAllRequiredFieldsAreValid()) {
-                return;
+                //return;
             }
 
             bool createNewNode = node == null;
             if (node == null) {
-                node = new Model.Node();
+                node = new Model.Node() {
+                    NodeTag = NodeTag.COPY
+                };
+            } else if(node.NodeTag == NodeTag.RETRIEVED) {
+                node = node.CreateCopy();
             }
+            node.DirtyState = DirtyState.DIRTY_ALL;
 
             node.category = categories[categoryComboBox.SelectedIndex];
             node.nodeType = nodeTypes[nodeTypeComboBox.SelectedIndex];
@@ -190,6 +196,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             node.street = streetTextBox.Text.Trim();
             node.postcode = plzTextBox.Text.Trim();
             node.city = cityTextBox.Text.Trim();
+            node.housenumber = houseNumberTextBox.Text.Trim();
             node.phone = phoneNumberTextBox.Text.Trim();
             node.website = websiteTextBox.Text.Trim();
             node.wheelchairStatus = wheelchairStatus.Value.ToApiString();
@@ -201,6 +208,8 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             new NodeEditRequest(node).Execute().ContinueWithOnDispatcher(Dispatcher, task => {
                 progressBar.Visibility = Visibility.Collapsed;
                 if (task.Result.IsOk) {
+                    node.DirtyState = DirtyState.CLEAN;
+                    Nodes.Save(node);
                     GoBack();
                 } else {
 
