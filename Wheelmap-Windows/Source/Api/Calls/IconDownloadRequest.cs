@@ -78,7 +78,7 @@ namespace Wheelmap_Windows.Api.Calls {
             return false;
         }
 
-        private async Task LoadBackgroundImages() {
+        private async Task LoadBackgroundImages(StorageFolder toFolder) {
             
             var uri = "ms-appx:///Assets/Images/mapmarker/bg_status_yes.png";
             var fileStream = RandomAccessStreamReference.CreateFromUri(new Uri(uri));
@@ -100,12 +100,23 @@ namespace Wheelmap_Windows.Api.Calls {
             bitmapStateUnknown = new WriteableBitmap(ICON_WIDTH, ICON_HEIGHT);
             bitmapStateUnknown.SetSource(await fileStream.OpenReadAsync());
 
+            // save copy
+
+            StorageFile fileYes = await toFolder.CreateFileAsync($"yes_.png", CreationCollisionOption.ReplaceExisting);
+            StorageFile fileNo = await toFolder.CreateFileAsync($"no_.png", CreationCollisionOption.ReplaceExisting);
+            StorageFile fileLimited = await toFolder.CreateFileAsync($"limited_.png", CreationCollisionOption.ReplaceExisting);
+            StorageFile fileUnknown = await toFolder.CreateFileAsync($"unknown_.png", CreationCollisionOption.ReplaceExisting);
+            await mergeAndSaveFile(bitmapStateYes, null, fileYes);
+            await mergeAndSaveFile(bitmapStateNo, null, fileNo);
+            await mergeAndSaveFile(bitmapStateLimited, null, fileLimited);
+            await mergeAndSaveFile(bitmapStateUnknown, null, fileUnknown);
+
         }
 
         private async Task<bool> PrepareImages(StorageFolder fromFolder, StorageFolder toFolder) {
 
             try {
-                await LoadBackgroundImages();
+                await LoadBackgroundImages(toFolder);
             } catch(Exception e) {
                 Log.e(TAG, e.Message);
                 Log.e(TAG, e.StackTrace);
@@ -138,7 +149,7 @@ namespace Wheelmap_Windows.Api.Calls {
 
             return true;
         }
-
+        
         private async Task mergeAndSaveFile(WriteableBitmap background, WriteableBitmap icon, StorageFile saveFile) {
             
             var h = background.PixelHeight;
@@ -146,8 +157,13 @@ namespace Wheelmap_Windows.Api.Calls {
             var merge = new WriteableBitmap(ICON_WIDTH, ICON_HEIGHT);
             merge.Clear(Colors.Transparent);
             merge.Blit(destRectBG, background, new Rect(0, 0, w, h));
-            merge.Blit(destRectIcon, icon, new Rect(0, 0, icon.PixelWidth , icon.PixelHeight));
-            
+
+            if (icon != null) {
+                merge.Blit(destRectIcon, icon, new Rect(0, 0, icon.PixelWidth, icon.PixelHeight));
+            } else {
+                merge.Blit(destRectBG, background, new Rect(0, 0, w, h));
+            }
+
             IRandomAccessStream saveStream = await saveFile.OpenAsync(FileAccessMode.ReadWrite);
             BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, saveStream);
             // Get pixels of the WriteableBitmap object 

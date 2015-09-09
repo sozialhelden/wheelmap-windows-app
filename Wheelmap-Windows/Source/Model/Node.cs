@@ -116,7 +116,7 @@ namespace Wheelmap_Windows.Model {
         [Ignore, JsonIgnore]
         public string MapIconFileUriString {
             get {
-                var fileName = wheelchairStatus + "_" + nodeType.icon;
+                var fileName = wheelchairStatus + "_" + (nodeType?.icon ?? ".png");
                 var uri = $"ms-appdata:///local/{Constants.FOLDER_MARKER_ICONS}/{Constants.FOLDER_COMBINED_ICONS}/{fileName}";
                 return uri;
             }
@@ -156,9 +156,9 @@ namespace Wheelmap_Windows.Model {
     }
 
     public enum DirtyState {
-        DIRTY_ALL,
+        CLEAN,
         DIRTY_STATE,
-        CLEAN
+        DIRTY_ALL,
     }
 
     public enum NodeTag {
