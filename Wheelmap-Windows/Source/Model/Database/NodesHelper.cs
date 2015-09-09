@@ -21,6 +21,12 @@ namespace Wheelmap_Windows.Model {
             Database.Instance.InsertOrReplaceWithChildren(n);
         }
 
+        public static Node QueryByWmId(long wmId) {
+            var node = Database.Instance.Table<Node>().Where(x => x.wm_id == wmId).OrderBy(x => x.NodeTag).Last();
+            Database.Instance.GetChildren(node);
+            return node;
+        }
+
         public static void CleanUpOldCopies(bool force = false) {
             long now = DateTime.Now.Ticks / 10000;
             long deleteTime;

@@ -42,12 +42,12 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
         }
 
         public void SetNode(Model.Node n) {
-            CurrentNode = n;
+            CurrentNode = Nodes.QueryByWmId(n.wm_id);
 
-            InitTextFields(n);
-            InitImages(n);
-            InitMapControl(n);
-            InitStatus(n);
+            InitTextFields(CurrentNode);
+            InitImages(CurrentNode);
+            InitMapControl(CurrentNode);
+            InitStatus(CurrentNode);
 
         }
 
