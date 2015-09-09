@@ -6,6 +6,7 @@ using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Source.UI.Pages.ImagesDetail;
 using Wheelmap_Windows.Source.UI.Pages.Profile;
+using Wheelmap_Windows.Source.UI.Pages.Status;
 using Wheelmap_Windows.UI.Pages.Base;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
@@ -167,6 +168,33 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 ShowOnDetailFrame(typeof(LoginPage));
             }
         }
+
+        private void status_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
+            ChangeStatusDialogPage.ShowInDialog(new ChangeStatusDialogPageArgs { status = Stati.From(CurrentNode.wheelchairStatus), isInWcMode = false }, (status) => {
+                var node = CreateStateDirtyNode();
+                node.wheelchairStatus = status.ToApiString();
+                Nodes.Save(node);
+                SetNode(node);
+            });
+        }
+
+        private void statusToilet_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
+            ChangeStatusDialogPage.ShowInDialog(new ChangeStatusDialogPageArgs { status = Stati.From(CurrentNode.wheelchairToiletStatus), isInWcMode = true }, (status) => {
+                var node = CreateStateDirtyNode();
+                node.wheelchairToiletStatus = status.ToApiString();
+                Nodes.Save(node);
+                SetNode(node);
+            });
+        }
+
+        private Model.Node CreateStateDirtyNode() {
+            var node = CurrentNode.CreateCopyIfNeeded();
+            if (node.DirtyState != DirtyState.DIRTY_ALL) {
+                node.DirtyState = DirtyState.DIRTY_STATE;
+            }
+            return node;
+        }
+        
     }
     
 }

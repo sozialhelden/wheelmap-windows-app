@@ -183,8 +183,8 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 node = new Model.Node() {
                     NodeTag = NodeTag.COPY
                 };
-            } else if(node.NodeTag == NodeTag.RETRIEVED) {
-                node = node.CreateCopy();
+            } else {
+                node = node.CreateCopyIfNeeded();
             }
             node.DirtyState = DirtyState.DIRTY_ALL;
 

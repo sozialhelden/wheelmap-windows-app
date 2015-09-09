@@ -60,7 +60,10 @@ namespace Wheelmap_Windows.Model {
         /**
          * creates a copy of the node without the _ID
          */
-        public static Node CreateCopy(this Node n) {
+        public static Node CreateCopyIfNeeded(this Node n) {
+            if (n.NodeTag == NodeTag.COPY) {
+                return n;
+            }
             return new Node {
                 wm_id = n.wm_id,
                 lat = n.lat,

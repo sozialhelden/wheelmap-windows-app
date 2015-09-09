@@ -112,7 +112,6 @@ namespace Wheelmap_Windows.Api.Calls {
 
             return dic;
         }
-
-
+        
     }
 }
