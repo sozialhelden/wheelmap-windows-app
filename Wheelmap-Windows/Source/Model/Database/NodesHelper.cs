@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wheelmap_Window.Extensions;
 using SQLiteNetExtensions.Extensions;
+using Wheelmap_Windows.Utils;
 
 namespace Wheelmap_Windows.Model {
     
@@ -16,7 +17,7 @@ namespace Wheelmap_Windows.Model {
         public static void Save(this Node n) {
             if (n.NodeTag != NodeTag.RETRIEVED) {
                 // time in ms
-                n.StoreTimestamp = DateTime.Now.Ticks / 10000;
+                n.StoreTimestamp = DateUtils.GetTimeInMilliseconds();
             }
             Database.Instance.InsertOrReplaceWithChildren(n);
         }
@@ -28,7 +29,7 @@ namespace Wheelmap_Windows.Model {
         }
 
         public static void CleanUpOldCopies(bool force = false) {
-            long now = DateTime.Now.Ticks / 10000;
+            long now = DateUtils.GetTimeInMilliseconds();
             long deleteTime;
             if (!force) {
                 deleteTime = now - TIME_TO_DELETE_FOR_PENDING;
