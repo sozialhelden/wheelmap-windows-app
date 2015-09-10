@@ -65,6 +65,12 @@ namespace Wheelmap_Windows.Api.Model {
         public string message;
         public Dictionary<string, string[]> error;
 
+        public NodeEditResponse(bool ok = false) {
+            if (ok) {
+                message = "OK";
+            }
+        }
+
         public bool IsOk {
             get {
                 return "OK".Equals(message);

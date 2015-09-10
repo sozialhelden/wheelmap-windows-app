@@ -35,11 +35,11 @@ namespace Wheelmap_Windows.Api.Calls {
             this.bbox = bbox;
         }
 
-        public override Task<List<Node>> Query() {
+        public override Task<List<Node>> Execute() {
             // tell scheduler to skip all task in queue
             // they are all outdated now
             lcts.ClearTasks();
-            return base.Query();
+            return base.Execute();
         }
 
         protected override async Task<List<Node>> prepareData(List<Node> items) {

@@ -39,7 +39,7 @@ namespace Wheelmap_Windows.Api.Calls {
         WriteableBitmap bitmapStateUnknown;
         
         public async Task<bool> Query() {
-            var assets = await new AssetsRequest().Query();
+            var assets = await new AssetsRequest().Execute();
             if (assets?.Count <= 0) {
                 // we have some data in the cache
                 return ApiPreferences.GetEtag(ETAG_KEY) != null;

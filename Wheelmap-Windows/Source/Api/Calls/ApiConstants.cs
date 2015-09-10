@@ -17,9 +17,11 @@ namespace Wheelmap_Windows.Api.Calls {
         public const string END_POINT_USER_TERMS_ACCEPTED = "/api/users/accept_terms";
         public const string END_POINT_NODE_EDIT = "/api/nodes/{0}";
         public const string END_POINT_NODE_CREATE = "/api/nodes";
+        public const string END_POINT_UPDATE_WHEELCHAIR_STATUS = "/api/nodes/{0}/update_wheelchair";
 
         public const string WEB_LOGIN_LINK = "/users/auth/osm";
         public const string WM_REGISTER_LINK = "/en/oauth/register_osm";
+
 
 
         public static string API_KEY_PARAM {

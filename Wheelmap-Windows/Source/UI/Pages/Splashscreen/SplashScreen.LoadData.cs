@@ -20,7 +20,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Splashscreen {
         }
 
         private async Task<bool> readNodeTypes() {
-            var nodeTypes = await new NodeTypeRequest().Query();
+            var nodeTypes = await new NodeTypeRequest().Execute();
             if (nodeTypes == null || nodeTypes.Count <= 0) {
                 nodeTypes = Database.Instance.Table<NodeType>().ToList();
             } else {
@@ -35,7 +35,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Splashscreen {
         }
 
         private async Task<bool> readCategories() {
-            var categories = await new CategoryRequest().Query();
+            var categories = await new CategoryRequest().Execute();
             if (categories != null || categories.Count <= 0) {
                 Database.Instance.Table<Category>().Delete(x => true);
                 Database.Instance.InsertAll(categories);

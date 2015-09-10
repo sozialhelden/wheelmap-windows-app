@@ -11,9 +11,10 @@ using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Utils.Extensions;
 
 namespace Wheelmap_Windows.Api.Calls {
+    
+    public abstract class PagedRequest<T, K> : Request<List<K>> where T : PagedResponse<K>{
 
-    public abstract class PagedRequest<T, K> where T : PagedResponse<K> {
-        
+        private bool error = false;
         private TaskFactory mTaskFactory;
 
         public PagedRequest() : this(null) {
@@ -26,7 +27,8 @@ namespace Wheelmap_Windows.Api.Calls {
         // For pagination, how many results to return per page. Default is 200. Max is 500.
         public const int PAGE_SIZE = 500;
 
-        public virtual async Task<List<K>> Query() {
+        public virtual async Task<List<K>> Execute() {
+            error = false;
             var start = DateTime.Now;
 
             Task<List<K>> task;
@@ -43,10 +45,14 @@ namespace Wheelmap_Windows.Api.Calls {
             result = await prepareData(result);
 
             Log.i(this, "DataPrepareTime: " + (DateTime.Now - start));
-
+            error = result == null;
             return result;
         }
-        
+
+        public bool WasError() {
+            return error;
+        }
+
         /**
          * collects all available pages and merges their result
          * returns null if an error happens
@@ -106,7 +112,7 @@ namespace Wheelmap_Windows.Api.Calls {
         protected virtual async Task<List<K>> prepareData(List<K> items) {
             return items;
         }
-     
+        
     }
 
 }

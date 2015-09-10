@@ -103,6 +103,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Source\Api\Calls\ApiConstants.cs" />
+    <Compile Include="Source\Api\Calls\BaseRequests.cs" />
     <Compile Include="Source\Api\Calls\CategoryApiClient.cs" />
     <Compile Include="Source\Api\Calls\IconDownloadRequest.cs" />
     <Compile Include="Source\Api\Calls\NodeApiClient.cs" />

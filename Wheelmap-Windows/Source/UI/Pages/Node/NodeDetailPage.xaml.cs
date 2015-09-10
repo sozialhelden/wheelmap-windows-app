@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Wheelmap_Windows.Api.Calls;
+using Wheelmap_Windows.Api.Model;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Source.UI.Pages.ImagesDetail;
@@ -115,7 +116,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
         private void InitImages(Model.Node node) {
             listView.Items.Clear();
-            new PhotosRequest(node).Query().ContinueWithOnDispatcher(Dispatcher, (photos) => {
+            new PhotosRequest(node).Execute().ContinueWithOnDispatcher(Dispatcher, (photos) => {
                 if (CurrentNode != node) {
                     return;
                 }
@@ -175,6 +176,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 node.wheelchairStatus = status.ToApiString();
                 Nodes.Save(node);
                 SetNode(node);
+                //new RetryRequest<NodeEditResponse>(new NodeStateEditRequest(node)).Execute().Forget();
             });
         }
 
@@ -184,6 +186,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 node.wheelchairToiletStatus = status.ToApiString();
                 Nodes.Save(node);
                 SetNode(node);
+                // TODO change toilet state
             });
         }
 

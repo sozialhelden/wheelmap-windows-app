@@ -164,7 +164,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
                 return;
             }
 
-            var task = new NodesRequest(bbox).Query();
+            var task = new NodesRequest(bbox).Execute();
             task.ContinueWith((items) => {
                 DataHolder.Instance.Nodes = items.Result;
             });

@@ -15,8 +15,9 @@ using Wheelmap_Windows.Extensions;
  */
 namespace Wheelmap_Windows.Api.Calls {
     
-    public class NodeEditRequest {
+    public class NodeEditRequest : Request<NodeEditResponse> {
 
+        private bool error;
         Node node;
 
         public NodeEditRequest(Node  node) {
@@ -24,12 +25,20 @@ namespace Wheelmap_Windows.Api.Calls {
         }
 
         public async Task<NodeEditResponse> Execute() {
+
+            if (node.DirtyState == DirtyState.CLEAN) {
+                error = false;
+                return new NodeEditResponse(ok: true);
+            }
+
+            error = false;
             try {
                 return await execute();
             }
             catch {
+                error = true;
                 return new NodeEditResponse {
-                    message = "error",
+                    message = "ok",
                     error = new Dictionary<string, string[]> {
                         { "name",  new string[] {"UNKNOWN_ERROR".t()} }
                     }
@@ -52,6 +61,10 @@ namespace Wheelmap_Windows.Api.Calls {
                 }
                 var responseString = await responseMessage.Content.ReadAsStringAsync();
                 var editResponse = JsonConvert.DeserializeObject<NodeEditResponse>(responseString);
+                if (editResponse.IsOk) {
+                    node.DirtyState = DirtyState.CLEAN;
+                    Nodes.Save(node);
+                }
                 return editResponse;
             }
         }
@@ -111,6 +124,74 @@ namespace Wheelmap_Windows.Api.Calls {
             }
 
             return dic;
+        }
+
+        public bool WasError() {
+            return error;
+        }
+    }
+
+    //http://staging.wheelmap.org/nodes/433727969/update_toilet.js?api_key=jWeAsb34CJq4yVAryjtc&toilet=no
+    public class NodeStateEditRequest : Request<NodeEditResponse> {
+
+        private bool error;
+        Node node;
+
+        public NodeStateEditRequest(Node node) {
+            this.node = node;
+        }
+
+        public async Task<NodeEditResponse> Execute() {
+
+            if (node.DirtyState == DirtyState.CLEAN) {
+                error = false;
+                return new NodeEditResponse(ok: true);
+            }
+
+            error = false;
+            try {
+                return await execute();
+            }
+            catch {
+                error = true;
+                return new NodeEditResponse {
+                    message = "error",
+                    error = new Dictionary<string, string[]> {
+                        { "name",  new string[] {"UNKNOWN_ERROR".t()} }
+                    }
+                };
+            }
+        }
+
+        public bool WasError() {
+            return error;
+        }
+
+        private async Task<NodeEditResponse> execute() {
+            using (var client = new HttpClient()) {
+                string url = GetUrl();
+                HttpResponseMessage responseMessage;
+                responseMessage = await client.PutAsync(url, null);
+                var responseString = await responseMessage.Content.ReadAsStringAsync();
+                var editResponse = JsonConvert.DeserializeObject<NodeEditResponse>(responseString);
+                if (editResponse.IsOk) {
+                    node.DirtyState = DirtyState.CLEAN;
+                    Nodes.Save(node);
+                }
+                return editResponse;
+            }
+        }
+
+        protected string GetUrl() {
+            var endPoint = String.Format(ApiConstants.END_POINT_UPDATE_WHEELCHAIR_STATUS, node.wm_id);
+            string localeParam = "locale=" + CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+            var paramStatus = "wheelchair=" + node.wheelchairStatus;
+
+            string url = BuildConfig.API_BASEURL + endPoint + "?"
+                + ApiConstants.API_KEY_PARAM + "&"
+                + paramStatus + "&"
+                + localeParam;
+            return url;
         }
         
     }
