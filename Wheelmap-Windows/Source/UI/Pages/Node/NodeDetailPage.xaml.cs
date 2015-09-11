@@ -176,7 +176,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 node.wheelchairStatus = status.ToApiString();
                 Nodes.Save(node);
                 SetNode(node);
-                //new RetryRequest<NodeEditResponse>(new NodeStateEditRequest(node)).Execute().Forget();
+                new RetryRequest<NodeEditResponse>(new NodeStateEditRequest(node)).Execute().Forget();
             });
         }
 
@@ -186,7 +186,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 node.wheelchairToiletStatus = status.ToApiString();
                 Nodes.Save(node);
                 SetNode(node);
-                // TODO change toilet state
+                new RetryRequest<NodeEditResponse>(new NodeEditToiletStatusRequest(node)).Execute().Forget();
             });
         }
 

@@ -130,12 +130,11 @@ namespace Wheelmap_Windows.Api.Calls {
             return error;
         }
     }
-
-    //http://staging.wheelmap.org/nodes/433727969/update_toilet.js?api_key=jWeAsb34CJq4yVAryjtc&toilet=no
+    
     public class NodeStateEditRequest : Request<NodeEditResponse> {
 
         private bool error;
-        Node node;
+        protected Node node;
 
         public NodeStateEditRequest(Node node) {
             this.node = node;
@@ -150,10 +149,13 @@ namespace Wheelmap_Windows.Api.Calls {
 
             error = false;
             try {
-                return await execute();
+                var result = await execute();
+                Log.d(this, $"{node}: success");
+                return result;
             }
             catch {
                 error = true;
+                Log.d(this, $"{node}: error");
                 return new NodeEditResponse {
                     message = "error",
                     error = new Dictionary<string, string[]> {
@@ -167,7 +169,7 @@ namespace Wheelmap_Windows.Api.Calls {
             return error;
         }
 
-        private async Task<NodeEditResponse> execute() {
+        protected async virtual Task<NodeEditResponse> execute() {
             using (var client = new HttpClient()) {
                 string url = GetUrl();
                 HttpResponseMessage responseMessage;
@@ -182,7 +184,7 @@ namespace Wheelmap_Windows.Api.Calls {
             }
         }
 
-        protected string GetUrl() {
+        protected virtual string GetUrl() {
             var endPoint = String.Format(ApiConstants.END_POINT_UPDATE_WHEELCHAIR_STATUS, node.wm_id);
             string localeParam = "locale=" + CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             var paramStatus = "wheelchair=" + node.wheelchairStatus;
@@ -193,6 +195,39 @@ namespace Wheelmap_Windows.Api.Calls {
                 + localeParam;
             return url;
         }
-        
+
+    }
+
+    // small hack until real api is present
+    // http://staging.wheelmap.org/nodes/433727969/update_toilet.js?api_key=XXXX&toilet=no
+    public class NodeEditToiletStatusRequest : NodeStateEditRequest {
+
+        public NodeEditToiletStatusRequest(Node node) : base(node) {
+        }
+
+        protected async override Task<NodeEditResponse> execute() {
+            using (var client = new HttpClient()) {
+                string url = GetUrl();
+                HttpResponseMessage responseMessage;
+                responseMessage = await client.PutAsync(url, null);
+                var responseString = await responseMessage.Content.ReadAsStringAsync();
+                if (responseMessage.StatusCode == System.Net.HttpStatusCode.OK) {
+                    node.DirtyState = DirtyState.CLEAN;
+                    Nodes.Save(node);
+                    return new NodeEditResponse(ok: true);
+                }
+                return new NodeEditResponse(ok: false);
+            }
+        }
+
+        protected override string GetUrl() {
+            var endPoint = String.Format(ApiConstants.END_POINT_UPDATE_TOILET_STATUS, node.wm_id);
+            var paramStatus = "toilet=" + node.wheelchairToiletStatus;
+
+            string url = BuildConfig.API_BASEURL + endPoint + "?"
+                + ApiConstants.API_KEY_PARAM + "&"
+                + paramStatus;
+            return url;
+        }
     }
 }

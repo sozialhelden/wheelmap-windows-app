@@ -26,6 +26,7 @@ namespace Wheelmap_Windows.Api.Calls {
 
         public RetryRequest(Request<T> request, int retries = 3) {
             this.retries = retries;
+            this.request = request;
         }
 
         public async Task<T> Execute() {

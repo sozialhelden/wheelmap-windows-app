@@ -19,6 +19,9 @@ namespace Wheelmap_Windows.Api.Calls {
         public const string END_POINT_NODE_CREATE = "/api/nodes";
         public const string END_POINT_UPDATE_WHEELCHAIR_STATUS = "/api/nodes/{0}/update_wheelchair";
 
+        // TODO replace with correct api
+        public const string END_POINT_UPDATE_TOILET_STATUS = "/nodes/{0}/update_toilet.js";
+
         public const string WEB_LOGIN_LINK = "/users/auth/osm";
         public const string WM_REGISTER_LINK = "/en/oauth/register_osm";
 
