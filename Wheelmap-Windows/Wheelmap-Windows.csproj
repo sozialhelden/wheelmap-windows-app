@@ -120,6 +120,9 @@
     <Compile Include="Source\Model\Models.cs" />
     <Compile Include="Source\Model\Status.cs" />
     <Compile Include="Source\Model\User.cs" />
+    <Compile Include="Source\UI\Controls\ProgressDialog.xaml.cs">
+      <DependentUpon>ProgressDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\UI\Pages\Base\BasePage.cs" />
     <Compile Include="Source\UI\Pages\Main\MainPage.Navigation.cs" />
     <Compile Include="Source\UI\Pages\Main\MainPage.VisualState.cs" />
@@ -313,10 +316,19 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Resources\ProgressDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="Resources\ContentDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Source\UI\Controls\ProgressDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\UI\Pages\Main\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>

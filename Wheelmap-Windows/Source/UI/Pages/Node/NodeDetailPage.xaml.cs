@@ -6,6 +6,7 @@ using Wheelmap_Windows.Api.Calls;
 using Wheelmap_Windows.Api.Model;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
+using Wheelmap_Windows.Source.UI.Controls;
 using Wheelmap_Windows.Source.UI.Pages.ImagesDetail;
 using Wheelmap_Windows.Source.UI.Pages.Profile;
 using Wheelmap_Windows.Source.UI.Pages.Status;
@@ -55,7 +56,6 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             InitImages(CurrentNode);
             InitMapControl(CurrentNode);
             InitStatus(CurrentNode);
-
         }
 
         private void InitTextFields(Model.Node n) {
@@ -184,8 +184,14 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             openPicker.FileTypeFilter.Add(".png");
             // Launch file open picker and caller app is suspended and may be terminated if required 
             StorageFile file = await openPicker.PickSingleFileAsync();
+
+
+            var dialog = new ProgressDialog();
+            dialog.ShowAsync().Forget();
             var result = await new PhotoUploadTask(CurrentNode, file).Execute();
+            dialog.Close();
             Log.d(this, result.IsOk);
+            SetNode(CurrentNode);
         }
 
         private void Edit_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {

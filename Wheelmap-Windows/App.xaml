@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Resources/Constants.xaml"/>
                 <ResourceDictionary Source="Resources/CheckBoxStyle.xaml"/>
                 <ResourceDictionary Source="Resources/ContentDialog.xaml"/>
+                <ResourceDictionary Source="Resources/ProgressDialog.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
