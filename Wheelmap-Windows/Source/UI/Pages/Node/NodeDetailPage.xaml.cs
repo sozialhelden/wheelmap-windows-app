@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Wheelmap_Windows.Api.Calls;
 using Wheelmap_Windows.Api.Model;
 using Wheelmap_Windows.Extensions;
@@ -11,6 +12,8 @@ using Wheelmap_Windows.Source.UI.Pages.Status;
 using Wheelmap_Windows.UI.Pages.Base;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -31,6 +34,8 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
         public Model.Node CurrentNode;
         public List<Photo> mPhotos;
+
+
 
         public NodeDetailPage() {
             this.InitializeComponent();
@@ -60,7 +65,8 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 phoneButton.NavigateUri = new Uri("tel:" + n.phone);
                 phoneButton.Content = n.phone;
                 phoneButton.Visibility = Visibility.Visible;
-            } catch {
+            }
+            catch {
                 phoneButton.Visibility = Visibility.Collapsed;
             }
 
@@ -70,7 +76,8 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 websideButton.NavigateUri = new Uri(n.website);
                 websideButton.Content = n.website;
                 websideButton.Visibility = Visibility.Visible;
-            } catch {
+            }
+            catch {
                 websideButton.Visibility = Visibility.Collapsed;
             }
 
@@ -97,7 +104,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             mapIcon.NormalizedAnchorPoint = new Point(0.5, 1.0);
             mapIcon.Title = node.name == null ? "" : node.name;
             mapControl.MapElements.Add(mapIcon);
-            
+
         }
 
         private void InitStatus(Model.Node node) {
@@ -123,11 +130,12 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 mPhotos = photos.Result;
                 listView.Items.Clear();
                 Log.d(this, "Photos: " + photos.Result.Count());
+                listView.Items.Add(new AddNewPhotoPhoto());
                 foreach (Photo p in photos.Result) {
                     Log.d(this, p.GetThumb());
                     listView.Items.Add(p);
                 }
-                
+
             });
         }
 
@@ -137,10 +145,16 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             if (e.AddedItems.Count() <= 0) {
                 return;
             }
-            
+
+            if (listView.SelectedIndex == 0) {
+                uploadNewPhoto().Forget();
+                return;
+            }
+
             var args = new ImagesDetailArguments() {
                 photos = mPhotos,
-                selectedItem = listView.SelectedIndex
+                // -1 for the first choose a photo element
+                selectedItem = listView.SelectedIndex - 1
             };
 
             // clear selection
@@ -158,7 +172,20 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 (App.Current as App).Navigate(typeof(ImagesDetailPage), args);
                 return;
             }
-            
+
+        }
+
+        private async Task uploadNewPhoto() {
+            FileOpenPicker openPicker = new FileOpenPicker();
+            openPicker.ViewMode = PickerViewMode.Thumbnail;
+            openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            openPicker.FileTypeFilter.Add(".jpg");
+            openPicker.FileTypeFilter.Add(".jpeg");
+            openPicker.FileTypeFilter.Add(".png");
+            // Launch file open picker and caller app is suspended and may be terminated if required 
+            StorageFile file = await openPicker.PickSingleFileAsync();
+            var result = await new PhotoUploadTask(CurrentNode, file).Execute();
+            Log.d(this, result.IsOk);
         }
 
         private void Edit_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
@@ -197,7 +224,19 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             }
             return node;
         }
-        
+
     }
-    
+
+    class AddNewPhotoPhoto {
+
+        public Model.Image Thumb {
+            get {
+                return new Model.Image {
+                    url = "ms-appx:///Assets/Images/ic_camera.png"
+                };
+            }
+        }
+
+    }
+
 }
