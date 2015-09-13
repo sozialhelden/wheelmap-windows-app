@@ -20,7 +20,7 @@ using Wheelmap_Windows.Source.Utils.Interfaces;
 namespace Wheelmap_Windows.Source.UI.Pages.Status {
     public sealed partial class StatusExplainView : UserControl, Selectable {
 
-        private bool _Selected = true;
+        private bool _Selected = false;
         public bool Selected {
             get {
                 return _Selected;
