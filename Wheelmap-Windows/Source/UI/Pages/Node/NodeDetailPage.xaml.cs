@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Wheelmap_Windows.Api.Calls;
@@ -231,6 +232,15 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
             return node;
         }
 
+        private void Navigation_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
+            var uriFormat = "ms-drive-to:?destination.latitude={0}&destination.longitude={1}&destination.name={2}";
+            var uri = String.Format(uriFormat,
+                CurrentNode.lat.ToString(CultureInfo.InvariantCulture),
+                CurrentNode.lon.ToString(CultureInfo.InvariantCulture),
+                Uri.EscapeDataString(CurrentNode.name)
+            );
+             Windows.System.Launcher.LaunchUriAsync(new Uri(uri)).Forget();
+        }
     }
 
     class AddNewPhotoPhoto {

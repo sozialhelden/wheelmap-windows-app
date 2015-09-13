@@ -230,6 +230,7 @@
 
                     <Image
                 Grid.Column="1"
+                        Tapped="Navigation_Tapped"
                 Source="/Assets/Images/ic_route.png"
                 Height="40"
                 Width="40"
