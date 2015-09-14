@@ -76,6 +76,14 @@
                         FontSize="12"
                         Foreground="#fff"/>
                 </Border>
+
+                <SearchBox
+                    x:Uid="searchBox"
+                    x:Name="searchBox"
+                    RequestedTheme="Light"
+                    Margin="10,10,10,10"
+                    Width="300"/>
+
             </StackPanel>
 
             <ListView 

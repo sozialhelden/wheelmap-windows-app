@@ -87,6 +87,7 @@ namespace Wheelmap_Windows.Source.UI {
             phoneUIControlsTop.Visibility = Visibility.Collapsed;
             phoneUIControlsBottom.Visibility = Visibility.Collapsed;
             bottomBar.Visibility = Visibility.Collapsed;
+            searchContainer.Visibility = Visibility.Collapsed;
 
             if (phoneUIBottomSlideUp.Content is StatusPage
                 || phoneUIBottomSlideUp.Content is CategoriesListPage) {

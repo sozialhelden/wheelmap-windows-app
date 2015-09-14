@@ -33,6 +33,15 @@
         
         <Maps:MapControl x:Name="mapControl"/>
 
+        <SearchBox
+            x:Uid="searchBox"
+            x:Name="searchBox"
+            RequestedTheme="Light"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Margin="10,10,10,10"
+            Width="300"/>
+
         <StackPanel 
             x:Name="sideMapControls"
             Orientation="Vertical"

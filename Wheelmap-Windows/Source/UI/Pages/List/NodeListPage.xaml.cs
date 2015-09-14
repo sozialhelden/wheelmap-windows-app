@@ -44,6 +44,16 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
             this.InitializeComponent();
             helpHintText.Text = "HELP_HINT".t();
             emptyListTextBlock.Text = "NO_NODES_FOUND".t();
+            WindowSizeStates.CurrentStateChanged += (sender, e) => OnStateChanged();
+        }
+        
+        private void OnStateChanged() {
+            // show or hide searchBox
+            if (WindowSizeStates.CurrentState == STATE_MEDIUM && !isInHelpMode) {
+                searchBox.Visibility = Visibility.Visible;
+            } else {
+                searchBox.Visibility = Visibility.Collapsed;
+            } 
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -67,12 +77,15 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
                     Filter.FilterdStati.Add(Model.Status.NO);
                     SetData(Filter.FilterNodes(DataHolder.Instance.Nodes));
                     helpHintTextBorder.Visibility = Visibility.Visible;
+                    searchBox.Visibility = Visibility.Collapsed;
                 } else {
                     SetData(DataHolder.Instance.FilterdNodes);
                     helpHintTextBorder.Visibility = Visibility.Collapsed;
+                    searchBox.Visibility = Visibility.Visible;
                 }
             }
             titleTextBlock.Text = Title ?? "";
+            OnStateChanged();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e) {

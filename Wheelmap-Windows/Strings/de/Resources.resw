@@ -153,6 +153,9 @@
   <data name="OutOfZoom.Text" xml:space="preserve">
     <value>Zu weit entfernt um neue Orte zu laden</value>
   </data>
+  <data name="searchBox.PlaceholderText" xml:space="preserve">
+    <value>Suche Orte</value>
+  </data>
   <data name="TITLE_CATEGORY" xml:space="preserve">
     <value>Kategorien</value>
   </data>

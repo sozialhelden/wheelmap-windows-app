@@ -29,7 +29,10 @@ namespace Wheelmap_Windows.Source.UI {
                 } else {
                     bottomBar.Visibility = Visibility.Visible;
                 }
-                return SecondPage.Content != null || detailContainerFrame.Content != null || phoneUIBottomSlideUp.Content != null;
+                return SecondPage.Content != null 
+                    || detailContainerFrame.Content != null
+                    || phoneUIBottomSlideUp.Content != null 
+                    || searchContainer.Visibility == Visibility.Visible;
             }
             return SecondPage.Content != null
                 || menuContainerFrame.Content != null
@@ -38,6 +41,7 @@ namespace Wheelmap_Windows.Source.UI {
         }
 
         public override void GoBack() {
+            
             if (SecondPage.Content != null) {
                 if (SecondPage.CanGoBack) {
                     SecondPage.GoBack();
@@ -45,6 +49,11 @@ namespace Wheelmap_Windows.Source.UI {
                     SecondPage.Content = null;
                 }
                 UpdateTitle();
+                return;
+            }
+
+            if (WindowSizeStates.CurrentState == STATE_SMALL && searchContainer.Visibility == Visibility.Visible) {
+                searchContainer.Visibility = Visibility.Collapsed;
                 return;
             }
 

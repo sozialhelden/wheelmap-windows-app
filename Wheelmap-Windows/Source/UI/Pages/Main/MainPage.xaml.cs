@@ -222,6 +222,10 @@ namespace Wheelmap_Windows.Source.UI {
         private void TappedInBackground(object sender, TappedRoutedEventArgs e) {
             GoBack();
         }
-        
+
+        private void SearchIcon_Tapped(object sender, TappedRoutedEventArgs e) {
+            searchContainer.Visibility = Visibility.Visible;
+            this.RefreshCanGoBack();
+        }
     }
 }

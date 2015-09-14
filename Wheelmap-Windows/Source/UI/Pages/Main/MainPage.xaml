@@ -320,6 +320,7 @@
                                     Grid.Column="1"
                                     Height="48"
                                     Width="48"
+                                    Tapped="SearchIcon_Tapped"
                                     Source="/Assets/Images/Phone/ic_search.png"/>
 
                                 <Image
@@ -329,8 +330,27 @@
                                     Tapped="AddNewNode_Tapped"
                                     Source="/Assets/Images/Phone/ic_neu.png"/>
 
+                                
                             </Grid>
 
+                            <Grid
+                                Visibility="Collapsed"
+                                x:Name="searchContainer"
+                                Background="{StaticResource ResourceKey=PrimaryColor}"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="4">
+                                
+                                <SearchBox
+                                    x:Uid="searchBox"
+                                    RequestedTheme="Light"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Margin="10,0,10,0"
+                                    />
+
+                            </Grid>
+                            
                             <Canvas
                                 Background="{StaticResource ResourceKey=AppBarBackgroundColor}"
                                 Grid.Row="1"
