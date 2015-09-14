@@ -111,6 +111,7 @@
     <Compile Include="Source\Api\Calls\PagedRequest.cs" />
     <Compile Include="Source\Api\Calls\PhotoRequests.cs" />
     <Compile Include="Source\Api\Calls\UserRequest.cs" />
+    <Compile Include="Source\Cortana\CortanaManager.cs" />
     <Compile Include="Source\Model\Database\Database.cs" />
     <Compile Include="Source\Model\Database\NodesHelper.cs" />
     <Compile Include="Source\Model\Filter.cs" />
@@ -290,7 +291,7 @@
     <Content Include="Assets\Images\Phone\ic_wc.png" />
     <Content Include="Assets\Images\Phone\ic_wc_active.png" />
     <Content Include="Assets\Images\Phone\ic_wc_select.png" />
-    <Content Include="Commands.xml">
+    <Content Include="Resources\Commands\Commands.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Properties\Default.rd.xml" />

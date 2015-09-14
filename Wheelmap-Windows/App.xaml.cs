@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Wheelmap_Windows.Cortana;
 using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Source.UI;
@@ -41,12 +42,15 @@ namespace Wheelmap_Windows
     {
         private static string TAG = "App";
 
+        public static App Instance { private set; get; }
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App()
         {
+            Instance = this;
             Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
                 Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
@@ -76,35 +80,26 @@ namespace Wheelmap_Windows
             InitWindow();
             ShowMainPage(e);
 
-            SetUpVoiceCommands();
+            CortanaManager.RegisterCommands();
         }
 
         protected override void OnActivated(IActivatedEventArgs args) {
             base.OnActivated(args);
             
             if (args.Kind == ActivationKind.VoiceCommand) {
-                var commands = args as VoiceCommandActivatedEventArgs;
-                SpeechRecognitionResult result = commands.Result;
-                string voiceCommandName = result.RulePath[0];
-                if (voiceCommandName == "testCommand") {
-                    // TODO
-                }
-                Log.d(TAG, "VoiceCommand: " + voiceCommandName);
-                InitMangers();
-                InitWindow();
-                ShowMainPage(args);
+                CortanaManager.OnActivated(args as VoiceCommandActivatedEventArgs);
             }
             Window.Current.Activate();
             
         }
 
-        private void InitMangers() {
+        public void InitMangers() {
             var _ = Database.Instance;
             DataHolder.Init();
             LocationManager.Init();
         }
 
-        private void InitWindow() {
+        public void InitWindow() {
             SetUpTitleBar();
             SystemNavigationManager.GetForCurrentView().BackRequested -= App_BackRequested;
             SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
@@ -131,7 +126,7 @@ namespace Wheelmap_Windows
             e.Handled = GoBack();
         }
 
-        private void ShowMainPage(IActivatedEventArgs args) {
+        public void ShowMainPage(IActivatedEventArgs args) {
             
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -163,11 +158,6 @@ namespace Wheelmap_Windows
             // Ensure the current window is active
             Window.Current.Activate();
 
-        }
-
-        private async void SetUpVoiceCommands() {
-            var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Commands.xml"));
-            await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(file);
         }
         
         public void Navigate(Type type, object param = null) {
