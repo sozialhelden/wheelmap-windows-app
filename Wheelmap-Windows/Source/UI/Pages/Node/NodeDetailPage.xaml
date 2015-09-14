@@ -238,6 +238,7 @@
 
                     <Image
                 Grid.Column="2"
+                        Tapped="Share_Tapped"
                 Source="/Assets/Images/ic_share.png"
                 Height="40"
                 Width="40"

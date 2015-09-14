@@ -22,6 +22,8 @@ namespace Wheelmap_Windows.Api.Calls {
         // TODO replace with correct api
         public const string END_POINT_UPDATE_TOILET_STATUS = "/nodes/{0}/update_toilet.js";
 
+        public const string NODES_DETAILS = "/nodes/{0}";
+
         public const string WEB_LOGIN_LINK = "/users/auth/osm";
         public const string WM_REGISTER_LINK = "/en/oauth/register_osm";
 

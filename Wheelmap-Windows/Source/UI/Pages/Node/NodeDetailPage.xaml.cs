@@ -12,6 +12,7 @@ using Wheelmap_Windows.Source.UI.Pages.ImagesDetail;
 using Wheelmap_Windows.Source.UI.Pages.Profile;
 using Wheelmap_Windows.Source.UI.Pages.Status;
 using Wheelmap_Windows.UI.Pages.Base;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Storage;
@@ -36,7 +37,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
 
         public Model.Node CurrentNode;
         public List<Photo> mPhotos;
-
+        private DataTransferManager m_dTransferMgr;
 
 
         public NodeDetailPage() {
@@ -48,6 +49,8 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
             SetNode(e.Parameter as Model.Node);
+            m_dTransferMgr = DataTransferManager.GetForCurrentView();
+            m_dTransferMgr.DataRequested += new TypedEventHandler<DataTransferManager, DataRequestedEventArgs>(this.OnDataRequested);
         }
 
         public void SetNode(Model.Node n) {
@@ -240,6 +243,18 @@ namespace Wheelmap_Windows.Source.UI.Pages.Node {
                 Uri.EscapeDataString(CurrentNode.name)
             );
              Windows.System.Launcher.LaunchUriAsync(new Uri(uri)).Forget();
+        }
+
+        private void Share_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
+            DataTransferManager.ShowShareUI();
+        }
+
+        private void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs e) {
+            DataRequest request = e.Request;
+            request.Data.Properties.Title = CurrentNode.name;
+            request.Data.Properties.Description = CurrentNode.name;
+            var url = BuildConfig.API_BASEURL + String.Format(ApiConstants.NODES_DETAILS, CurrentNode.wm_id);
+            request.Data.SetText(CurrentNode.name + ", "+ url);
         }
     }
 
