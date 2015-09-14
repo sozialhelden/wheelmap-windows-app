@@ -51,13 +51,7 @@ namespace Wheelmap_Windows.Source.UI {
                 UpdateTitle();
                 return;
             }
-
-            if (WindowSizeStates.CurrentState == STATE_SMALL && searchContainer.Visibility == Visibility.Visible) {
-                searchContainer.Visibility = Visibility.Collapsed;
-                DataHolder.Instance.QueryString = null;
-                return;
-            }
-
+            
             if (detailContainerFrame.Content != null) {
                 if (detailContainerFrame.CanGoBack
                     // the user should always be able to go back from the NodeDetailPage
@@ -69,6 +63,12 @@ namespace Wheelmap_Windows.Source.UI {
                     detailContainerFrame.Content = null;
                 }
                 UpdateTitle();
+                return;
+            }
+            
+            if (WindowSizeStates.CurrentState == STATE_SMALL && searchContainer.Visibility == Visibility.Visible) {
+                searchContainer.Visibility = Visibility.Collapsed;
+                DataHolder.Instance.QueryString = null;
                 return;
             }
 
