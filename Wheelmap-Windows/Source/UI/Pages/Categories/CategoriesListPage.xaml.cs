@@ -24,10 +24,17 @@ namespace Wheelmap_Windows.Source.UI.Pages.Categories {
     
     public sealed partial class CategoriesListPage : BasePage {
 
+        public override string Title {
+            get {
+                return "TITLE_CATEGORY".t().ToUpper();
+            }
+        }
+
         BulkObservableCollection<CategoryListModel> mItems = new BulkObservableCollection<CategoryListModel>();
 
         public CategoriesListPage() {
-            this.InitializeComponent();            
+            this.InitializeComponent();
+            titleTextBlock.Text = Title ?? "";
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {

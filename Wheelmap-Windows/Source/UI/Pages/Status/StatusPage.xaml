@@ -32,7 +32,6 @@
                     <VisualState.Setters>
                         <Setter Target="hintTextBlockContainer.Visibility" Value="Collapsed"/>
                         <Setter Target="titleTextBlock.Visibility" Value="Collapsed"/>
-                        <Setter Target="titleTextBlock.Visibility" Value="Collapsed"/>
                         <Setter Target="root.Background" Value="Transparent"/>
                     </VisualState.Setters>
                 </VisualState>

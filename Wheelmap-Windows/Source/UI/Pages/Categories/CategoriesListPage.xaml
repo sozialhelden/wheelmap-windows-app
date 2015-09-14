@@ -32,6 +32,7 @@
 
                     <VisualState.Setters>
                         <Setter Target="root.Background" Value="Transparent"/>
+                        <Setter Target="titleTextBlock.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
 
@@ -40,28 +41,42 @@
 
         <!-- force parent to fill the full width-->
         <Canvas Width="999999"/>
-        
-        <ListView 
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <TextBlock
+                x:Name="titleTextBlock"
+                Text="{Binding Title}"
+                FontWeight="Bold"
+                Margin="10,10,10,0"/>
+
+            <ListView 
+            Grid.Row="1"
             x:Name="listView"
             SelectionChanged="Item_Selected">
 
-            <ListView.ItemContainerTransitions>
-                <TransitionCollection>
-                    <!-- You can even omit this transition if desired -->
-                </TransitionCollection>
-            </ListView.ItemContainerTransitions>
+                <ListView.ItemContainerTransitions>
+                    <TransitionCollection>
+                        <!-- You can even omit this transition if desired -->
+                    </TransitionCollection>
+                </ListView.ItemContainerTransitions>
 
-            <ListView.Resources>
-                <DataTemplate x:Key="cell">
-                    <Border BorderBrush="#444"  BorderThickness="0,0,0,1" >
-                        <Grid Margin="5,5,5,5" >
+                <ListView.Resources>
+                    <DataTemplate x:Key="cell">
+                        <Border BorderBrush="#444"  BorderThickness="0,0,0,1" >
+                            <Grid Margin="5,5,5,5" >
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
 
-                            <TextBlock 
+                                <TextBlock 
                                 Grid.Column="0"
                                 Grid.Row="1"
                                 x:Name="category"
@@ -70,7 +85,7 @@
                                 Text="{Binding Category.localizedName}"
                                 Width="auto" FontSize="14"/>
 
-                            <CheckBox
+                                <CheckBox
                                 Grid.Column="1"
                                 MinWidth="20"
                                 HorizontalAlignment="Center"
@@ -79,21 +94,23 @@
                                 Template="{StaticResource ResourceKey=CheckboxImageTemplate}"
                                 />
 
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListView.Resources>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.Resources>
 
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                </Style>
-            </ListView.ItemContainerStyle>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
 
-            <ListView.ItemTemplate>
-                <StaticResource ResourceKey="cell"/>
-            </ListView.ItemTemplate>
-            
-        </ListView>
+                <ListView.ItemTemplate>
+                    <StaticResource ResourceKey="cell"/>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+        </Grid>
     </Grid>
 </app:BasePage>

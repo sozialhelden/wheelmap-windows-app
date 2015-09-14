@@ -30,10 +30,13 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
 
         public override string Title {
             get {
-                return "TITLE_LIST".t().ToUpper();
+                return isInHelpMode 
+                    ? "TITLE_HELP".t().ToUpper() 
+                    : "TITLE_LIST".t().ToUpper();
             }
         }
 
+        bool isInHelpMode = false;
         private Filter Filter;
         private BulkObservableCollection<Model.Node> mItems = new BulkObservableCollection<Model.Node>();
 
@@ -56,6 +59,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
                 helpHintTextBorder.Visibility = Visibility.Collapsed;
             } else {
                 var param = args as NodeListPageArgs;
+                isInHelpMode = param.HelpMode;
                 if (param.HelpMode) {
                     Filter = new Filter();
                     Filter.FilterdStati.Add(Model.Status.YES);
@@ -68,6 +72,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
                     helpHintTextBorder.Visibility = Visibility.Collapsed;
                 }
             }
+            titleTextBlock.Text = Title ?? "";
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e) {

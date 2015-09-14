@@ -29,6 +29,7 @@
 
                     <VisualState.Setters>
                         <Setter Target="contentPanel.Margin" Value="0,48,0,0"/>
+                        <Setter Target="titleTextBlock.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
 
@@ -53,22 +54,30 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
-            <Border 
-                x:Name="helpHintTextBorder"
-                Grid.Row="0"
-                Background="{StaticResource ResourceKey=PrimaryColor}" 
-                CornerRadius="10,10,10,10"
-                Margin="10,10,10,10"
-                Visibility="Collapsed">
+            <StackPanel
+                Orientation="Vertical">
+                
                 <TextBlock
-                    x:Name="helpHintText"
-                    TextWrapping="WrapWholeWords"
+                    x:Name="titleTextBlock"
+                    Text="{Binding Title}"
+                    FontWeight="Bold"
+                    Margin="10,10,10,0"/>
+
+                <Border 
+                    x:Name="helpHintTextBorder"
+                    Background="{StaticResource ResourceKey=PrimaryColor}" 
+                    CornerRadius="10,10,10,10"
                     Margin="10,10,10,10"
-                    FontSize="12"
-                    Foreground="#fff"/>
-            </Border>
-            
+                    Visibility="Collapsed">
+                    <TextBlock
+                        x:Name="helpHintText"
+                        TextWrapping="WrapWholeWords"
+                        Margin="10,10,10,10"
+                        FontSize="12"
+                        Foreground="#fff"/>
+                </Border>
+            </StackPanel>
+
             <ListView 
                 x:Name="listView"
                 Grid.Row="1"
@@ -102,7 +111,7 @@
                                     Grid.RowSpan="2"
                                     Grid.Column="0"
                                     Margin="10,10,10,10">
-                                    
+
                                     <Image
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
