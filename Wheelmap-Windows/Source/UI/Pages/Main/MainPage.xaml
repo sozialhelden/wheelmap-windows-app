@@ -343,6 +343,7 @@
                                 
                                 <SearchBox
                                     x:Uid="searchBox"
+                                    x:Name="searchBox"
                                     RequestedTheme="Light"
                                     VerticalAlignment="Center"
                                     VerticalContentAlignment="Center"

@@ -45,6 +45,7 @@ namespace Wheelmap_Windows.Source.UI {
 
         ToggleGroup<Panel> mToggleGroup;
         MapPage mMapPage;
+        SearchBoxHandler searchHandler;
 
         public MainPage() {
 
@@ -63,6 +64,8 @@ namespace Wheelmap_Windows.Source.UI {
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
 
             FilterChanged(new FilterChangedEvent { Filter = DataHolder.Instance.Filter });
+            
+            searchHandler = new SearchBoxHandler(searchBox);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {

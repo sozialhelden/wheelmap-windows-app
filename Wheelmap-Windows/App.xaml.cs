@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Wheelmap_Windows.Extensions;
 using Wheelmap_Windows.Model;
 using Wheelmap_Windows.Source.UI;
 using Wheelmap_Windows.Source.UI.Pages.Splashscreen;
@@ -12,6 +13,7 @@ using Wheelmap_Windows.Utils.Eventbus;
 using Wheelmap_Windows.Utils.Eventbus.Events;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.VoiceCommands;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
@@ -244,6 +246,21 @@ namespace Wheelmap_Windows
                 statusBar.BackgroundColor = bgColor;
                 statusBar.BackgroundOpacity = 1;
                 statusBar.ForegroundColor = Colors.White;
+                DataHolder.Instance.PropertyChanged -= DataHolder_PropertyChanged;
+                DataHolder.Instance.PropertyChanged += DataHolder_PropertyChanged;
+            }
+        }
+
+        private void DataHolder_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) {
+            if (e.PropertyName == nameof(DataHolder.Instance.IsRequestRunning)) {
+                CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+                    var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+                    if (DataHolder.Instance.IsRequestRunning) {
+                        statusBar.ProgressIndicator.ShowAsync().Forget();
+                    } else {
+                        statusBar.ProgressIndicator.HideAsync().Forget();
+                    }
+                }).Forget();
             }
         }
 

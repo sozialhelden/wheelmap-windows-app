@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace Wheelmap_Windows.Utils {
     /**
      * core component to store all queried data from the api for other components
      */
-    public sealed class DataHolder {
+    public sealed class DataHolder : INotifyPropertyChanged {
         
         private static DataHolder _instance;
         public static DataHolder Instance {
@@ -106,6 +107,46 @@ namespace Wheelmap_Windows.Utils {
         
         public Dictionary<string, Category> Categories = new Dictionary<string, Category>();
 
+        private string _QueryString = null;
+        public string QueryString {
+            get {
+                return _QueryString;
+            }
+            set {
+                _QueryString = value;
+                NotifyPropertyChanged(nameof(QueryString));
+            }
+        }
+
+        private int _IsRequestRunning = 0;
+        public bool IsRequestRunning {
+            get {
+
+                return _IsRequestRunning > 0;
+
+            }
+            set {
+
+                if (value) {
+                    _IsRequestRunning++;
+                } else {
+                    _IsRequestRunning--;
+                }
+
+                if (_IsRequestRunning <= 0) {
+                    _IsRequestRunning = 0;
+                }
+
+                if (_IsRequestRunning <= 1) {
+                    NotifyPropertyChanged(nameof(IsRequestRunning));
+                }
+                Log.d(this,"Requests: "+ _IsRequestRunning);
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        
         private DataHolder() {
             BusProvider.DefaultInstance.Register(this);
             Filter = Prefs.RestoreFilter() ?? new Filter();

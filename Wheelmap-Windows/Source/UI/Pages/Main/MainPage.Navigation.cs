@@ -54,6 +54,7 @@ namespace Wheelmap_Windows.Source.UI {
 
             if (WindowSizeStates.CurrentState == STATE_SMALL && searchContainer.Visibility == Visibility.Visible) {
                 searchContainer.Visibility = Visibility.Collapsed;
+                DataHolder.Instance.QueryString = null;
                 return;
             }
 

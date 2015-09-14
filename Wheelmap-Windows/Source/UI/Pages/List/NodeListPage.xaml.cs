@@ -39,12 +39,15 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
         bool isInHelpMode = false;
         private Filter Filter;
         private BulkObservableCollection<Model.Node> mItems = new BulkObservableCollection<Model.Node>();
+        SearchBoxHandler searchHandler;
+
 
         public NodeListPage() {
             this.InitializeComponent();
             helpHintText.Text = "HELP_HINT".t();
             emptyListTextBlock.Text = "NO_NODES_FOUND".t();
             WindowSizeStates.CurrentStateChanged += (sender, e) => OnStateChanged();
+            searchHandler = new SearchBoxHandler(searchBox);
         }
         
         private void OnStateChanged() {

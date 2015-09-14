@@ -33,4 +33,5 @@ namespace Wheelmap_Windows.Utils.Eventbus.Events {
     public class UserChangedEvent {
         public User User;
     }
+    
 }

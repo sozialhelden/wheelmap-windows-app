@@ -192,6 +192,7 @@
     <Compile Include="Source\Utils\LocationManager.cs" />
     <Compile Include="Source\Utils\Log.cs" />
     <Compile Include="Source\Utils\Preferences\Preferences.cs" />
+    <Compile Include="Source\Utils\SearchBoxHandler.cs" />
     <Compile Include="Source\Utils\Threads\LimitedConcurrencyLevelTaskScheduler.cs" />
     <Compile Include="Source\Utils\ToggleGroup.cs" />
     <Compile Include="Source\Utils\Utils.cs" />

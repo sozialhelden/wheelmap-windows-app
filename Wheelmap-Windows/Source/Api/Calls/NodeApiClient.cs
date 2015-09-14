@@ -16,6 +16,7 @@ using Windows.System.Threading;
 using SQLiteNetExtensions.Attributes;
 using SQLiteNetExtensions.Exceptions;
 using SQLiteNetExtensions.Extensions;
+using Wheelmap_Windows.Utils;
 
 /**
  * contains all methods to query Node from the Wheelmap Api
@@ -29,7 +30,7 @@ namespace Wheelmap_Windows.Api.Calls {
         private static LimitedConcurrencyLevelTaskScheduler lcts = new LimitedConcurrencyLevelTaskScheduler(1);
         private static TaskFactory factory = new TaskFactory(lcts);
 
-        GeoboundingBox bbox;
+        protected GeoboundingBox bbox;
 
         public NodesRequest(GeoboundingBox bbox) : base(factory) {
             this.bbox = bbox;
@@ -61,26 +62,75 @@ namespace Wheelmap_Windows.Api.Calls {
                 newList = Nodes.QueryAllDistinct();
 
             });
-
+            
             return newList;
+        }
+
+        protected override List<Node> QueryPages() {
+            List<Node> result = null;
+            DataHolder.Instance.IsRequestRunning = true;
+            try {
+                result = base.QueryPages();
+            } catch {}
+            DataHolder.Instance.IsRequestRunning = false;
+            return result;
         }
 
         protected override string GetUrl(int page) {
             string pageParam = "page=" + page;
             string pageSizeParam = "page_size=" + PAGE_SIZE;
-            string bboxParam = "bbox="
-                + bbox.NorthwestCorner.Longitude.ToString(CultureInfo.InvariantCulture) + ","
-                + bbox.NorthwestCorner.Latitude.ToString(CultureInfo.InvariantCulture) + ","
-                + bbox.SoutheastCorner.Longitude.ToString(CultureInfo.InvariantCulture) + ","
-                + bbox.SoutheastCorner.Latitude.ToString(CultureInfo.InvariantCulture);
 
+            string bboxParam  = "bbox="
+                    + bbox.NorthwestCorner.Longitude.ToString(CultureInfo.InvariantCulture) + ","
+                    + bbox.NorthwestCorner.Latitude.ToString(CultureInfo.InvariantCulture) + ","
+                    + bbox.SoutheastCorner.Longitude.ToString(CultureInfo.InvariantCulture) + ","
+                    + bbox.SoutheastCorner.Latitude.ToString(CultureInfo.InvariantCulture);
+            
             string url = BuildConfig.API_BASEURL + ApiConstants.END_POINT_NODES + "?"
                 + ApiConstants.API_KEY_PARAM + "&"
                 + bboxParam + "&"
                 + pageSizeParam + "&"
                 + pageParam;
+            
             return url;
         }
+
+    }
+
+    public class NodeSearchRequest : NodesRequest {
+
+        private string queryString;
+        public NodeSearchRequest(String query) : base(null) {
+            queryString = query;
+        }
+        
+        protected override string GetUrl(int page) {
+            string pageParam = "page=" + page;
+            string pageSizeParam = "page_size=" + PAGE_SIZE;
+            string searchParam = "q=" + Uri.EscapeDataString(queryString);
+
+            string bboxParam = null;
+            if (bbox != null) {
+                bboxParam = "bbox="
+                    + bbox.NorthwestCorner.Longitude.ToString(CultureInfo.InvariantCulture) + ","
+                    + bbox.NorthwestCorner.Latitude.ToString(CultureInfo.InvariantCulture) + ","
+                    + bbox.SoutheastCorner.Longitude.ToString(CultureInfo.InvariantCulture) + ","
+                    + bbox.SoutheastCorner.Latitude.ToString(CultureInfo.InvariantCulture);
+            }
+            
+            string url = BuildConfig.API_BASEURL + ApiConstants.END_POINT_NODES_SEATCH + "?"
+                + ApiConstants.API_KEY_PARAM + "&"
+                + searchParam + "&"
+                + pageSizeParam + "&"
+                + pageParam;
+
+            if (bboxParam != null) {
+                url += "&" + bboxParam;
+            }
+
+            return url;
+        }
+
 
     }
 
@@ -97,5 +147,5 @@ namespace Wheelmap_Windows.Api.Calls {
             return url;
         }
     }
-   
+
 }

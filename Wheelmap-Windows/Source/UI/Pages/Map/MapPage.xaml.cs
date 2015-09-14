@@ -57,7 +57,8 @@ namespace Wheelmap_Windows.Source.UI.Pages {
         MyLocationOverlay myLocationOverlay;
 
         BiDirectionalMap<Model.Node, MapElement> nodeElementMap = new BiDirectionalMap<Model.Node, MapElement>();
-        
+        SearchBoxHandler searchHandler;
+
         public MapPage() {
             this.InitializeComponent();
 
@@ -70,7 +71,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
             mapControl.Center = DEFAULT_POSITION;
 
             myLocationOverlay = new MyLocationOverlay(mapControl);
-            
+            searchHandler = new SearchBoxHandler(searchBox);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -161,6 +162,11 @@ namespace Wheelmap_Windows.Source.UI.Pages {
 
             var bbox = mapControl.GetBoundingBox();
             if (bbox == null) {
+                return;
+            }
+
+            if (DataHolder.Instance.QueryString?.Length >= 3) {
+                // do not query new nodes when search is active
                 return;
             }
 

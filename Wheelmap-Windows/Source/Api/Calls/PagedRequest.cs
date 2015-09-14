@@ -57,7 +57,7 @@ namespace Wheelmap_Windows.Api.Calls {
          * collects all available pages and merges their result
          * returns null if an error happens
          */
-        protected List<K> QueryPages() {
+        protected virtual List<K> QueryPages() {
             List<K> items = new List<K>();
 
             // handle pages request
