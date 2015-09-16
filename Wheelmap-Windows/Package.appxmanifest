@@ -3,7 +3,7 @@
   <Identity Name="org.sozialhelden.wheelmap" Publisher="CN=Tim-Windows" Version="1.0.5.0" />
   <mp:PhoneIdentity PhoneProductId="fe5e25d5-2923-44af-b139-e8466b0ac33f" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Wheelmap-Windows</DisplayName>
+    <DisplayName>Wheelmap</DisplayName>
     <PublisherDisplayName>Sozialhelden</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
