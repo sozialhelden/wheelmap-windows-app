@@ -8,7 +8,7 @@ using System.IO;
 using SQLite.Net.Attributes;
 using SQLite.Net.Platform.WinRT;
 
-namespace Wheelmap_Windows.Model {
+namespace Wheelmap.Model {
     public class Database : SQLiteConnection {
 
         private const string DATABASE_NAME = "wheelmap.db";

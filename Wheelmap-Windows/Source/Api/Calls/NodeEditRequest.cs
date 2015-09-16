@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Model;
+using Wheelmap.Model;
 using System.Net.Http;
 using System.Globalization;
-using Wheelmap_Windows.Api.Model;
+using Wheelmap.Api.Model;
 using Newtonsoft.Json;
-using Wheelmap_Windows.Extensions;
+using Wheelmap.Extensions;
 
 /**
  * http://wheelmap.org/ja/api/docs/resources/nodes
  */
-namespace Wheelmap_Windows.Api.Calls {
+namespace Wheelmap.Api.Calls {
     
     public class NodeEditRequest : Request<NodeEditResponse> {
 

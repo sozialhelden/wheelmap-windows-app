@@ -14,11 +14,11 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Wheelmap_Windows.Utils.Extensions;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.UI.Pages.Base;
+using Wheelmap.Utils.Extensions;
+using Wheelmap.Extensions;
+using Wheelmap.UI.Pages.Base;
 
-namespace Wheelmap_Windows.Source.UI.Pages.Splashscreen {
+namespace Wheelmap.Source.UI.Pages.Splashscreen {
 
     public sealed partial class ExtendedSplashPage : BasePage {
 

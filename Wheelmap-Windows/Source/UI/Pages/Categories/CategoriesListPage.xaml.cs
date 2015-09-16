@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Wheelmap_Windows.Utils;
-using Wheelmap_Windows.Utils.Eventbus;
-using Wheelmap_Windows.Utils.Eventbus.Events;
+using Wheelmap.Utils;
+using Wheelmap.Utils.Eventbus;
+using Wheelmap.Utils.Eventbus.Events;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -16,11 +16,11 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.UI.Pages.Base;
+using Wheelmap.Extensions;
+using Wheelmap.UI.Pages.Base;
 using System.ComponentModel;
 
-namespace Wheelmap_Windows.Source.UI.Pages.Categories {
+namespace Wheelmap.Source.UI.Pages.Categories {
     
     public sealed partial class CategoriesListPage : BasePage {
 

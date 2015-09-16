@@ -14,26 +14,26 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Diagnostics;
 using Windows.UI.Xaml.Controls.Maps;
-using Wheelmap_Windows.Source.UI.Pages;
-using Wheelmap_Windows.Source.UI.Pages.List;
-using Wheelmap_Windows.Api.Calls;
-using Wheelmap_Windows.Model;
-using Wheelmap_Windows.Utils.Eventbus;
-using Wheelmap_Windows.Utils.Eventbus.Events;
-using Wheelmap_Windows.Source.UI.Pages.Node;
+using Wheelmap.Source.UI.Pages;
+using Wheelmap.Source.UI.Pages.List;
+using Wheelmap.Api.Calls;
+using Wheelmap.Model;
+using Wheelmap.Utils.Eventbus;
+using Wheelmap.Utils.Eventbus.Events;
+using Wheelmap.Source.UI.Pages.Node;
 using Windows.UI;
 using Windows.UI.Core;
-using Wheelmap_Windows.Utils;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.Source.UI.Pages.Categories;
+using Wheelmap.Utils;
+using Wheelmap.Extensions;
+using Wheelmap.Source.UI.Pages.Categories;
 using Windows.Devices.Geolocation;
-using Wheelmap_Windows.UI.Pages.Base;
+using Wheelmap.UI.Pages.Base;
 using Windows.UI.ViewManagement;
-using Wheelmap_Windows.Source.UI.Pages.Status;
-using Wheelmap_Windows.Source.UI.Pages.Profile;
+using Wheelmap.Source.UI.Pages.Status;
+using Wheelmap.Source.UI.Pages.Profile;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace Wheelmap_Windows.Source.UI {
+namespace Wheelmap.Source.UI {
 
     public sealed partial class MainPage : BasePage {
 

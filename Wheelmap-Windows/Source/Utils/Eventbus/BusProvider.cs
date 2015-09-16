@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wheelmap_Windows.Utils.Eventbus {
+namespace Wheelmap.Utils.Eventbus {
     public class BusProvider {
         private static EventBus _instance;
         public static EventBus DefaultInstance {

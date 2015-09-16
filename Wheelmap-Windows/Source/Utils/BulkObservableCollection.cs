@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wheelmap_Windows.Utils {
+namespace Wheelmap.Utils {
     public class BulkObservableCollection<T> : ObservableCollection<T> {
 
         private bool _suppressNotification = false;

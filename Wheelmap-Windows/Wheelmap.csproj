@@ -111,7 +111,10 @@
     <Compile Include="Source\Api\Calls\PagedRequest.cs" />
     <Compile Include="Source\Api\Calls\PhotoRequests.cs" />
     <Compile Include="Source\Api\Calls\UserRequest.cs" />
+    <Compile Include="Source\Cortana\CortanaCommand.cs" />
     <Compile Include="Source\Cortana\CortanaManager.cs" />
+    <Compile Include="Source\Cortana\DefaultCommand.cs" />
+    <Compile Include="Source\Cortana\WheelmapVoiceCommandService.cs" />
     <Compile Include="Source\Model\Database\Database.cs" />
     <Compile Include="Source\Model\Database\NodesHelper.cs" />
     <Compile Include="Source\Model\Filter.cs" />

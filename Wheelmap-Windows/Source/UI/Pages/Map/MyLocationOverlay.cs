@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Utils;
-using Wheelmap_Windows.Utils.Eventbus;
-using Wheelmap_Windows.Utils.Eventbus.Events;
+using Wheelmap.Utils;
+using Wheelmap.Utils.Eventbus;
+using Wheelmap.Utils.Eventbus.Events;
 using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.Xaml;
@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 
-namespace Wheelmap_Windows.Source.UI.Pages.Map {
+namespace Wheelmap.Source.UI.Pages.Map {
     public class MyLocationOverlay {
 
         WeakReference<MapControl> mMapControl;

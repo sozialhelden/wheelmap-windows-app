@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wheelmap_Windows.Source.Utils.Interfaces {
+namespace Wheelmap.Source.Utils.Interfaces {
     public interface Selectable : INotifyPropertyChanged {
         bool Selected { get; set; }
     }

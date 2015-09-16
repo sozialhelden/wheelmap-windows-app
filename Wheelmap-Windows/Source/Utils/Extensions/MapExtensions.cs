@@ -7,7 +7,7 @@ using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.UI.Xaml.Controls.Maps;
 
-namespace Wheelmap_Windows.Utils.Extensions {
+namespace Wheelmap.Utils.Extensions {
 
     public static class MapExtensions {
 

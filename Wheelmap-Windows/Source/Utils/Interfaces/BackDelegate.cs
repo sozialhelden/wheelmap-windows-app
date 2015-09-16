@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wheelmap_Windows.Utils {
+namespace Wheelmap.Utils {
     public interface BackDelegate {
         bool CanGoBack();
         void GoBack();

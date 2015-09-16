@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Utils;
+using Wheelmap.Utils;
 using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace Wheelmap_Windows.Model {
+namespace Wheelmap.Model {
     
     public class NodeType {
 

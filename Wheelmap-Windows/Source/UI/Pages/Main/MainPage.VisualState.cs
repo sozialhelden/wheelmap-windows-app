@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Source.UI.Pages.Categories;
-using Wheelmap_Windows.Source.UI.Pages.List;
-using Wheelmap_Windows.Source.UI.Pages.Status;
-using Wheelmap_Windows.UI.Pages.Base;
-using Wheelmap_Windows.Utils;
+using Wheelmap.Source.UI.Pages.Categories;
+using Wheelmap.Source.UI.Pages.List;
+using Wheelmap.Source.UI.Pages.Status;
+using Wheelmap.UI.Pages.Base;
+using Wheelmap.Utils;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 
-namespace Wheelmap_Windows.Source.UI {
+namespace Wheelmap.Source.UI {
 
     /**
      * part of MainPage to handle all viszal state changes

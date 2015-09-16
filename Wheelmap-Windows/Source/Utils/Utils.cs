@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wheelmap_Windows.Utils {
+namespace Wheelmap.Utils {
 
     public static class WebViewUtils {
 

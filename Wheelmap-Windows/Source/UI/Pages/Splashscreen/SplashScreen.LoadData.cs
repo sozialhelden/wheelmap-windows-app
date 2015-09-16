@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Api.Calls;
-using Wheelmap_Windows.Model;
-using Wheelmap_Windows.Utils;
+using Wheelmap.Api.Calls;
+using Wheelmap.Model;
+using Wheelmap.Utils;
 using Wheelmap_Window.Extensions;
 
-namespace Wheelmap_Windows.Source.UI.Pages.Splashscreen {
+namespace Wheelmap.Source.UI.Pages.Splashscreen {
     public sealed partial class ExtendedSplashPage {
 
         public async Task<bool> LoadData() {

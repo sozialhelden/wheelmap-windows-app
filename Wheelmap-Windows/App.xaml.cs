@@ -4,14 +4,14 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Wheelmap_Windows.Cortana;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.Model;
-using Wheelmap_Windows.Source.UI;
-using Wheelmap_Windows.Source.UI.Pages.Splashscreen;
-using Wheelmap_Windows.Utils;
-using Wheelmap_Windows.Utils.Eventbus;
-using Wheelmap_Windows.Utils.Eventbus.Events;
+using Wheelmap.Cortana;
+using Wheelmap.Extensions;
+using Wheelmap.Model;
+using Wheelmap.Source.UI;
+using Wheelmap.Source.UI.Pages.Splashscreen;
+using Wheelmap.Utils;
+using Wheelmap.Utils.Eventbus;
+using Wheelmap.Utils.Eventbus.Events;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
@@ -33,7 +33,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace Wheelmap_Windows
+namespace Wheelmap
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Model;
+using Wheelmap.Model;
 
-namespace Wheelmap_Windows {
+namespace Wheelmap {
     static class BuildConfig {
 
         public const string API_KEY = "jWeAsb34CJq4yVAryjtc";

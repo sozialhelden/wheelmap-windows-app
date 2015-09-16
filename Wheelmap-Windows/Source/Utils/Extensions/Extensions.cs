@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Utils.Eventbus;
+using Wheelmap.Utils.Eventbus;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 
-namespace Wheelmap_Windows.Extensions {
+namespace Wheelmap.Extensions {
     public static class Extensions {
         
         // use this to ignore the warning to await for the result

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Wheelmap_Windows.Utils.Extensions {
+namespace Wheelmap.Utils.Extensions {
     public static class WebRequestExtensions {
 
         public static WebResponse GetResponse(this WebRequest request) {

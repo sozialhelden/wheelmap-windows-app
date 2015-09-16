@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Wheelmap_Windows.Resources">
+    xmlns:local="using:Wheelmap.Resources">
 
     <ControlTemplate TargetType="ContentDialog" x:Key="ProgressDialogControlTemplate">
         <Border x:Name="Container">

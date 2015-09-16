@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Wheelmap_Window.Extensions;
 using SQLiteNetExtensions.Extensions;
-using Wheelmap_Windows.Utils;
+using Wheelmap.Utils;
 
-namespace Wheelmap_Windows.Model {
+namespace Wheelmap.Model {
     
     public static class Nodes {
 

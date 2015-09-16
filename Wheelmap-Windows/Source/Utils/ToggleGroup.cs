@@ -5,10 +5,10 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Source.Utils.Interfaces;
+using Wheelmap.Source.Utils.Interfaces;
 using Windows.Foundation;
 
-namespace Wheelmap_Windows.Utils {
+namespace Wheelmap.Utils {
 
     /**
      * manages a collection of items and their selected state

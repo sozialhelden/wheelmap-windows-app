@@ -7,10 +7,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Utils;
+using Wheelmap.Utils;
 using Windows.Storage;
 
-namespace Wheelmap_Windows.Model {
+namespace Wheelmap.Model {
     /**
      * @see related api http://wheelmap.org/api/docs/resources/nodes
      */

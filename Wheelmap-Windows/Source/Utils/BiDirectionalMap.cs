@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wheelmap_Windows.Utils {
+namespace Wheelmap.Utils {
 
     /// <summary>
     /// This is a dictionary guaranteed to have only one of each value and key. 

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Model;
+using Wheelmap.Model;
 using Windows.Devices.Geolocation;
 
-namespace Wheelmap_Windows.Utils.Eventbus.Events {
+namespace Wheelmap.Utils.Eventbus.Events {
 
     public class SelectedNodeChangedEvent {
         public Model.Node node;

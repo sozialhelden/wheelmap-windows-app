@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Utils.Eventbus;
-using Wheelmap_Windows.Utils.Eventbus.Events;
-using Wheelmap_Windows.Utils.Preferences;
+using Wheelmap.Utils.Eventbus;
+using Wheelmap.Utils.Eventbus.Events;
+using Wheelmap.Utils.Preferences;
 
-namespace Wheelmap_Windows.Model {
+namespace Wheelmap.Model {
     public class User {
 
         public int id { get; set; }

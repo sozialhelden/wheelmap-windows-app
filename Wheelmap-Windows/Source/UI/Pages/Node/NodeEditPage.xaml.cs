@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Wheelmap_Windows.Model;
-using Wheelmap_Windows.UI.Pages.Base;
-using Wheelmap_Windows.Utils;
+using Wheelmap.Model;
+using Wheelmap.UI.Pages.Base;
+using Wheelmap.Utils;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -15,15 +15,15 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Wheelmap_Windows.Extensions;
+using Wheelmap.Extensions;
 using Windows.UI.Xaml.Media.Imaging;
-using Wheelmap_Windows.Api.Calls;
+using Wheelmap.Api.Calls;
 using Windows.UI;
-using Wheelmap_Windows.Source.UI.Pages.Status;
+using Wheelmap.Source.UI.Pages.Status;
 using Windows.Devices.Geolocation;
 using Windows.UI.Popups;
 
-namespace Wheelmap_Windows.Source.UI.Pages.Node {
+namespace Wheelmap.Source.UI.Pages.Node {
     
     public sealed partial class NodeEditPage : BasePage {
 

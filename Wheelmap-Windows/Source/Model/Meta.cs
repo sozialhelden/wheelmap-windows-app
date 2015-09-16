@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wheelmap_Windows.Api.Model {
+namespace Wheelmap.Api.Model {
 
     /**
      * meta data for paged requests

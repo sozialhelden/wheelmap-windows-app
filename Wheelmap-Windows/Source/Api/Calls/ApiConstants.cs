@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Model;
+using Wheelmap.Model;
 
-namespace Wheelmap_Windows.Api.Calls {
+namespace Wheelmap.Api.Calls {
 
     public class ApiConstants {
         public const string END_POINT_NODES = "/api/nodes";

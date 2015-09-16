@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Api.Calls;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.Utils.Eventbus;
-using Wheelmap_Windows.Utils.Eventbus.Events;
+using Wheelmap.Api.Calls;
+using Wheelmap.Extensions;
+using Wheelmap.Utils.Eventbus;
+using Wheelmap.Utils.Eventbus.Events;
 using Windows.Devices.Geolocation;
 using Windows.System;
 
-namespace Wheelmap_Windows.Utils {
+namespace Wheelmap.Utils {
     public class LocationManager {
 
         private static LocationManager _instance;

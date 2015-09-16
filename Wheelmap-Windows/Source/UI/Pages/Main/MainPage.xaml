@@ -1,11 +1,11 @@
 ﻿<app:BasePage
-    xmlns:app="using:Wheelmap_Windows.UI.Pages.Base"
+    xmlns:app="using:Wheelmap.UI.Pages.Base"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Wheelmap_Windows"
+    xmlns:local="using:Wheelmap"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    x:Class="Wheelmap_Windows.Source.UI.MainPage"
+    x:Class="Wheelmap.Source.UI.MainPage"
     mc:Ignorable="d">
 
     <Grid

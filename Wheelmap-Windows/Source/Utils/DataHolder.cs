@@ -4,12 +4,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Model;
-using Wheelmap_Windows.Utils.Eventbus;
-using Wheelmap_Windows.Utils.Eventbus.Events;
-using Wheelmap_Windows.Utils.Preferences;
+using Wheelmap.Model;
+using Wheelmap.Utils.Eventbus;
+using Wheelmap.Utils.Eventbus.Events;
+using Wheelmap.Utils.Preferences;
 
-namespace Wheelmap_Windows.Utils {
+namespace Wheelmap.Utils {
 
     /**
      * core component to store all queried data from the api for other components

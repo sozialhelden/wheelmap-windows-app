@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Model;
+using Wheelmap.Model;
 using Windows.Storage;
 
-namespace Wheelmap_Windows.Utils.Preferences {
+namespace Wheelmap.Utils.Preferences {
     class ApiPreferences {
 
         private static ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;

@@ -23,7 +23,7 @@ using Windows.Foundation;
 using Windows.Storage;
 using Windows.Storage.Streams;
 
-namespace Wheelmap_Windows.Source.Utils {
+namespace Wheelmap.Source.Utils {
     public sealed class ZipHelper {
         /// <summary>
         /// Unzips the specified zip file to the specified destination folder.

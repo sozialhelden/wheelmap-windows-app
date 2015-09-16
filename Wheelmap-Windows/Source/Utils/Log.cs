@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wheelmap_Windows {
+namespace Wheelmap {
     public class Log {
 
         public static void d(object TAG, object message) {

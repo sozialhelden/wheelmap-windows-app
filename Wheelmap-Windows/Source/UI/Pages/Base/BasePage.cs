@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Source.UI;
-using Wheelmap_Windows.Utils;
-using Wheelmap_Windows.Utils.Eventbus;
+using Wheelmap.Source.UI;
+using Wheelmap.Utils;
+using Wheelmap.Utils.Eventbus;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace Wheelmap_Windows.UI.Pages.Base {
+namespace Wheelmap.UI.Pages.Base {
     public class BasePage : Page, BackDelegate {
 
         public object Parameter;

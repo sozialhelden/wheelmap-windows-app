@@ -8,7 +8,7 @@ using Windows.Devices.Geolocation;
 /**
  * http://www.codecodex.com/wiki/Calculate_distance_between_two_points_on_a_globe#C.23
  */
-namespace Wheelmap_Windows.Utils {
+namespace Wheelmap.Utils {
 
     /// <summary>  
     /// The distance type to return the results in.  

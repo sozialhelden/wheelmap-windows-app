@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.Utils;
+using Wheelmap.Extensions;
+using Wheelmap.Utils;
 using Windows.UI;
 
-namespace Wheelmap_Windows.Model {
+namespace Wheelmap.Model {
 
     public enum Status {
         YES,

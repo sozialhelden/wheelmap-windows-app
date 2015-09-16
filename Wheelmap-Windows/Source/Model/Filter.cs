@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Extensions;
+using Wheelmap.Extensions;
 
-namespace Wheelmap_Windows.Model {
+namespace Wheelmap.Model {
 
     public class Filter {
 

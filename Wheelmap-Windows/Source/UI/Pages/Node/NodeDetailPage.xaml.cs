@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Api.Calls;
-using Wheelmap_Windows.Api.Model;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.Model;
-using Wheelmap_Windows.Source.UI.Controls;
-using Wheelmap_Windows.Source.UI.Pages.ImagesDetail;
-using Wheelmap_Windows.Source.UI.Pages.Profile;
-using Wheelmap_Windows.Source.UI.Pages.Status;
-using Wheelmap_Windows.UI.Pages.Base;
+using Wheelmap.Api.Calls;
+using Wheelmap.Api.Model;
+using Wheelmap.Extensions;
+using Wheelmap.Model;
+using Wheelmap.Source.UI.Controls;
+using Wheelmap.Source.UI.Pages.ImagesDetail;
+using Wheelmap.Source.UI.Pages.Profile;
+using Wheelmap.Source.UI.Pages.Status;
+using Wheelmap.UI.Pages.Base;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
@@ -25,7 +25,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
-namespace Wheelmap_Windows.Source.UI.Pages.Node {
+namespace Wheelmap.Source.UI.Pages.Node {
 
     public sealed partial class NodeDetailPage : BasePage {
 

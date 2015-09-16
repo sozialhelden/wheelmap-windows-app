@@ -7,22 +7,22 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Api.Model;
-using Wheelmap_Windows.Model;
-using Wheelmap_Windows.Source.Utils.Threads;
-using Wheelmap_Windows.Utils.Extensions;
+using Wheelmap.Api.Model;
+using Wheelmap.Model;
+using Wheelmap.Source.Utils.Threads;
+using Wheelmap.Utils.Extensions;
 using Windows.Devices.Geolocation;
 using Windows.System.Threading;
 using SQLiteNetExtensions.Attributes;
 using SQLiteNetExtensions.Exceptions;
 using SQLiteNetExtensions.Extensions;
-using Wheelmap_Windows.Utils;
+using Wheelmap.Utils;
 
 /**
  * contains all methods to query Node from the Wheelmap Api
  * @see http://wheelmap.org/api/docs/resources/nodes 
  */
-namespace Wheelmap_Windows.Api.Calls {
+namespace Wheelmap.Api.Calls {
 
     public class NodesRequest : PagedRequest<NodesResponse, Node> {
 

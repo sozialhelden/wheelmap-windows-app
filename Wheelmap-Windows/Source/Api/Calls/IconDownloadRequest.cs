@@ -6,11 +6,11 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Api.Model;
-using Wheelmap_Windows.Model;
-using Wheelmap_Windows.Source.Utils;
-using Wheelmap_Windows.Utils;
-using Wheelmap_Windows.Utils.Preferences;
+using Wheelmap.Api.Model;
+using Wheelmap.Model;
+using Wheelmap.Source.Utils;
+using Wheelmap.Utils;
+using Wheelmap.Utils.Preferences;
 using Windows.Foundation;
 using Windows.Graphics.Imaging;
 using Windows.Networking.BackgroundTransfer;
@@ -20,7 +20,7 @@ using Windows.Storage.Streams;
 using Windows.UI;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace Wheelmap_Windows.Api.Calls {
+namespace Wheelmap.Api.Calls {
     public class IconDownloadRequest {
 
         private const string TAG = "IconDownloadRequest";

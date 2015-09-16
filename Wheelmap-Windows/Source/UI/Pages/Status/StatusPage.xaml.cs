@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.UI.Pages.Base;
-using Wheelmap_Windows.Utils;
+using Wheelmap.Extensions;
+using Wheelmap.UI.Pages.Base;
+using Wheelmap.Utils;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace Wheelmap_Windows.Source.UI.Pages.Status {
+namespace Wheelmap.Source.UI.Pages.Status {
     
     public partial class StatusPage : BasePage {
 

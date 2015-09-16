@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wheelmap_Windows.Api.Calls {
+namespace Wheelmap.Api.Calls {
 
     public interface Request<T> {
         Task<T> Execute();

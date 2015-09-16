@@ -12,12 +12,12 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Wheelmap_Windows.Model;
+using Wheelmap.Model;
 using Windows.UI.Xaml.Media.Imaging;
 using System.ComponentModel;
-using Wheelmap_Windows.Source.Utils.Interfaces;
+using Wheelmap.Source.Utils.Interfaces;
 
-namespace Wheelmap_Windows.Source.UI.Pages.Status {
+namespace Wheelmap.Source.UI.Pages.Status {
     public sealed partial class StatusExplainView : UserControl, Selectable {
 
         private bool _Selected = false;

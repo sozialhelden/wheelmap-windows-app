@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 
-namespace Wheelmap_Windows.Extensions {
+namespace Wheelmap.Extensions {
     
     public static class Localization {
         

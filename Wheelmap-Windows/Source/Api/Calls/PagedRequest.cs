@@ -6,11 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Api.Model;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.Utils.Extensions;
+using Wheelmap.Api.Model;
+using Wheelmap.Extensions;
+using Wheelmap.Utils.Extensions;
 
-namespace Wheelmap_Windows.Api.Calls {
+namespace Wheelmap.Api.Calls {
     
     public abstract class PagedRequest<T, K> : Request<List<K>> where T : PagedResponse<K>{
 

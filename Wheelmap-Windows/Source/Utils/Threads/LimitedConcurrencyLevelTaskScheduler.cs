@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Extensions;
+using Wheelmap.Extensions;
 using Windows.System.Threading;
 
-namespace Wheelmap_Windows.Source.Utils.Threads {
+namespace Wheelmap.Source.Utils.Threads {
 
     /**
      * https://msdn.microsoft.com/de-de/library/Ee789351%28v=VS.110%29.aspx

@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Api.Calls;
-using Wheelmap_Windows.UI.Pages.Base;
-using Wheelmap_Windows.Utils.Preferences;
+using Wheelmap.Api.Calls;
+using Wheelmap.UI.Pages.Base;
+using Wheelmap.Utils.Preferences;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
@@ -18,12 +18,12 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Web.Http;
-using Wheelmap_Windows.Extensions;
+using Wheelmap.Extensions;
 using System.Runtime.InteropServices;
-using Wheelmap_Windows.Utils;
-using Wheelmap_Windows.Model;
+using Wheelmap.Utils;
+using Wheelmap.Model;
 
-namespace Wheelmap_Windows.Source.UI.Pages.Profile {
+namespace Wheelmap.Source.UI.Pages.Profile {
 
     public sealed partial class LoginPage : BasePage {
 

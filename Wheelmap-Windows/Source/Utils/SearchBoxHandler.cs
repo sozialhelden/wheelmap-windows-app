@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Api.Calls;
+using Wheelmap.Api.Calls;
 using Windows.UI.Xaml.Controls;
-using Wheelmap_Windows.Extensions;
+using Wheelmap.Extensions;
 
-namespace Wheelmap_Windows.Utils {
+namespace Wheelmap.Utils {
     public class SearchBoxHandler {
 
         public SearchBox SearchBox { protected set; get; }

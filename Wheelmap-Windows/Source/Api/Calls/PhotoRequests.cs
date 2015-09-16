@@ -7,12 +7,12 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Api.Model;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.Model;
+using Wheelmap.Api.Model;
+using Wheelmap.Extensions;
+using Wheelmap.Model;
 using Windows.Storage;
 
-namespace Wheelmap_Windows.Api.Calls {
+namespace Wheelmap.Api.Calls {
 
     public class PhotosRequest : PagedRequest<PhotosResponse, Photo> {
 
