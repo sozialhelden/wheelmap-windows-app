@@ -96,7 +96,7 @@ namespace Wheelmap.Source.UI.Pages {
          * request new data if needed
          */
         private void MapControl_ZoomLevelChanged(MapControl sender, object args) {
-            Debug.WriteLine("ZoomLevel: " + mapControl.ZoomLevel);
+            Log.d(this, "ZoomLevel: " + mapControl.ZoomLevel);
             var zoomLevel = (int)mapControl.ZoomLevel;
             bool isZoomedEnough = true;
 

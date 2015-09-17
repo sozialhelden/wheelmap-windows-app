@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 using Wheelmap.Model;
 
 namespace Wheelmap {
-    static class BuildConfig {
+    
+    /**
+     * contains every build dependent information
+     */
+    public static class WMBuildConfig {
 
         public const string API_KEY = "jWeAsb34CJq4yVAryjtc";
         
@@ -27,6 +31,17 @@ namespace Wheelmap {
 #else
         public const string BUILDTYPE = "Release";
 #endif
+
+        /**
+         * must be called in the apps constructor
+         */ 
+        public static void Init() {
+            BuildConfig.Init(new Config {
+                BUILDTYPE = WMBuildConfig.BUILDTYPE,
+                API_KEY = WMBuildConfig.API_KEY,
+                API_BASEURL = WMBuildConfig.API_BASEURL,
+            });
+        }
 
     }
 }

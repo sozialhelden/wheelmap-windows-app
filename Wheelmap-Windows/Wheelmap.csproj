@@ -102,28 +102,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Source\Api\Calls\ApiConstants.cs" />
-    <Compile Include="Source\Api\Calls\BaseRequests.cs" />
-    <Compile Include="Source\Api\Calls\CategoryApiClient.cs" />
-    <Compile Include="Source\Api\Calls\IconDownloadRequest.cs" />
-    <Compile Include="Source\Api\Calls\NodeApiClient.cs" />
-    <Compile Include="Source\Api\Calls\NodeEditRequest.cs" />
-    <Compile Include="Source\Api\Calls\PagedRequest.cs" />
-    <Compile Include="Source\Api\Calls\PhotoRequests.cs" />
-    <Compile Include="Source\Api\Calls\UserRequest.cs" />
+    <Compile Include="Source\WMBuildConfig.cs" />
     <Compile Include="Source\Cortana\CortanaCommand.cs" />
     <Compile Include="Source\Cortana\CortanaManager.cs" />
     <Compile Include="Source\Cortana\DefaultCommand.cs" />
     <Compile Include="Source\Cortana\WheelmapVoiceCommandService.cs" />
-    <Compile Include="Source\Model\Database\Database.cs" />
-    <Compile Include="Source\Model\Database\NodesHelper.cs" />
-    <Compile Include="Source\Model\Filter.cs" />
-    <Compile Include="Source\Model\Meta.cs" />
-    <Compile Include="Source\Model\Node.cs" />
-    <Compile Include="Source\Model\ApiResponse.cs" />
-    <Compile Include="Source\Model\Models.cs" />
-    <Compile Include="Source\Model\Status.cs" />
-    <Compile Include="Source\Model\User.cs" />
     <Compile Include="Source\UI\Controls\ProgressDialog.xaml.cs">
       <DependentUpon>ProgressDialog.xaml</DependentUpon>
     </Compile>
@@ -146,7 +129,6 @@
     <Compile Include="Source\UI\Pages\Map\MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Source\BuildConfig.cs" />
     <Compile Include="Source\UI\Pages\Map\MyLocationOverlay.cs" />
     <Compile Include="Source\UI\Pages\Node\NodeDetailPage.xaml.cs">
       <DependentUpon>NodeDetailPage.xaml</DependentUpon>
@@ -176,31 +158,7 @@
     <Compile Include="Source\UI\Pages\Status\StatusPage.xaml.cs">
       <DependentUpon>StatusPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Source\Utils\Extensions\DatabaseExtensions.cs" />
-    <Compile Include="Source\Utils\Interfaces\BackDelegate.cs" />
-    <Compile Include="Source\Utils\BiDirectionalMap.cs" />
-    <Compile Include="Source\Utils\BulkObservableCollection.cs" />
-    <Compile Include="Source\Utils\Constants.cs" />
-    <Compile Include="Source\Utils\DataHolder.cs" />
-    <Compile Include="Source\Utils\Eventbus\BusProvider.cs" />
-    <Compile Include="Source\Utils\Eventbus\Eventbus.cs" />
-    <Compile Include="Source\Utils\Eventbus\Events\Events.cs" />
-    <Compile Include="Source\Utils\Eventbus\Subscribe.cs" />
-    <Compile Include="Source\Utils\Extensions\Extensions.cs" />
-    <Compile Include="Source\Utils\Extensions\Localization.cs" />
-    <Compile Include="Source\Utils\Extensions\MapExtensions.cs" />
-    <Compile Include="Source\Utils\Extensions\ViewExtensions.cs" />
-    <Compile Include="Source\Utils\Extensions\WebRequestExtensions.cs" />
-    <Compile Include="Source\Utils\GeoMath.cs" />
-    <Compile Include="Source\Utils\Interfaces\Selectable.cs" />
-    <Compile Include="Source\Utils\LocationManager.cs" />
-    <Compile Include="Source\Utils\Log.cs" />
-    <Compile Include="Source\Utils\Preferences\Preferences.cs" />
-    <Compile Include="Source\Utils\SearchBoxHandler.cs" />
-    <Compile Include="Source\Utils\Threads\LimitedConcurrencyLevelTaskScheduler.cs" />
-    <Compile Include="Source\Utils\ToggleGroup.cs" />
-    <Compile Include="Source\Utils\Utils.cs" />
-    <Compile Include="Source\Utils\ZipHelper.cs" />
+    <Compile Include="Source\Utils\Extensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -399,6 +357,16 @@
     <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wheelmap.Shared\Wheelmap.Shared.csproj">
+      <Project>{f65aa8c3-ad6c-4ea3-a9fd-0f59424be621}</Project>
+      <Name>Wheelmap.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wheelmap.VoiceCommandService\Wheelmap.VoiceCommandService.csproj">
+      <Project>{ec7dbd76-99bd-412e-8fe7-3f786d34024e}</Project>
+      <Name>Wheelmap.VoiceCommandService</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

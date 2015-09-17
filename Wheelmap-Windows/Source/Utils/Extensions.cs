@@ -5,10 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Wheelmap.Utils {
-    public interface BackDelegate {
-        bool CanGoBack();
-        void GoBack();
-    }
 
     public static class BackDelegates {
 

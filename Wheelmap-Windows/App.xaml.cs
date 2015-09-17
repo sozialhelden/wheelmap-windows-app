@@ -4,9 +4,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Wheelmap.Cortana;
 using Wheelmap.Extensions;
 using Wheelmap.Model;
+using Wheelmap.Source.Cortana;
 using Wheelmap.Source.UI;
 using Wheelmap.Source.UI.Pages.Splashscreen;
 using Wheelmap.Utils;
@@ -14,6 +16,7 @@ using Wheelmap.Utils.Eventbus;
 using Wheelmap.Utils.Eventbus.Events;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.AppService;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.VoiceCommands;
 using Windows.Devices.Geolocation;
@@ -50,6 +53,10 @@ namespace Wheelmap
         /// </summary>
         public App()
         {
+            // this must be done before anything else can happen
+            // The BuildConfigs may contain important informations for the appstart
+            WMBuildConfig.Init();
+
             Instance = this;
             Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
                 Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
@@ -66,7 +73,6 @@ namespace Wheelmap
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
             Debug.WriteLine("BuildType: " + BuildConfig.BUILDTYPE);
 
 #if DEBUG
@@ -81,6 +87,7 @@ namespace Wheelmap
             ShowMainPage(e);
 
             CortanaManager.RegisterCommands();
+            //test();
         }
 
         protected override void OnActivated(IActivatedEventArgs args) {
@@ -91,6 +98,22 @@ namespace Wheelmap
             }
             Window.Current.Activate();
             
+        }
+
+        private async void test() {
+
+            await Task.Delay(5000);
+
+            var inventoryService = new AppServiceConnection();
+
+            // Here, we use the app service name defined in the app service provider's Package.appxmanifest file in the <Extension> section. 
+            inventoryService.AppServiceName = "CortanaVoiceCommandService";
+
+            // Use Windows.ApplicationModel.Package.Current.Id.FamilyName within the app service provider to get this value.
+            inventoryService.PackageFamilyName = "org.sozialhelden.wheelmap_6ky57mb3athnt";
+
+            var status = await inventoryService.OpenAsync();
+            Log.d(this, status);
         }
 
         public void InitMangers() {

@@ -6,17 +6,34 @@
 
     <AppName>Wheelmap</AppName>
 
-    <Example>Examplecommand</Example>
+    <Example>Suche 'Ort'</Example>
 
     <Command Name="testCommand">
-
       <Example>Test Command</Example>
       <ListenFor RequireAppName="BeforeOrAfterPhrase">Öffne [mir] [meine] Karte</ListenFor>
       <ListenFor RequireAppName="BeforeOrAfterPhrase">Zeige [mir] [meine] Karte</ListenFor>
       <Feedback>Öffne Karte</Feedback>
-      <Navigate/>
+      <!--<Navigate/>-->
+      <VoiceCommandService Target="WheelmapVoiceCommandService"/>
     </Command>
 
+
+    <Command Name="search">
+      <Example> suche 'Bundle Schokowelt' </Example>
+
+      <ListenFor> Suche </ListenFor>
+      <ListenFor> Suche [nach] {dictatedSearchTerms} </ListenFor>
+      <ListenFor> Finde {dictatedSearchTerms} </ListenFor>
+      <ListenFor> Finde </ListenFor>
+
+      <!--Feedback provides the displayed and spoken text when your command is triggered -->
+      <Feedback> Durchsuche Wheelmap... </Feedback>
+      <VoiceCommandService Target="WheelmapVoiceCommandService"/>
+    </Command>
+
+    <PhraseTopic Label="dictatedSearchTerms" Scenario="Search">
+    </PhraseTopic>
+      
     <!--
     <PhraseList Label="OPEN">
       <Item>Zeige</Item>
