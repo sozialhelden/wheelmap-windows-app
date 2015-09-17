@@ -31,15 +31,22 @@
       <VoiceCommandService Target="WheelmapVoiceCommandService"/>
     </Command>
 
-    <PhraseTopic Label="dictatedSearchTerms" Scenario="Search">
-    </PhraseTopic>
-      
-    <!--
-    <PhraseList Label="OPEN">
-      <Item>Zeige</Item>
-      <Item>Öffne</Item>
+    <Command Name="whereIs">
+      <Example> Wo ist der nächste Geldautomat </Example>
+
+      <ListenFor> Wo ist [der] [das] [die] [nächste] [nächster] {nodeTypes} </ListenFor>
+      <ListenFor> Wo finde [ich] [den] [das] [die] [nächste] [nächsten] {nodeTypes} </ListenFor>
+
+      <Feedback> Durchsuche Wheelmap... </Feedback>
+      <VoiceCommandService Target="WheelmapVoiceCommandService"/>
+    </Command>
+    
+    <PhraseList Label="nodeTypes">
     </PhraseList>
-    -->
+    
+    <PhraseTopic Label="dictatedSearchTerms" Scenario="Search"/>
+
+    
   </CommandSet>
   
 </VoiceCommands>

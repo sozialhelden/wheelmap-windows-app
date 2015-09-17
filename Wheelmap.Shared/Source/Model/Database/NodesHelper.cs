@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Wheelmap_Window.Extensions;
 using SQLiteNetExtensions.Extensions;
 using Wheelmap.Utils;
+using Windows.Devices.Geolocation;
 
 namespace Wheelmap.Model {
     
@@ -55,6 +56,21 @@ namespace Wheelmap.Model {
 
         public static void DeleteRetrievedData() {
             Database.Instance.Table<Node>().Delete(x => x.NodeTag == NodeTag.RETRIEVED);
+        }
+        
+        public static ICollection<Model.Node> OrderItemsByDistance(ICollection<Model.Node> nodes, Geopoint location) {
+            if (nodes == null || location == null) {
+                return nodes;
+            }
+            var point = Position.From(location);
+            var elist = nodes.OrderBy(node => {
+                double meters = Haversine.DistanceInMeters(point, new Position() { Latitude = node.lat, Longitude = node.lon });
+                // update distance to show on map
+                node.Distance = meters;
+                return meters;
+            });
+            var list = elist.ToList();
+            return list;
         }
 
         /**

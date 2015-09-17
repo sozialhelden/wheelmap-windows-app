@@ -114,8 +114,12 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WheelmapVoiceCommandService.cs" />
+    <Compile Include="Source\NodesCommandUtils.cs" />
+    <Compile Include="Source\TestVoiceCommandHandler.cs" />
+    <Compile Include="Source\VoiceCommandHandler.cs" />
+    <Compile Include="Source\WheelmapVoiceCommandService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\WhereIsCommandHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wheelmap.Shared\Wheelmap.Shared.csproj">

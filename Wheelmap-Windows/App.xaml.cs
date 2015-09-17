@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using Wheelmap.Cortana;
 using Wheelmap.Extensions;
 using Wheelmap.Model;
-using Wheelmap.Source.Cortana;
 using Wheelmap.Source.UI;
 using Wheelmap.Source.UI.Pages.Splashscreen;
 using Wheelmap.Utils;
@@ -87,33 +86,19 @@ namespace Wheelmap
             ShowMainPage(e);
 
             CortanaManager.RegisterCommands();
-            //test();
         }
 
         protected override void OnActivated(IActivatedEventArgs args) {
             base.OnActivated(args);
             
-            if (args.Kind == ActivationKind.VoiceCommand) {
+            /*if (args.Kind == ActivationKind.VoiceCommand) {
                 CortanaManager.OnActivated(args as VoiceCommandActivatedEventArgs);
-            }
-            Window.Current.Activate();
-            
-        }
+                Window.Current.Activate();
+            }*/
+            InitMangers();
+            InitWindow();
+            ShowMainPage(args);
 
-        private async void test() {
-
-            await Task.Delay(5000);
-
-            var inventoryService = new AppServiceConnection();
-
-            // Here, we use the app service name defined in the app service provider's Package.appxmanifest file in the <Extension> section. 
-            inventoryService.AppServiceName = "CortanaVoiceCommandService";
-
-            // Use Windows.ApplicationModel.Package.Current.Id.FamilyName within the app service provider to get this value.
-            inventoryService.PackageFamilyName = "org.sozialhelden.wheelmap_6ky57mb3athnt";
-
-            var status = await inventoryService.OpenAsync();
-            Log.d(this, status);
         }
 
         public void InitMangers() {

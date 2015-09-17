@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Wheelmap.Utils.Eventbus;
@@ -93,6 +94,19 @@ namespace Wheelmap.Extensions {
             BusProvider.DefaultInstance.Unregister(page);
         }
         
+    }
+
+
+    public static class TypeExtensions {
+
+        public static object GetNewObject(this Type t) {
+            try {
+                return t.GetConstructor(new Type[] { }).Invoke(new object[] { });
+            }
+            catch {
+                return null;
+            }
+        }
     }
 
 }

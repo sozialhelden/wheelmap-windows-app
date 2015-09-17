@@ -25,7 +25,16 @@ namespace Wheelmap {
         }
         
         private static void printLog(string level, object TAG, object message) {
-            Debug.WriteLine($"{level} | {TAG} | {message}");
+#if DEBUG 
+            if (message is Exception) {
+                var ex = message as Exception;
+                Debug.WriteLine($"{level} | {TAG} | EXCEPTION: {ex.Message}");
+                Debug.WriteLine($"{level} | {TAG} | {ex.StackTrace}");
+            } else {
+                Debug.WriteLine($"{level} | {TAG} | {message}");
+            }
+            
+#endif
         }
     }
 }

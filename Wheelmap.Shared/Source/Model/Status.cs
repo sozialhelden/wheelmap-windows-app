@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wheelmap.Extensions;
 using Wheelmap.Utils;
+using Windows.ApplicationModel.Resources.Core;
 using Windows.UI;
 
 namespace Wheelmap.Model {
@@ -69,31 +70,31 @@ namespace Wheelmap.Model {
             }
         }
 
-        public static string GetLocalizedMessage(this Status status) {
+        public static string GetLocalizedMessage(this Status status, ResourceContext context = null) {
             switch (status) {
                 case Status.YES:
-                    return "STATUS_YES".t(R.File.STATUS);
+                    return "STATUS_YES".t(context, R.File.STATUS);
                 case Status.NO:
-                    return "STATUS_NO".t(R.File.STATUS);
+                    return "STATUS_NO".t(context, R.File.STATUS);
                 case Status.LIMITED:
-                    return "STATUS_LIMITED".t(R.File.STATUS);
+                    return "STATUS_LIMITED".t(context, R.File.STATUS);
                 case Status.UNKNOWN:
-                    return "STATUS_UNKNOWN".t(R.File.STATUS);
+                    return "STATUS_UNKNOWN".t(context, R.File.STATUS);
                 default:
                     throw new Exception("unknown status type");
             }
         }
         
-        public static string GetLocalizedToiletMessage(this Status status) {
+        public static string GetLocalizedToiletMessage(this Status status, ResourceContext context = null) {
             switch (status) {
                 case Status.YES:
-                    return "STATUS_TOILET_YES".t(R.File.STATUS);
+                    return "STATUS_TOILET_YES".t(context, R.File.STATUS);
                 case Status.NO:
-                    return "STATUS_TOILET_NO".t(R.File.STATUS);
+                    return "STATUS_TOILET_NO".t(context, R.File.STATUS);
                 case Status.LIMITED:
-                    return "STATUS_TOILET_LIMITED".t(R.File.STATUS);
+                    return "STATUS_TOILET_LIMITED".t(context, R.File.STATUS);
                 case Status.UNKNOWN:
-                    return "STATUS_TOILET_UNKNOWN".t(R.File.STATUS);
+                    return "STATUS_TOILET_UNKNOWN".t(context, R.File.STATUS);
                 default:
                     throw new Exception("unknown status type");
             }

@@ -12,7 +12,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10042.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.10166.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
@@ -106,7 +106,6 @@
     <Compile Include="Source\Cortana\CortanaCommand.cs" />
     <Compile Include="Source\Cortana\CortanaManager.cs" />
     <Compile Include="Source\Cortana\DefaultCommand.cs" />
-    <Compile Include="Source\Cortana\WheelmapVoiceCommandService.cs" />
     <Compile Include="Source\UI\Controls\ProgressDialog.xaml.cs">
       <DependentUpon>ProgressDialog.xaml</DependentUpon>
     </Compile>
@@ -169,7 +168,6 @@
     <PRIResource Include="Strings\de\Status.resw" />
     <PRIResource Include="Strings\de\Profile.resw" />
     <PRIResource Include="Strings\de\Node.resw" />
-    <None Include="Wheelmap-Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Images\credits_logo.png" />

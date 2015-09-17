@@ -122,8 +122,8 @@
     <Compile Include="Source\Api\Calls\PagedRequest.cs" />
     <Compile Include="Source\Api\Calls\PhotoRequests.cs" />
     <Compile Include="Source\Api\Calls\UserRequest.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Source\BuildConfig.cs" />
+    <Compile Include="Source\Cortana\VoiceCommandHelper.cs" />
     <Compile Include="Source\Model\ApiResponse.cs" />
     <Compile Include="Source\Model\Database\Database.cs" />
     <Compile Include="Source\Model\Database\NodesHelper.cs" />

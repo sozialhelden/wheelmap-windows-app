@@ -36,6 +36,8 @@ namespace Wheelmap.Source.UI.Pages.List {
             }
         }
 
+        public object NodesHelper { get; private set; }
+
         bool isInHelpMode = false;
         private Filter Filter;
         private BulkObservableCollection<Model.Node> mItems = new BulkObservableCollection<Model.Node>();
@@ -111,7 +113,7 @@ namespace Wheelmap.Source.UI.Pages.List {
                 return;
             }
 
-            var orderedData = OrderItemsByDistance(data, LocationManager.Instance?.LastLocationEvent?.Args?.Position?.Coordinate?.Point);
+            var orderedData = Nodes.OrderItemsByDistance(data, LocationManager.Instance?.LastLocationEvent?.Args?.Position?.Coordinate?.Point);
             mItems.CallBatch(() => {
                 mItems.Clear();
                 mItems.AddAll(orderedData);
@@ -138,22 +140,7 @@ namespace Wheelmap.Source.UI.Pages.List {
 
         [Subscribe]
         public void OnLocationChanged(LocationChangedEvent e) => SetData(mItems);
-
-        private ICollection<Model.Node> OrderItemsByDistance(ICollection<Model.Node> nodes, Geopoint location) {
-            if (nodes == null || location == null) {
-                return nodes;
-            }
-            var point = Position.From(location);
-            var elist = nodes.OrderBy(node => {
-                double meters = Haversine.DistanceInMeters(point, new Position() { Latitude = node.lat, Longitude = node.lon });
-                // update distance to show on map
-                node.Distance = meters;
-                return meters;
-            });
-            var list = elist.ToList();
-            return list;
-        }
-
+        
     }
 
     public class NodeListPageArgs {

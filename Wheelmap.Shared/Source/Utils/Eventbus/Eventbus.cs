@@ -18,7 +18,7 @@ namespace Wheelmap.Utils.Eventbus {
         const string TAG = nameof(EventBus);
 
         private List<WeakReference> _subscribers = new List<WeakReference>();
-        
+
         public EventBus() {
 
         }
@@ -43,6 +43,14 @@ namespace Wheelmap.Utils.Eventbus {
         }
 
         public void Post(object e) {
+
+            try {
+                if (CoreApplication.MainView?.CoreWindow?.Dispatcher == null) {
+                    return;
+                }
+            }catch {
+                return;
+            }
 
             // run callback on mainthread
             CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wheelmap.Api.Calls;
+using Wheelmap.Cortana;
 using Wheelmap.Model;
 using Wheelmap.Utils;
 using Wheelmap_Window.Extensions;
+using Windows.Devices.Geolocation;
 
 namespace Wheelmap.Source.UI.Pages.Splashscreen {
     public sealed partial class ExtendedSplashPage {
@@ -30,6 +32,7 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
             if (nodeTypes == null || nodeTypes.Count <= 0) {
                 return false;
             }
+            VoiceCommandHelper.UpdateNodeTypePhraseList(nodeTypes);
             DataHolder.Instance.NodeTypes = nodeTypes;
             return true;
         }
