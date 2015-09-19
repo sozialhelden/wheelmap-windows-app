@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Wheelmap.Model;
 using Windows.ApplicationModel.Resources.Core;
 using Windows.ApplicationModel.VoiceCommands;
-using System.Collections.Generic;
 using Wheelmap.Utils;
+using Wheelmap.Extensions;
 
 namespace Wheelmap.VoiceCommandService {
     abstract class VoiceCommandHandler {
@@ -54,17 +53,16 @@ namespace Wheelmap.VoiceCommandService {
         protected async void LaunchAppInForeground(VoiceCommandUserMessage userMessage = null, string args = null) {
             if (userMessage == null) {
                 userMessage = new VoiceCommandUserMessage();
-                // TODO
-                userMessage.SpokenMessage = "Öffne App";
-                userMessage.DisplayMessage = "Öffne App";
+                userMessage.SpokenMessage = "OPEN_APP_SpokenMessage".t(context, R.File.CORTANA);
+                userMessage.DisplayMessage = "OPEN_APP_DisplayMessage".t(context, R.File.CORTANA);
             }
             var response = VoiceCommandResponse.CreateResponse(userMessage);
-            response.AppLaunchArgument = args ?? "NO_ARGS";
+            response.AppLaunchArgument = args ?? "";
             await voiceServiceConnection.RequestAppLaunchAsync(response);
         }
 
 
-        public async Task<Node> AskUserForNode(List<Node> nodes) {
+        public async Task<Node> AskUserForNode(List<Node> nodes, bool isToiletSearch) {
 
             if (nodes == null || nodes.Count() == 0) {
                 return null;
@@ -83,29 +81,28 @@ namespace Wheelmap.VoiceCommandService {
             int i = 1;
             foreach (var node in nodes) {
                 var tile = new VoiceCommandContentTile();
-
-                // To handle UI scaling, Cortana automatically looks up files with FileName.scale-<n>.ext formats based on the requested filename.
-                // See the VoiceCommandService\Images folder for an example.
+                
                 tile.ContentTileType = VoiceCommandContentTileType.TitleWithText;
 
                 tile.AppContext = node;
-                //tile.Image = await StorageFile.GetFileFromApplicationUriAsync((node.MapIconFileUri));
-                //tile.AppLaunchArgument = node.wm_id.ToString(CultureInfo.InvariantCulture);
                 tile.Title = i + ": " + node.name;
-                tile.TextLine1 = Stati.From(node.wheelchairStatus).GetLocalizedMessage(context);
+                if (isToiletSearch) {
+                    tile.TextLine1 = Stati.From(node.wheelchairStatus).GetLocalizedToiletMessage(context);
+                } else {
+                    tile.TextLine1 = Stati.From(node.wheelchairStatus).GetLocalizedMessage(context);
+                }
                 tile.TextLine2 = node.DistanceString;
                 contentTiles.Add(tile);
                 i++;
             }
             
-            // TODO 
             var userPrompt = new VoiceCommandUserMessage();
-            userPrompt.DisplayMessage =
-                userPrompt.SpokenMessage = "Suche aus";
+            userPrompt.SpokenMessage = "CHOOSE_A_PLACE_SpokenMessage_1".t(context, R.File.CORTANA);
+            userPrompt.DisplayMessage = "CHOOSE_A_PLACE_DisplayMessage_1".t(context, R.File.CORTANA);
 
             var userPrompt2 = new VoiceCommandUserMessage();
-            userPrompt2.DisplayMessage =
-                userPrompt2.SpokenMessage = "Suche aus 2";
+            userPrompt2.SpokenMessage = "CHOOSE_A_PLACE_SpokenMessage_2".t(context, R.File.CORTANA);
+            userPrompt2.DisplayMessage = "CHOOSE_A_PLACE_DisplayMessage_2".t(context, R.File.CORTANA);
 
             var response = VoiceCommandResponse.CreateResponseForPrompt(userPrompt, userPrompt2, contentTiles);
             response.AppLaunchArgument = new WheelmapParams().ToString();

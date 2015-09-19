@@ -28,7 +28,7 @@ namespace Wheelmap.Source.UI {
                 DataHolder.Instance.QueryString = args.Search;
             }
             if (args.ShowDetailsFromId > 0) {
-                var node = Database.Instance.Table<Node>().Where(x => x.wm_id == args.ShowDetailsFromId).First();
+                var node = Database.Instance.Table<Node>().Where(x => x.wm_id == args.ShowDetailsFromId).FirstOrDefault();
                 if (node != null) {
                     SelectedNodeChangedEvent e = new SelectedNodeChangedEvent();
                     e.node = node;

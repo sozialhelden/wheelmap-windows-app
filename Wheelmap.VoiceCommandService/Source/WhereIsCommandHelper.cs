@@ -25,10 +25,11 @@ namespace Wheelmap.VoiceCommandService {
 
             await ShowProgressScreen("Suche: " + nodeTypeString);
 
-            var nodeType = Database.Instance.Table<NodeType>().Where(x => x.localizedName == nodeTypeString).First();
+            bool isToiletSearch = IsToiletSynonym(nodeTypeString);
+            var nodeTypes = Database.Instance.Table<NodeType>().Where(x => x.localizedName.Contains(nodeTypeString)).ToList();
 
-            if (nodeType == null) {
-                reportError();
+            if ((nodeTypes == null || nodeTypes.Count() == 0) && !isToiletSearch) {
+                reportErrorNotFound(false);
                 return;
             }
 
@@ -44,21 +45,22 @@ namespace Wheelmap.VoiceCommandService {
             List<Node> nodes = await new NodesRequest(bbox).Execute();
 
             if (nodes?.Count() <= 0) {
-                reportErrorNotFound();
+                reportErrorNotFound(isToiletSearch);
                 return;
             }
 
             nodes = nodes.Where(x => {
-                return x.nodeType.Id == nodeType.Id;
+                return (nodeTypes.Any(y => y.Id == x.nodeType.Id)) ||
+                (isToiletSearch && x.wheelchairToiletStatus == "yes");
             }).ToList();
 
             nodes = Nodes.OrderItemsByDistance(nodes, point).ToList();
 
-            var node = await AskUserForNode(nodes);
+            var node = await AskUserForNode(nodes, isToiletSearch);
             Log.d(this, "Selected Node: " + node);
 
             if (node == null) {
-                reportErrorNotFound();
+                reportErrorNotFound(isToiletSearch);
                 return;
             }
 
@@ -67,27 +69,30 @@ namespace Wheelmap.VoiceCommandService {
             }.ToString());
             
         }
+
+        private bool IsToiletSynonym(string word) {
+            var synonyms = "TOILET_SYNONYM".t(context, R.File.CORTANA).Split('/').ToList();
+            return synonyms.Contains(word);
+        }
         
-        private async void reportErrorNotFound() {
+        private async void reportErrorNotFound(bool isToiletSearch) {
+
             var userMessage = new VoiceCommandUserMessage();
-            userMessage.SpokenMessage = "Kein Ort gefunden";
-            userMessage.DisplayMessage = "Kein Ort gefunden";
+            userMessage.SpokenMessage = isToiletSearch 
+                ? "ERROR_TOILET_NOT_FOUNT_SpokenMessage".t(context, R.File.CORTANA) 
+                : "ERROR_PLACE_NOT_FOUNT_SpokenMessage".t(context, R.File.CORTANA);
+            userMessage.DisplayMessage = isToiletSearch
+                ? "ERROR_TOILET_NOT_FOUNT_DisplayMessage".t(context, R.File.CORTANA)
+                : "ERROR_PLACE_NOT_FOUNT_DisplayMessage".t(context, R.File.CORTANA);
+
             var response = VoiceCommandResponse.CreateResponse(userMessage);
             await voiceServiceConnection.ReportSuccessAsync(response);
         }
 
         private async void reportErrorNoLocationAccess() {
             var userMessage = new VoiceCommandUserMessage();
-            userMessage.SpokenMessage = "Kein Location Zugriff";
-            userMessage.DisplayMessage = "Kein Location Zugriff";
-            var response = VoiceCommandResponse.CreateResponse(userMessage);
-            await voiceServiceConnection.ReportSuccessAsync(response);
-        }
-
-        private async void reportError() {
-            var userMessage = new VoiceCommandUserMessage();
-            userMessage.SpokenMessage = "Nicht gefunden";
-            userMessage.DisplayMessage = "Nicht gefunden";
+            userMessage.SpokenMessage = "ERROR_NO_LOCTION_ACCESS_SpokenMessage".t(context, R.File.CORTANA);
+            userMessage.DisplayMessage = "ERROR_NO_LOCTION_ACCESS_DisplayMessage".t(context, R.File.CORTANA);
             var response = VoiceCommandResponse.CreateResponse(userMessage);
             await voiceServiceConnection.ReportSuccessAsync(response);
         }
