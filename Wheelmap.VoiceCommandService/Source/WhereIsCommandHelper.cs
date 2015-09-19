@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wheelmap.Api.Calls;
+using Wheelmap.Extensions;
 using Wheelmap.Model;
 using Wheelmap.Utils;
 using Windows.ApplicationModel.VoiceCommands;
@@ -40,7 +41,7 @@ namespace Wheelmap.VoiceCommandService {
             var point = (await new Geolocator().GetGeopositionAsync()).Coordinate.Point;
             var bbox = GeoMath.GetBoundingBox(point.Position, 2);
 
-            ICollection<Node> nodes = await new NodesRequest(bbox).Execute();
+            List<Node> nodes = await new NodesRequest(bbox).Execute();
 
             if (nodes?.Count() <= 0) {
                 reportErrorNotFound();
@@ -51,12 +52,20 @@ namespace Wheelmap.VoiceCommandService {
                 return x.nodeType.Id == nodeType.Id;
             }).ToList();
 
-            nodes = Nodes.OrderItemsByDistance(nodes, point);
+            nodes = Nodes.OrderItemsByDistance(nodes, point).ToList();
 
             var node = await AskUserForNode(nodes);
             Log.d(this, "Selected Node: " + node);
 
+            if (node == null) {
+                reportErrorNotFound();
+                return;
+            }
 
+            LaunchAppInForeground(null, new WheelmapParams {
+                ShowDetailsFromId = node.wm_id
+            }.ToString());
+            
         }
         
         private async void reportErrorNotFound() {

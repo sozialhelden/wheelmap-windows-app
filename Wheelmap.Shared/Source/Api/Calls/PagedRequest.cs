@@ -15,13 +15,19 @@ namespace Wheelmap.Api.Calls {
     public abstract class PagedRequest<T, K> : Request<List<K>> where T : PagedResponse<K>{
 
         private bool error = false;
+        protected bool SinglePage = false;
         private TaskFactory mTaskFactory;
 
-        public PagedRequest() : this(null) {
-        }
+        /// <summary>
+        /// to make sure that we cannot run into an infinite loop which query pages
+        /// </summary>
+        protected int MaxPages = 5;
 
-        public PagedRequest(TaskFactory factory) {
+        public PagedRequest(bool singlePage = false) : this(null, singlePage) {}
+
+        public PagedRequest(TaskFactory factory, bool singlePage = false) {
             mTaskFactory = factory;
+            SinglePage = singlePage;
         }
 
         // For pagination, how many results to return per page. Default is 200. Max is 500.
@@ -60,10 +66,11 @@ namespace Wheelmap.Api.Calls {
         protected virtual List<K> QueryPages() {
             List<K> items = new List<K>();
 
+            int iteration = 0;
             // handle pages request
             int page = 0;
             long numPages = 1;
-            while (page < numPages) {
+            while (page < numPages && iteration < MaxPages) {
                 try {
                     var resp = QueryPage(page + 1);
                     if (resp?.meta == null) {
@@ -72,12 +79,18 @@ namespace Wheelmap.Api.Calls {
                     page = resp.meta.page;
                     numPages = resp.meta.numPages;
                     items.AddAll(resp.GetItems());
+
+                    if (SinglePage) {
+                        break;
+                    }
+
                     if (page == 1) {
                         Log.d(this, "Query: numPages = " + numPages + ": items: " + resp.meta.itemCountTotal);
                     }
                 } catch {
                     return null;
                 }
+                iteration++;
             }
             
             return items;

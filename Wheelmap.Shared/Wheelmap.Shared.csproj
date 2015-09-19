@@ -158,6 +158,7 @@
     <Compile Include="Source\Utils\Threads\LimitedConcurrencyLevelTaskScheduler.cs" />
     <Compile Include="Source\Utils\ToggleGroup.cs" />
     <Compile Include="Source\Utils\Utils.cs" />
+    <Compile Include="Source\Utils\WheelmapParams.cs" />
     <Compile Include="Source\Utils\ZipHelper.cs" />
     <Content Include="Properties\Wheelmap.Shared.rd.xml" />
   </ItemGroup>

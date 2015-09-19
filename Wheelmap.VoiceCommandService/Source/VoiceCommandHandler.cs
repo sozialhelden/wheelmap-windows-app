@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Wheelmap.Model;
 using Windows.ApplicationModel.Resources.Core;
 using Windows.ApplicationModel.VoiceCommands;
+using System.Collections.Generic;
+using Wheelmap.Utils;
 
 namespace Wheelmap.VoiceCommandService {
     abstract class VoiceCommandHandler {
@@ -57,19 +59,23 @@ namespace Wheelmap.VoiceCommandService {
                 userMessage.DisplayMessage = "Öffne App";
             }
             var response = VoiceCommandResponse.CreateResponse(userMessage);
-            response.AppLaunchArgument = args ?? "";
+            response.AppLaunchArgument = args ?? "NO_ARGS";
             await voiceServiceConnection.RequestAppLaunchAsync(response);
         }
 
 
-        public async Task<Node> AskUserForNode(ICollection<Node> nodes) {
+        public async Task<Node> AskUserForNode(List<Node> nodes) {
 
-            if (nodes == null) {
+            if (nodes == null || nodes.Count() == 0) {
                 return null;
             }
             
             if (nodes.Count() == 1) {
                 return nodes.First();
+            }
+            
+            if (nodes.Count() > 10) {
+                nodes = nodes.GetRange(0,10);
             }
 
             var contentTiles = new List<VoiceCommandContentTile>();
@@ -91,7 +97,7 @@ namespace Wheelmap.VoiceCommandService {
                 contentTiles.Add(tile);
                 i++;
             }
-
+            
             // TODO 
             var userPrompt = new VoiceCommandUserMessage();
             userPrompt.DisplayMessage =
@@ -102,6 +108,7 @@ namespace Wheelmap.VoiceCommandService {
                 userPrompt2.SpokenMessage = "Suche aus 2";
 
             var response = VoiceCommandResponse.CreateResponseForPrompt(userPrompt, userPrompt2, contentTiles);
+            response.AppLaunchArgument = new WheelmapParams().ToString();
             var voiceCommandDisambiguationResult = await voiceServiceConnection.RequestDisambiguationAsync(response);
             if (voiceCommandDisambiguationResult != null) {
                 return (Node) voiceCommandDisambiguationResult.SelectedItem.AppContext;

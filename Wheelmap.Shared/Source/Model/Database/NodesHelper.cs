@@ -26,6 +26,13 @@ namespace Wheelmap.Model {
         public static Node QueryByWmId(long wmId) {
             var node = Database.Instance.Table<Node>().Where(x => x.wm_id == wmId).OrderBy(x => x.NodeTag).Last();
             Database.Instance.GetChildren(node);
+
+            Geopoint point;
+            if ((point = LocationManager.Instance?.LastLocationEvent?.Args?.Position?.Coordinate?.Point) != null) {
+                double meters = Haversine.DistanceInMeters(Position.From(point), new Position() { Latitude = node.lat, Longitude = node.lon });
+                // update distance to show on map
+                node.Distance = meters;
+            }
             return node;
         }
 

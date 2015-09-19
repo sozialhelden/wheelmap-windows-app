@@ -27,6 +27,8 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
         internal bool dismissed = false; // Variable to track splash screen dismissal status.
         internal Frame rootFrame;
 
+        public object paramForMainPage;
+
         public ExtendedSplashPage(SplashScreen splashscreen, bool loadState) {
             this.InitializeComponent();
             // Listen for window resize events to reposition the extended splash screen image accordingly.
@@ -93,7 +95,7 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
 
         void DismissExtendedSplash() {
             // Navigate to mainpage
-            rootFrame.Navigate(typeof(MainPage));
+            rootFrame.Navigate(typeof(MainPage), paramForMainPage);
             // Place the frame in the current Window
             Window.Current.Content = rootFrame;
         }

@@ -102,6 +102,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\UI\Pages\Main\MainPage.Params.cs" />
     <Compile Include="Source\WMBuildConfig.cs" />
     <Compile Include="Source\Cortana\CortanaCommand.cs" />
     <Compile Include="Source\Cortana\CortanaManager.cs" />

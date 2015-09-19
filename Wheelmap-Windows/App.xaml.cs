@@ -90,15 +90,26 @@ namespace Wheelmap
 
         protected override void OnActivated(IActivatedEventArgs args) {
             base.OnActivated(args);
-            
-            /*if (args.Kind == ActivationKind.VoiceCommand) {
-                CortanaManager.OnActivated(args as VoiceCommandActivatedEventArgs);
-                Window.Current.Activate();
-            }*/
+
             InitMangers();
             InitWindow();
-            ShowMainPage(args);
+            switch (args.Kind) {
+                case ActivationKind.VoiceCommand:
+                    CortanaManager.OnActivated(args as VoiceCommandActivatedEventArgs);
+                    Window.Current.Activate();
+                    break;
+                case ActivationKind.Protocol:
+                    var a = args as ProtocolActivatedEventArgs;
+                    WwwFormUrlDecoder decoder = new WwwFormUrlDecoder(a.Uri.Query);
+                    var wheelmapParams = WheelmapParams.FromString(decoder.GetFirstValueByName("LaunchContext"));
+                    ShowMainPage(args, wheelmapParams);
 
+                    break;
+                default:
+                    ShowMainPage(args);
+                    break;
+            }
+            
         }
 
         public void InitMangers() {
@@ -134,7 +145,7 @@ namespace Wheelmap
             e.Handled = GoBack();
         }
 
-        public void ShowMainPage(IActivatedEventArgs args) {
+        public void ShowMainPage(IActivatedEventArgs args, object paramForMainPage = null) {
             
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -152,16 +163,23 @@ namespace Wheelmap
                 if (args.PreviousExecutionState != ApplicationExecutionState.Running) {
                     bool loadState = (args.PreviousExecutionState == ApplicationExecutionState.Terminated);
                     ExtendedSplashPage extendedSplash = new ExtendedSplashPage(args.SplashScreen, loadState);
+                    extendedSplash.paramForMainPage = paramForMainPage;
                     rootFrame.Content = extendedSplash;
                     Window.Current.Content = rootFrame;
                 }
             }
 
-            if (rootFrame.Content == null) {
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
-                rootFrame.Navigate(typeof(MainPage));
+            if (rootFrame.Content == null || paramForMainPage != null) {
+
+                if (rootFrame.Content is MainPage) {
+                    (rootFrame.Content as MainPage).OnNewParams(paramForMainPage);
+                } else {
+                    // When the navigation stack isn't restored navigate to the first page,
+                    // configuring the new page by passing required information as a navigation
+                    // parameter
+                    rootFrame.Navigate(typeof(MainPage), paramForMainPage);
+                }
+
             }
             // Ensure the current window is active
             Window.Current.Activate();

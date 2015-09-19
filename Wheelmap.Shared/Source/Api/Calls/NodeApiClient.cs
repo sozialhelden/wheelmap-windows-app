@@ -32,7 +32,7 @@ namespace Wheelmap.Api.Calls {
 
         protected GeoboundingBox bbox;
 
-        public NodesRequest(GeoboundingBox bbox) : base(factory) {
+        public NodesRequest(GeoboundingBox bbox, bool singlePage = false) : base(factory, singlePage) {
             this.bbox = bbox;
         }
 

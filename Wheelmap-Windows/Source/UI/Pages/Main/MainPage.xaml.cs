@@ -72,7 +72,7 @@ namespace Wheelmap.Source.UI {
             base.OnNavigatedTo(e);
             BusProvider.DefaultInstance.Register(this);
         }
-
+        
         private void InitToggleGroup() {
             mToggleGroup = new ToggleGroup<Panel>();
             foreach (Panel p in menuTopPanel.Children) {

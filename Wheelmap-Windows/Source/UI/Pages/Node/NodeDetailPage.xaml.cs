@@ -73,9 +73,9 @@ namespace Wheelmap.Source.UI.Pages.Node {
             catch {
                 phoneButton.Visibility = Visibility.Collapsed;
             }
-
+            
             plzBlock.Text = n.postcode ?? "";
-            streetBlock.Text = n.street ?? "";
+            streetBlock.Text = (n.street ?? "") + " " +(n.housenumber ?? "");
             try {
                 websideButton.NavigateUri = new Uri(n.website);
                 websideButton.Content = n.website;
@@ -85,7 +85,9 @@ namespace Wheelmap.Source.UI.Pages.Node {
                 websideButton.Visibility = Visibility.Collapsed;
             }
 
-            categoryNameTextBlock.Text = n.category?.localizedName ?? "";
+            var nodeTypeName = n.nodeType?.localizedName;
+            nodeTypeName = nodeTypeName == null ? "" : $" ({nodeTypeName})";
+            categoryNameTextBlock.Text = (n.category?.localizedName ?? "") + nodeTypeName;
             distanceTextBlock.Text = n.DistanceString;
 
         }

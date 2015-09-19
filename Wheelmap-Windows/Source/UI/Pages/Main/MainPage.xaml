@@ -99,6 +99,7 @@
                         </StackPanel>
 
                         <StackPanel
+                            x:Name="MenuShowListItem"
                         Orientation="Horizontal" 
                         Tapped="ShowListTapped">
 
