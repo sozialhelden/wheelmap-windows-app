@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -34,6 +35,9 @@ namespace Wheelmap {
                 var ex = message as Exception;
                 Debug.WriteLine($"{level} | {TAG} | EXCEPTION: {ex.Message}");
                 Debug.WriteLine($"{level} | {TAG} | {ex.StackTrace}");
+            } else if (message is ICollection) {
+                var m = Newtonsoft.Json.JsonConvert.SerializeObject(message);
+                Debug.WriteLine($"{level} | {TAG} | {m}");
             } else {
                 Debug.WriteLine($"{level} | {TAG} | {message}");
             }
