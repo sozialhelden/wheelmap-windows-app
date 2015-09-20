@@ -6,7 +6,7 @@
 
     <AppName>Wheelmap</AppName>
     
-    <Example>Suche 'Ort'</Example>
+    <Example>Wo ist die nächste behindertengerechte Toilette</Example>
 
     <Command Name="testCommand">
       <Example>Test Command</Example>
@@ -16,7 +16,6 @@
       <!--<Navigate/>-->
       <VoiceCommandService Target="WheelmapVoiceCommandService"/>
     </Command>
-
 
     <Command Name="search">
       
