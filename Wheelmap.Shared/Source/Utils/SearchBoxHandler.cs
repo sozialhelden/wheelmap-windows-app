@@ -41,14 +41,6 @@ namespace Wheelmap.Utils {
 
         private void requestUpdate() {
             DataHolder.Instance.QueryString = SearchBox.QueryText;
-
-            if (DataHolder.Instance.QueryString?.Length <= 3) {
-                return;
-            }
-
-            new NodeSearchRequest(DataHolder.Instance.QueryString).Execute().ContinueWithOnDispatcher(SearchBox.Dispatcher, task => {
-                DataHolder.Instance.Nodes = task.Result;
-            });
         }
         
     }

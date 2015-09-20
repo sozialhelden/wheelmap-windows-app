@@ -117,24 +117,24 @@ namespace Wheelmap.Source.UI {
         }
 
         private void ShowListTapped(object sender, TappedRoutedEventArgs e) {
-            ShowOnMenuContainerFrame(sender, typeof(NodeListPage));
+            ShowOnMenuContainerFrame(sender, typeof(NodeListPage), toggle: e != null);
         }
 
         private void ShowHelpTapped(object sender, TappedRoutedEventArgs e) {
-            ShowOnMenuContainerFrame(sender, typeof(NodeListPage), new NodeListPageArgs { HelpMode = true});
+            ShowOnMenuContainerFrame(sender, typeof(NodeListPage), new NodeListPageArgs { HelpMode = true}, toggle: e != null);
         }
 
         private void ShowWCTapped(object sender, TappedRoutedEventArgs e) {
-            ShowOnMenuContainerFrame(sender, typeof(StatusPage), true);
+            ShowOnMenuContainerFrame(sender, typeof(StatusPage), param: true, toggle: e != null);
         }
 
         private void ShowStatusTapped(object sender, TappedRoutedEventArgs e) {
-            ShowOnMenuContainerFrame(sender, typeof(StatusPage), false);
+            ShowOnMenuContainerFrame(sender, typeof(StatusPage), param: false, toggle: e != null);
         }
 
         private void ShowCategoryTapped(object sender, TappedRoutedEventArgs e) {
             Debug.WriteLine("ShowCategoryTapped Clicked");
-            ShowOnMenuContainerFrame(sender, typeof(CategoriesListPage));
+            ShowOnMenuContainerFrame(sender, typeof(CategoriesListPage), toggle: e != null);
         }
 
         private void ShowMyLocationTapped(object sender, TappedRoutedEventArgs e) {
@@ -143,7 +143,7 @@ namespace Wheelmap.Source.UI {
         }
 
         private void ShowProfileTapped(object sender, TappedRoutedEventArgs e) {
-            ShowOnMenuContainerFrame(sender, typeof(ProfilePage));
+            ShowOnMenuContainerFrame(sender, typeof(ProfilePage), toggle: e != null);
         }
 
         private void ShowSettingsTapped(object sender, TappedRoutedEventArgs e) {

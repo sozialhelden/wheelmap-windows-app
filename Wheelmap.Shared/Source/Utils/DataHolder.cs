@@ -4,10 +4,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wheelmap.Api.Calls;
+using Wheelmap.Extensions;
 using Wheelmap.Model;
 using Wheelmap.Utils.Eventbus;
 using Wheelmap.Utils.Eventbus.Events;
 using Wheelmap.Utils.Preferences;
+using Windows.UI.Xaml;
 
 namespace Wheelmap.Utils {
 
@@ -114,6 +117,14 @@ namespace Wheelmap.Utils {
             }
             set {
                 _QueryString = value;
+
+                if (DataHolder.Instance.QueryString?.Length >= 3) {
+                    // query new nodes
+                    new NodeSearchRequest(DataHolder.Instance.QueryString).Execute().ContinueWithOnDispatcher(Window.Current.Content.Dispatcher, task => {
+                        DataHolder.Instance.Nodes = task.Result;
+                    });
+                }
+                
                 NotifyPropertyChanged(nameof(QueryString));
             }
         }

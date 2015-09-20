@@ -107,14 +107,14 @@ namespace Wheelmap.Source.UI {
         /**
          * returns true if page will be shown
          */
-        private bool ShowOnMenuContainerFrame(object sender, Type pageType, object param = null) {
+        private bool ShowOnMenuContainerFrame(object sender, Type pageType, object param = null, bool toggle = false) {
             ShowMenu(false);
 
             bool ret;
             if (CurrentSizeState == STATE_SMALL) {
-                ret = _ShowOnMenuContainerFrameSmall(sender, pageType, param);
+                ret = _ShowOnMenuContainerFrameSmall(sender, pageType, param, toggle);
             } else {
-                ret = _ShowOnMenuContainerFrameNormal(sender, pageType, param);
+                ret = _ShowOnMenuContainerFrameNormal(sender, pageType, param, toggle);
             }
 
             this.RefreshCanGoBack();
@@ -122,7 +122,7 @@ namespace Wheelmap.Source.UI {
             return ret;
         }
 
-        private bool _ShowOnMenuContainerFrameNormal(object sender, Type pageType, object param = null) {
+        private bool _ShowOnMenuContainerFrameNormal(object sender, Type pageType, object param = null, bool toggle = false) {
             if (menuContainerFrame.Content?.GetType() == pageType) {
 
                 var page = (menuContainerFrame.Content as BasePage);
@@ -131,6 +131,12 @@ namespace Wheelmap.Source.UI {
                         // on small screens the menuContainerFrame works like an tabbar
                         return true;
                     }
+
+                    if (!toggle) {
+                        return true;
+                    }
+                    // if toggle enabled the page should close
+
                     // remove content
                     if (menuContainerFrame.Content is Page) {
                         (menuContainerFrame.Content as Page).Unregister();
@@ -139,9 +145,9 @@ namespace Wheelmap.Source.UI {
                     mToggleGroup.SelectedItem = null;
                     return false;
                 } else {
-                    if (CurrentSizeState != STATE_SMALL) {
+                    /*if (CurrentSizeState != STATE_SMALL) {
                         menuContainerFrame.Content = null;
-                    }
+                    }*/
                 }
             }
 
@@ -164,10 +170,10 @@ namespace Wheelmap.Source.UI {
 
         }
 
-        private bool _ShowOnMenuContainerFrameSmall(object sender, Type pageType, object param = null) {
+        private bool _ShowOnMenuContainerFrameSmall(object sender, Type pageType, object param = null, bool toggle = false) {
             if (!(pageType == typeof(CategoriesListPage)
                  || pageType == typeof(StatusPage))) {
-                return _ShowOnMenuContainerFrameNormal(sender, pageType, param);
+                return _ShowOnMenuContainerFrameNormal(sender, pageType, param, toggle);
             }
 
             if (phoneUIBottomSlideUp.Content?.GetType() == pageType) {

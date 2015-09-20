@@ -41,8 +41,7 @@
       <VoiceCommandService Target="WheelmapVoiceCommandService"/>
     </Command>
     
-    <PhraseList Label="nodeTypes">
-    </PhraseList>
+    <PhraseList Label="nodeTypes"/>
     
     <PhraseTopic Label="dictatedSearchTerms" Scenario="Search"/>
 

@@ -30,7 +30,7 @@ namespace Wheelmap.VoiceCommandService {
         private static IDictionary<string, Type> Commands = new Dictionary<string, Type>();
 
         static WheelmapVoiceCommandService() {
-            AddCommand(new TestVoiceCommandHandler());
+            AddCommand(new SearchIsCommandHelper());
             AddCommand(new WhereIsCommandHelper());
         }
 
