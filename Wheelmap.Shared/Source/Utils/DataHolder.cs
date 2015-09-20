@@ -118,10 +118,10 @@ namespace Wheelmap.Utils {
             set {
                 _QueryString = value;
 
-                if (DataHolder.Instance.QueryString?.Length >= 3) {
+                if (QueryString?.Length >= 3) {
                     // query new nodes
-                    new NodeSearchRequest(DataHolder.Instance.QueryString).Execute().ContinueWithOnDispatcher(Window.Current.Content.Dispatcher, task => {
-                        DataHolder.Instance.Nodes = task.Result;
+                    new NodeSearchRequest(QueryString).Execute().ContinueWithOnDispatcher(Window.Current.Content.Dispatcher, task => {
+                        Nodes = task.Result;
                     });
                 }
                 
