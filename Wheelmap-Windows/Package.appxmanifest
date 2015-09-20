@@ -24,6 +24,7 @@
         <uap:Extension Category="windows.appService" EntryPoint="Wheelmap.VoiceCommandService.WheelmapVoiceCommandService">
           <uap:AppService Name="WheelmapVoiceCommandService" />
         </uap:Extension>
+        <uap:Extension Category="windows.personalAssistantLaunch"/>
       </Extensions>
     </Application>
   </Applications>
