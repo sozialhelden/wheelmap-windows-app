@@ -50,8 +50,13 @@ namespace Wheelmap.VoiceCommandService {
             }
 
             nodes = nodes.Where(x => {
-                return (nodeTypes.Any(y => y.Id == x.nodeType.Id)) ||
-                (isToiletSearch && x.wheelchairToiletStatus == "yes");
+                return 
+                (
+                    nodeTypes.Any(y => y.Id == x.nodeType.Id)
+                    && x.wheelchairStatus != "no"
+                ) || (
+                    isToiletSearch && x.wheelchairToiletStatus == "yes"
+                );
             }).ToList();
 
             nodes = Nodes.OrderItemsByDistance(nodes, point).ToList();

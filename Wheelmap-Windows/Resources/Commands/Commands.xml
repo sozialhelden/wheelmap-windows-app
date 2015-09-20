@@ -4,8 +4,8 @@
 
   <CommandSet xml:lang="de-de" Name="de-de-CommandSet">
 
-    <AppName>Wheelmap</AppName>
-
+    <AppName>Wie Map</AppName>
+    
     <Example>Suche 'Ort'</Example>
 
     <Command Name="testCommand">
@@ -19,6 +19,7 @@
 
 
     <Command Name="search">
+      
       <Example> suche 'Bundle Schokowelt' </Example>
 
       <ListenFor> Suche </ListenFor>
@@ -32,10 +33,12 @@
     </Command>
 
     <Command Name="whereIs">
+     
       <Example> Wo ist der nächste Geldautomat </Example>
 
-      <ListenFor> Wo ist [der] [das] [die] [nächste] [nächster] {nodeTypes} </ListenFor>
-      <ListenFor> Wo finde [ich] [den] [das] [die] [nächste] [nächsten] {nodeTypes} </ListenFor>
+      <ListenFor> Wo ist [der] [das] [die] [nächste] [behindertengerechte] [behindertengerechter] [nächster] {nodeTypes} </ListenFor>
+      <ListenFor> Wo finde [ich] [den] [das] [die] [nächste] [nächsten]  [behindertengerechte] [behindertengerechter] {nodeTypes} </ListenFor>
+      <ListenFor> Wo finde [ich] [den] [das] [die] [behindertengerechte] [behindertengerechter] {nodeTypes} [in] [meiner] [Nähe]</ListenFor>
 
       <Feedback> Durchsuche Wheelmap... </Feedback>
       <VoiceCommandService Target="WheelmapVoiceCommandService"/>
