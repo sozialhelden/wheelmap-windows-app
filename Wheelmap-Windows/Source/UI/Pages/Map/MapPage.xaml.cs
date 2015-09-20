@@ -4,16 +4,16 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Wheelmap_Windows.Api.Calls;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.Model;
-using Wheelmap_Windows.Source.UI.Pages.Map;
-using Wheelmap_Windows.Source.UI.Pages.Node;
-using Wheelmap_Windows.UI.Pages.Base;
-using Wheelmap_Windows.Utils;
-using Wheelmap_Windows.Utils.Eventbus;
-using Wheelmap_Windows.Utils.Eventbus.Events;
-using Wheelmap_Windows.Utils.Extensions;
+using Wheelmap.Api.Calls;
+using Wheelmap.Extensions;
+using Wheelmap.Model;
+using Wheelmap.Source.UI.Pages.Map;
+using Wheelmap.Source.UI.Pages.Node;
+using Wheelmap.UI.Pages.Base;
+using Wheelmap.Utils;
+using Wheelmap.Utils.Eventbus;
+using Wheelmap.Utils.Eventbus.Events;
+using Wheelmap.Utils.Extensions;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -28,7 +28,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace Wheelmap_Windows.Source.UI.Pages {
+namespace Wheelmap.Source.UI.Pages {
 
     public sealed partial class MapPage : BasePage {
         
@@ -96,7 +96,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
          * request new data if needed
          */
         private void MapControl_ZoomLevelChanged(MapControl sender, object args) {
-            Debug.WriteLine("ZoomLevel: " + mapControl.ZoomLevel);
+            Log.d(this, "ZoomLevel: " + mapControl.ZoomLevel);
             var zoomLevel = (int)mapControl.ZoomLevel;
             bool isZoomedEnough = true;
 

@@ -14,11 +14,11 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Wheelmap_Windows.Utils.Extensions;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.UI.Pages.Base;
+using Wheelmap.Utils.Extensions;
+using Wheelmap.Extensions;
+using Wheelmap.UI.Pages.Base;
 
-namespace Wheelmap_Windows.Source.UI.Pages.Splashscreen {
+namespace Wheelmap.Source.UI.Pages.Splashscreen {
 
     public sealed partial class ExtendedSplashPage : BasePage {
 
@@ -26,6 +26,8 @@ namespace Wheelmap_Windows.Source.UI.Pages.Splashscreen {
         private SplashScreen splash; // Variable to hold the splash screen object.
         internal bool dismissed = false; // Variable to track splash screen dismissal status.
         internal Frame rootFrame;
+
+        public object paramForMainPage;
 
         public ExtendedSplashPage(SplashScreen splashscreen, bool loadState) {
             this.InitializeComponent();
@@ -93,7 +95,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.Splashscreen {
 
         void DismissExtendedSplash() {
             // Navigate to mainpage
-            rootFrame.Navigate(typeof(MainPage));
+            rootFrame.Navigate(typeof(MainPage), paramForMainPage);
             // Place the frame in the current Window
             Window.Current.Content = rootFrame;
         }

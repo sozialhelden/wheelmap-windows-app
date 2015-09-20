@@ -14,26 +14,26 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Diagnostics;
 using Windows.UI.Xaml.Controls.Maps;
-using Wheelmap_Windows.Source.UI.Pages;
-using Wheelmap_Windows.Source.UI.Pages.List;
-using Wheelmap_Windows.Api.Calls;
-using Wheelmap_Windows.Model;
-using Wheelmap_Windows.Utils.Eventbus;
-using Wheelmap_Windows.Utils.Eventbus.Events;
-using Wheelmap_Windows.Source.UI.Pages.Node;
+using Wheelmap.Source.UI.Pages;
+using Wheelmap.Source.UI.Pages.List;
+using Wheelmap.Api.Calls;
+using Wheelmap.Model;
+using Wheelmap.Utils.Eventbus;
+using Wheelmap.Utils.Eventbus.Events;
+using Wheelmap.Source.UI.Pages.Node;
 using Windows.UI;
 using Windows.UI.Core;
-using Wheelmap_Windows.Utils;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.Source.UI.Pages.Categories;
+using Wheelmap.Utils;
+using Wheelmap.Extensions;
+using Wheelmap.Source.UI.Pages.Categories;
 using Windows.Devices.Geolocation;
-using Wheelmap_Windows.UI.Pages.Base;
+using Wheelmap.UI.Pages.Base;
 using Windows.UI.ViewManagement;
-using Wheelmap_Windows.Source.UI.Pages.Status;
-using Wheelmap_Windows.Source.UI.Pages.Profile;
+using Wheelmap.Source.UI.Pages.Status;
+using Wheelmap.Source.UI.Pages.Profile;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace Wheelmap_Windows.Source.UI {
+namespace Wheelmap.Source.UI {
 
     public sealed partial class MainPage : BasePage {
 
@@ -72,7 +72,7 @@ namespace Wheelmap_Windows.Source.UI {
             base.OnNavigatedTo(e);
             BusProvider.DefaultInstance.Register(this);
         }
-
+        
         private void InitToggleGroup() {
             mToggleGroup = new ToggleGroup<Panel>();
             foreach (Panel p in menuTopPanel.Children) {
@@ -117,24 +117,24 @@ namespace Wheelmap_Windows.Source.UI {
         }
 
         private void ShowListTapped(object sender, TappedRoutedEventArgs e) {
-            ShowOnMenuContainerFrame(sender, typeof(NodeListPage));
+            ShowOnMenuContainerFrame(sender, typeof(NodeListPage), toggle: e != null);
         }
 
         private void ShowHelpTapped(object sender, TappedRoutedEventArgs e) {
-            ShowOnMenuContainerFrame(sender, typeof(NodeListPage), new NodeListPageArgs { HelpMode = true});
+            ShowOnMenuContainerFrame(sender, typeof(NodeListPage), new NodeListPageArgs { HelpMode = true}, toggle: e != null);
         }
 
         private void ShowWCTapped(object sender, TappedRoutedEventArgs e) {
-            ShowOnMenuContainerFrame(sender, typeof(StatusPage), true);
+            ShowOnMenuContainerFrame(sender, typeof(StatusPage), param: true, toggle: e != null);
         }
 
         private void ShowStatusTapped(object sender, TappedRoutedEventArgs e) {
-            ShowOnMenuContainerFrame(sender, typeof(StatusPage), false);
+            ShowOnMenuContainerFrame(sender, typeof(StatusPage), param: false, toggle: e != null);
         }
 
         private void ShowCategoryTapped(object sender, TappedRoutedEventArgs e) {
             Debug.WriteLine("ShowCategoryTapped Clicked");
-            ShowOnMenuContainerFrame(sender, typeof(CategoriesListPage));
+            ShowOnMenuContainerFrame(sender, typeof(CategoriesListPage), toggle: e != null);
         }
 
         private void ShowMyLocationTapped(object sender, TappedRoutedEventArgs e) {
@@ -143,7 +143,7 @@ namespace Wheelmap_Windows.Source.UI {
         }
 
         private void ShowProfileTapped(object sender, TappedRoutedEventArgs e) {
-            ShowOnMenuContainerFrame(sender, typeof(ProfilePage));
+            ShowOnMenuContainerFrame(sender, typeof(ProfilePage), toggle: e != null);
         }
 
         private void ShowSettingsTapped(object sender, TappedRoutedEventArgs e) {

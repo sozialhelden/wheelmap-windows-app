@@ -9,29 +9,41 @@ using Windows.Media.SpeechRecognition;
 using Windows.Storage;
 using Windows.UI.Xaml;
 
-namespace Wheelmap_Windows.Cortana {
+namespace Wheelmap.Cortana {
     public class CortanaManager {
 
         private const string TAG = nameof(VoiceCommandManager);
+        private static IDictionary<string, CortanaCommand> Commands = new Dictionary<string, CortanaCommand>();
         
+        static CortanaManager() {
+            // TODO add commands
+        }
+
+        private static void AddCommand(CortanaCommand command) {
+            Commands.Add(command.CommandKey, command);
+        }
+
         public static void OnActivated(VoiceCommandActivatedEventArgs args) {
             var commands = args as VoiceCommandActivatedEventArgs;
             SpeechRecognitionResult result = commands.Result;
             string voiceCommandName = result.RulePath[0];
-            if (voiceCommandName == "testCommand") {
-                // TODO
+
+            CortanaCommand command;
+            if (Commands.ContainsKey(voiceCommandName)) {
+                command = Commands[voiceCommandName];
+            } else {
+                // get default command
+                command = new DefaultCommand();
             }
-            Log.d(TAG, "VoiceCommand: " + voiceCommandName);
-            App.Instance.InitMangers();
-            App.Instance.InitWindow();
-            App.Instance.ShowMainPage(args);
-            Window.Current.Activate();
+
+            command.OnHandleCommand(args);
+
         }
 
         public static async void RegisterCommands() {
             var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Resources/Commands/Commands.xml"));
             await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(file);
         }
-
+        
     }
 }

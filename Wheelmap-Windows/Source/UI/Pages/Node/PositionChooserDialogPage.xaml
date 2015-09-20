@@ -1,9 +1,9 @@
 ﻿<app:BasePage
-    xmlns:app="using:Wheelmap_Windows.UI.Pages.Base"
-    x:Class="Wheelmap_Windows.Source.UI.Pages.Node.PositionChooserDialogPage"
+    xmlns:app="using:Wheelmap.UI.Pages.Base"
+    x:Class="Wheelmap.Source.UI.Pages.Node.PositionChooserDialogPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Wheelmap_Windows.Source.UI.Pages.Node"
+    xmlns:local="using:Wheelmap.Source.UI.Pages.Node"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"

@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Wheelmap_Windows.Utils;
-using Wheelmap_Windows.Utils.Eventbus;
-using Wheelmap_Windows.Utils.Eventbus.Events;
+using Wheelmap.Utils;
+using Wheelmap.Utils.Eventbus;
+using Wheelmap.Utils.Eventbus.Events;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -16,15 +16,15 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Wheelmap_Windows.Extensions;
+using Wheelmap.Extensions;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using Windows.Devices.Geolocation;
-using Wheelmap_Windows.UI.Pages.Base;
+using Wheelmap.UI.Pages.Base;
 using Windows.UI.Xaml.Media.Animation;
-using Wheelmap_Windows.Model;
+using Wheelmap.Model;
 
-namespace Wheelmap_Windows.Source.UI.Pages.List {
+namespace Wheelmap.Source.UI.Pages.List {
 
     public sealed partial class NodeListPage : BasePage {
 
@@ -35,6 +35,8 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
                     : "TITLE_LIST".t().ToUpper();
             }
         }
+
+        public object NodesHelper { get; private set; }
 
         bool isInHelpMode = false;
         private Filter Filter;
@@ -111,7 +113,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
                 return;
             }
 
-            var orderedData = OrderItemsByDistance(data, LocationManager.Instance?.LastLocationEvent?.Args?.Position?.Coordinate?.Point);
+            var orderedData = Nodes.OrderItemsByDistance(data, LocationManager.Instance?.LastLocationEvent?.Args?.Position?.Coordinate?.Point);
             mItems.CallBatch(() => {
                 mItems.Clear();
                 mItems.AddAll(orderedData);
@@ -138,22 +140,7 @@ namespace Wheelmap_Windows.Source.UI.Pages.List {
 
         [Subscribe]
         public void OnLocationChanged(LocationChangedEvent e) => SetData(mItems);
-
-        private ICollection<Model.Node> OrderItemsByDistance(ICollection<Model.Node> nodes, Geopoint location) {
-            if (nodes == null || location == null) {
-                return nodes;
-            }
-            var point = Position.From(location);
-            var elist = nodes.OrderBy(node => {
-                double meters = Haversine.DistanceInMeters(point, new Position() { Latitude = node.lat, Longitude = node.lon });
-                // update distance to show on map
-                node.Distance = meters;
-                return meters;
-            });
-            var list = elist.ToList();
-            return list;
-        }
-
+        
     }
 
     public class NodeListPageArgs {

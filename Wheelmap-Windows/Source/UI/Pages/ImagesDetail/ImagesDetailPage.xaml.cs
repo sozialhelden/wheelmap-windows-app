@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Wheelmap_Windows.Model;
+using Wheelmap.Model;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace Wheelmap_Windows.Source.UI.Pages.ImagesDetail {
+namespace Wheelmap.Source.UI.Pages.ImagesDetail {
 
     public sealed partial class ImagesDetailPage : Page {
 

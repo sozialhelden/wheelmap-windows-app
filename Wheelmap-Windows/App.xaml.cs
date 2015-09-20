@@ -4,16 +4,18 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Wheelmap_Windows.Cortana;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.Model;
-using Wheelmap_Windows.Source.UI;
-using Wheelmap_Windows.Source.UI.Pages.Splashscreen;
-using Wheelmap_Windows.Utils;
-using Wheelmap_Windows.Utils.Eventbus;
-using Wheelmap_Windows.Utils.Eventbus.Events;
+using System.Threading.Tasks;
+using Wheelmap.Cortana;
+using Wheelmap.Extensions;
+using Wheelmap.Model;
+using Wheelmap.Source.UI;
+using Wheelmap.Source.UI.Pages.Splashscreen;
+using Wheelmap.Utils;
+using Wheelmap.Utils.Eventbus;
+using Wheelmap.Utils.Eventbus.Events;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.AppService;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.VoiceCommands;
 using Windows.Devices.Geolocation;
@@ -33,7 +35,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace Wheelmap_Windows
+namespace Wheelmap
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -50,6 +52,10 @@ namespace Wheelmap_Windows
         /// </summary>
         public App()
         {
+            // this must be done before anything else can happen
+            // The BuildConfigs may contain important informations for the appstart
+            WMBuildConfig.Init();
+
             Instance = this;
             Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
                 Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
@@ -66,7 +72,6 @@ namespace Wheelmap_Windows
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
             Debug.WriteLine("BuildType: " + BuildConfig.BUILDTYPE);
 
 #if DEBUG
@@ -85,11 +90,25 @@ namespace Wheelmap_Windows
 
         protected override void OnActivated(IActivatedEventArgs args) {
             base.OnActivated(args);
-            
-            if (args.Kind == ActivationKind.VoiceCommand) {
-                CortanaManager.OnActivated(args as VoiceCommandActivatedEventArgs);
+
+            InitMangers();
+            InitWindow();
+            switch (args.Kind) {
+                case ActivationKind.VoiceCommand:
+                    CortanaManager.OnActivated(args as VoiceCommandActivatedEventArgs);
+                    Window.Current.Activate();
+                    break;
+                case ActivationKind.Protocol:
+                    var a = args as ProtocolActivatedEventArgs;
+                    WwwFormUrlDecoder decoder = new WwwFormUrlDecoder(a.Uri.Query);
+                    var wheelmapParams = WheelmapParams.FromString(decoder.GetFirstValueByName("LaunchContext"));
+                    ShowMainPage(args, wheelmapParams);
+
+                    break;
+                default:
+                    ShowMainPage(args);
+                    break;
             }
-            Window.Current.Activate();
             
         }
 
@@ -126,7 +145,7 @@ namespace Wheelmap_Windows
             e.Handled = GoBack();
         }
 
-        public void ShowMainPage(IActivatedEventArgs args) {
+        public void ShowMainPage(IActivatedEventArgs args, object paramForMainPage = null) {
             
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -144,16 +163,23 @@ namespace Wheelmap_Windows
                 if (args.PreviousExecutionState != ApplicationExecutionState.Running) {
                     bool loadState = (args.PreviousExecutionState == ApplicationExecutionState.Terminated);
                     ExtendedSplashPage extendedSplash = new ExtendedSplashPage(args.SplashScreen, loadState);
+                    extendedSplash.paramForMainPage = paramForMainPage;
                     rootFrame.Content = extendedSplash;
                     Window.Current.Content = rootFrame;
                 }
             }
 
-            if (rootFrame.Content == null) {
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
-                rootFrame.Navigate(typeof(MainPage));
+            if (rootFrame.Content == null || paramForMainPage != null) {
+
+                if (rootFrame.Content is MainPage) {
+                    (rootFrame.Content as MainPage).OnNewParams(paramForMainPage);
+                } else {
+                    // When the navigation stack isn't restored navigate to the first page,
+                    // configuring the new page by passing required information as a navigation
+                    // parameter
+                    rootFrame.Navigate(typeof(MainPage), paramForMainPage);
+                }
+
             }
             // Ensure the current window is active
             Window.Current.Activate();

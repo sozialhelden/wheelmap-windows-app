@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wheelmap_Windows.Extensions;
-using Wheelmap_Windows.Source.UI.Pages.Categories;
-using Wheelmap_Windows.Source.UI.Pages.Node;
-using Wheelmap_Windows.Source.UI.Pages.Status;
-using Wheelmap_Windows.UI.Pages.Base;
-using Wheelmap_Windows.Utils;
-using Wheelmap_Windows.Utils.Eventbus;
-using Wheelmap_Windows.Utils.Eventbus.Events;
+using Wheelmap.Extensions;
+using Wheelmap.Source.UI.Pages.Categories;
+using Wheelmap.Source.UI.Pages.Node;
+using Wheelmap.Source.UI.Pages.Status;
+using Wheelmap.UI.Pages.Base;
+using Wheelmap.Utils;
+using Wheelmap.Utils.Eventbus;
+using Wheelmap.Utils.Eventbus.Events;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
-namespace Wheelmap_Windows.Source.UI {
+namespace Wheelmap.Source.UI {
 
     /**
      * part of MainPage to handle all navigations
@@ -107,14 +107,14 @@ namespace Wheelmap_Windows.Source.UI {
         /**
          * returns true if page will be shown
          */
-        private bool ShowOnMenuContainerFrame(object sender, Type pageType, object param = null) {
+        private bool ShowOnMenuContainerFrame(object sender, Type pageType, object param = null, bool toggle = false) {
             ShowMenu(false);
 
             bool ret;
             if (CurrentSizeState == STATE_SMALL) {
-                ret = _ShowOnMenuContainerFrameSmall(sender, pageType, param);
+                ret = _ShowOnMenuContainerFrameSmall(sender, pageType, param, toggle);
             } else {
-                ret = _ShowOnMenuContainerFrameNormal(sender, pageType, param);
+                ret = _ShowOnMenuContainerFrameNormal(sender, pageType, param, toggle);
             }
 
             this.RefreshCanGoBack();
@@ -122,7 +122,7 @@ namespace Wheelmap_Windows.Source.UI {
             return ret;
         }
 
-        private bool _ShowOnMenuContainerFrameNormal(object sender, Type pageType, object param = null) {
+        private bool _ShowOnMenuContainerFrameNormal(object sender, Type pageType, object param = null, bool toggle = false) {
             if (menuContainerFrame.Content?.GetType() == pageType) {
 
                 var page = (menuContainerFrame.Content as BasePage);
@@ -131,6 +131,12 @@ namespace Wheelmap_Windows.Source.UI {
                         // on small screens the menuContainerFrame works like an tabbar
                         return true;
                     }
+
+                    if (!toggle) {
+                        return true;
+                    }
+                    // if toggle enabled the page should close
+
                     // remove content
                     if (menuContainerFrame.Content is Page) {
                         (menuContainerFrame.Content as Page).Unregister();
@@ -139,9 +145,9 @@ namespace Wheelmap_Windows.Source.UI {
                     mToggleGroup.SelectedItem = null;
                     return false;
                 } else {
-                    if (CurrentSizeState != STATE_SMALL) {
+                    /*if (CurrentSizeState != STATE_SMALL) {
                         menuContainerFrame.Content = null;
-                    }
+                    }*/
                 }
             }
 
@@ -164,10 +170,10 @@ namespace Wheelmap_Windows.Source.UI {
 
         }
 
-        private bool _ShowOnMenuContainerFrameSmall(object sender, Type pageType, object param = null) {
+        private bool _ShowOnMenuContainerFrameSmall(object sender, Type pageType, object param = null, bool toggle = false) {
             if (!(pageType == typeof(CategoriesListPage)
                  || pageType == typeof(StatusPage))) {
-                return _ShowOnMenuContainerFrameNormal(sender, pageType, param);
+                return _ShowOnMenuContainerFrameNormal(sender, pageType, param, toggle);
             }
 
             if (phoneUIBottomSlideUp.Content?.GetType() == pageType) {

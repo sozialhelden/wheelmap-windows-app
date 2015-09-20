@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace Wheelmap_Windows.Source.UI.Controls {
+namespace Wheelmap.Source.UI.Controls {
     public sealed partial class ProgressDialog : ContentDialog {
         
         public string Message {
