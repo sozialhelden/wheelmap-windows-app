@@ -22,10 +22,10 @@
       
       <Example> suche 'Bundle Schokowelt' </Example>
 
-      <ListenFor> Suche </ListenFor>
-      <ListenFor> Suche [nach] {dictatedSearchTerms} </ListenFor>
-      <ListenFor> Finde {dictatedSearchTerms} </ListenFor>
-      <ListenFor> Finde </ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> Suche </ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> Suche [nach] {dictatedSearchTerms} </ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> Finde {dictatedSearchTerms} </ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> Finde </ListenFor>
 
       <!--Feedback provides the displayed and spoken text when your command is triggered -->
       <Feedback> Durchsuche Wheelmap... </Feedback>
@@ -36,9 +36,9 @@
      
       <Example> Wo ist der nächste Geldautomat </Example>
 
-      <ListenFor> Wo ist [der] [das] [die] [nächste] [behindertengerechte] [behindertengerechter] [nächster] {nodeTypes} </ListenFor>
-      <ListenFor> Wo finde [ich] [den] [das] [die] [nächste] [nächsten]  [behindertengerechte] [behindertengerechter] {nodeTypes} </ListenFor>
-      <ListenFor> Wo finde [ich] [den] [das] [die] [behindertengerechte] [behindertengerechter] {nodeTypes} [in] [meiner] [Nähe]</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> Wo ist [der] [das] [die] [nächste] [behindertengerechte] [behindertengerechter] [nächster] {nodeTypes} </ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> Wo finde [ich] [den] [das] [die] [nächste] [nächsten]  [behindertengerechte] [behindertengerechter] {nodeTypes} </ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> Wo finde [ich] [den] [das] [die] [behindertengerechte] [behindertengerechter] {nodeTypes} [in] [meiner] [Nähe]</ListenFor>
 
       <Feedback> Durchsuche Wheelmap... </Feedback>
       <VoiceCommandService Target="WheelmapVoiceCommandService"/>
