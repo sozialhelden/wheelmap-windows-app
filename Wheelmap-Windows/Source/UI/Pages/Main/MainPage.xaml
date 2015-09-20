@@ -243,6 +243,7 @@
 
 
                         <StackPanel 
+                            x:Name="ShowSettingsView"
                         Orientation="Horizontal"
                         Tapped="ShowSettingsTapped">
 

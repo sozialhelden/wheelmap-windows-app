@@ -186,4 +186,7 @@
   <data name="UNKNOWN_ERROR" xml:space="preserve">
     <value>Fehler. Bitte prüfe deine Internetverbindung.</value>
   </data>
+  <data name="TITLE_SETTINGS" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
 </root>

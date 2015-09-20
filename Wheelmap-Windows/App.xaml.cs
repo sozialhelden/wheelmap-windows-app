@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HockeyApp;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -62,7 +63,11 @@ namespace Wheelmap
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-            
+
+            if (BuildConfig.HOCKEY_APP_ID?.Length > 0) {
+                HockeyClient.Current.Configure(BuildConfig.HOCKEY_APP_ID);
+            }
+
         }
 
         /// <summary>
@@ -86,6 +91,9 @@ namespace Wheelmap
             ShowMainPage(e);
 
             CortanaManager.RegisterCommands();
+
+            HockeyClient.Current.SendCrashesAsync().Forget();
+
         }
 
         protected override void OnActivated(IActivatedEventArgs args) {

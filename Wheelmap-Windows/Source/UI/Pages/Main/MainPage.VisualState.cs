@@ -8,6 +8,7 @@ using Wheelmap.Source.UI.Pages.List;
 using Wheelmap.Source.UI.Pages.Status;
 using Wheelmap.UI.Pages.Base;
 using Wheelmap.Utils;
+using Wheelmap_Windows.Source.UI.Pages.Settings;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -68,14 +69,19 @@ namespace Wheelmap.Source.UI {
                 phoneUIBottomSlideUp.Navigate(type, param);
                 backgroundOverlay.Visibility = Visibility.Visible;
             }
-
-
+            
             detailContainerFrame.ContentTransitions = new TransitionCollection {
                 new EdgeUIThemeTransition { Edge = EdgeTransitionLocation.Bottom }
             };
-
-
+            
             menuContainerFrame.ContentTransitions = new TransitionCollection { };
+
+            // show settingspage on detailpage when needed
+            if (menuContainerFrame.Content is SettingsPage) {
+                menuContainerFrame.Content = null;
+                ShowOnDetailFrame(typeof(SettingsPage));
+                mToggleGroup.SelectedItem = null;
+            }
 
         }
 
@@ -104,7 +110,13 @@ namespace Wheelmap.Source.UI {
             
             detailContainerFrame.ContentTransitions = new TransitionCollection {};
 
+            // show settingspage on menupage when needed
+            if (detailContainerFrame.Content is SettingsPage) {
+                detailContainerFrame.Content = null;
+                ShowSettingsTapped(ShowSettingsView, null);
+            }
+
         }
-        
+
     }
 }

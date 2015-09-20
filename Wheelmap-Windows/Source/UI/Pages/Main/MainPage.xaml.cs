@@ -32,6 +32,7 @@ using Windows.UI.ViewManagement;
 using Wheelmap.Source.UI.Pages.Status;
 using Wheelmap.Source.UI.Pages.Profile;
 using Windows.UI.Xaml.Media.Imaging;
+using Wheelmap_Windows.Source.UI.Pages.Settings;
 
 namespace Wheelmap.Source.UI {
 
@@ -147,8 +148,11 @@ namespace Wheelmap.Source.UI {
         }
 
         private void ShowSettingsTapped(object sender, TappedRoutedEventArgs e) {
-            ShowMenu(false);
-            Debug.WriteLine("ShowSettingsTapped Clicked");
+            if (CurrentSizeState == STATE_SMALL) {
+                ShowOnDetailFrame(typeof(SettingsPage));
+            } else {
+                ShowOnMenuContainerFrame(sender, typeof(SettingsPage), toggle: e != null);
+            }
         }
 
         public void SetTitle(string title) {           

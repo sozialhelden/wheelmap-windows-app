@@ -13,6 +13,7 @@ namespace Wheelmap {
         public string API_KEY;
         public string API_BASEURL;
         public string BUILDTYPE;
+        public string HOCKEY_APP_ID;
     }
 
     public static class BuildConfig {
@@ -46,7 +47,14 @@ namespace Wheelmap {
                 return config.BUILDTYPE;
             }
         }
-        
+
+        public static string HOCKEY_APP_ID {
+            get {
+                return config.HOCKEY_APP_ID;
+            }
+        }
+
+
         public static void Init(Config config) {
             setConfig(config);
             _config = config;

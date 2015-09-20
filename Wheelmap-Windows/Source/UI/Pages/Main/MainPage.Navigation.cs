@@ -195,6 +195,8 @@ namespace Wheelmap.Source.UI {
         }
 
         public override void ShowOnDetailFrame(Type type, object args = null) {
+            bottomBar.IsOpen = false;
+
             var contentEmpty = detailContainerFrame.Content == null;
             detailContainerFrame.Navigate(type, args);
 
