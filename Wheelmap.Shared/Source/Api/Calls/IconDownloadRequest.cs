@@ -12,6 +12,8 @@ using Wheelmap.Source.Utils;
 using Wheelmap.Utils;
 using Wheelmap.Utils.Preferences;
 using Windows.Foundation;
+using Windows.Foundation.Metadata;
+using Windows.Graphics.Display;
 using Windows.Graphics.Imaging;
 using Windows.Networking.BackgroundTransfer;
 using Windows.Storage;
@@ -22,28 +24,32 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace Wheelmap.Api.Calls {
     public class IconDownloadRequest {
-
         private const string TAG = "IconDownloadRequest";
         private const string ETAG_KEY = TAG + "_icons";
         
         // ICON_HEIGHT and ICON_WIDTH depends on the default MapIcon size
-        private const int ICON_HEIGHT = 33;
-        private const int ICON_WIDTH = 29;
+        private int ICON_HEIGHT;
+        private int ICON_WIDTH;
         
-        private Rect destRectIcon = new Rect(3, 3, ICON_WIDTH - 7, ICON_WIDTH - 7);
-        private Rect destRectBG = new Rect(0, 0, ICON_WIDTH, ICON_HEIGHT);
+        private Rect destRectIcon;
+        private Rect destRectBG;
 
         WriteableBitmap bitmapStateYes;
         WriteableBitmap bitmapStateNo;
         WriteableBitmap bitmapStateLimited;
         WriteableBitmap bitmapStateUnknown;
         
+        public IconDownloadRequest() {
+            initIconDimensions();
+        }
+
         public async Task<bool> Query() {
             var assets = await new AssetsRequest().Execute();
             if (assets?.Count <= 0) {
                 // we have some data in the cache
                 return ApiPreferences.GetEtag(ETAG_KEY) != null;
             }
+            Platform a = Platform.WindowsPhone;
             var iconsType = "icons";
             foreach (Asset asset in assets) {
                 if (asset.type == iconsType) {
@@ -76,6 +82,33 @@ namespace Wheelmap.Api.Calls {
                 }
             }
             return false;
+        }
+
+        /// <summary>
+        /// changes the bounds of the created icons to match the resolutionscale of the device
+        /// this is needed because MapIcons do not scale with the resolution
+        /// </summary>
+        private void initIconDimensions() {
+            ICON_HEIGHT = 33;
+            ICON_WIDTH = 29;
+
+            var iconX = 4;
+            var iconY = 4;
+
+            if (DeviceUtils.DetectPlatform() == Platform.WindowsPhone) {
+                var scaleInt = DeviceUtils.GetResolutionScaleForCurrentViewInPercentage();
+                Log.d(this, "Scale = " + scaleInt);
+                if (scaleInt != 100) {
+                    var scale = scaleInt / 100d;
+                    ICON_HEIGHT = (int) Math.Round(ICON_HEIGHT * scale);
+                    ICON_WIDTH = (int) Math.Round(ICON_WIDTH * scale);
+                    iconX = (int) Math.Round(iconX * scale);
+                    iconY = (int) Math.Round(iconY * scale);
+                }
+            }
+
+            destRectIcon = new Rect(iconX, iconY, ICON_WIDTH - 2*iconX, ICON_WIDTH - 2*iconX);
+            destRectBG = new Rect(0, 0, ICON_WIDTH, ICON_HEIGHT);
         }
 
         private async Task LoadBackgroundImages(StorageFolder toFolder) {

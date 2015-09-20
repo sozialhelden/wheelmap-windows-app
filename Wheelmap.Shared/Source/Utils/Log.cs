@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 namespace Wheelmap {
     public class Log {
 
+        public static void v(object TAG, object message) {
+            printLog("VERBOSE", TAG, message);
+        }
+
         public static void d(object TAG, object message) {
             printLog("DEBUG", TAG, message);
         }

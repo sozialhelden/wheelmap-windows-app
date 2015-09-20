@@ -118,7 +118,9 @@
                                 <Grid
                                     Grid.RowSpan="2"
                                     Grid.Column="0"
-                                    Margin="10,10,10,10">
+                                    Margin="10,10,10,10"
+                                    Height="40"
+                                    Width="40">
 
                                     <Image
                                         VerticalAlignment="Center"

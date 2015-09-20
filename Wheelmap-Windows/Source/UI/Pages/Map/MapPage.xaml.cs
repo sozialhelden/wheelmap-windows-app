@@ -80,8 +80,7 @@ namespace Wheelmap.Source.UI.Pages {
         }
 
         private void MapControl_MapElementClick(MapControl sender, MapElementClickEventArgs args) {
-            Debug.WriteLine("MapElementClick: " + sender + "-" + args.MapElements.First());
-
+            
             if (args?.MapElements?.Count > 0) {
                 var node = nodeElementMap.Get(args.MapElements.First());
                 SelectedNodeChangedEvent e = new SelectedNodeChangedEvent();
@@ -158,7 +157,7 @@ namespace Wheelmap.Source.UI.Pages {
 
         private void RequestUpdate() {
 
-            Debug.WriteLine("RequestUpdate!!!");
+            Log.v(this, "RequestUpdate!!!");
 
             var bbox = mapControl.GetBoundingBox();
             if (bbox == null) {
