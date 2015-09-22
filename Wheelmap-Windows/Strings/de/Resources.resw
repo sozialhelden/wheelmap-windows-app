@@ -204,4 +204,7 @@
   <data name="RetryButton.Content" xml:space="preserve">
     <value>Neuladen</value>
   </data>
+  <data name="MENU_NEWS.Text" xml:space="preserve">
+    <value>Neuigkeiten</value>
+  </data>
 </root>

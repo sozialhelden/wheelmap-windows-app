@@ -245,7 +245,7 @@
                         <StackPanel 
                             x:Name="ShowSettingsView"
                         Orientation="Horizontal"
-                        Tapped="ShowSettingsTapped">
+                        Tapped="ShowNewsTapped">
 
                             <Image
                             Source="/Assets/Images/ic_settings.png"
@@ -253,8 +253,7 @@
                             Height="50" />
 
                             <TextBlock 
-                            x:Uid="MENU_SETTINGS"
-                            Text="Einstellungen"
+                            x:Uid="MENU_NEWS"
                             FontSize="15" 
                             VerticalAlignment="Center"/>
 
@@ -511,10 +510,10 @@
                     </Grid>
 
                     <TextBlock 
-                        x:Uid="MENU_SETTINGS"
+                        x:Uid="MENU_NEWS"
                         FontSize="20"
                         Padding="10,0,10,10"
-                        Tapped="ShowSettingsTapped"/>
+                        Tapped="ShowNewsTapped"/>
 
                     <TextBlock 
                         x:Uid="MENU_STATUS_INFO"

@@ -33,6 +33,7 @@ using Wheelmap.Source.UI.Pages.Status;
 using Wheelmap.Source.UI.Pages.Profile;
 using Windows.UI.Xaml.Media.Imaging;
 using Wheelmap_Windows.Source.UI.Pages.Settings;
+using Wheelmap_Windows.Source.UI.Pages;
 
 namespace Wheelmap.Source.UI {
 
@@ -153,6 +154,10 @@ namespace Wheelmap.Source.UI {
             } else {
                 ShowOnMenuContainerFrame(sender, typeof(SettingsPage), toggle: e != null);
             }
+        }
+        
+        private void ShowNewsTapped(object sender, TappedRoutedEventArgs e) {
+            ShowOnDetailFrame(typeof(WebViewPage), new WebViewPageArguments { Url = ApiConstants.NEWS_URL });
         }
 
         public void SetTitle(string title) {           

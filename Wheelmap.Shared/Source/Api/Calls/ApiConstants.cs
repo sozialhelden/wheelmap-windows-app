@@ -28,6 +28,7 @@ namespace Wheelmap.Api.Calls {
         public const string WEB_LOGIN_LINK = "/users/auth/osm";
         public const string WM_REGISTER_LINK = "/en/oauth/register_osm";
 
+        public const string NEWS_URL = "http://wheelmap.org/category/news/";
 
 
         public static string API_KEY_PARAM {

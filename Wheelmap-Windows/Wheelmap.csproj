@@ -109,6 +109,9 @@
     <Compile Include="Source\UI\Pages\Settings\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\UI\Pages\Base\WebViewPage.xaml.cs">
+      <DependentUpon>WebViewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\WMBuildConfig.cs" />
     <Compile Include="Source\Cortana\CortanaCommand.cs" />
     <Compile Include="Source\Cortana\CortanaManager.cs" />
@@ -366,6 +369,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\UI\Pages\Status\StatusPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\UI\Pages\Base\WebViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

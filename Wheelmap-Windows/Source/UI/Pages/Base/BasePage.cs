@@ -63,5 +63,20 @@ namespace Wheelmap.UI.Pages.Base {
                 (rootFrame.Content as MainPage).ShowOnDetailFrame(type, args);
             }
         }
+        
+        public virtual PageShowOn GetShowOnSmall() {
+            return PageShowOn.NONE;
+        }
+
+        public virtual PageShowOn GetShowOnBig() {
+            return PageShowOn.NONE;
+        }
+
+    }
+
+    public enum PageShowOn {
+        DETAIL,
+        MENU,
+        NONE
     }
 }
