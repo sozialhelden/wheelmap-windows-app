@@ -26,11 +26,17 @@ namespace Wheelmap.VoiceCommandService {
             await ShowProgressScreen("Suche: " + nodeTypeString);
 
             bool isToiletSearch = IsToiletSynonym(nodeTypeString);
-            var nodeTypes = Database.Instance.Table<NodeType>().Where(x => x.localizedName.Contains(nodeTypeString)).ToList();
+            var nodeTypes = Database.Instance.Table<NodeType>().Where(x => 
+                x.localizedName.Contains(nodeTypeString)
+            ).ToList();
 
             if ((nodeTypes == null || nodeTypes.Count() == 0) && !isToiletSearch) {
                 reportErrorNotFound(false);
                 return;
+            }
+
+            if (nodeTypes == null) {
+                nodeTypes = new List<NodeType>();
             }
 
             var access = await Geolocator.RequestAccessAsync();
@@ -48,11 +54,11 @@ namespace Wheelmap.VoiceCommandService {
                 reportErrorNotFound(isToiletSearch);
                 return;
             }
-
+            
             nodes = nodes.Where(x => {
                 return 
                 (
-                    nodeTypes.Any(y => y.Id == x.nodeType.Id)
+                    nodeTypes.Any(y => y.Id == x?.nodeType?.Id)
                     && x.wheelchairStatus != "no"
                 ) || (
                     isToiletSearch && x.wheelchairToiletStatus == "yes"

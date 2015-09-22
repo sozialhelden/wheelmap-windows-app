@@ -86,11 +86,16 @@ namespace Wheelmap.VoiceCommandService {
 
                 tile.AppContext = node;
                 tile.Title = i + ": " + node.name;
-                if (isToiletSearch) {
-                    tile.TextLine1 = Stati.From(node.wheelchairStatus).GetLocalizedToiletMessage(context);
+                
+                if (isToiletSearch && node.wheelchairToiletStatus == "yes") {
+                    // on toilet search there can only be node with the toiletstatus yes
+                    tile.TextLine1 = Stati.From(node.wheelchairToiletStatus).GetLocalizedToiletMessage(context);
                 } else {
+                    // the node was not choosen because its toilet status
+                    // this can also be true if the node is of NodeType Toilet but has no toiletstatus rating
                     tile.TextLine1 = Stati.From(node.wheelchairStatus).GetLocalizedMessage(context);
                 }
+
                 tile.TextLine2 = node.DistanceString;
                 contentTiles.Add(tile);
                 i++;
