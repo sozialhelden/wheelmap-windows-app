@@ -192,9 +192,13 @@ namespace Wheelmap.Source.UI.Pages.Node {
             StorageFile file = await openPicker.PickSingleFileAsync();
 
 
-            var dialog = new ProgressDialog();
+            var dialog = new ProgressDialog() {
+                Message = "UPLOAD_IMAGE_PROCESSING".t()
+            };
             dialog.ShowAsync().Forget();
             var result = await new PhotoUploadTask(CurrentNode, file).Execute();
+            // wait for the backend to initialize the image before reloading them
+            Task.Delay(3000).Wait();
             dialog.Close();
             Log.d(this, result.IsOk);
             SetNode(CurrentNode);
