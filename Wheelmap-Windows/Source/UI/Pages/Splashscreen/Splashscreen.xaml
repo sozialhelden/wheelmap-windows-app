@@ -10,7 +10,7 @@
 
     <Grid
         Background="{StaticResource PrimaryColor}">
-        <RelativePanel>
+        <!--<RelativePanel>
             <Viewbox
                 x:Name="box"
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
@@ -28,6 +28,24 @@
                 Width="20" 
                 HorizontalAlignment="Center"/>
         </RelativePanel>
+        -->
 
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="180"/>
+        </Grid.RowDefinitions>
+
+        <Canvas Grid.Row="0" Grid.RowSpan="2">
+            <Image x:Name="extendedSplashImage" 
+                    Source="/Assets\App\splashscreen_1240x600\wide.png"/>
+        </Canvas>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+            <ProgressRing 
+                Margin="20,40,20,60"
+                Name="splashProgressRing" 
+                IsActive="True" 
+                Width="20" 
+                HorizontalAlignment="Center"/>
+        </StackPanel>
     </Grid>
 </app:BasePage>

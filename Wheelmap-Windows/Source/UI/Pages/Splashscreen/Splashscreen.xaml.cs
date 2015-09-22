@@ -17,6 +17,8 @@ using Windows.UI.Xaml.Navigation;
 using Wheelmap.Utils.Extensions;
 using Wheelmap.Extensions;
 using Wheelmap.UI.Pages.Base;
+using Windows.System.Profile;
+using Windows.Graphics.Display;
 
 namespace Wheelmap.Source.UI.Pages.Splashscreen {
 
@@ -27,6 +29,10 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
         internal bool dismissed = false; // Variable to track splash screen dismissal status.
         internal Frame rootFrame;
 
+        //Variable to hold the device scale factor (used to determine phone screen resolution)
+        private double scaleFactor = 1; 
+        
+
         public object paramForMainPage;
 
         public ExtendedSplashPage(SplashScreen splashscreen, bool loadState) {
@@ -34,7 +40,12 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
             // Listen for window resize events to reposition the extended splash screen image accordingly.
             // This ensures that the extended splash screen formats properly in response to window resizing.
             Window.Current.SizeChanged += new WindowSizeChangedEventHandler(ExtendedSplash_OnResize);
-
+            
+            // Is this a phone? Then set the scaling factor
+            if (String.Equals(AnalyticsInfo.VersionInfo.DeviceFamily, "Windows.Mobile")) {
+                scaleFactor = DisplayInformation.GetForCurrentView().RawPixelsPerViewPixel;
+            }
+            
             splash = splashscreen;
             if (splash != null) {
                 // Register an event handler to be executed when the splash screen has been dismissed.
@@ -64,11 +75,10 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
 
         // Position the extended splash screen image in the same location as the system splash screen image.
         void PositionImage() {
-            extendedSplashImage.SetValue(Canvas.LeftProperty, splashImageRect.X);
-            extendedSplashImage.SetValue(Canvas.TopProperty, splashImageRect.Y);
-            extendedSplashImage.Height = splashImageRect.Height;
-            extendedSplashImage.Width = splashImageRect.Width;
-
+            extendedSplashImage.SetValue(Canvas.LeftProperty, splashImageRect.Left);
+            extendedSplashImage.SetValue(Canvas.TopProperty, splashImageRect.Top);
+            extendedSplashImage.Height = splashImageRect.Height / scaleFactor;
+            extendedSplashImage.Width = splashImageRect.Width / scaleFactor;
         }
 
         void PositionRing() {
