@@ -189,4 +189,7 @@
   <data name="TITLE_SETTINGS" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
+  <data name="UPLOAD_IMAGE_PROCESSING" xml:space="preserve">
+    <value>Bild wird hochgeladen</value>
+  </data>
 </root>
