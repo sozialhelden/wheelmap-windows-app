@@ -37,8 +37,13 @@
       <Example> Wo ist der nächste Geldautomat </Example>
 
       <ListenFor RequireAppName="BeforeOrAfterPhrase"> Wo ist [der] [das] [die] [nächste] [nächster] [behindertengerechte] [behindertengerechter]  {nodeTypes} </ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> Wo ist [der] [das] [die] [nächste] [nächster] [rollstuhlgerechte] [rollstuhlgerechter]  {nodeTypes} </ListenFor>
+      
       <ListenFor RequireAppName="BeforeOrAfterPhrase"> Wo finde [ich] [den] [das] [die] [nächste] [nächsten] [behindertengerechte] [behindertengerechter] {nodeTypes} </ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> Wo finde [ich] [den] [das] [die] [nächste] [nächsten] [rollstuhlgerechte] [rollstuhlgerechter] {nodeTypes} </ListenFor>
+      
       <ListenFor RequireAppName="BeforeOrAfterPhrase"> Wo finde [ich] [den] [das] [die] [nächste] [behindertengerechte] [behindertengerechter] {nodeTypes} [in] [meiner] [Nähe]</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> Wo finde [ich] [den] [das] [die] [nächste] [rollstuhlgerechte] [rollstuhlgerechter] {nodeTypes} [in] [meiner] [Nähe]</ListenFor>
 
       <Feedback> Durchsuche Wheelmap... </Feedback>
       <VoiceCommandService Target="WheelmapVoiceCommandService"/>
@@ -47,7 +52,6 @@
     <PhraseList Label="nodeTypes"/>
     
     <PhraseTopic Label="dictatedSearchTerms" Scenario="Search"/>
-
     
   </CommandSet>
   
