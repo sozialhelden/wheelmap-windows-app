@@ -92,8 +92,9 @@ namespace Wheelmap
 
             CortanaManager.RegisterCommands();
 
-            HockeyClient.Current.SendCrashesAsync().Forget();
-
+            if (BuildConfig.HOCKEY_APP_ID?.Length > 0) {
+                HockeyClient.Current.SendCrashesAsync().Forget();
+            }
         }
 
         protected override void OnActivated(IActivatedEventArgs args) {
