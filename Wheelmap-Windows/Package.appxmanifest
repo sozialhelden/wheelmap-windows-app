@@ -16,7 +16,7 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Wheelmap.App">
       <uap:VisualElements DisplayName="Wheelmap" Square150x150Logo="Assets\App\square_150x150\square.png" Square44x44Logo="Assets\App\square_44x44\square.png" Description="Wheelmap" BackgroundColor="#2c3b49">
-        <uap:DefaultTile Wide310x150Logo="Assets\App\wide_310x310\wide.png" Square71x71Logo="Assets\App\square_71x71\square.png" Square310x310Logo="Assets\App\square_310x310\square.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\App\wide_310x150\wide.png" Square71x71Logo="Assets\App\square_71x71\square.png" Square310x310Logo="Assets\App\square_310x310\square.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
             <uap:ShowOn Tile="wide310x150Logo" />
