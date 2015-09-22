@@ -109,27 +109,6 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
             // Place the frame in the current Window
             Window.Current.Content = rootFrame;
         }
-
-        void DismissSplashButton_Click(object sender, RoutedEventArgs e) {
-            DismissExtendedSplash();
-        }
         
-        private DispatcherTimer showWindowTimer;
-        private void OnShowWindowTimer(object sender, object e) {
-            showWindowTimer.Stop();
-
-            // Activate/show the window, now that the splash image has rendered
-            Window.Current.Activate();
-        }
-
-        private void extendedSplashImage_ImageOpened(object sender, RoutedEventArgs e) {
-            // ImageOpened means the file has been read, but the image hasn't been painted yet.
-            // Start a short timer to give the image a chance to render, before showing the window
-            // and starting the animation.
-            showWindowTimer = new DispatcherTimer();
-            showWindowTimer.Interval = TimeSpan.FromMilliseconds(50);
-            showWindowTimer.Tick += OnShowWindowTimer;
-            showWindowTimer.Start();
-        }
     }
 }
