@@ -26,6 +26,8 @@
         <uap:SplashScreen Image="Assets\App\splashscreen_1240x600\wide.png" BackgroundColor="#2c3b49" />
       </uap:VisualElements>
       <Extensions>
+        <uap:Extension Category="windows.personalAssistantLaunch">
+        </uap:Extension>
         <uap:Extension Category="windows.appService" EntryPoint="Wheelmap.VoiceCommandService.WheelmapVoiceCommandService">
           <uap:AppService Name="WheelmapVoiceCommandService" />
         </uap:Extension>
