@@ -40,7 +40,7 @@ namespace Wheelmap.VoiceCommandService {
             }
 
             var point = (await new Geolocator().GetGeopositionAsync()).Coordinate.Point;
-            var bbox = GeoMath.GetBoundingBox(point.Position, 2);
+            var bbox = GeoMath.GetBoundingBox(point.Position, 1);
 
             List<Node> nodes = await new NodesRequest(bbox).Execute();
 
