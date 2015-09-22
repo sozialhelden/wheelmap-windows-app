@@ -192,4 +192,10 @@
   <data name="UPLOAD_IMAGE_PROCESSING" xml:space="preserve">
     <value>Bild wird hochgeladen</value>
   </data>
+  <data name="CouldNotLoadData.Text" xml:space="preserve">
+    <value>Es konnten keine Daten geladen werden. Bitte überprüfe deine Internetverbindung oder versuche es später nochmal.</value>
+  </data>
+  <data name="RetryButton.Content" xml:space="preserve">
+    <value>Neuladen</value>
+  </data>
 </root>

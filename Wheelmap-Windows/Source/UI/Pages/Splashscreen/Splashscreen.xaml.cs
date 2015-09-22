@@ -67,9 +67,16 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
 
         }
 
-        async void RestoreStateAsync(bool loadState) {
+        void RestoreStateAsync(bool loadState) {
+            retryContainer.Visibility = Visibility.Collapsed;
+            splashProgressRing.Visibility = Visibility.Visible;
             LoadData().ContinueWithOnDispatcher(Dispatcher, (task) => {
-                DismissExtendedSplash();
+                if (!task.Result) {
+                    retryContainer.Visibility = Visibility.Visible;
+                    splashProgressRing.Visibility = Visibility.Collapsed;
+                } else {
+                    DismissExtendedSplash();
+                }
             });
         }
 
@@ -109,6 +116,9 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
             // Place the frame in the current Window
             Window.Current.Content = rootFrame;
         }
-        
+
+        private void Retry_Click(object sender, RoutedEventArgs e) {
+            RestoreStateAsync(true);
+        }
     }
 }

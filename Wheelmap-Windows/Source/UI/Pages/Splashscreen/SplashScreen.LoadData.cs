@@ -14,11 +14,16 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
     public sealed partial class ExtendedSplashPage {
 
         public async Task<bool> LoadData() {
-            bool success = true;
-            success &= await readCategories();
-            success &= await readNodeTypes();
-            success &= await new IconDownloadRequest().Query();
-            return success;
+            try {
+                bool success = true;
+                success &= await readCategories();
+                success &= await readNodeTypes();
+                success &= await new IconDownloadRequest().Query();
+                return success;
+            } catch (Exception e){
+                Log.e(this, e);
+                return false;
+            }
         }
 
         private async Task<bool> readNodeTypes() {

@@ -9,6 +9,7 @@
     mc:Ignorable="d">
 
     <Grid
+        RequestedTheme="Dark"
         Background="{StaticResource PrimaryColor}">
 
         <Grid.RowDefinitions>
@@ -20,13 +21,32 @@
             <Image x:Name="extendedSplashImage" 
                     Source="/Assets\App\splashscreen_1240x600\wide.png"/>
         </Canvas>
-        <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+        <Grid Grid.Row="1" HorizontalAlignment="Center">
             <ProgressRing 
                 Margin="20,40,20,60"
                 Name="splashProgressRing" 
                 IsActive="True" 
                 Width="20" 
                 HorizontalAlignment="Center"/>
-        </StackPanel>
+
+            <StackPanel
+                x:Name="retryContainer"
+                Visibility="Collapsed"
+                Orientation="Vertical">
+
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    TextAlignment="Center"
+                    Margin="50,10,50,10"
+                    x:Uid="CouldNotLoadData"/>
+
+                <Button
+                    Click="Retry_Click"
+                    HorizontalAlignment="Center"
+                    x:Uid="RetryButton"/>
+
+            </StackPanel>
+            
+        </Grid>
     </Grid>
 </app:BasePage>
