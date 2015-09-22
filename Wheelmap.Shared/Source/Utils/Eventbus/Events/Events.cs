@@ -9,6 +9,8 @@ using Windows.Devices.Geolocation;
 namespace Wheelmap.Utils.Eventbus.Events {
 
     public class SelectedNodeChangedEvent {
+
+        public object sender;
         public Model.Node node;
 
         public override string ToString() {

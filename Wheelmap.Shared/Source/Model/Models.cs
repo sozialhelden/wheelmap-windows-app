@@ -142,8 +142,12 @@ namespace Wheelmap.Model {
                     return i;
                 }
             }
-
+            
             return original;
+        }
+
+        public override string ToString() {
+            return "{Id: " + id+ ", Source: "+GetSource().url+" }";
         }
     }
 
@@ -153,6 +157,7 @@ namespace Wheelmap.Model {
         public string type { get; set; }
         public int width { get; set; }
         public int height { get; set; }
+
         public string url { get; set; }
 
         public override string ToString() {

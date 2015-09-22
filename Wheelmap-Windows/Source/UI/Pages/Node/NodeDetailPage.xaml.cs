@@ -138,7 +138,7 @@ namespace Wheelmap.Source.UI.Pages.Node {
                 Log.d(this, "Photos: " + photos.Result.Count());
                 listView.Items.Add(new AddNewPhotoPhoto());
                 foreach (Photo p in photos.Result) {
-                    Log.d(this, p.GetThumb());
+                    Log.d(this, p + " Thumb " + p.GetThumb());
                     listView.Items.Add(p);
                 }
 

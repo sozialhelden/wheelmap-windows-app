@@ -49,7 +49,6 @@ namespace Wheelmap.Api.Calls {
                 // we have some data in the cache
                 return ApiPreferences.GetEtag(ETAG_KEY) != null;
             }
-            Platform a = Platform.WindowsPhone;
             var iconsType = "icons";
             foreach (Asset asset in assets) {
                 if (asset.type == iconsType) {

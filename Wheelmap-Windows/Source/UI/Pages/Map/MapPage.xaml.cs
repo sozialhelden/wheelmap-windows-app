@@ -83,8 +83,10 @@ namespace Wheelmap.Source.UI.Pages {
             
             if (args?.MapElements?.Count > 0) {
                 var node = nodeElementMap.Get(args.MapElements.First());
-                SelectedNodeChangedEvent e = new SelectedNodeChangedEvent();
-                e.node = node;
+                SelectedNodeChangedEvent e = new SelectedNodeChangedEvent() {
+                    node = node,
+                    sender = this,
+                };
                 BusProvider.DefaultInstance.Post(e);
             }
 
@@ -260,6 +262,9 @@ namespace Wheelmap.Source.UI.Pages {
 
         [Subscribe]
         public void OnSelectedNodeChanged(SelectedNodeChangedEvent e) {
+            if (e.sender == this) {
+                return;
+            }
             mapControl.ZoomLevel = 19;
             mapControl.Center = new Geopoint(new BasicGeoposition {
                 Latitude = e.node.lat,
