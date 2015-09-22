@@ -177,6 +177,24 @@
     <PRIResource Include="Strings\de\Node.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\App\splashscreen_1240x600\wide.scale-200.png" />
+    <Content Include="Assets\App\square_150x150\square.scale-100.png" />
+    <Content Include="Assets\App\square_150x150\square.scale-200.png" />
+    <Content Include="Assets\App\square_150x150\square.scale-400.png" />
+    <Content Include="Assets\App\square_310x310\square.scale-100.png" />
+    <Content Include="Assets\App\square_310x310\square.scale-200.png" />
+    <Content Include="Assets\App\square_310x310\square.scale-400.png" />
+    <Content Include="Assets\App\square_44x44\square.targetsize-24.png" />
+    <Content Include="Assets\App\square_44x44\square.scale-100.png" />
+    <Content Include="Assets\App\square_44x44\square.scale-200.png" />
+    <Content Include="Assets\App\square_44x44\square.scale-400.png" />
+    <Content Include="Assets\App\square_71x71\square.scale-100.png" />
+    <Content Include="Assets\App\square_71x71\square.scale-200.png" />
+    <Content Include="Assets\App\square_71x71\square.scale-400.png" />
+    <Content Include="Assets\App\store\square.scale-100.png" />
+    <Content Include="Assets\App\wide_310x310\wide.scale-100.png" />
+    <Content Include="Assets\App\wide_310x310\wide.scale-200.png" />
+    <Content Include="Assets\App\wide_310x310\wide.scale-400.png" />
     <Content Include="Assets\Images\credits_logo.png" />
     <Content Include="Assets\Images\ic_add_new_node.png" />
     <Content Include="Assets\Images\ic_camera.png" />
@@ -261,13 +279,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
-    <Content Include="Assets\SplashScreen.scale-200.png" />
-    <Content Include="Assets\Square150x150Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -377,6 +388,7 @@
       <Name>Wheelmap.VoiceCommandService</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
