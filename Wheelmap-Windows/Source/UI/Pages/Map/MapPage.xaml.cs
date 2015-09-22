@@ -19,6 +19,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage.Streams;
 using Windows.System.Threading;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
@@ -245,6 +246,11 @@ namespace Wheelmap.Source.UI.Pages {
         }
 
         public void OnMyPosition_Click(object sender, RoutedEventArgs e) {
+
+            if (LocationManager.Instance?.AccessStatus != GeolocationAccessStatus.Allowed) {
+                LocationManager.Instance.ShowNoAccessDialog(); 
+            }
+
             var point = LocationManager.Instance?.LastLocationEvent?.Args?.Position?.Coordinate?.Point;
             if (point != null) {
                 mapControl.Center = point;

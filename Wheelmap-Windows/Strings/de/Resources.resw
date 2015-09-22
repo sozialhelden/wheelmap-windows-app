@@ -195,6 +195,12 @@
   <data name="CouldNotLoadData.Text" xml:space="preserve">
     <value>Es konnten keine Daten geladen werden. Bitte überprüfe deine Internetverbindung oder versuche es später nochmal.</value>
   </data>
+  <data name="DIALOG_NO_LOCATION_ACCESS_CANCEL" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="DIALOG_NO_LOCATION_ACCESS_SETTINGS_BUTTON_TEXT" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
   <data name="RetryButton.Content" xml:space="preserve">
     <value>Neuladen</value>
   </data>
