@@ -257,6 +257,15 @@ namespace Wheelmap.Source.UI.Pages {
         private void addNewNodeButton_Tapped(object sender, TappedRoutedEventArgs e) {
             ShowOnDetailFrame(typeof(NodeEditPage));
         }
+
+        [Subscribe]
+        public void OnSelectedNodeChanged(SelectedNodeChangedEvent e) {
+            mapControl.ZoomLevel = 19;
+            mapControl.Center = new Geopoint(new BasicGeoposition {
+                Latitude = e.node.lat,
+                Longitude = e.node.lon,
+            });
+        }
     }
 
 }
