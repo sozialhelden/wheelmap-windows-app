@@ -49,6 +49,15 @@ namespace Wheelmap.Source.UI.Pages.Status {
             }
         }
 
+        public Brush ForegroundColor {
+            get {
+                return statusTitle.Foreground;
+            }
+            set {
+                statusTitle.Foreground = value;
+            }
+        }
+
         private bool _ShowBorder = false;
         public bool ShowBorder {
             get {
@@ -130,6 +139,7 @@ namespace Wheelmap.Source.UI.Pages.Status {
                 TextBlock b = new TextBlock();
                 b.Text = "\u00B7 " + hint;
                 b.TextWrapping = TextWrapping.WrapWholeWords;
+                b.Foreground = ForegroundColor;
                 statusHintsContainer.Children.Add(b);
             }
         }

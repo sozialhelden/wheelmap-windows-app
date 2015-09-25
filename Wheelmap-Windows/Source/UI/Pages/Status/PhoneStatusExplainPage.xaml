@@ -28,6 +28,7 @@
                     Margin="5,5,5,5"
                     IsWcStatus="False"
                     IsSelectable="False"
+                    ForegroundColor="#FFF"
                     Status="YES"/>
 
                 <status:StatusExplainView
@@ -35,6 +36,7 @@
                     Margin="5,5,5,5"
                     IsWcStatus="False"
                     IsSelectable="False"
+                    ForegroundColor="#FFF"
                     Status="LIMITED"/>
 
 
@@ -42,6 +44,7 @@
                     ShowBorder="True"
                     Margin="5,5,5,5"
                     IsWcStatus="False"
+                    ForegroundColor="#FFF"
                     IsSelectable="False"
                     Status="NO"/>
 
@@ -50,6 +53,7 @@
                     Margin="5,5,5,5"
                     IsWcStatus="False"
                     IsSelectable="False"
+                    ForegroundColor="#FFF"
                     Status="UNKNOWN"/>
 
                 <TextBlock
@@ -62,6 +66,7 @@
                     Margin="5,5,5,5"
                     IsWcStatus="True"
                     IsSelectable="False"
+                    ForegroundColor="#FFF"
                     Status="YES"/>
 
                 <status:StatusExplainView
@@ -69,6 +74,7 @@
                     Margin="5,5,5,5"
                     IsWcStatus="True"
                     IsSelectable="False"
+                    ForegroundColor="#FFF"
                     Status="NO"/>
 
 
@@ -77,6 +83,7 @@
                     Margin="5,5,5,5"
                     IsWcStatus="True"
                     IsSelectable="False"
+                    ForegroundColor="#FFF"
                     Status="UNKNOWN"/>
 
             </StackPanel>
