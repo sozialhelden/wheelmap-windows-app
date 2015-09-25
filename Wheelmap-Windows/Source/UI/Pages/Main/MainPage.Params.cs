@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wheelmap.Extensions;
 using Wheelmap.Model;
 using Wheelmap.Source.UI.Pages.Node;
 using Wheelmap.UI.Pages.Base;
@@ -17,14 +18,16 @@ namespace Wheelmap.Source.UI {
             
             if (args is WheelmapParams) {
                 WheelmapParams whParams = args as WheelmapParams;
-                initWithWheelmapParams(whParams);
+
+                Dispatcher.PostDelayed(()=> initWithWheelmapParams(whParams), 2000);
+                
             }
 
         }
 
         private void initWithWheelmapParams(WheelmapParams args) {
-            ShowListTapped(MenuShowListItem, null);
             if (args.Search?.Length > 0) {
+                ShowListTapped(MenuShowListItem, null);
                 DataHolder.Instance.QueryString = args.Search;
             }
             if (args.ShowDetailsFromId > 0) {
@@ -34,6 +37,10 @@ namespace Wheelmap.Source.UI {
                     e.node = node;
                     BusProvider.DefaultInstance.Post(e);
                 }
+            }
+
+            if (args.Path == WheelmapParams.PATH_HELP) {
+                ShowHelpTapped(MenuShowHelpItem, null);
             }
         }
     }

@@ -23,10 +23,9 @@ namespace Wheelmap.VoiceCommandService {
         public override async Task Handle() {
             string search = voiceCommand.Properties[Constants.Cortana.PhraseList.SEARCH][0];
             
-            LaunchAppInForeground(null, new WheelmapParams {
+            await LaunchAppInForeground(null, new WheelmapParams {
                 Search = search
             }.ToString());
-            
         }
         
     }

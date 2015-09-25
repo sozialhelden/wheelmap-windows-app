@@ -50,7 +50,7 @@ namespace Wheelmap.VoiceCommandService {
         /// Provide a simple response that launches the app. Expected to be used in the
         /// case where the voice command could not be recognized (eg, a VCD/code mismatch.)
         /// </summary>
-        protected async void LaunchAppInForeground(VoiceCommandUserMessage userMessage = null, string args = null) {
+        protected async Task LaunchAppInForeground(VoiceCommandUserMessage userMessage = null, string args = null) {
             if (userMessage == null) {
                 userMessage = new VoiceCommandUserMessage();
                 userMessage.SpokenMessage = "OPEN_APP_SpokenMessage".t(context, R.File.CORTANA);

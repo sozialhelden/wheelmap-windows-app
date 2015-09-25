@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -30,6 +31,11 @@ namespace Wheelmap.Extensions {
                     continuationAction.Invoke(task);
                 }).Forget();
             });
+        }
+
+        public static async void PostDelayed(this CoreDispatcher dispatcher, DispatchedHandler action, int delayInMilliseconds) {
+            await Task.Delay(delayInMilliseconds);
+            await dispatcher.RunAsync(CoreDispatcherPriority.Normal, action); 
         }
 
         public static void AddAll<X, T>(this ICollection<X> list, T[] items) where T : X {

@@ -114,6 +114,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\Commands\HelpCommandHelper.cs" />
     <Compile Include="Source\Commands\SearchIsCommandHelper.cs" />
     <Compile Include="Source\NodesCommandUtils.cs" />
     <Compile Include="Source\VoiceCommandHandler.cs" />

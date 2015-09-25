@@ -51,7 +51,10 @@ namespace Wheelmap.Source.UI.Pages {
 
         // Zoom 1 is world view
         // on 6.5 you can see Germany
-        public const double MAP_ZOOM_DEFAULT = 6.5; 
+        public const double MAP_ZOOM_DEFAULT = 6.5;
+
+        // indicates if the map has jumped to the user location or the user has moved by himself
+        bool locationInitialed = false;
 
         int oldZoomLevel = 1;
         Geopoint lastRequestedPosition;
@@ -73,6 +76,10 @@ namespace Wheelmap.Source.UI.Pages {
 
             myLocationOverlay = new MyLocationOverlay(mapControl);
             searchHandler = new SearchBoxHandler(searchBox);
+            
+            if (LocationManager.Instance.LastLocationEvent != null) {
+                OnLocationChanged(LocationManager.Instance.LastLocationEvent);
+            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -132,6 +139,9 @@ namespace Wheelmap.Source.UI.Pages {
          * request new data if map moves more than 30% from the last position depending on the maps size
          */
         private void MapControl_CenterChanged(MapControl sender, object args) {
+
+            locationInitialed = true;
+
             var bbox = mapControl.GetBoundingBox();
             if (bbox == null) {
                 return;
@@ -268,7 +278,7 @@ namespace Wheelmap.Source.UI.Pages {
 
         [Subscribe]
         public void OnSelectedNodeChanged(SelectedNodeChangedEvent e) {
-            if (e.sender == this) {
+            if (e.sender == this || WindowSizeStates.CurrentState == STATE_SMALL) {
                 return;
             }
             mapControl.ZoomLevel = 19;
@@ -276,6 +286,15 @@ namespace Wheelmap.Source.UI.Pages {
                 Latitude = e.node.lat,
                 Longitude = e.node.lon,
             });
+        }
+
+        [Subscribe]
+        public void OnLocationChanged(LocationChangedEvent e) {
+            if (!locationInitialed) {
+                locationInitialed = true;
+                mapControl.ZoomLevel = 17;
+                mapControl.Center = e.Args.Position.Coordinate.Point;
+            }
         }
     }
 

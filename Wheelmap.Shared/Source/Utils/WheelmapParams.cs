@@ -5,10 +5,9 @@ using Wheelmap.Model;
 namespace Wheelmap.Utils {
     public class WheelmapParams {
 
-        private const string PARAM_SEARCH = "search";
-        private const string PARAM_DETAILS = "details";
-        private const string PARAM_STATI = "stati";
-        private const string PARAM_TOILET_STATI = "toiletStati";
+        public const string PATH_HELP = "help";
+
+        public string Path;
 
         /// <summary>
         /// all stati which should be filted out

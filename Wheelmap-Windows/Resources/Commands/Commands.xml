@@ -8,15 +8,21 @@
     
     <Example>Wo ist die nächste behindertengerechte Toilette</Example>
 
-    <Command Name="testCommand">
-      <Example>Test Command</Example>
-      <ListenFor RequireAppName="BeforeOrAfterPhrase">Öffne [mir] [meine] Karte</ListenFor>
-      <ListenFor RequireAppName="BeforeOrAfterPhrase">Zeige [mir] [meine] Karte</ListenFor>
-      <Feedback>Öffne Karte</Feedback>
-      <!--<Navigate/>-->
+    <Command Name="help">
+      <Example>Ich helfe mit</Example>
+
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">Ich helfe mit</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">lass mich helfen</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">lass mich mithelfen</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">Mithelfen Funktion</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">Orte bewerten</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">bestehende Orte bewerten</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">Mapping Day</ListenFor>
+
+      <Feedback> Danke das du bei Wheelmap mithelfen möchtest </Feedback>
       <VoiceCommandService Target="WheelmapVoiceCommandService"/>
     </Command>
-
+    
     <Command Name="search">
       
       <Example> suche 'Bundle Schokowelt' </Example>

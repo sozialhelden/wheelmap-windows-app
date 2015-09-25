@@ -12,7 +12,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
+            <VisualStateGroup x:Name="WindowSizeStates">
                 <VisualState x:Name="STATE_MEDIUM">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="700"/>

@@ -112,7 +112,6 @@ namespace Wheelmap
                     WwwFormUrlDecoder decoder = new WwwFormUrlDecoder(a.Uri.Query);
                     var wheelmapParams = WheelmapParams.FromString(decoder.GetFirstValueByName("LaunchContext"));
                     ShowMainPage(args, wheelmapParams);
-
                     break;
                 default:
                     ShowMainPage(args);

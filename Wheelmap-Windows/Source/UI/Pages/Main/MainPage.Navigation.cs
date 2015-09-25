@@ -144,10 +144,6 @@ namespace Wheelmap.Source.UI {
                     menuContainerFrame.Content = null;
                     mToggleGroup.SelectedItem = null;
                     return false;
-                } else {
-                    /*if (CurrentSizeState != STATE_SMALL) {
-                        menuContainerFrame.Content = null;
-                    }*/
                 }
             }
 

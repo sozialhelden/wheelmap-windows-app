@@ -32,6 +32,7 @@ namespace Wheelmap.VoiceCommandService {
         static WheelmapVoiceCommandService() {
             AddCommand(new SearchIsCommandHelper());
             AddCommand(new WhereIsCommandHelper());
+            AddCommand(new HelpCommandHelper());
         }
 
         private static void AddCommand(VoiceCommandHandler command) {

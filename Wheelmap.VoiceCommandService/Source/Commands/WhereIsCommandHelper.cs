@@ -75,7 +75,7 @@ namespace Wheelmap.VoiceCommandService {
                 return;
             }
 
-            LaunchAppInForeground(null, new WheelmapParams {
+            await LaunchAppInForeground(null, new WheelmapParams {
                 ShowDetailsFromId = node.wm_id
             }.ToString());
             

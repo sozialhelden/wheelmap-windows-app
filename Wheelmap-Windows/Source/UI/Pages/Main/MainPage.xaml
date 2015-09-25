@@ -116,7 +116,8 @@
 
                         </StackPanel>
 
-                        <StackPanel 
+                        <StackPanel
+                            x:Name="MenuShowHelpItem"
                         Orientation="Horizontal" 
                         Tapped="ShowHelpTapped">
 
