@@ -83,6 +83,26 @@ namespace Wheelmap.Source.UI {
                 mToggleGroup.SelectedItem = null;
             }
 
+            var menuBasePage = menuContainerFrame.Content as BasePage;
+            var detailBasePage = detailContainerFrame.Content as BasePage;
+            
+            switch (menuBasePage?.GetShowOnSmall()) {
+                case PageShowOn.DETAIL:
+                    menuContainerFrame.Content = null;
+                    mToggleGroup.SelectedItem = null;
+                    ShowOnDetailFrame(menuBasePage.GetType(), menuBasePage.Parameter);
+                    break;
+            }
+
+            switch (detailBasePage?.GetShowOnSmall()) {
+                case PageShowOn.MENU:
+                    if (detailContainerFrame.Content == detailBasePage) {
+                        detailContainerFrame.Content = null;
+                    }
+                    ShowOnMenuContainerFrame(null, detailBasePage.GetType(), param: detailBasePage.Parameter);
+                    break;
+            }
+            
         }
 
         private void OnMediumState() {
@@ -115,6 +135,28 @@ namespace Wheelmap.Source.UI {
                 detailContainerFrame.Content = null;
                 ShowSettingsTapped(ShowSettingsView, null);
             }
+
+
+            var menuBasePage = menuContainerFrame.Content as BasePage;
+            var detailBasePage = detailContainerFrame.Content as BasePage;
+
+            switch (menuBasePage?.GetShowOnBig()) {
+                case PageShowOn.DETAIL:
+                    menuContainerFrame.Content = null;
+                    ShowOnDetailFrame(menuBasePage.GetType(), menuBasePage.Parameter);
+                    break;
+            }
+
+            switch (detailBasePage?.GetShowOnBig()) {
+                case PageShowOn.MENU:
+                    if (detailContainerFrame.Content == detailBasePage) {
+                        detailContainerFrame.Content = null;
+                    }
+                    ShowOnMenuContainerFrame(null, detailBasePage.GetType(), param: detailBasePage.Parameter);
+                    break;
+            }
+
+
 
         }
 

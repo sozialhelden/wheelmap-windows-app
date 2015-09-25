@@ -157,7 +157,11 @@ namespace Wheelmap.Source.UI {
         }
         
         private void ShowNewsTapped(object sender, TappedRoutedEventArgs e) {
-            ShowOnDetailFrame(typeof(WebViewPage), new WebViewPageArguments { Url = ApiConstants.NEWS_URL });
+            ShowOnFrame(sender, typeof(WebViewPage), new WebViewPageArguments {
+                Url = ApiConstants.NEWS_URL,
+                ShowOnSmall = PageShowOn.DETAIL,
+                ShowOnBig = PageShowOn.MENU,
+            });
         }
 
         public void SetTitle(string title) {           

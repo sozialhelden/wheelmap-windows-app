@@ -194,6 +194,22 @@ namespace Wheelmap.Source.UI {
             return true;
         }
 
+        public void ShowOnFrame(object sender, Type pageType, BasePageArguments param = null, bool toggle = false) {
+            if (WindowSizeStates.CurrentState == STATE_SMALL) {
+                if (param.ShowOnSmall == PageShowOn.MENU) {
+                    ShowOnMenuContainerFrame(sender, pageType, param, toggle);
+                } else {
+                    ShowOnDetailFrame(pageType, param);
+                }
+            } else {
+                if (param.ShowOnBig == PageShowOn.MENU) {
+                    ShowOnMenuContainerFrame(sender, pageType, param, toggle);
+                } else {
+                    ShowOnDetailFrame(pageType, param);
+                }
+            }
+        }
+
         public override void ShowOnDetailFrame(Type type, object args = null) {
             bottomBar.IsOpen = false;
 

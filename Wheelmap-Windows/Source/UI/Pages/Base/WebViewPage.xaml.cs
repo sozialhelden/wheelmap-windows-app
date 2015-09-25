@@ -53,7 +53,7 @@ namespace Wheelmap_Windows.Source.UI.Pages {
         
     }
 
-    public class WebViewPageArguments{
+    public class WebViewPageArguments : BasePageArguments {
         public string Url;
         public bool ShowExternalLinkInBrowser = true;
     }
