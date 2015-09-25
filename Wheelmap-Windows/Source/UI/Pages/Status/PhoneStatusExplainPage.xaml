@@ -12,6 +12,9 @@
         RequestedTheme="Light"
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <!-- force parent to fill the full width-->
+        <Canvas Width="999999"/>
+
         <ScrollViewer>
             <StackPanel
                 Margin="5,5,5,5">
