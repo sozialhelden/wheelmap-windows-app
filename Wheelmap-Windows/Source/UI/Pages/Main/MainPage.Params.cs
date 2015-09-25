@@ -19,6 +19,7 @@ namespace Wheelmap.Source.UI {
             if (args is WheelmapParams) {
                 WheelmapParams whParams = args as WheelmapParams;
 
+                // wait for the rest of the ui setup
                 Dispatcher.PostDelayed(()=> initWithWheelmapParams(whParams), 2000);
                 
             }
