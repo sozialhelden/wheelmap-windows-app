@@ -34,6 +34,7 @@ using Wheelmap.Source.UI.Pages.Profile;
 using Windows.UI.Xaml.Media.Imaging;
 using Wheelmap_Windows.Source.UI.Pages.Settings;
 using Wheelmap_Windows.Source.UI.Pages;
+using Wheelmap_Windows.Source.UI.Pages.Status;
 
 namespace Wheelmap.Source.UI {
 
@@ -148,12 +149,11 @@ namespace Wheelmap.Source.UI {
             ShowOnMenuContainerFrame(sender, typeof(ProfilePage), toggle: e != null);
         }
 
-        private void ShowSettingsTapped(object sender, TappedRoutedEventArgs e) {
-            if (CurrentSizeState == STATE_SMALL) {
-                ShowOnDetailFrame(typeof(SettingsPage));
-            } else {
-                ShowOnMenuContainerFrame(sender, typeof(SettingsPage), toggle: e != null);
-            }
+        private void ShowCreditsTapped(object sender, TappedRoutedEventArgs e) {
+            ShowOnFrame(sender, typeof(SettingsPage), new BasePageArguments {
+                ShowOnSmall = PageShowOn.DETAIL,
+                ShowOnBig = PageShowOn.MENU,
+            }, e != null);
         }
         
         private void ShowNewsTapped(object sender, TappedRoutedEventArgs e) {
@@ -161,7 +161,14 @@ namespace Wheelmap.Source.UI {
                 Url = ApiConstants.NEWS_URL,
                 ShowOnSmall = PageShowOn.DETAIL,
                 ShowOnBig = PageShowOn.MENU,
-            });
+            }, e != null);
+        }
+
+        private void ShowStatusInfoTapped(object sender, TappedRoutedEventArgs e) {
+            ShowOnFrame(sender, typeof(PhoneStatusExplainPage), new BasePageArguments {
+                ShowOnBig = PageShowOn.NONE,
+                ShowOnSmall = PageShowOn.DETAIL
+            }, e != null);
         }
 
         public void SetTitle(string title) {           

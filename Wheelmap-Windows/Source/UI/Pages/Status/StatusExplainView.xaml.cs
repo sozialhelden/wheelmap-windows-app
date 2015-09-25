@@ -16,6 +16,7 @@ using Wheelmap.Model;
 using Windows.UI.Xaml.Media.Imaging;
 using System.ComponentModel;
 using Wheelmap.Source.Utils.Interfaces;
+using Windows.UI;
 
 namespace Wheelmap.Source.UI.Pages.Status {
     public sealed partial class StatusExplainView : UserControl, Selectable {
@@ -48,6 +49,21 @@ namespace Wheelmap.Source.UI.Pages.Status {
             }
         }
 
+        private bool _ShowBorder = false;
+        public bool ShowBorder {
+            get {
+                return _ShowBorder;
+            }
+            set {
+                _ShowBorder = value;
+                if (value) {
+                    border.Background = new SolidColorBrush(Status.GetColor());
+                } else {
+                    border.Background = new SolidColorBrush(Colors.Transparent);
+                }
+            } 
+        } 
+
         public bool _IsWcStatus = false;
         public bool IsWcStatus {
             get {
@@ -73,6 +89,20 @@ namespace Wheelmap.Source.UI.Pages.Status {
             }
         }
 
+        private bool _IsSelectable = true;
+        public bool IsSelectable {
+            get {
+                return _IsSelectable;
+            }
+            set {
+                _IsSelectable = value;
+                if (value) {
+                    toggleStatusBox.Visibility = Visibility.Visible;
+                } else {
+                    toggleStatusBox.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
 
         public StatusExplainView() {
             this.InitializeComponent();
@@ -88,6 +118,9 @@ namespace Wheelmap.Source.UI.Pages.Status {
             }
 
             UpdateHints();
+
+            // update border background
+            ShowBorder = _ShowBorder;
         }
 
         private void UpdateHints() {

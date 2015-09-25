@@ -243,7 +243,7 @@
 
 
                         <StackPanel 
-                            x:Name="ShowSettingsView"
+                            x:Name="ShowNewsView"
                         Orientation="Horizontal"
                         Tapped="ShowNewsTapped">
 
@@ -254,6 +254,24 @@
 
                             <TextBlock 
                             x:Uid="MENU_NEWS"
+                            FontSize="15" 
+                            VerticalAlignment="Center"/>
+
+                        </StackPanel>
+
+
+                        <StackPanel 
+                            x:Name="ShowCreditsView"
+                        Orientation="Horizontal"
+                        Tapped="ShowCreditsTapped">
+
+                            <Image
+                            Source="/Assets/Images/ic_settings.png"
+                            Width="50" 
+                            Height="50" />
+
+                            <TextBlock 
+                            x:Uid="MENU_CREDITS"
                             FontSize="15" 
                             VerticalAlignment="Center"/>
 
@@ -518,12 +536,14 @@
                     <TextBlock 
                         x:Uid="MENU_STATUS_INFO"
                         FontSize="20"
-                        Padding="10,0,10,10"/>
+                        Padding="10,0,10,10"
+                        Tapped="ShowStatusInfoTapped"/>
 
                     <TextBlock 
                         x:Uid="MENU_CREDITS"
                         FontSize="20"
-                        Padding="10,0,10,10"/>
+                        Padding="10,0,10,10"
+                        Tapped="ShowCreditsTapped"/>
 
                 </StackPanel>
             </CommandBar.Content>

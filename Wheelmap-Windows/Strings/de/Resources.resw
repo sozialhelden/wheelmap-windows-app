@@ -181,7 +181,7 @@
     <value>Status des Ortes</value>
   </data>
   <data name="TITLE_WC" xml:space="preserve">
-    <value>Toiletten</value>
+    <value>Status der Toiletten</value>
   </data>
   <data name="UNKNOWN_ERROR" xml:space="preserve">
     <value>Fehler. Bitte prüfe deine Internetverbindung.</value>

@@ -75,14 +75,7 @@ namespace Wheelmap.Source.UI {
             };
             
             menuContainerFrame.ContentTransitions = new TransitionCollection { };
-
-            // show settingspage on detailpage when needed
-            if (menuContainerFrame.Content is SettingsPage) {
-                menuContainerFrame.Content = null;
-                ShowOnDetailFrame(typeof(SettingsPage));
-                mToggleGroup.SelectedItem = null;
-            }
-
+            
             var menuBasePage = menuContainerFrame.Content as BasePage;
             var detailBasePage = detailContainerFrame.Content as BasePage;
             
@@ -92,6 +85,10 @@ namespace Wheelmap.Source.UI {
                     mToggleGroup.SelectedItem = null;
                     ShowOnDetailFrame(menuBasePage.GetType(), menuBasePage.Parameter);
                     break;
+                case PageShowOn.NONE:
+                    menuContainerFrame.Content = null;
+                    mToggleGroup.SelectedItem = null;
+                    break;
             }
 
             switch (detailBasePage?.GetShowOnSmall()) {
@@ -100,6 +97,11 @@ namespace Wheelmap.Source.UI {
                         detailContainerFrame.Content = null;
                     }
                     ShowOnMenuContainerFrame(null, detailBasePage.GetType(), param: detailBasePage.Parameter);
+                    break;
+                case PageShowOn.NONE:
+                    if (detailContainerFrame.Content == detailBasePage) {
+                        detailContainerFrame.Content = null;
+                    }
                     break;
             }
             
@@ -129,14 +131,7 @@ namespace Wheelmap.Source.UI {
             };
             
             detailContainerFrame.ContentTransitions = new TransitionCollection {};
-
-            // show settingspage on menupage when needed
-            if (detailContainerFrame.Content is SettingsPage) {
-                detailContainerFrame.Content = null;
-                ShowSettingsTapped(ShowSettingsView, null);
-            }
-
-
+            
             var menuBasePage = menuContainerFrame.Content as BasePage;
             var detailBasePage = detailContainerFrame.Content as BasePage;
 
@@ -144,6 +139,10 @@ namespace Wheelmap.Source.UI {
                 case PageShowOn.DETAIL:
                     menuContainerFrame.Content = null;
                     ShowOnDetailFrame(menuBasePage.GetType(), menuBasePage.Parameter);
+                    break;
+                case PageShowOn.NONE:
+                    menuContainerFrame.Content = null;
+                    mToggleGroup.SelectedItem = null;
                     break;
             }
 
@@ -154,10 +153,13 @@ namespace Wheelmap.Source.UI {
                     }
                     ShowOnMenuContainerFrame(null, detailBasePage.GetType(), param: detailBasePage.Parameter);
                     break;
+                case PageShowOn.NONE:
+                    if (detailContainerFrame.Content == detailBasePage) {
+                        detailContainerFrame.Content = null;
+                    }
+                    break;
             }
-
-
-
+            
         }
 
     }

@@ -81,13 +81,18 @@ namespace Wheelmap.UI.Pages.Base {
     }
 
     public class BasePageArguments {
-        public PageShowOn ShowOnSmall = PageShowOn.NONE;
-        public PageShowOn ShowOnBig = PageShowOn.NONE;
+        public PageShowOn ShowOnSmall = PageShowOn.NO_NOT_CHANGE;
+        public PageShowOn ShowOnBig = PageShowOn.NO_NOT_CHANGE;
     }
 
     public enum PageShowOn {
+        // page should be shown on detailContainer
         DETAIL,
+        // page should be shown on menuContainer
         MENU,
+        // the page should stay on the page it was before
+        NO_NOT_CHANGE,
+        // the page should disappear
         NONE
     }
 }
