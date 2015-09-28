@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Wheelmap.Api.Calls;
 using Wheelmap.Cortana;
 using Wheelmap.Model;
+using Wheelmap.Tiles;
 using Wheelmap.Utils;
 using Wheelmap_Window.Extensions;
 using Windows.Devices.Geolocation;
@@ -14,6 +15,14 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
     public sealed partial class ExtendedSplashPage {
 
         public async Task<bool> LoadData() {
+
+            try {
+                WheelmapTileManager.UpdateDefaultPrimaryTile();
+            } catch (Exception e) {
+                // ignore error because this is not essential for the app
+                Log.e(this, e);
+            }
+
             try {
                 bool success = true;
                 success &= await readCategories();
@@ -24,6 +33,7 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
                 Log.e(this, e);
                 return false;
             }
+
         }
 
         private async Task<bool> readNodeTypes() {
