@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Wheelmap.Api.Calls;
-using Wheelmap.Cortana;
-using Wheelmap.Extensions;
 using Wheelmap.Model;
 using Wheelmap.Tiles;
 using Wheelmap.Utils;
-using Wheelmap_Window.Extensions;
-using Windows.Devices.Geolocation;
 
 namespace Wheelmap.Source.UI.Pages.Splashscreen {
     public sealed partial class ExtendedSplashPage {
