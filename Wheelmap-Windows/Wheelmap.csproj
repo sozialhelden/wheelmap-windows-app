@@ -286,6 +286,15 @@
     <Content Include="Assets\Images\Phone\ic_wc.png" />
     <Content Include="Assets\Images\Phone\ic_wc_active.png" />
     <Content Include="Assets\Images\Phone\ic_wc_select.png" />
+    <Content Include="Assets\Tiles\square_150x150\square.scale-100.png" />
+    <Content Include="Assets\Tiles\square_150x150\square.scale-200.png" />
+    <Content Include="Assets\Tiles\square_150x150\square.scale-400.png" />
+    <Content Include="Assets\Tiles\square_310x310\square.scale-100.png" />
+    <Content Include="Assets\Tiles\square_310x310\square.scale-200.png" />
+    <Content Include="Assets\Tiles\square_310x310\square.scale-400.png" />
+    <Content Include="Assets\Tiles\wide_310x150\wide.scale-100.png" />
+    <Content Include="Assets\Tiles\wide_310x150\wide.scale-200.png" />
+    <Content Include="Assets\Tiles\wide_310x150\wide.scale-400.png" />
     <Content Include="Resources\Commands\Commands.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -410,6 +419,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
