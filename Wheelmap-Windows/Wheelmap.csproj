@@ -107,6 +107,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\UI\Pages\Credits\CreditsPage.xaml.cs">
+      <DependentUpon>CreditsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\UI\Pages\Main\MainPage.Params.cs" />
     <Compile Include="Source\UI\Pages\Settings\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -203,6 +206,12 @@
     <Content Include="Assets\App\wide_310x150\wide.scale-100.png" />
     <Content Include="Assets\App\wide_310x150\wide.scale-200.png" />
     <Content Include="Assets\App\wide_310x150\wide.scale-400.png" />
+    <Content Include="Assets\Credits\credits_authors.png" />
+    <Content Include="Assets\Credits\credits_bmas.png" />
+    <Content Include="Assets\Credits\credits_credits.png" />
+    <Content Include="Assets\Credits\credits_license.png" />
+    <Content Include="Assets\Credits\credits_verein.png" />
+    <Content Include="Assets\Credits\navigationbar_logo.png" />
     <Content Include="Assets\Images\credits_logo.png" />
     <Content Include="Assets\Images\ic_add_new_node.png" />
     <Content Include="Assets\Images\ic_camera.png" />
@@ -326,6 +335,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Source\UI\Controls\ProgressDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\UI\Pages\Credits\CreditsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

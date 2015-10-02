@@ -1,0 +1,66 @@
+﻿<app:BasePage
+    xmlns:app="using:Wheelmap.UI.Pages.Base"
+    x:Class="Wheelmap.Source.UI.Pages.Credits.CreditsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Wheelmap.Source.UI.Pages.Credits"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid 
+        RequestedTheme="Light"
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <ScrollViewer>
+
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Stretch"
+                Orientation="Vertical">
+
+                <Image
+                    Source="/Assets/Credits/navigationbar_logo.png"
+                    Margin="40,30,40,0"
+                    Width="Auto"
+                    MaxWidth="300"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    x:Name="versionTextBlock"
+                    Margin="10,10,10,20"
+                    HorizontalAlignment="Center"
+                    TextWrapping="Wrap"/>
+
+                <Image
+                    Source="/Assets/Credits/credits_bmas.png"
+                    Margin="10,10,10,0"
+                    />
+
+                <Image
+                    Source="/Assets/Credits/credits_verein.png"
+                    Margin="10,10,10,0"
+                    />
+
+                <Image
+                    Source="/Assets/Credits/credits_authors.png"
+                    Margin="10,10,10,0"
+                    />
+                
+                <TextBlock
+                    x:Name="creditsMicrosoftTextBlock"
+                    Margin="20,10,20,0"
+                    TextWrapping="WrapWholeWords"
+                    FontSize="17"/>
+
+                <Image
+                    Source="/Assets/Credits/credits_credits.png"
+                    Margin="10,10,10,0"
+                    />
+
+            </StackPanel>
+            
+        </ScrollViewer>
+        
+    </Grid>
+</app:BasePage>

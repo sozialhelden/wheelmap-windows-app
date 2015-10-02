@@ -21,6 +21,7 @@ using Wheelmap_Windows.Source.UI.Pages.Settings;
 using Wheelmap_Windows.Source.UI.Pages;
 using Wheelmap_Windows.Source.UI.Pages.Status;
 using Wheelmap.Extensions;
+using Wheelmap.Source.UI.Pages.Credits;
 
 namespace Wheelmap.Source.UI {
 
@@ -136,7 +137,7 @@ namespace Wheelmap.Source.UI {
         }
 
         private void ShowCreditsTapped(object sender, TappedRoutedEventArgs e) {
-            ShowOnFrame(sender, typeof(SettingsPage), new BasePageArguments {
+            ShowOnFrame(sender, typeof(CreditsPage), new BasePageArguments {
                 ShowOnSmall = PageShowOn.DETAIL,
                 ShowOnBig = PageShowOn.MENU,
             }, e != null);
