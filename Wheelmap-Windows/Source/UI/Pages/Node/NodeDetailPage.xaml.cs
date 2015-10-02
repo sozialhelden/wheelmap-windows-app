@@ -138,8 +138,15 @@ namespace Wheelmap.Source.UI.Pages.Node {
                 Log.d(this, "Photos: " + photos.Result.Count());
                 listView.Items.Add(new AddNewPhotoPhoto());
                 foreach (Photo p in photos.Result) {
-                    Log.d(this, p + " Thumb " + p.GetThumb());
-                    listView.Items.Add(p);
+                    Photo pToAdd = p;
+                    if (CurrentNode.NodeTag != NodeTag.RETRIEVED) {
+                        // force the imageviews to reload the image
+                        // this is important after uploading a file
+                        // the server may take some time to process the image
+                        pToAdd = p.AsDirty();
+                    }
+                    listView.Items.Add(pToAdd);
+                    Log.d(this, pToAdd + " Thumb " + pToAdd.GetThumb());
                 }
 
             });
@@ -200,6 +207,10 @@ namespace Wheelmap.Source.UI.Pages.Node {
             };
             dialog.ShowAsync().Forget();
             
+            CurrentNode = CurrentNode.CreateCopyIfNeeded();
+            if (CurrentNode._ID <= 0) {
+                Nodes.Save(CurrentNode);
+            }
             var result = await new PhotoUploadTask(CurrentNode, file).Execute();
             // wait for the backend to initialize the image before reloading them
             Task.Delay(3000).Wait();

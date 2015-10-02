@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
+using System;
 using System.Linq;
 using Wheelmap.Utils;
 
@@ -142,6 +143,20 @@ namespace Wheelmap.Model {
         public override string ToString() {
             return "{Id: " + id+ ", Source: "+GetSource().url+" }";
         }
+
+        public Photo AsDirty() {
+            Photo p = new Photo() {
+                id = this.id,
+                takenOnTimeStamp = this.takenOnTimeStamp,
+                images = new Image[images.Count()],
+            };
+
+            for(var i=0;i<images.Count();i++) {
+                p.images[i] = images[i].AsDirty();
+            }
+
+            return p;
+        }
     }
 
     public class Image {
@@ -155,6 +170,20 @@ namespace Wheelmap.Model {
 
         public override string ToString() {
             return "Image: " + url;
+        }
+
+        public Image AsDirty() {
+            Image i = new Image {
+                type = this.type,
+                width = this.width,
+                height = this.height,
+            }; 
+            if (url.Contains("?")) {
+                i.url = url += "&wt=" + DateTime.Now.Ticks;
+            } else {
+                i.url = url += "?wt=" + DateTime.Now.Ticks;
+            }
+            return i;
         }
     }
 
