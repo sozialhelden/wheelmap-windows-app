@@ -16,10 +16,12 @@ namespace Wheelmap.Cortana {
         /// <summary>
         /// fill the phraselist for nodeType to use them in voice commands
         /// also add words for toilet/wc if not already exists in NodeTypes
+        /// 
+        /// not used at the moment due to Constants.Cortana.PhraseList.NODE_TYPES is not used
         /// </summary>
         /// <param name="categories"></param>
-        public static async void UpdateNodeTypePhraseList(IList<Model.NodeType> categories) {
-
+        public static async Task UpdateNodeTypePhraseList(IList<Model.NodeType> categories) {
+            await Task.Delay(1);
 
             List<string> phraseList = new List<string>();
             foreach (var c in categories) {
@@ -34,9 +36,10 @@ namespace Wheelmap.Cortana {
             var toiletSynonyms = toiletWords.Split('/');
             phraseList.AddAll(toiletSynonyms);
 
-            Log.d(TAG, phraseList);           
+            Log.d(TAG, phraseList);
 
-            foreach (var command in VoiceCommandDefinitionManager.InstalledCommandDefinitions) {
+            var commands = VoiceCommandDefinitionManager.InstalledCommandDefinitions;
+            foreach (var command in commands) {
                 await command.Value.SetPhraseListAsync(Constants.Cortana.PhraseList.NODE_TYPES, phraseList);
             }
             

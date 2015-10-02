@@ -161,6 +161,10 @@
   <data name="OPEN_APP_SpokenMessage" xml:space="preserve">
     <value>Öffne Wheelmap</value>
   </data>
+  <data name="SEARCHING" xml:space="preserve">
+    <value>Suche: {0}</value>
+    <comment>response while searching</comment>
+  </data>
   <data name="TOILET_SYNONYM" xml:space="preserve">
     <value>Toilette/WC/Klo</value>
     <comment>/ seperated list of synonym for a toilet to use in voice commands

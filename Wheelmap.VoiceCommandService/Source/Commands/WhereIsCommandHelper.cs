@@ -14,16 +14,25 @@ using Windows.Storage;
 
 namespace Wheelmap.VoiceCommandService {
     class WhereIsCommandHelper : VoiceCommandHandler {
-        public override string CommandKey {
+
+        public override string[] CommandKey {
             get {
-                return "whereIs";
+                return new string[] { Constants.Cortana.Command.SEARCH, Constants.Cortana.Command.WHERE_IS };
             }
         }
-        
-        public override async Task Handle() {
-            string nodeTypeString = voiceCommand.Properties[Constants.Cortana.PhraseList.NODE_TYPES][0];
 
-            await ShowProgressScreen("Suche: " + nodeTypeString);
+        public override async Task Handle() {
+
+            string nodeTypeString;
+            if (voiceCommand.Properties.ContainsKey(Constants.Cortana.PhraseList.NODE_TYPES)) {
+                nodeTypeString = voiceCommand.Properties[Constants.Cortana.PhraseList.NODE_TYPES][0];
+            } else {
+                nodeTypeString = voiceCommand.Properties[Constants.Cortana.PhraseList.SEARCH][0];
+            }
+
+            Log.d(this, voiceCommand.SpeechRecognitionResult.Text);
+
+            await ShowProgressScreen(String.Format("SEARCHING".t(context, R.File.CORTANA),nodeTypeString));
 
             bool isToiletSearch = IsToiletSynonym(nodeTypeString);
             var nodeTypes = Database.Instance.Table<NodeType>().Where(x => 
@@ -31,7 +40,9 @@ namespace Wheelmap.VoiceCommandService {
             ).ToList();
 
             if ((nodeTypes == null || nodeTypes.Count() == 0) && !isToiletSearch) {
-                reportErrorNotFound(false);
+                await LaunchAppInForeground(null, new WheelmapParams {
+                    Search = nodeTypeString
+                }.ToString());
                 return;
             }
 
@@ -62,8 +73,17 @@ namespace Wheelmap.VoiceCommandService {
                     && x.wheelchairStatus != "no"
                 ) || (
                     isToiletSearch && x.wheelchairToiletStatus == "yes"
+                )  || (
+                    x?.name?.Contains(nodeTypeString) ?? false
                 );
             }).ToList();
+
+            if (nodes.Count() <= 0) {
+                await LaunchAppInForeground(null, new WheelmapParams {
+                    Search = nodeTypeString
+                }.ToString());
+                return;
+            }
 
             nodes = Nodes.OrderItemsByDistance(nodes, point).ToList();
 
@@ -83,7 +103,12 @@ namespace Wheelmap.VoiceCommandService {
 
         private bool IsToiletSynonym(string word) {
             var synonyms = "TOILET_SYNONYM".t(context, R.File.CORTANA).Split('/').ToList();
-            return synonyms.Contains(word);
+            foreach(var s in synonyms) {
+                if (s.Equals(word, StringComparison.CurrentCultureIgnoreCase)) {
+                    return true;
+                }
+            }
+            return false;
         }
         
         private async void reportErrorNotFound(bool isToiletSearch) {
@@ -99,7 +124,7 @@ namespace Wheelmap.VoiceCommandService {
             var response = VoiceCommandResponse.CreateResponse(userMessage);
             await voiceServiceConnection.ReportSuccessAsync(response);
         }
-
+        
         private async void reportErrorNoLocationAccess() {
             var userMessage = new VoiceCommandUserMessage();
             userMessage.SpokenMessage = "ERROR_NO_LOCTION_ACCESS_SpokenMessage".t(context, R.File.CORTANA);

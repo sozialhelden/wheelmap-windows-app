@@ -7,9 +7,9 @@ using Wheelmap.Utils;
 
 namespace Wheelmap.VoiceCommandService {
     class HelpCommandHelper : VoiceCommandHandler {
-        public override string CommandKey {
+        public override string[] CommandKey {
             get {
-                return "help";
+                return new string[] { Constants.Cortana.Command.HELP };
             }
         }
 

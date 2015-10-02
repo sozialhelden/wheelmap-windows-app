@@ -14,9 +14,9 @@ using Windows.Storage;
 
 namespace Wheelmap.VoiceCommandService {
     class SearchIsCommandHelper : VoiceCommandHandler {
-        public override string CommandKey {
+        public override string[] CommandKey {
             get {
-                return "search";
+                return new string[] { Constants.Cortana.Command.SEARCH };
             }
         }
         
@@ -26,6 +26,7 @@ namespace Wheelmap.VoiceCommandService {
             await LaunchAppInForeground(null, new WheelmapParams {
                 Search = search
             }.ToString());
+
         }
         
     }

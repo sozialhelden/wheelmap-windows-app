@@ -11,7 +11,7 @@ using Wheelmap.Extensions;
 namespace Wheelmap.VoiceCommandService {
     abstract class VoiceCommandHandler {
 
-        public abstract string CommandKey { get; }
+        public abstract string[] CommandKey { get; }
 
         public WheelmapVoiceCommandService service;
         public VoiceCommand voiceCommand;

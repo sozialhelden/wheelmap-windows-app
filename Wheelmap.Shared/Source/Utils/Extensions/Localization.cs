@@ -13,20 +13,29 @@ namespace Wheelmap.Extensions {
         static ResourceLoader mResourceLoader = new ResourceLoader();
 
         public static string t(this string key, string file = null) {
-            if (file != null) {
-                return ResourceLoader.GetForCurrentView(file).GetString(key);
+            try { 
+                if (file != null) {
+                    return ResourceLoader.GetForCurrentView(file).GetString(key);
+                }
+                return mResourceLoader.GetString(key);
+            }catch {
+                return key;
             }
-            return mResourceLoader.GetString(key);
+
         }
         
         public static string t(this string key, ResourceContext context, string file = null) {
-            if (context == null) {
-                return key.t(file);
+            try {
+                if (context == null) {
+                    return key.t(file);
+                }
+                if (file != null) {
+                    return ResourceManager.Current.MainResourceMap.GetSubtree(file).GetValue(key, context).ValueAsString;
+                }
+                return ResourceManager.Current.MainResourceMap.GetSubtree("Resources").GetValue(key, context).ValueAsString;
+            } catch {
+                return key;
             }
-            if (file != null) {
-                return ResourceManager.Current.MainResourceMap.GetSubtree(file).GetValue(key, context).ValueAsString;
-            }
-            return ResourceManager.Current.MainResourceMap.GetSubtree("Resources").GetValue(key, context).ValueAsString;
         }
 
     }

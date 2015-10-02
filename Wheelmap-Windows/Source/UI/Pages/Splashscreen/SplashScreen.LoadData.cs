@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wheelmap.Api.Calls;
 using Wheelmap.Cortana;
+using Wheelmap.Extensions;
 using Wheelmap.Model;
 using Wheelmap.Tiles;
 using Wheelmap.Utils;
@@ -47,7 +48,6 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
             if (nodeTypes == null || nodeTypes.Count <= 0) {
                 return false;
             }
-            VoiceCommandHelper.UpdateNodeTypePhraseList(nodeTypes);
             DataHolder.Instance.NodeTypes = nodeTypes;
             return true;
         }

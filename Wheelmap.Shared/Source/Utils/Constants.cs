@@ -14,7 +14,12 @@ namespace Wheelmap.Utils {
         public static class Cortana {
             public static class PhraseList {
                 public const string NODE_TYPES = "nodeTypes";
-                public const string SEARCH = "dictatedSearchTerms";
+                public const string SEARCH = "search";
+            }
+            public static class Command {
+                public const string SEARCH = "searchCommand";
+                public const string HELP = "helpCommand";
+                public const string WHERE_IS = "whereIsCommand";
             }
         }
 
