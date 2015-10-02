@@ -31,7 +31,9 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         
-        <Maps:MapControl x:Name="mapControl"/>
+        <Maps:MapControl 
+            x:Name="mapControl"
+            Background="#FFF"/>
 
         <SearchBox
             x:Uid="searchBox"
