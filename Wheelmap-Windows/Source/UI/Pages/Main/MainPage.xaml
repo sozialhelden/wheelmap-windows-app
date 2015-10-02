@@ -249,7 +249,7 @@
                         Tapped="ShowNewsTapped">
 
                             <Image
-                            Source="/Assets/Images/ic_settings.png"
+                            Source="/Assets/Images/ic_news.png"
                             Width="50" 
                             Height="50" />
 
@@ -262,12 +262,29 @@
 
 
                         <StackPanel 
-                            x:Name="ShowCreditsView"
-                        Orientation="Horizontal"
-                        Tapped="ShowCreditsTapped">
+                            x:Name="ShowFAQView"
+                            Orientation="Horizontal"
+                            Tapped="ShowFAQTapped">
 
                             <Image
-                            Source="/Assets/Images/ic_settings.png"
+                                Source="/Assets/Images/ic_faq.png"
+                                Width="50" 
+                                Height="50" />
+
+                            <TextBlock 
+                                x:Uid="MENU_FAQ"
+                                FontSize="15" 
+                                VerticalAlignment="Center"/>
+
+                        </StackPanel>
+
+                        <StackPanel 
+                            x:Name="ShowCreditsView"
+                            Orientation="Horizontal"
+                            Tapped="ShowCreditsTapped">
+
+                            <Image
+                            Source="/Assets/Images/ic_credits.png"
                             Width="50" 
                             Height="50" />
 
@@ -539,6 +556,12 @@
                         FontSize="20"
                         Padding="10,0,10,10"
                         Tapped="ShowStatusInfoTapped"/>
+                    
+                    <TextBlock 
+                        x:Uid="MENU_FAQ"
+                        FontSize="20"
+                        Padding="10,0,10,10"
+                        Tapped="ShowFAQTapped"/>
 
                     <TextBlock 
                         x:Uid="MENU_CREDITS"

@@ -98,6 +98,8 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="project.json" />
+    <PRIResource Include="Strings\de\Links.resw" />
+    <PRIResource Include="Strings\en-US\Links.resw" />
     <None Include="Wheelmap_TemporaryKey.pfx" />
     <PRIResource Include="Strings\de\CortanaVoiceCommands.resw" />
   </ItemGroup>
@@ -213,7 +215,9 @@
     <Content Include="Assets\Images\ic_circle.png" />
     <Content Include="Assets\Images\ic_close_black.png" />
     <Content Include="Assets\Images\ic_close_white.png" />
+    <Content Include="Assets\Images\ic_credits.png" />
     <Content Include="Assets\Images\ic_edit.png" />
+    <Content Include="Assets\Images\ic_faq.png" />
     <Content Include="Assets\Images\ic_ground.png" />
     <Content Include="Assets\Images\ic_layer.png" />
     <Content Include="Assets\Images\ic_liste.png" />
@@ -227,6 +231,7 @@
     <Content Include="Assets\Images\ic_mithelfen_grey.png" />
     <Content Include="Assets\Images\ic_mithelfen_white.png" />
     <Content Include="Assets\Images\ic_more.png" />
+    <Content Include="Assets\Images\ic_news.png" />
     <Content Include="Assets\Images\ic_north.png" />
     <Content Include="Assets\Images\ic_orange.png" />
     <Content Include="Assets\Images\ic_plus.png" />

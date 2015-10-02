@@ -25,6 +25,7 @@
             public const string STATUS = "Status";
             public const string PROFILE = "Profile";
             public const string CORTANA = "CortanaVoiceCommands";
+            public const string LINKS = "Links";
         }
     }
 }

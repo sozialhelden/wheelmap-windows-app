@@ -20,6 +20,7 @@ using Wheelmap.Source.UI.Pages.Profile;
 using Wheelmap_Windows.Source.UI.Pages.Settings;
 using Wheelmap_Windows.Source.UI.Pages;
 using Wheelmap_Windows.Source.UI.Pages.Status;
+using Wheelmap.Extensions;
 
 namespace Wheelmap.Source.UI {
 
@@ -140,7 +141,15 @@ namespace Wheelmap.Source.UI {
                 ShowOnBig = PageShowOn.MENU,
             }, e != null);
         }
-        
+
+        private void ShowFAQTapped(object sender, TappedRoutedEventArgs e) {
+            ShowOnFrame(sender, typeof(WebViewPage), new WebViewPageArguments {
+                Url = "WEBLINK_FAQ".t(R.File.LINKS),
+                ShowOnSmall = PageShowOn.DETAIL,
+                ShowOnBig = PageShowOn.MENU,
+            }, e != null);
+        }
+
         private void ShowNewsTapped(object sender, TappedRoutedEventArgs e) {
             ShowOnFrame(sender, typeof(WebViewPage), new WebViewPageArguments {
                 Url = ApiConstants.NEWS_URL,
