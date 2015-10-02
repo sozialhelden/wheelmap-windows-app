@@ -190,12 +190,16 @@ namespace Wheelmap.Source.UI.Pages.Node {
             openPicker.FileTypeFilter.Add(".png");
             // Launch file open picker and caller app is suspended and may be terminated if required 
             StorageFile file = await openPicker.PickSingleFileAsync();
-
+            
+            if (file == null) {
+                return;
+            }
 
             var dialog = new ProgressDialog() {
                 Message = "UPLOAD_IMAGE_PROCESSING".t()
             };
             dialog.ShowAsync().Forget();
+            
             var result = await new PhotoUploadTask(CurrentNode, file).Execute();
             // wait for the backend to initialize the image before reloading them
             Task.Delay(3000).Wait();
