@@ -32,15 +32,15 @@ using Windows.UI.Xaml.Navigation;
 namespace Wheelmap.Source.UI.Pages {
 
     public sealed partial class MapPage : BasePage {
-        
+
         private static string TAG = "MapPage";
-        
+
         public override string Title {
             get {
                 return "TITLE_MAP".t().ToUpper();
             }
         }
-        
+
         private const byte ZOOMLEVEL_MAX = 16;
 
         private const byte ZOOMLEVEL_MIN = 14;
@@ -76,7 +76,7 @@ namespace Wheelmap.Source.UI.Pages {
 
             myLocationOverlay = new MyLocationOverlay(mapControl);
             searchHandler = new SearchBoxHandler(searchBox);
-            
+
             if (LocationManager.Instance.LastLocationEvent != null) {
                 OnLocationChanged(LocationManager.Instance.LastLocationEvent);
             }
@@ -88,7 +88,7 @@ namespace Wheelmap.Source.UI.Pages {
         }
 
         private void MapControl_MapElementClick(MapControl sender, MapElementClickEventArgs args) {
-            
+
             if (args?.MapElements?.Count > 0) {
                 var node = nodeElementMap.Get(args.MapElements.First());
                 SelectedNodeChangedEvent e = new SelectedNodeChangedEvent() {
@@ -190,39 +190,40 @@ namespace Wheelmap.Source.UI.Pages {
 
         [Subscribe]
         public void OnNewData(NewNodesEvent e) {
-            if (!e.RefreshAll) {
-                // avoid flickering of the MapIcons by Remove or Add only the Elements which are needed
+            // avoid flickering of the MapIcons by Remove or Add only the Elements which are needed
 
-                // collection of all mapElemements which should be removed
-                ICollection<MapElement> elementToRemove = new List<MapElement>(mapControl.MapElements);
+            // collection of all mapElemements which should be removed
+            ICollection<MapElement> elementToRemove = new List<MapElement>(mapControl.MapElements);
 
-                foreach (Model.Node n in e.nodes) {
-                    // check if node already exists on the map
-                    if (nodeElementMap.Contains(n)) {
-                        // this element should not be removed
-                        elementToRemove.Remove(nodeElementMap.Get(n));
-                    } else {
-                        // create new element
-                        AddNewMapIcons(n);
-                    }
-                }
-
-                // remove all outdated mapelements
-                foreach (MapElement element in elementToRemove) {
-                    mapControl.MapElements.Remove(element);
-                    nodeElementMap.Remove(element);
-                }
-                elementToRemove.Clear();
-            } else {
-                nodeElementMap.Clear();
-                mapControl.MapElements.Clear();
-                // refresh all
-                foreach (Model.Node n in e.nodes) {
+            foreach (Model.Node n in e.nodes) {
+                // check if node already exists on the map
+                if (nodeElementMap.Contains(n)) {
+                    // this element should not be removed
+                    elementToRemove.Remove(nodeElementMap.Get(n));
+                } else {
+                    // create new element
                     AddNewMapIcons(n);
                 }
             }
+
+            // remove all outdated mapelements
+            foreach (MapElement element in elementToRemove) {
+                mapControl.MapElements.Remove(element);
+                nodeElementMap.Remove(element);
+            }
+            elementToRemove.Clear();
+            
+            /*
+            // remove all MapIcons
+            nodeElementMap.Clear();
+            mapControl.MapElements.Clear();
+            // refresh all
+            foreach (Model.Node n in e.nodes) {
+                AddNewMapIcons(n);
+            }
+            */
         }
-        
+
         private void AddNewMapIcons(Model.Node node) {
 
             var geopoint = new Geopoint(new BasicGeoposition() {
@@ -234,11 +235,11 @@ namespace Wheelmap.Source.UI.Pages {
             mapIcon.Location = geopoint;
             mapIcon.NormalizedAnchorPoint = new Point(0.5, 1.0);
             mapIcon.Title = node.name == null ? "" : node.name;
-            
+
             mapIcon.Image = RandomAccessStreamReference.CreateFromUri(node.MapIconFileUri);
             mapControl.MapElements.Add(mapIcon);
             nodeElementMap.Add(node, mapIcon);
-            
+
         }
 
         private void Marker_NodeClicked(object sender, Model.Node node) {
@@ -258,7 +259,7 @@ namespace Wheelmap.Source.UI.Pages {
         public void OnMyPosition_Click(object sender, RoutedEventArgs e) {
 
             if (LocationManager.Instance?.AccessStatus != GeolocationAccessStatus.Allowed) {
-                LocationManager.Instance.ShowNoAccessDialog(); 
+                LocationManager.Instance.ShowNoAccessDialog();
             }
 
             var point = LocationManager.Instance?.LastLocationEvent?.Args?.Position?.Coordinate?.Point;
