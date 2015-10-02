@@ -12,17 +12,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wheelmap.Extensions;
-using Windows.ApplicationModel;
 using Windows.ApplicationModel.AppService;
 using Windows.ApplicationModel.Background;
-using Windows.ApplicationModel.Resources.Core;
 using Windows.ApplicationModel.VoiceCommands;
-using Windows.Storage;
 
 namespace Wheelmap.VoiceCommandService {
     public sealed class WheelmapVoiceCommandService : IBackgroundTask {

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wheelmap_Window.Extensions;
 using SQLiteNetExtensions.Extensions;
 using Wheelmap.Utils;
 using Windows.Devices.Geolocation;
 
 namespace Wheelmap.Model {
-    
+
     public static class Nodes {
 
         // remember modified nodes for 10 minutes

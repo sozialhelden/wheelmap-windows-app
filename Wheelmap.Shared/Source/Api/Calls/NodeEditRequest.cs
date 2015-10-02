@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Wheelmap.Model;
 using System.Net.Http;
@@ -14,7 +12,7 @@ using Wheelmap.Extensions;
  * http://wheelmap.org/ja/api/docs/resources/nodes
  */
 namespace Wheelmap.Api.Calls {
-    
+
     public class NodeEditRequest : Request<NodeEditResponse> {
 
         private bool error;

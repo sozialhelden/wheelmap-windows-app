@@ -7,7 +7,6 @@
 // https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/LockScreenApps/cs/Sample-Utils
 
 using System;
-using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
 using System.Text;
 #if !WINRT_NOT_PRESENT

@@ -1,18 +1,11 @@
 ﻿using Newtonsoft.Json;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wheelmap.Utils;
-using Windows.Storage;
-using Windows.Storage.Streams;
-using Windows.UI.Xaml.Media.Imaging;
 
 namespace Wheelmap.Model {
-    
+
     public class NodeType {
 
         [JsonProperty(PropertyName = "id")]

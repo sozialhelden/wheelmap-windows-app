@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wheelmap.Extensions;
 using Wheelmap.Source.UI.Pages.Categories;
 using Wheelmap.Source.UI.Pages.Node;
@@ -13,7 +10,6 @@ using Wheelmap.Utils.Eventbus;
 using Wheelmap.Utils.Eventbus.Events;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
 
 namespace Wheelmap.Source.UI {
 

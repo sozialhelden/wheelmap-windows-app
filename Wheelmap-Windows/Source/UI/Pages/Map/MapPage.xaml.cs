@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Wheelmap.Api.Calls;
 using Wheelmap.Extensions;
-using Wheelmap.Model;
 using Wheelmap.Source.UI.Pages.Map;
 using Wheelmap.Source.UI.Pages.Node;
 using Wheelmap.UI.Pages.Base;
@@ -16,17 +12,10 @@ using Wheelmap.Utils.Eventbus.Events;
 using Wheelmap.Utils.Extensions;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage.Streams;
-using Windows.System.Threading;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace Wheelmap.Source.UI.Pages {

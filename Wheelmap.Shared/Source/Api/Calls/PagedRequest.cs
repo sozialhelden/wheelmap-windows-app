@@ -2,16 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using Wheelmap.Api.Model;
 using Wheelmap.Extensions;
 using Wheelmap.Utils.Extensions;
 
 namespace Wheelmap.Api.Calls {
-    
+
     public abstract class PagedRequest<T, K> : Request<List<K>> where T : PagedResponse<K>{
 
         private bool error = false;

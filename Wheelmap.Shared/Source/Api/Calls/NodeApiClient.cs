@@ -1,20 +1,11 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using Wheelmap.Api.Model;
 using Wheelmap.Model;
 using Wheelmap.Source.Utils.Threads;
-using Wheelmap.Utils.Extensions;
 using Windows.Devices.Geolocation;
-using Windows.System.Threading;
-using SQLiteNetExtensions.Attributes;
-using SQLiteNetExtensions.Exceptions;
 using SQLiteNetExtensions.Extensions;
 using Wheelmap.Utils;
 

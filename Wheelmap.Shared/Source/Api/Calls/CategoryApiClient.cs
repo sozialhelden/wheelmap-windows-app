@@ -1,19 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using Wheelmap.Api.Model;
-using Wheelmap.Extensions;
 using Wheelmap.Model;
-using Wheelmap.Utils.Extensions;
 
 namespace Wheelmap.Api.Calls {
-    
+
     /**
      * http://wheelmap.org/api/docs/resources/categories
      */

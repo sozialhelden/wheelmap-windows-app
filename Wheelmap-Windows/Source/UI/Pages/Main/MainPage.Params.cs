@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wheelmap.Extensions;
+﻿using Wheelmap.Extensions;
 using Wheelmap.Model;
-using Wheelmap.Source.UI.Pages.Node;
 using Wheelmap.UI.Pages.Base;
 using Wheelmap.Utils;
 using Wheelmap.Utils.Eventbus;

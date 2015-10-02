@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wheelmap.Api.Calls;
-using Windows.UI.Xaml.Controls;
-using Wheelmap.Extensions;
+﻿using Windows.UI.Xaml.Controls;
 
 namespace Wheelmap.Utils {
     public class SearchBoxHandler {

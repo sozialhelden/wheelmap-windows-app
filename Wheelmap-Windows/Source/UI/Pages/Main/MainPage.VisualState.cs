@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wheelmap.Source.UI.Pages.Categories;
-using Wheelmap.Source.UI.Pages.List;
+﻿using Wheelmap.Source.UI.Pages.Categories;
 using Wheelmap.Source.UI.Pages.Status;
 using Wheelmap.UI.Pages.Base;
 using Wheelmap.Utils;
-using Wheelmap_Windows.Source.UI.Pages.Settings;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 
 namespace Wheelmap.Source.UI {

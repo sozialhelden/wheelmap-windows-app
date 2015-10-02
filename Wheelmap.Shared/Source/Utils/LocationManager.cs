@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Wheelmap.Api.Calls;
 using Wheelmap.Extensions;
 using Wheelmap.Utils.Eventbus;
 using Wheelmap.Utils.Eventbus.Events;
 using Windows.Devices.Geolocation;
 using Windows.System;
-using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
 
 namespace Wheelmap.Utils {

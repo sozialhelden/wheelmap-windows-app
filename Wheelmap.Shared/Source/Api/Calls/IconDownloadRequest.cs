@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.IO.IsolatedStorage;
-using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
 using System.Threading.Tasks;
 using Wheelmap.Api.Model;
 using Wheelmap.Model;
@@ -13,7 +9,6 @@ using Wheelmap.Utils;
 using Wheelmap.Utils.Preferences;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
-using Windows.Graphics.Display;
 using Windows.Graphics.Imaging;
 using Windows.Networking.BackgroundTransfer;
 using Windows.Storage;

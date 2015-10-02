@@ -116,7 +116,6 @@
   <ItemGroup>
     <Compile Include="Source\Commands\HelpCommandHelper.cs" />
     <Compile Include="Source\Commands\SearchIsCommandHelper.cs" />
-    <Compile Include="Source\NodesCommandUtils.cs" />
     <Compile Include="Source\VoiceCommandHandler.cs" />
     <Compile Include="Source\WheelmapVoiceCommandService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

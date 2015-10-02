@@ -1,27 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Wheelmap.Utils;
 using Wheelmap.Utils.Eventbus;
 using Wheelmap.Utils.Eventbus.Events;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Wheelmap.Extensions;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using Windows.Devices.Geolocation;
 using Wheelmap.UI.Pages.Base;
-using Windows.UI.Xaml.Media.Animation;
 using Wheelmap.Model;
 
 namespace Wheelmap.Source.UI.Pages.List {
