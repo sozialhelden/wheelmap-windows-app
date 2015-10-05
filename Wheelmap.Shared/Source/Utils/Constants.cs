@@ -1,5 +1,8 @@
 ﻿namespace Wheelmap.Utils {
     public class Constants {
+        
+        public const string SETTINGS_FILE_URI = "ms-appx:///Resources/Conf/settings.json";
+
         public const string FOLDER_MARKER_ICONS = "markericons";
         public const string FOLDER_COMBINED_ICONS = "combinedIcons";
 

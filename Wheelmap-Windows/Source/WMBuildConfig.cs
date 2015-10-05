@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wheelmap.Model;
+using Wheelmap.Utils;
 using Windows.Storage;
 
 namespace Wheelmap {
@@ -15,8 +16,6 @@ namespace Wheelmap {
      */
     public static class WMBuildConfig {
         
-        private const string SETTINGS_FILE_NAME = "ms-appx:///Resources/Conf/settings.json";
-
         // API ENDPOINT
 #if DEBUG
         public const string API_BASEURL = "http://staging.wheelmap.org";
@@ -44,7 +43,7 @@ namespace Wheelmap {
         public static async Task Init() {
 
             string fileContent;
-            var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Resources/Conf/settings.json"));
+            var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri(Constants.SETTINGS_FILE_URI));
             using (StreamReader sRead = new StreamReader(await file.OpenStreamForReadAsync())) {
                 fileContent = await sRead.ReadToEndAsync();
             }
