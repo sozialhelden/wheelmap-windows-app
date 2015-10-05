@@ -44,6 +44,7 @@ namespace Wheelmap.Source.UI.Pages.Node {
             this.InitializeComponent();
             scrollViewer.HideVerticalScrollBarsIfContentFits();
             //mapControl.SetOsmTileSource();
+            mapControl.MapServiceToken = BuildConfig.BING_MAP_TOKEN;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
