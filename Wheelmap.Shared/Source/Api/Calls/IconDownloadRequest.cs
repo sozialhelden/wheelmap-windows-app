@@ -65,13 +65,17 @@ namespace Wheelmap.Api.Calls {
                     Log.d("Save icons to " + folder.Path);
                     var done = await DownloadAsset(asset, folder);
                     if (done) {
-                        var fromFolder = await folder.CreateFolderAsync(iconsType, CreationCollisionOption.OpenIfExists);
-                        var toFolder = await folder.CreateFolderAsync(Constants.FOLDER_COMBINED_ICONS, CreationCollisionOption.OpenIfExists);
-                        bool ret = await PrepareImages(fromFolder, toFolder);
-                        if (ret) {
-                            ApiPreferences.SetEtag(ETAG_KEY, asset.modified_at + "");
+                        try {
+                            var fromFolder = await folder.CreateFolderAsync(iconsType, CreationCollisionOption.OpenIfExists);
+                            var toFolder = await folder.CreateFolderAsync(Constants.FOLDER_COMBINED_ICONS, CreationCollisionOption.OpenIfExists);
+                            bool ret = await PrepareImages(fromFolder, toFolder);
+                            if (ret) {
+                                ApiPreferences.SetEtag(ETAG_KEY, asset.modified_at + "");
+                            }
+                            return ret;
+                        }catch {
+                            return false;
                         }
-                        return ret;
                     }
                 }
             }
