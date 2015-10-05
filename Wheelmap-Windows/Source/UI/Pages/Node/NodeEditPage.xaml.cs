@@ -141,10 +141,6 @@ namespace Wheelmap.Source.UI.Pages.Node {
                 return false;
             }
 
-            if (nameTextBox.Text.Trim().Length <= 0) {
-                return false;
-            }
-
             if (wheelchairStatus == null) {
                 return false;
             }
@@ -157,17 +153,13 @@ namespace Wheelmap.Source.UI.Pages.Node {
                 return false;
             }
 
-            if (wheelchairStatus == null || wheelchairStatus == Model.Status.UNKNOWN) {
-                return false;
-            }
-
             return true;
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e) {
 
             if (!CheckIfAllRequiredFieldsAreValid()) {
-                //return;
+                return;
             }
 
             bool createNewNode = node == null;
