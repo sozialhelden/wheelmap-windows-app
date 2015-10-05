@@ -68,14 +68,14 @@ namespace Wheelmap.UI.Pages.Base {
             if (Parameter is BasePageArguments) {
                 return (Parameter as BasePageArguments).ShowOnSmall;
             }
-            return PageShowOn.NONE;
+            return PageShowOn.NO_NOT_CHANGE;
         }
 
         public virtual PageShowOn GetShowOnBig() {
             if (Parameter is BasePageArguments) {
                 return (Parameter as BasePageArguments).ShowOnBig;
             }
-            return PageShowOn.NONE;
+            return PageShowOn.NO_NOT_CHANGE;
         }
 
     }
