@@ -68,21 +68,21 @@ namespace Wheelmap.UI.Pages.Base {
             if (Parameter is BasePageArguments) {
                 return (Parameter as BasePageArguments).ShowOnSmall;
             }
-            return PageShowOn.NO_NOT_CHANGE;
+            return PageShowOn.DO_NOT_CHANGE;
         }
 
         public virtual PageShowOn GetShowOnBig() {
             if (Parameter is BasePageArguments) {
                 return (Parameter as BasePageArguments).ShowOnBig;
             }
-            return PageShowOn.NO_NOT_CHANGE;
+            return PageShowOn.DO_NOT_CHANGE;
         }
 
     }
 
     public class BasePageArguments {
-        public PageShowOn ShowOnSmall = PageShowOn.NO_NOT_CHANGE;
-        public PageShowOn ShowOnBig = PageShowOn.NO_NOT_CHANGE;
+        public PageShowOn ShowOnSmall = PageShowOn.DO_NOT_CHANGE;
+        public PageShowOn ShowOnBig = PageShowOn.DO_NOT_CHANGE;
 
         public override bool Equals(object obj) {
             if (obj is BasePageArguments) {
@@ -102,7 +102,7 @@ namespace Wheelmap.UI.Pages.Base {
         // page should be shown on menuContainer
         MENU,
         // the page should stay on the page it was before
-        NO_NOT_CHANGE,
+        DO_NOT_CHANGE,
         // the page should disappear
         NONE
     }
