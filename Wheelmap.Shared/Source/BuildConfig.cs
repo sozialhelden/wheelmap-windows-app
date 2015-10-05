@@ -8,6 +8,7 @@ namespace Wheelmap {
         public string API_BASEURL;
         public string BUILDTYPE;
         public string HOCKEY_APP_ID;
+        public string BING_MAP_TOKEN;
     }
 
     public static class BuildConfig {
@@ -48,7 +49,12 @@ namespace Wheelmap {
             }
         }
 
-
+        public static string BING_MAP_TOKEN {
+            get {
+                return config.BING_MAP_TOKEN;
+            }
+        }
+        
         public static void Init(Config config) {
             setConfig(config);
             _config = config;
