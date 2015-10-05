@@ -27,31 +27,31 @@ namespace Wheelmap {
 
         public static string API_KEY {
             get {
-                return config.API_KEY;
+                return config?.API_KEY;
             }
         }
         
         public static string API_BASEURL {
             get {
-                return config.API_BASEURL;
+                return config?.API_BASEURL;
             }
         }
         
         public static string BUILDTYPE {
             get {
-                return config.BUILDTYPE;
+                return config?.BUILDTYPE;
             }
         }
 
         public static string HOCKEY_APP_ID {
             get {
-                return config.HOCKEY_APP_ID;
+                return config?.HOCKEY_APP_ID;
             }
         }
 
         public static string BING_MAP_TOKEN {
             get {
-                return config.BING_MAP_TOKEN;
+                return config?.BING_MAP_TOKEN;
             }
         }
         
@@ -64,7 +64,7 @@ namespace Wheelmap {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
             string json = localSettings.Values[KEY_CONFIG] as string;
             if (json != null) {
-                return JsonConvert.DeserializeObject<Config>(json); ;
+                return JsonConvert.DeserializeObject<Config>(json);
             } else {
                 return null;
             }

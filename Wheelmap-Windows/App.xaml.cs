@@ -54,7 +54,7 @@ namespace Wheelmap
         {
             // this must be done before anything else can happen
             // The BuildConfigs may contain important informations for the appstart
-            WMBuildConfig.Init();
+            WMBuildConfig.Init().Wait();
 
             Instance = this;
             Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(

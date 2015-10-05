@@ -10,7 +10,7 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
     public sealed partial class ExtendedSplashPage {
 
         public async Task<bool> LoadData() {
-
+            
             try {
                 WheelmapTileManager.UpdateDefaultPrimaryTile();
             } catch (Exception e) {

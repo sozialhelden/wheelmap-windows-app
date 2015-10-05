@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wheelmap.Model;
+using Windows.Storage;
 
 namespace Wheelmap {
     
@@ -11,9 +14,9 @@ namespace Wheelmap {
      * contains every build dependent information
      */
     public static class WMBuildConfig {
-
-        public const string API_KEY = "jWeAsb34CJq4yVAryjtc";
         
+        private const string SETTINGS_FILE_NAME = "ms-appx:///Resources/Conf/settings.json";
+
         // API ENDPOINT
 #if DEBUG
         public const string API_BASEURL = "http://staging.wheelmap.org";
@@ -34,17 +37,23 @@ namespace Wheelmap {
 #else
         public const string BUILDTYPE = "Release";
 #endif
-
+        
         /**
          * must be called in the apps constructor
          */
-        public static void Init() {
-            BuildConfig.Init(new Config {
-                BUILDTYPE = WMBuildConfig.BUILDTYPE,
-                API_KEY = WMBuildConfig.API_KEY,
-                API_BASEURL = WMBuildConfig.API_BASEURL,
-                HOCKEY_APP_ID = WMBuildConfig.HOCKEY_APP_ID
-            });
+        public static async Task Init() {
+
+            string fileContent;
+            var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Resources/Conf/settings.json"));
+            using (StreamReader sRead = new StreamReader(await file.OpenStreamForReadAsync())) {
+                fileContent = await sRead.ReadToEndAsync();
+            }
+            var config = JsonConvert.DeserializeObject<Config>(fileContent);
+            config.BUILDTYPE = WMBuildConfig.BUILDTYPE;
+            config.HOCKEY_APP_ID = WMBuildConfig.HOCKEY_APP_ID;
+            config.API_BASEURL = WMBuildConfig.API_BASEURL;
+
+            BuildConfig.Init(config);
         }
 
     }
