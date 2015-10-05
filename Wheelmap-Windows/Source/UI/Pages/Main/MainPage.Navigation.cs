@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Wheelmap.Extensions;
+using Wheelmap.Model;
 using Wheelmap.Source.UI.Pages.Categories;
 using Wheelmap.Source.UI.Pages.Node;
 using Wheelmap.Source.UI.Pages.Status;
@@ -203,6 +204,13 @@ namespace Wheelmap.Source.UI {
         }
 
         public override void ShowOnDetailFrame(Type type, object args = null) {
+            if (type == typeof(NodeEditPage)) {
+                if (User.CurrentUser == null) {
+                    ShowProfileTapped(null, null);
+                    return;
+                }
+            }
+
             bottomBar.IsOpen = false;
 
             var contentEmpty = detailContainerFrame.Content == null;
