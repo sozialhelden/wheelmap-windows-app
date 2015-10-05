@@ -56,5 +56,19 @@ namespace Wheelmap_Windows.Source.UI.Pages {
     public class WebViewPageArguments : BasePageArguments {
         public string Url;
         public bool ShowExternalLinkInBrowser = true;
+
+        public override bool Equals(object obj) {
+            if (obj is WebViewPageArguments) {
+                var o = (WebViewPageArguments) obj;
+                return base.Equals(obj) 
+                    && Url == o.Url 
+                    && ShowExternalLinkInBrowser == o.ShowExternalLinkInBrowser; 
+            }
+            return false;
+        }
+
+        public override int GetHashCode() {
+            return base.GetHashCode() + (Url?.GetHashCode() ?? 0) + (ShowExternalLinkInBrowser ? 1 : 0);
+        }
     }
 }

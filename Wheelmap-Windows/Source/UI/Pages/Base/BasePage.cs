@@ -83,6 +83,17 @@ namespace Wheelmap.UI.Pages.Base {
     public class BasePageArguments {
         public PageShowOn ShowOnSmall = PageShowOn.NO_NOT_CHANGE;
         public PageShowOn ShowOnBig = PageShowOn.NO_NOT_CHANGE;
+
+        public override bool Equals(object obj) {
+            if (obj is BasePageArguments) {
+                var o = (BasePageArguments)obj;
+                return ShowOnSmall == o.ShowOnSmall && ShowOnBig == o.ShowOnBig;
+            }
+            return false;
+        }
+        public override int GetHashCode() {
+            return (ShowOnBig + "" + ShowOnSmall).GetHashCode();
+        }
     }
 
     public enum PageShowOn {
