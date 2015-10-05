@@ -13,6 +13,7 @@ namespace Wheelmap.Source.UI.Pages.Node {
         public PositionChooserDialogPage() {
             this.InitializeComponent();
 
+            mapControl.MapServiceToken = BuildConfig.BING_MAP_TOKEN;
             mapControl.CenterChanged += MapControl_CenterChanged;
             mapControl.ZoomLevel = MapPage.MAP_ZOOM_DEFAULT;
             mapControl.Center = MapPage.DEFAULT_POSITION;

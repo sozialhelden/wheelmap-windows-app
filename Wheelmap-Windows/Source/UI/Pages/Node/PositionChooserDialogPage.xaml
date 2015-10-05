@@ -22,7 +22,8 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid>
-                <Maps:MapControl x:Name="mapControl"/>
+                <Maps:MapControl x:Name="mapControl"
+                                 Background="#fff"/>
 
                 <StackPanel 
             x:Name="sideMapControls"
