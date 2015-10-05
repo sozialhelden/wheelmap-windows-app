@@ -12,9 +12,7 @@ namespace Wheelmap.Utils.Eventbus {
      * https://github.com/snotyak/EventBus with minor changes
      */
     public class EventBus {
-
-        const string TAG = nameof(EventBus);
-
+        
         private List<WeakReference> _subscribers = new List<WeakReference>();
 
         public EventBus() {
@@ -22,18 +20,18 @@ namespace Wheelmap.Utils.Eventbus {
         }
 
         public void Register(object subscriber) {
-            Log.i(TAG, "Register: " + subscriber);
+            Log.i("Register: " + subscriber);
             lock (_subscribers) {
                 if (!_subscribers.ContainsWeak(subscriber)) {
                     _subscribers.Add(new WeakReference(subscriber));
                     _subscribers.RemoveAll((item) => !item.IsAlive);
                 }
             }
-            Log.i(TAG, "Register Count: " + _subscribers.Count());
+            Log.i("Register Count: " + _subscribers.Count());
         }
 
         public void Unregister(object subscriber) {
-            Log.i(TAG, "Unregister: " + subscriber);
+            Log.i("Unregister: " + subscriber);
             lock(_subscribers) {
                 _subscribers.RemoveWeak(subscriber);
                 _subscribers.RemoveAll((item) => !item.IsAlive);

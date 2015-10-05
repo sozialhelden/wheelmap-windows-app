@@ -27,7 +27,7 @@ namespace Wheelmap.VoiceCommandService {
                 nodeTypeString = voiceCommand.Properties[Constants.Cortana.PhraseList.SEARCH][0];
             }
 
-            Log.d(this, voiceCommand.SpeechRecognitionResult.Text);
+            Log.d(voiceCommand.SpeechRecognitionResult.Text);
 
             await ShowProgressScreen(String.Format("SEARCHING".t(context, R.File.CORTANA),nodeTypeString));
 
@@ -85,7 +85,7 @@ namespace Wheelmap.VoiceCommandService {
             nodes = Nodes.OrderItemsByDistance(nodes, point).ToList();
 
             var node = await AskUserForNode(nodes, isToiletSearch);
-            Log.d(this, "Selected Node: " + node);
+            Log.d("Selected Node: " + node);
 
             if (node == null) {
                 reportErrorNotFound(isToiletSearch);

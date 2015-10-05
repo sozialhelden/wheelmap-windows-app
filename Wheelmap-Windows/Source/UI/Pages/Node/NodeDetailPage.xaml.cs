@@ -135,7 +135,7 @@ namespace Wheelmap.Source.UI.Pages.Node {
                 }
                 mPhotos = photos.Result;
                 listView.Items.Clear();
-                Log.d(this, "Photos: " + photos.Result.Count());
+                Log.d("Photos: " + photos.Result.Count());
                 listView.Items.Add(new AddNewPhotoPhoto());
                 foreach (Photo p in photos.Result) {
                     Photo pToAdd = p;
@@ -146,7 +146,7 @@ namespace Wheelmap.Source.UI.Pages.Node {
                         pToAdd = p.AsDirty();
                     }
                     listView.Items.Add(pToAdd);
-                    Log.d(this, pToAdd + " Thumb " + pToAdd.GetThumb());
+                    Log.d(pToAdd + " Thumb " + pToAdd.GetThumb());
                 }
 
             });
@@ -215,7 +215,7 @@ namespace Wheelmap.Source.UI.Pages.Node {
             // wait for the backend to initialize the image before reloading them
             Task.Delay(3000).Wait();
             dialog.Close();
-            Log.d(this, result.IsOk);
+            Log.d(result.IsOk);
             SetNode(CurrentNode);
         }
 

@@ -12,8 +12,6 @@ namespace Wheelmap.Source.UI {
      * part of MainPage to handle all viszal state changes
      */
     public sealed partial class MainPage : BasePage {
-
-        const string TAG = "MainPage";
         
         private VisualState CurrentSizeState {
             get {
@@ -30,7 +28,7 @@ namespace Wheelmap.Source.UI {
          * Do some extra action on VisualStateChanged.
          */
         private void OnStateChanged(VisualState state) {
-            Log.d(TAG, "New State Changed: " + state.Name);
+            Log.d("New State Changed: " + state.Name);
 
             if (state == STATE_SMALL) {
                 OnSmallState();

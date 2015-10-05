@@ -77,14 +77,14 @@ namespace Wheelmap.Source.UI.Pages.Profile {
             }
 
 
-            Log.d("WebView_UnsupportedUriSchemeIdentified", args.Uri);
+            Log.d(args.Uri);
         }
         
         private void WebView_NavigationStarting(WebView sender, WebViewNavigationStartingEventArgs args) {
 
             mProgressBar.Visibility = Visibility.Visible;
 
-            Log.d("WebView_NavigationStarting", args.Uri);
+            Log.d(args.Uri);
             if (args.Uri.ToString().Contains("facebook.com")) {
                 args.Cancel = true;
                 return;

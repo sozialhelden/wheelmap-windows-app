@@ -15,7 +15,7 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
                 WheelmapTileManager.UpdateDefaultPrimaryTile();
             } catch (Exception e) {
                 // ignore error because this is not essential for the app
-                Log.e(this, e);
+                Log.e(e);
             }
 
             try {
@@ -25,7 +25,7 @@ namespace Wheelmap.Source.UI.Pages.Splashscreen {
                 success &= await new IconDownloadRequest().Query();
                 return success;
             } catch (Exception e){
-                Log.e(this, e);
+                Log.e(e);
                 return false;
             }
 

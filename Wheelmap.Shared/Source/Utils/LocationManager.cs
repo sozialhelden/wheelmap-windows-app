@@ -23,9 +23,7 @@ namespace Wheelmap.Utils {
         public static void Init() {
             var ignore = Instance;
         }
-
-        private static string TAG = "LocationManager";
-
+        
         private Geolocator mGeolocator = new Geolocator();
 
         public LocationChangedEvent LastLocationEvent;
@@ -76,7 +74,7 @@ namespace Wheelmap.Utils {
         }
 
         private void Geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args) {
-            Log.d(TAG, "NewLocation: " + args?.Position?.Coordinate?.Point?.Position.Latitude+":"+args?.Position?.Coordinate?.Point?.Position.Longitude);
+            Log.d("NewLocation: " + args?.Position?.Coordinate?.Point?.Position.Latitude+":"+args?.Position?.Coordinate?.Point?.Position.Longitude);
 
             if (!DataHolder.Instance.HadData) {
                 DataHolder.Instance.HadData = true;
@@ -95,7 +93,7 @@ namespace Wheelmap.Utils {
         }
 
         private void Geolocator_StatusChanged(Geolocator sender, StatusChangedEventArgs args) {
-            Log.d(TAG, "Geolocator Status: " + args.Status.ToString());
+            Log.d("Geolocator Status: " + args.Status.ToString());
         }
     }
 }

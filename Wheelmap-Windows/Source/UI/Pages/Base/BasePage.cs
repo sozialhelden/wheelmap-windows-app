@@ -42,13 +42,13 @@ namespace Wheelmap.UI.Pages.Base {
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e) {
-            Log.d(this, "OnNavigatedFrom: " + e);
+            Log.d("OnNavigatedFrom: " + e);
             base.OnNavigatingFrom(e);
             BusProvider.DefaultInstance.Unregister(this);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e) {
-            Log.d(this, "OnNavigatedFrom: " + e);
+            Log.d("OnNavigatedFrom: " + e);
             base.OnNavigatedFrom(e);
             BusProvider.DefaultInstance.Unregister(this);
         }

@@ -19,8 +19,8 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace Wheelmap.Api.Calls {
     public class IconDownloadRequest {
-        private const string TAG = "IconDownloadRequest";
-        private const string ETAG_KEY = TAG + "_icons";
+
+        private const string ETAG_KEY = nameof(IconDownloadRequest)+"_icons";
         
         // ICON_HEIGHT and ICON_WIDTH depends on the default MapIcon size
         private int ICON_HEIGHT;
@@ -62,7 +62,7 @@ namespace Wheelmap.Api.Calls {
                     }
                     folder = await local.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
 
-                    Log.d(TAG, "Save icons to " + folder.Path);
+                    Log.d("Save icons to " + folder.Path);
                     var done = await DownloadAsset(asset, folder);
                     if (done) {
                         var fromFolder = await folder.CreateFolderAsync(iconsType, CreationCollisionOption.OpenIfExists);
@@ -91,7 +91,7 @@ namespace Wheelmap.Api.Calls {
 
             if (DeviceUtils.DetectPlatform() == Platform.WindowsPhone) {
                 var scaleInt = DeviceUtils.GetResolutionScaleForCurrentViewInPercentage();
-                Log.d(this, "Scale = " + scaleInt);
+                Log.d("Scale = " + scaleInt);
                 if (scaleInt != 100) {
                     var scale = scaleInt / 100d;
                     ICON_HEIGHT = (int) Math.Round(ICON_HEIGHT * scale);
@@ -145,8 +145,8 @@ namespace Wheelmap.Api.Calls {
             try {
                 await LoadBackgroundImages(toFolder);
             } catch(Exception e) {
-                Log.e(TAG, e.Message);
-                Log.e(TAG, e.StackTrace);
+                Log.e(e.Message);
+                Log.e(e.StackTrace);
                 return false;
             }
 
@@ -205,7 +205,7 @@ namespace Wheelmap.Api.Calls {
 
         public async Task<bool> DownloadAsset(Asset asset, StorageFolder folder) {
             try {
-                Log.d(TAG, folder.Path);
+                Log.d(folder.Path);
                 StorageFile localFile = await folder.CreateFileAsync("temp.zip", CreationCollisionOption.ReplaceExisting);
                 BackgroundDownloader downloader = new BackgroundDownloader();
                 DownloadOperation download = downloader.CreateDownload(new Uri(asset.url), localFile);
@@ -215,7 +215,7 @@ namespace Wheelmap.Api.Calls {
                 return true;
             }
             catch (Exception e) {
-                Log.e(TAG, e.StackTrace);
+                Log.e(e.StackTrace);
                 return false;
             }
         }
@@ -235,7 +235,7 @@ namespace Wheelmap.Api.Calls {
 
             }
             catch (TaskCanceledException) {
-                Log.e(TAG, "Canceled: " + download.Guid);
+                Log.e("Canceled: " + download.Guid);
             }
         }
     }

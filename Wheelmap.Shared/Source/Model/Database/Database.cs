@@ -21,7 +21,7 @@ namespace Wheelmap.Model {
         }
 
         public Database(string path) : base(new SQLitePlatformWinRT(), path) {
-            Log.d(this, "Databasepath: " + path);
+            Log.d("Databasepath: " + path);
             CreateTable<DatabaseVersion>();
             CreateTable<Category>();
             CreateTable<NodeType>();

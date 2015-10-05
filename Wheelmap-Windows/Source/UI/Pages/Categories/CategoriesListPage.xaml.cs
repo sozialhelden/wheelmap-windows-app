@@ -88,7 +88,7 @@ namespace Wheelmap.Source.UI.Pages.Categories {
                 if (_selected == value) {
                     return;
                 }
-                Log.d(this, "Selected: " + value);
+                Log.d("Selected: " + value);
                 _selected = value;
                 NotifyPropertyChanged(nameof(Selected));
 

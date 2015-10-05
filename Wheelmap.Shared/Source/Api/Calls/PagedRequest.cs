@@ -43,12 +43,12 @@ namespace Wheelmap.Api.Calls {
             }
             var result = await task;
 
-            Log.i(this, "QueryTime: " + (DateTime.Now - start));
+            Log.i("QueryTime: " + (DateTime.Now - start));
             start = DateTime.Now;
 
             result = await prepareData(result);
 
-            Log.i(this, "DataPrepareTime: " + (DateTime.Now - start));
+            Log.i("DataPrepareTime: " + (DateTime.Now - start));
             error = result == null;
             return result;
         }
@@ -83,7 +83,7 @@ namespace Wheelmap.Api.Calls {
                     }
 
                     if (page == 1) {
-                        Log.d(this, "Query: numPages = " + numPages + ": items: " + resp.meta.itemCountTotal);
+                        Log.d("Query: numPages = " + numPages + ": items: " + resp.meta.itemCountTotal);
                     }
                 } catch {
                     return null;
@@ -100,7 +100,7 @@ namespace Wheelmap.Api.Calls {
             if (url == null) {
                 return null;
             }
-            Log.d(this, url);
+            Log.d(url);
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             WebResponse response = request.GetResponse();

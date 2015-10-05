@@ -16,7 +16,7 @@ namespace Wheelmap.Utils.Extensions {
             try { 
                 return request.EndGetResponse(asyncResult);
             }catch(WebException e) {
-                Log.e(request.RequestUri, e.StackTrace);
+                Log.e(request.RequestUri + ":" + e.StackTrace);
                 return null;
             }
         }

@@ -46,11 +46,11 @@ namespace Wheelmap.Api.Calls {
             try {
                 var result = await execute();
                 error = !result.IsOk;
-                Log.d(this, $"{node}: success: " + !error);
+                Log.d($"{node}: success: " + !error);
                 return result;
             } catch {
                 error = true;
-                Log.d(this, $"{node}: error");
+                Log.d($"{node}: error");
                 return new NodeEditResponse {
                     message = "error",
                     error = new Dictionary<string, string[]> {
@@ -70,7 +70,7 @@ namespace Wheelmap.Api.Calls {
                 HttpResponseMessage responseMessage;
                 responseMessage = await client.PostAsync(url, content);
                 var responseString = await responseMessage.Content.ReadAsStringAsync();
-                Log.d(this, responseString);
+                Log.d(responseString);
                 var editResponse = JsonConvert.DeserializeObject<NodeEditResponse>(responseString);
                 return editResponse;
             }

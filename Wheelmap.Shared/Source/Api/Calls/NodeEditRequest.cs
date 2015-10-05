@@ -51,10 +51,10 @@ namespace Wheelmap.Api.Calls {
                 var content = new FormUrlEncodedContent(values);
                 HttpResponseMessage responseMessage;
                 if (node.wm_id <= 0) {
-                    Log.d(this, "Create Node " + url);
+                    Log.d("Create Node " + url);
                     responseMessage = await client.PostAsync(url, content);
                 } else {
-                    Log.d(this, "Update Node: " + url);
+                    Log.d("Update Node: " + url);
                     responseMessage = await client.PutAsync(url, content);
                 }
                 var responseString = await responseMessage.Content.ReadAsStringAsync();
@@ -148,12 +148,12 @@ namespace Wheelmap.Api.Calls {
             error = false;
             try {
                 var result = await execute();
-                Log.d(this, $"{node}: success");
+                Log.d($"{node}: success");
                 return result;
             }
             catch {
                 error = true;
-                Log.d(this, $"{node}: error");
+                Log.d($"{node}: error");
                 return new NodeEditResponse {
                     message = "error",
                     error = new Dictionary<string, string[]> {

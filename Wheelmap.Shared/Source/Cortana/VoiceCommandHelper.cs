@@ -33,7 +33,7 @@ namespace Wheelmap.Cortana {
             var toiletSynonyms = toiletWords.Split('/');
             phraseList.AddAll(toiletSynonyms);
 
-            Log.d(TAG, phraseList);
+            Log.d(phraseList);
 
             var commands = VoiceCommandDefinitionManager.InstalledCommandDefinitions;
             foreach (var command in commands) {

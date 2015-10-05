@@ -43,7 +43,6 @@ namespace Wheelmap
     /// </summary>
     sealed partial class App : Application
     {
-        private static string TAG = "App";
 
         public static App Instance { private set; get; }
 
@@ -194,7 +193,7 @@ namespace Wheelmap
         }
         
         public void Navigate(Type type, object param = null) {
-            Log.d(TAG, "Navigate to " + type);
+            Log.d("Navigate to " + type);
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(type, param);
             RefreshBackStatus();

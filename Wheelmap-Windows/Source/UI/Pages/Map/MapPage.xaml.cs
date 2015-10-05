@@ -12,6 +12,7 @@ using Wheelmap.Utils.Eventbus.Events;
 using Wheelmap.Utils.Extensions;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
+using Windows.Services.Maps;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls.Maps;
@@ -21,9 +22,7 @@ using Windows.UI.Xaml.Navigation;
 namespace Wheelmap.Source.UI.Pages {
 
     public sealed partial class MapPage : BasePage {
-
-        private static string TAG = "MapPage";
-
+        
         public override string Title {
             get {
                 return "TITLE_MAP".t().ToUpper();
@@ -56,6 +55,8 @@ namespace Wheelmap.Source.UI.Pages {
             this.InitializeComponent();
 
             //mapControl.SetOsmTileSource();
+            mapControl.MapServiceToken = BuildConfig.BING_MAP_TOKEN;
+
             mapControl.CenterChanged += MapControl_CenterChanged;
             mapControl.ZoomLevelChanged += MapControl_ZoomLevelChanged;
             mapControl.MapElementClick += MapControl_MapElementClick;
@@ -94,7 +95,7 @@ namespace Wheelmap.Source.UI.Pages {
          * request new data if needed
          */
         private void MapControl_ZoomLevelChanged(MapControl sender, object args) {
-            Log.d(this, "ZoomLevel: " + mapControl.ZoomLevel);
+            Log.d("ZoomLevel: " + mapControl.ZoomLevel);
             var zoomLevel = (int)mapControl.ZoomLevel;
             bool isZoomedEnough = true;
 
@@ -159,7 +160,7 @@ namespace Wheelmap.Source.UI.Pages {
 
         private void RequestUpdate() {
 
-            Log.v(this, "RequestUpdate!!!");
+            Log.v("RequestUpdate!!!");
 
             var bbox = mapControl.GetBoundingBox();
             if (bbox == null) {

@@ -147,7 +147,7 @@ namespace Wheelmap.Utils {
                 if (_IsRequestRunning <= 1) {
                     NotifyPropertyChanged(nameof(IsRequestRunning));
                 }
-                Log.d(this,"Requests: "+ _IsRequestRunning);
+                Log.d("Requests: "+ _IsRequestRunning);
             }
         }
 

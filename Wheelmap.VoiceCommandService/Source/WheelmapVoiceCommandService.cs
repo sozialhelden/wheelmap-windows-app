@@ -100,12 +100,12 @@ namespace Wheelmap.VoiceCommandService {
                         await handler.Handle();
                     } else {
                         LaunchAppInForeground();
-                        Log.d(this, "Launched App in foreground");
+                        Log.d("Launched App in foreground");
                     }
                 }
                 catch (Exception ex) {
                     System.Diagnostics.Debug.WriteLine("Handling Voice Command failed ");
-                    Log.d(this, ex);
+                    Log.d(ex);
                     LaunchAppInForeground();
                 }
             }
