@@ -117,101 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CouldNotLoadData.Text" xml:space="preserve">
-    <value>Data could not be loaded. Please check your internet connection or try again.</value>
-    <comment>Es konnten keine Daten geladen werden. Bitte überprüfe deine Internetverbindung oder versuche es später nochmal.</comment>
+  <data name="OSMRegistration" xml:space="preserve">
+    <value>Register on OSM</value>
   </data>
-  <data name="CREDITS_MICROSOFT" xml:space="preserve">
-    <value>The Development of the app was sponsort by Microsoft Deutschland.</value>
+  <data name="PROFILE_HINT_LOGIN" xml:space="preserve">
+    <value>To login into Wheelmap you need an user account on OpenStreetMap (OSM)</value>
   </data>
-  <data name="DIALOG_NO_LOCATION_ACCESS_CANCEL" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="PROFILE_HINT_NO_ACCOUNT_TITLE" xml:space="preserve">
+    <value>You don’t have an OSM user account yet?</value>
   </data>
-  <data name="DIALOG_NO_LOCATION_ACCESS_SETTINGS_BUTTON_TEXT" xml:space="preserve">
-    <value>Settings</value>
+  <data name="PROFILE_LOGIN" xml:space="preserve">
+    <value>Go to OSM Login</value>
   </data>
-  <data name="HELP_HINT" xml:space="preserve">
-    <value>Help by marking places!</value>
+  <data name="SignedIn" xml:space="preserve">
+    <value>Login</value>
   </data>
-  <data name="MENU_CATEGORY.Text" xml:space="preserve">
-    <value>Categories</value>
+  <data name="SignedInAs" xml:space="preserve">
+    <value>Logged in as {0}</value>
   </data>
-  <data name="MENU_CREDITS.Text" xml:space="preserve">
-    <value>Credits</value>
-  </data>
-  <data name="MENU_FAQ.Text" xml:space="preserve">
-    <value>FAQ</value>
-  </data>
-  <data name="MENU_HELP.Text" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="MENU_LIST.Text" xml:space="preserve">
-    <value>List</value>
-  </data>
-  <data name="MENU_NEWS.Text" xml:space="preserve">
-    <value>News</value>
-  </data>
-  <data name="MENU_PROFILE.Text" xml:space="preserve">
-    <value>Profile</value>
-  </data>
-  <data name="MENU_SETTINGS.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="MENU_STATUS.Text" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="MENU_STATUS_INFO.Text" xml:space="preserve">
-    <value>Infos for marking</value>
-  </data>
-  <data name="MENU_WC.Text" xml:space="preserve">
-    <value>Toilet</value>
-  </data>
-  <data name="NO_NODES_FOUND" xml:space="preserve">
-    <value>found no places with the selected criteria or position</value>
-  </data>
-  <data name="OutOfZoom.Text" xml:space="preserve">
-    <value>Too far away to load new places.</value>
-  </data>
-  <data name="RetryButton.Content" xml:space="preserve">
-    <value>Reload</value>
-  </data>
-  <data name="searchBox.PlaceholderText" xml:space="preserve">
-    <value>Search places.</value>
-  </data>
-  <data name="TITLE_CATEGORY" xml:space="preserve">
-    <value>Categories</value>
-  </data>
-  <data name="TITLE_EDIT" xml:space="preserve">
-    <value>Edit place</value>
-  </data>
-  <data name="TITLE_HELP" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="TITLE_LIST" xml:space="preserve">
-    <value>List</value>
-  </data>
-  <data name="TITLE_MAP" xml:space="preserve">
-    <value>Map</value>
-  </data>
-  <data name="TITLE_NEW" xml:space="preserve">
-    <value>Add new place</value>
-  </data>
-  <data name="TITLE_PROFILE" xml:space="preserve">
-    <value>Profile</value>
-  </data>
-  <data name="TITLE_SETTINGS" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="TITLE_STATUS" xml:space="preserve">
-    <value>Status of the place</value>
-  </data>
-  <data name="TITLE_WC" xml:space="preserve">
-    <value>Status of the toilet</value>
-  </data>
-  <data name="UNKNOWN_ERROR" xml:space="preserve">
-    <value>Error. Please check your internetconnection</value>
-  </data>
-  <data name="UPLOAD_IMAGE_PROCESSING" xml:space="preserve">
-    <value>Uploading image</value>
+  <data name="StepsToOSMAccount" xml:space="preserve">
+    <value>Four steps to log in:
+1. Click on “OSM Registration” and register your OSM user account
+2. Open your email client and click on the activation link
+3. Open the Wheelmap app
+4. Log in with your OSM user account (username &amp; password)</value>
   </data>
 </root>

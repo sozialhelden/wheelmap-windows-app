@@ -117,101 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CouldNotLoadData.Text" xml:space="preserve">
-    <value>Data could not be loaded. Please check your internet connection or try again.</value>
-    <comment>Es konnten keine Daten geladen werden. Bitte überprüfe deine Internetverbindung oder versuche es später nochmal.</comment>
+  <data name="ADDRESS_TITLE.Text" xml:space="preserve">
+    <value>address</value>
   </data>
-  <data name="CREDITS_MICROSOFT" xml:space="preserve">
-    <value>The Development of the app was sponsort by Microsoft Deutschland.</value>
+  <data name="INPUT_ADDRESS.PlaceholderText" xml:space="preserve">
+    <value>address</value>
   </data>
-  <data name="DIALOG_NO_LOCATION_ACCESS_CANCEL" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="INPUT_CATEGORY.PlaceholderText" xml:space="preserve">
+    <value>category</value>
   </data>
-  <data name="DIALOG_NO_LOCATION_ACCESS_SETTINGS_BUTTON_TEXT" xml:space="preserve">
-    <value>Settings</value>
+  <data name="INPUT_CITY.PlaceholderText" xml:space="preserve">
+    <value>city</value>
   </data>
-  <data name="HELP_HINT" xml:space="preserve">
-    <value>Help by marking places!</value>
+  <data name="INPUT_COMMENT.PlaceholderText" xml:space="preserve">
+    <value>comment</value>
   </data>
-  <data name="MENU_CATEGORY.Text" xml:space="preserve">
-    <value>Categories</value>
+  <data name="INPUT_HOUSE_NUMBER.PlaceholderText" xml:space="preserve">
+    <value>number</value>
   </data>
-  <data name="MENU_CREDITS.Text" xml:space="preserve">
-    <value>Credits</value>
+  <data name="INPUT_NAME.PlaceholderText" xml:space="preserve">
+    <value>name</value>
   </data>
-  <data name="MENU_FAQ.Text" xml:space="preserve">
-    <value>FAQ</value>
+  <data name="INPUT_NODE_TYPE.PlaceholderText" xml:space="preserve">
+    <value>type</value>
   </data>
-  <data name="MENU_HELP.Text" xml:space="preserve">
-    <value>Help</value>
+  <data name="INPUT_PHONE.PlaceholderText" xml:space="preserve">
+    <value>telephone</value>
   </data>
-  <data name="MENU_LIST.Text" xml:space="preserve">
-    <value>List</value>
+  <data name="INPUT_PLZ.PlaceholderText" xml:space="preserve">
+    <value>postalcode</value>
   </data>
-  <data name="MENU_NEWS.Text" xml:space="preserve">
-    <value>News</value>
+  <data name="INPUT_POSITION.PlaceholderText" xml:space="preserve">
+    <value>position</value>
   </data>
-  <data name="MENU_PROFILE.Text" xml:space="preserve">
-    <value>Profile</value>
+  <data name="INPUT_STREET.PlaceholderText" xml:space="preserve">
+    <value>street</value>
   </data>
-  <data name="MENU_SETTINGS.Text" xml:space="preserve">
-    <value>Settings</value>
+  <data name="INPUT_WEBSITE.PlaceholderText" xml:space="preserve">
+    <value>webseite</value>
   </data>
-  <data name="MENU_STATUS.Text" xml:space="preserve">
-    <value>Status</value>
+  <data name="POSITION" xml:space="preserve">
+    <value>position: ({0}:{1})</value>
   </data>
-  <data name="MENU_STATUS_INFO.Text" xml:space="preserve">
-    <value>Infos for marking</value>
-  </data>
-  <data name="MENU_WC.Text" xml:space="preserve">
-    <value>Toilet</value>
-  </data>
-  <data name="NO_NODES_FOUND" xml:space="preserve">
-    <value>found no places with the selected criteria or position</value>
-  </data>
-  <data name="OutOfZoom.Text" xml:space="preserve">
-    <value>Too far away to load new places.</value>
-  </data>
-  <data name="RetryButton.Content" xml:space="preserve">
-    <value>Reload</value>
-  </data>
-  <data name="searchBox.PlaceholderText" xml:space="preserve">
-    <value>Search places.</value>
-  </data>
-  <data name="TITLE_CATEGORY" xml:space="preserve">
-    <value>Categories</value>
-  </data>
-  <data name="TITLE_EDIT" xml:space="preserve">
-    <value>Edit place</value>
-  </data>
-  <data name="TITLE_HELP" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="TITLE_LIST" xml:space="preserve">
-    <value>List</value>
-  </data>
-  <data name="TITLE_MAP" xml:space="preserve">
-    <value>Map</value>
-  </data>
-  <data name="TITLE_NEW" xml:space="preserve">
-    <value>Add new place</value>
-  </data>
-  <data name="TITLE_PROFILE" xml:space="preserve">
-    <value>Profile</value>
-  </data>
-  <data name="TITLE_SETTINGS" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="TITLE_STATUS" xml:space="preserve">
-    <value>Status of the place</value>
-  </data>
-  <data name="TITLE_WC" xml:space="preserve">
-    <value>Status of the toilet</value>
-  </data>
-  <data name="UNKNOWN_ERROR" xml:space="preserve">
-    <value>Error. Please check your internetconnection</value>
-  </data>
-  <data name="UPLOAD_IMAGE_PROCESSING" xml:space="preserve">
-    <value>Uploading image</value>
+  <data name="SAVE" xml:space="preserve">
+    <value>save</value>
   </data>
 </root>

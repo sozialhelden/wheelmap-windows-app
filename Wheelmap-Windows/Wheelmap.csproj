@@ -102,6 +102,10 @@
     <PRIResource Include="Strings\en-US\Links.resw" />
     <Content Include="Resources\Conf\settings.json" />
     <Content Include="Resources\Conf\sample_settings.json" />
+    <PRIResource Include="Strings\en-US\CortanaVoiceCommands.resw" />
+    <PRIResource Include="Strings\en-US\Node.resw" />
+    <PRIResource Include="Strings\en-US\Profile.resw" />
+    <PRIResource Include="Strings\en-US\Status.resw" />
     <None Include="Wheelmap_TemporaryKey.pfx" />
     <PRIResource Include="Strings\de\CortanaVoiceCommands.resw" />
   </ItemGroup>

@@ -117,101 +117,105 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CouldNotLoadData.Text" xml:space="preserve">
-    <value>Data could not be loaded. Please check your internet connection or try again.</value>
-    <comment>Es konnten keine Daten geladen werden. Bitte überprüfe deine Internetverbindung oder versuche es später nochmal.</comment>
+  <data name="STATUS_LIMITED" xml:space="preserve">
+    <value>partially wheelchair accessible</value>
   </data>
-  <data name="CREDITS_MICROSOFT" xml:space="preserve">
-    <value>The Development of the app was sponsort by Microsoft Deutschland.</value>
+  <data name="STATUS_LIMITED_HINT_0" xml:space="preserve">
+    <value>Entry has a step (max. height 7cm)</value>
   </data>
-  <data name="DIALOG_NO_LOCATION_ACCESS_CANCEL" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="STATUS_LIMITED_HINT_1" xml:space="preserve">
+    <value>most rooms are without steps</value>
   </data>
-  <data name="DIALOG_NO_LOCATION_ACCESS_SETTINGS_BUTTON_TEXT" xml:space="preserve">
-    <value>Settings</value>
+  <data name="STATUS_LIMITED_HINT_COUNT" xml:space="preserve">
+    <value>2</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
-  <data name="HELP_HINT" xml:space="preserve">
+  <data name="STATUS_NO" xml:space="preserve">
+    <value>no wheelchair accessible</value>
+  </data>
+  <data name="STATUS_NO_HINT_0" xml:space="preserve">
+    <value>Entry has steps or several steps</value>
+  </data>
+  <data name="STATUS_NO_HINT_1" xml:space="preserve">
+    <value>rooms are not accessible</value>
+  </data>
+  <data name="STATUS_NO_HINT_COUNT" xml:space="preserve">
+    <value>2</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
+  </data>
+  <data name="STATUS_TITLE_HINT" xml:space="preserve">
+    <value>Mark wheelchair accessibility of the place!</value>
+  </data>
+  <data name="STATUS_TITLE_WC_HINT" xml:space="preserve">
+    <value>Mark wheelchair accessibility of the toilet!</value>
+  </data>
+  <data name="STATUS_TOILET_LIMITED" xml:space="preserve">
+    <value>partially wheelchair accessible</value>
+  </data>
+  <data name="STATUS_TOILET_NO" xml:space="preserve">
+    <value>No wheelchair accessible toilet</value>
+  </data>
+  <data name="STATUS_TOILET_UNKNOWN" xml:space="preserve">
+    <value>Toilet status unknown</value>
+  </data>
+  <data name="STATUS_TOILET_YES" xml:space="preserve">
+    <value>Wheelchair accessible toilet</value>
+  </data>
+  <data name="STATUS_UNKNOWN" xml:space="preserve">
+    <value>unknown status</value>
+  </data>
+  <data name="STATUS_UNKNOWN_HINT_0" xml:space="preserve">
     <value>Help by marking places!</value>
   </data>
-  <data name="MENU_CATEGORY.Text" xml:space="preserve">
-    <value>Categories</value>
+  <data name="STATUS_UNKNOWN_HINT_COUNT" xml:space="preserve">
+    <value>1</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
-  <data name="MENU_CREDITS.Text" xml:space="preserve">
-    <value>Credits</value>
+  <data name="STATUS_WC_LIMITED_HINT_COUNT" xml:space="preserve">
+    <value>0</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
-  <data name="MENU_FAQ.Text" xml:space="preserve">
-    <value>FAQ</value>
+  <data name="STATUS_WC_NO_HINT_COUNT" xml:space="preserve">
+    <value>0</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
-  <data name="MENU_HELP.Text" xml:space="preserve">
-    <value>Help</value>
+  <data name="STATUS_WC_UNKNOWN_HINT_0" xml:space="preserve">
+    <value>Help by marking places!</value>
   </data>
-  <data name="MENU_LIST.Text" xml:space="preserve">
-    <value>List</value>
+  <data name="STATUS_WC_UNKNOWN_HINT_COUNT" xml:space="preserve">
+    <value>1</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
-  <data name="MENU_NEWS.Text" xml:space="preserve">
-    <value>News</value>
+  <data name="STATUS_WC_YES_HINT_0" xml:space="preserve">
+    <value>Doorway's inner width min. 90cm</value>
   </data>
-  <data name="MENU_PROFILE.Text" xml:space="preserve">
-    <value>Profile</value>
+  <data name="STATUS_WC_YES_HINT_1" xml:space="preserve">
+    <value>clear space min. 150 x 150 cm</value>
   </data>
-  <data name="MENU_SETTINGS.Text" xml:space="preserve">
-    <value>Settings</value>
+  <data name="STATUS_WC_YES_HINT_2" xml:space="preserve">
+    <value>wheelchair-height toilet seat</value>
   </data>
-  <data name="MENU_STATUS.Text" xml:space="preserve">
-    <value>Status</value>
+  <data name="STATUS_WC_YES_HINT_3" xml:space="preserve">
+    <value>folding grab rails</value>
   </data>
-  <data name="MENU_STATUS_INFO.Text" xml:space="preserve">
-    <value>Infos for marking</value>
+  <data name="STATUS_WC_YES_HINT_4" xml:space="preserve">
+    <value>accessible hand basin</value>
   </data>
-  <data name="MENU_WC.Text" xml:space="preserve">
-    <value>Toilet</value>
+  <data name="STATUS_WC_YES_HINT_COUNT" xml:space="preserve">
+    <value>5</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
-  <data name="NO_NODES_FOUND" xml:space="preserve">
-    <value>found no places with the selected criteria or position</value>
+  <data name="STATUS_YES" xml:space="preserve">
+    <value>wheelchair accessible</value>
   </data>
-  <data name="OutOfZoom.Text" xml:space="preserve">
-    <value>Too far away to load new places.</value>
+  <data name="STATUS_YES_HINT_0" xml:space="preserve">
+    <value>Entrance without steps</value>
   </data>
-  <data name="RetryButton.Content" xml:space="preserve">
-    <value>Reload</value>
+  <data name="STATUS_YES_HINT_1" xml:space="preserve">
+    <value>all rooms without steps</value>
   </data>
-  <data name="searchBox.PlaceholderText" xml:space="preserve">
-    <value>Search places.</value>
-  </data>
-  <data name="TITLE_CATEGORY" xml:space="preserve">
-    <value>Categories</value>
-  </data>
-  <data name="TITLE_EDIT" xml:space="preserve">
-    <value>Edit place</value>
-  </data>
-  <data name="TITLE_HELP" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="TITLE_LIST" xml:space="preserve">
-    <value>List</value>
-  </data>
-  <data name="TITLE_MAP" xml:space="preserve">
-    <value>Map</value>
-  </data>
-  <data name="TITLE_NEW" xml:space="preserve">
-    <value>Add new place</value>
-  </data>
-  <data name="TITLE_PROFILE" xml:space="preserve">
-    <value>Profile</value>
-  </data>
-  <data name="TITLE_SETTINGS" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="TITLE_STATUS" xml:space="preserve">
-    <value>Status of the place</value>
-  </data>
-  <data name="TITLE_WC" xml:space="preserve">
-    <value>Status of the toilet</value>
-  </data>
-  <data name="UNKNOWN_ERROR" xml:space="preserve">
-    <value>Error. Please check your internetconnection</value>
-  </data>
-  <data name="UPLOAD_IMAGE_PROCESSING" xml:space="preserve">
-    <value>Uploading image</value>
+  <data name="STATUS_YES_HINT_COUNT" xml:space="preserve">
+    <value>2</value>
+    <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
 </root>

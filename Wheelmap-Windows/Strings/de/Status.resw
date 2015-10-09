@@ -147,7 +147,7 @@
     <value>Markiere die Rollstuhlgerechtigkeit des Ortes!</value>
   </data>
   <data name="STATUS_TITLE_WC_HINT" xml:space="preserve">
-    <value>Markiere die Rollstuhlgerechtihkeit der Toilette!</value>
+    <value>Markiere die Rollstuhlgerechtigkeit der Toilette!</value>
   </data>
   <data name="STATUS_TOILET_LIMITED" xml:space="preserve">
     <value>Teilweise Rollstuhlgerechtes WC</value>
