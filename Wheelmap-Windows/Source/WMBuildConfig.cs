@@ -35,8 +35,9 @@ namespace Wheelmap {
         public const string HOCKEY_APP_ID = null;
 #else
         public const string BUILDTYPE = "Release";
+        public const string HOCKEY_APP_ID = "0e43d764f3458b3356d7a3fa854790f8";
 #endif
-        
+
         /**
          * must be called in the apps constructor
          */
