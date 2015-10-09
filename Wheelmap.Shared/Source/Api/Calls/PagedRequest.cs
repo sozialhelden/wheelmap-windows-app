@@ -120,8 +120,8 @@ namespace Wheelmap.Api.Calls {
         /**
          * prepare data if needed
          */
-        protected virtual async Task<List<K>> prepareData(List<K> items) {
-            return items;
+        protected virtual Task<List<K>> prepareData(List<K> items) {
+            return Task.FromResult(items);
         }
         
     }

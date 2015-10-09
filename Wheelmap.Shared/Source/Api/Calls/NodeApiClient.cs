@@ -34,7 +34,7 @@ namespace Wheelmap.Api.Calls {
             return base.Execute();
         }
 
-        protected override async Task<List<Node>> prepareData(List<Node> items) {
+        protected override Task<List<Node>> prepareData(List<Node> items) {
             if (items == null) {
                 return null;
             }
@@ -54,7 +54,7 @@ namespace Wheelmap.Api.Calls {
 
             });
             
-            return newList;
+            return Task.FromResult(newList);
         }
 
         protected override List<Node> QueryPages() {
