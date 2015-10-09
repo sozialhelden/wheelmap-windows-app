@@ -28,7 +28,8 @@ namespace Wheelmap.Source.UI.Pages.Profile {
 
         private void InitWebView() {
             WebViewUtils.SetUserAgend(USER_AGEND);
-            mWebView.Navigate(new Uri(BuildConfig.API_BASEURL+ApiConstants.WEB_LOGIN_LINK));
+            var url = BuildConfig.API_BASEURL + ApiConstants.WEB_LOGIN_LINK;
+            mWebView.Navigate(new Uri(url));
             mWebView.NavigationStarting += WebView_NavigationStarting;
             mWebView.UnsupportedUriSchemeIdentified += WebView_UnsupportedUriSchemeIdentified;
             mWebView.NavigationCompleted += WebView_NavigationCompleted;
