@@ -20,6 +20,9 @@
             }
         }
 
+
+        public const string USER_AGENT_FORMAT = "Wheelmap-{0}/{1} (UAP; Scale/{2})";
+
     }
 
     public class R {

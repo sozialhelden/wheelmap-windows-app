@@ -15,10 +15,7 @@ using Wheelmap.Model;
 namespace Wheelmap.Source.UI.Pages.Profile {
 
     public sealed partial class LoginPage : BasePage {
-
-        // TODO change
-        const string USER_AGEND = "Wheelmap-DEV/77 (iPhone; iOS 8.4; Scale/2.00)";
-
+        
         bool skip = false;
         
         public LoginPage() {
@@ -27,7 +24,7 @@ namespace Wheelmap.Source.UI.Pages.Profile {
         }
 
         private void InitWebView() {
-            WebViewUtils.SetUserAgend(USER_AGEND);
+            WebViewUtils.SetUserAgentForApp();
             var url = BuildConfig.API_BASEURL + ApiConstants.WEB_LOGIN_LINK;
             mWebView.Navigate(new Uri(url));
             mWebView.NavigationStarting += WebView_NavigationStarting;

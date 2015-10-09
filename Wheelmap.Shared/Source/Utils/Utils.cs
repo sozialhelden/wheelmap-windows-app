@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Globalization;
 using System.Runtime.InteropServices;
+using Windows.ApplicationModel;
 using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
 
@@ -12,8 +14,28 @@ namespace Wheelmap.Utils {
 
         private const int URLMON_OPTION_USERAGENT = 0x10000001;
         
-        public static void SetUserAgend(string agent) {
+        public static void SetUserAgent(string agent) {
             UrlMkSetSessionOption(URLMON_OPTION_USERAGENT, agent, agent.Length, 0);
+        }
+
+        public static string CreateAppsUserAgent() {
+            var format = Constants.USER_AGENT_FORMAT;
+            string appVersion = string.Format("{0}.{1}.{2}.{3}",
+                    Package.Current.Id.Version.Major,
+                    Package.Current.Id.Version.Minor,
+                    Package.Current.Id.Version.Build,
+                    Package.Current.Id.Version.Revision);
+            var userAgent = String.Format(format,
+                BuildConfig.BUILDTYPE,
+                appVersion,
+                (DeviceUtils.GetResolutionScaleForCurrentViewInPercentage()/100d).ToString(CultureInfo.InvariantCulture));
+            return userAgent;
+        }
+
+        public static void SetUserAgentForApp() {
+            var userAgent = CreateAppsUserAgent();
+            Log.d(userAgent);
+            SetUserAgent(userAgent);
         }
         
 
