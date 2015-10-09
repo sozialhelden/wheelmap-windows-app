@@ -214,4 +214,7 @@
   <data name="UPLOAD_IMAGE_PROCESSING" xml:space="preserve">
     <value>Uploading image</value>
   </data>
+  <data name="CREDITS" xml:space="preserve">
+    <value>Credits</value>
+  </data>
 </root>

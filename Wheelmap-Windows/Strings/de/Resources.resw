@@ -213,4 +213,7 @@
   <data name="CREDITS_MICROSOFT" xml:space="preserve">
     <value>Die Entwicklung der App wurde gesponsert von Microsoft Deutschland.</value>
   </data>
+  <data name="CREDITS" xml:space="preserve">
+    <value>Credits</value>
+  </data>
 </root>

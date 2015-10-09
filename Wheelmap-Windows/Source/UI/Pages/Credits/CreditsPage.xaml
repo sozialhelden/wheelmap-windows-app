@@ -53,10 +53,85 @@
                     TextWrapping="WrapWholeWords"
                     FontSize="17"/>
 
-                <Image
-                    Source="/Assets/Credits/credits_credits.png"
-                    Margin="10,10,10,0"
-                    />
+                <TextBlock
+                    x:Name="creditsTitle"
+                    HorizontalAlignment="Center"
+                    FontWeight="Bold"/>
+
+                <Grid>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        Source="/Assets/Credits/credits_license.png"
+                        Margin="8,8,8,8"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        MaxWidth="80"
+                        />
+
+                    <RichTextBlock
+                        TextWrapping="WrapWholeWords"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        VerticalAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Mapdata: "/>
+                            <Hyperlink NavigateUri="https://www.openstreetmap.org">
+                                OpenStreetMap
+                            </Hyperlink>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <Image
+                        Source="/Assets/Credits/credits_license.png"
+                        Margin="8,8,8,8"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        MaxWidth="80"
+                        />
+                    
+                    <RichTextBlock
+                        TextWrapping="WrapWholeWords"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Map Icons Collection "/>
+                            <Hyperlink NavigateUri="https://mapicons.mapsmarker.com">
+                                https://mapicons.mapsmarker.com
+                            </Hyperlink>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <Image
+                        Source="/Assets/Credits/credits_license.png"
+                        Margin="8,8,8,8"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        MaxWidth="80"
+                        />
+
+                    <RichTextBlock
+                        TextWrapping="WrapWholeWords"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        VerticalAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Entypo pictograms by Daniel Bruce"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                </Grid>
 
             </StackPanel>
             

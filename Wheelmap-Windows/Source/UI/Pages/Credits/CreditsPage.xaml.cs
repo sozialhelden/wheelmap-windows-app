@@ -15,6 +15,8 @@ namespace Wheelmap.Source.UI.Pages.Credits {
                     Package.Current.Id.Version.Build,
                     Package.Current.Id.Version.Revision);
             versionTextBlock.Text = appVersion;
+
+            creditsTitle.Text = "CREDITS".t();
         }
     }
 }
