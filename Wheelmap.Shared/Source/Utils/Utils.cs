@@ -9,13 +9,15 @@ namespace Wheelmap.Utils {
 
     public static class WebViewUtils {
 
-        [DllImport("urlmon.dll", CharSet = CharSet.Ansi)]
+        [DllImport("urlmon.dll", CharSet = CharSet.Ansi, ExactSpelling = true)]
         private static extern int UrlMkSetSessionOption(int dwOption, string pBuffer, int dwBufferLength, int dwReserved);
 
         private const int URLMON_OPTION_USERAGENT = 0x10000001;
         
         public static void SetUserAgent(string agent) {
-            UrlMkSetSessionOption(URLMON_OPTION_USERAGENT, agent, agent.Length, 0);
+            try { 
+                UrlMkSetSessionOption(URLMON_OPTION_USERAGENT, agent, agent.Length, 0);
+            }catch { }
         }
 
         public static string CreateAppsUserAgent() {
