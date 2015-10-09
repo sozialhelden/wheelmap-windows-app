@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="org.sozialhelden.wheelmap" Publisher="CN=Wheelmap" Version="1.0.23.0" />
+  <Identity Name="7738224B.Wheelmap.org" Publisher="CN=61C6093D-ABBB-41FC-97B6-7C91F8261E47" Version="1.0.23.0" />
   <mp:PhoneIdentity PhoneProductId="fe5e25d5-2923-44af-b139-e8466b0ac33f" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Wheelmap</DisplayName>
-    <PublisherDisplayName>Sozialhelden</PublisherDisplayName>
+    <DisplayName>Wheelmap.org</DisplayName>
+    <PublisherDisplayName>SOZIALHELDEN e.V.</PublisherDisplayName>
     <Logo>Assets\App\store\square.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Wheelmap.App">
-      <uap:VisualElements DisplayName="Wheelmap" Square150x150Logo="Assets\App\square_150x150\square.png" Square44x44Logo="Assets\App\square_44x44\square.png" Description="Wheelmap" BackgroundColor="#2c3b49">
+      <uap:VisualElements DisplayName="Wheelmap.org" Square150x150Logo="Assets\App\square_150x150\square.png" Square44x44Logo="Assets\App\square_44x44\square.png" Description="Wheelmap" BackgroundColor="#2c3b49">
         <uap:DefaultTile Wide310x150Logo="Assets\App\wide_310x150\wide.png" Square71x71Logo="Assets\App\square_71x71\square.png" Square310x310Logo="Assets\App\square_310x310\square.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />

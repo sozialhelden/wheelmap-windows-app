@@ -17,10 +17,11 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>Wheelmap_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Wheelmap_StoreKey.pfx</PackageCertificateKeyFile>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>E7EE1DCDC9A80711269A5FCF567DBE1D0D555B7F</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>7395706928791C4A0151E57B15985C96D608411E</PackageCertificateThumbprint>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -100,12 +101,14 @@
     <None Include="project.json" />
     <PRIResource Include="Strings\de\Links.resw" />
     <PRIResource Include="Strings\en-US\Links.resw" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Resources\Conf\settings.json" />
     <Content Include="Resources\Conf\sample_settings.json" />
     <PRIResource Include="Strings\en-US\CortanaVoiceCommands.resw" />
     <PRIResource Include="Strings\en-US\Node.resw" />
     <PRIResource Include="Strings\en-US\Profile.resw" />
     <PRIResource Include="Strings\en-US\Status.resw" />
+    <None Include="Wheelmap_StoreKey.pfx" />
     <None Include="Wheelmap_TemporaryKey.pfx" />
     <PRIResource Include="Strings\de\CortanaVoiceCommands.resw" />
   </ItemGroup>
