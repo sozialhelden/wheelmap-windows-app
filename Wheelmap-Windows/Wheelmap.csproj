@@ -211,7 +211,7 @@
     <Content Include="Assets\App\square_71x71\square.scale-100.png" />
     <Content Include="Assets\App\square_71x71\square.scale-200.png" />
     <Content Include="Assets\App\square_71x71\square.scale-400.png" />
-    <Content Include="Assets\App\store\square.scale-100.png" />
+    <Content Include="Assets\App\store\square.png" />
     <Content Include="Assets\App\wide_310x150\wide.scale-100.png" />
     <Content Include="Assets\App\wide_310x150\wide.scale-200.png" />
     <Content Include="Assets\App\wide_310x150\wide.scale-400.png" />

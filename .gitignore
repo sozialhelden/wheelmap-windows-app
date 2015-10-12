@@ -156,6 +156,7 @@ csx/
 
 # Windows Store app package directory
 AppPackages/
+*.appx
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
@@ -217,3 +218,4 @@ _Pvt_Extensions
 
 Wheelmap-Windows/BundleArtifacts/
 Wheelmap-Windows/Resources/Conf/settings.json
+Wheelmap-Windows/_pkginfo.txt
