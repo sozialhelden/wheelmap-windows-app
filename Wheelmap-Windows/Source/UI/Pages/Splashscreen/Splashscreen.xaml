@@ -35,6 +35,7 @@
                 Orientation="Vertical">
 
                 <TextBlock
+                    TextWrapping="WrapWholeWords"
                     HorizontalAlignment="Center"
                     TextAlignment="Center"
                     Margin="50,10,50,10"
