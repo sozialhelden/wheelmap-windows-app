@@ -159,8 +159,14 @@ namespace Wheelmap.Source.UI.Pages.Node {
             if (e.AddedItems.Count() <= 0) {
                 return;
             }
-
+            
             if (listView.SelectedIndex == 0) {
+                // clear selection
+                listView.SelectedIndex = -1;
+                if (User.CurrentUser == null) {
+                    ShowOnDetailFrame(typeof(LoginPage));
+                    return;
+                }
                 uploadNewPhoto().Forget();
                 return;
             }
