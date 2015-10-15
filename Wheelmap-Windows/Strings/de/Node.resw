@@ -156,6 +156,18 @@
   <data name="INPUT_WEBSITE.PlaceholderText" xml:space="preserve">
     <value>Webseite</value>
   </data>
+  <data name="NodeNoCategorySet" xml:space="preserve">
+    <value>Bitte wähle eine Kategorie aus!</value>
+  </data>
+  <data name="NodeNoNameSet" xml:space="preserve">
+    <value>Bitte gib einen Namen ein!</value>
+  </data>
+  <data name="NodeNoTypeSet" xml:space="preserve">
+    <value>Bitte wähle einen Typ aus!</value>
+  </data>
+  <data name="PleaseSetMarker" xml:space="preserve">
+    <value>Bitte gib die Position dieses Ortes an!</value>
+  </data>
   <data name="POSITION" xml:space="preserve">
     <value>Position: ({0}:{1})</value>
   </data>

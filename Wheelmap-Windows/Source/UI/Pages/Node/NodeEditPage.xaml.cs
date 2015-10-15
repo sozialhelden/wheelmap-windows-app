@@ -133,27 +133,35 @@ namespace Wheelmap.Source.UI.Pages.Node {
          */
         private bool CheckIfAllRequiredFieldsAreValid() {
 
+            if (nameTextBox.Text.Trim().Length == 0) {
+                ShowErrorDialog("NodeNoNameSet".t(R.File.NODE));
+                return false;
+            }
+
             if (categoryComboBox.SelectedItem == null) {
+                ShowErrorDialog("NodeNoCategorySet".t(R.File.NODE));
                 return false;
             }
 
             if (nodeTypeComboBox.SelectedItem == null) {
+                ShowErrorDialog("NodeNoTypeSet".t(R.File.NODE));
                 return false;
             }
-
-            if (wheelchairStatus == null) {
-                return false;
-            }
-
-            if (wheelchairWCStatus == null) {
-                return false;
-            }
-
+            
             if (position == null) {
+                ShowErrorDialog("PleaseSetMarker".t(R.File.NODE));
                 return false;
             }
-
+            
             return true;
+        }
+
+        private void ShowErrorDialog(string message) {
+            if (message == null) {
+                return;
+            }
+            var dialog = new MessageDialog(message);
+            dialog.ShowAsync().Forget();
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e) {
