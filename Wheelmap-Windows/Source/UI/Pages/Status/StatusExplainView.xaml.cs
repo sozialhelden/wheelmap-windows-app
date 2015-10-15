@@ -128,11 +128,26 @@ namespace Wheelmap.Source.UI.Pages.Status {
             statusHintsContainer.Children.Clear();
             string[] hints = Status.GetHints(IsWcStatus);
             foreach(string hint in hints) {
+
+                Grid grid = new Grid();
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto});
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star)});
+
+                TextBlock dot = new TextBlock();
+                dot.Text = "\u00B7";
+                dot.Foreground = ForegroundColor;
+                dot.Margin = new Thickness(0, 0, 4, 0);
+
                 TextBlock b = new TextBlock();
-                b.Text = "\u00B7 " + hint;
+                b.Text = hint;
                 b.TextWrapping = TextWrapping.WrapWholeWords;
                 b.Foreground = ForegroundColor;
-                statusHintsContainer.Children.Add(b);
+
+                grid.Children.Add(dot);
+                grid.Children.Add(b);
+                Grid.SetColumn(b, 1);
+
+                statusHintsContainer.Children.Add(grid);
             }
         }
         
