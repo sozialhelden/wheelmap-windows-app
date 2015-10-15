@@ -119,13 +119,13 @@ namespace Wheelmap.Source.UI.Pages.Node {
             statusBgBorder.Background = new SolidColorBrush(status.GetColor());
             statusTextBlock.Text = status.GetLocalizedMessage();
             statusImage.Source = new BitmapImage(new
-                          Uri(status.GetImage(), UriKind.RelativeOrAbsolute));
+                          Uri(status.GetImageSimple(), UriKind.RelativeOrAbsolute));
 
             var toiletStatus = Stati.From(node.wheelchairToiletStatus);
             statusToiletBgBorder.Background = new SolidColorBrush(toiletStatus.GetColor());
             statusToiletTextBlock.Text = toiletStatus.GetLocalizedToiletMessage();
             statusToiletImage.Source = new BitmapImage(new
-                          Uri(toiletStatus.GetImage(), UriKind.RelativeOrAbsolute));
+                          Uri(toiletStatus.GetImageSimple(), UriKind.RelativeOrAbsolute));
         }
 
         private void InitImages(Model.Node node) {

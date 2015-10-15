@@ -66,6 +66,21 @@ namespace Wheelmap.Model {
             }
         }
 
+        public static string GetImageSimple(this Status status) {
+            switch (status) {
+                case Status.YES:
+                    return "ms-appx:///Assets/Images/ic_status_green_simple.png";
+                case Status.NO:
+                    return "ms-appx:///Assets/Images/ic_status_red_simple.png";
+                case Status.LIMITED:
+                    return "ms-appx:///Assets/Images/ic_status_orange_simple.png";
+                case Status.UNKNOWN:
+                    return "ms-appx:///Assets/Images/ic_status_grey_simple.png";
+                default:
+                    throw new Exception("unknown status type");
+            }
+        }
+
         public static string GetLocalizedMessage(this Status status, ResourceContext context = null) {
             switch (status) {
                 case Status.YES:

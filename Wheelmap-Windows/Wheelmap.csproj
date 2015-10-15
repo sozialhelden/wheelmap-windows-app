@@ -102,6 +102,10 @@
     <PRIResource Include="Strings\de\Links.resw" />
     <PRIResource Include="Strings\en-US\Links.resw" />
     <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Assets\Images\ic_status_green_simple.png" />
+    <Content Include="Assets\Images\ic_status_grey_simple.png" />
+    <Content Include="Assets\Images\ic_status_orange_simple.png" />
+    <Content Include="Assets\Images\ic_status_red_simple.png" />
     <Content Include="Resources\Conf\settings.json" />
     <Content Include="Resources\Conf\sample_settings.json" />
     <PRIResource Include="Strings\en-US\CortanaVoiceCommands.resw" />
