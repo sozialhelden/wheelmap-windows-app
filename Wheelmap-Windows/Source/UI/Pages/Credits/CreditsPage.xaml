@@ -33,11 +33,6 @@
                     TextWrapping="Wrap"/>
 
                 <Image
-                    Source="/Assets/Credits/credits_bmas.png"
-                    Margin="10,10,10,0"
-                    />
-
-                <Image
                     Source="/Assets/Credits/credits_verein.png"
                     Margin="10,10,10,0"
                     />
@@ -49,7 +44,7 @@
                 
                 <TextBlock
                     x:Name="creditsMicrosoftTextBlock"
-                    Margin="20,10,20,0"
+                    Margin="20,10,20,10"
                     TextWrapping="WrapWholeWords"
                     FontSize="17"/>
 
@@ -106,7 +101,7 @@
                         Grid.Column="1"
                         VerticalAlignment="Center">
                         <Paragraph>
-                            <Run Text="Map Icons Collection "/>
+                            <Run Text="Map Icons Collection: "/>
                             <Hyperlink NavigateUri="https://mapicons.mapsmarker.com">
                                 https://mapicons.mapsmarker.com
                             </Hyperlink>

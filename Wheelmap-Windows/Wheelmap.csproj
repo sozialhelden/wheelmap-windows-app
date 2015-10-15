@@ -216,7 +216,6 @@
     <Content Include="Assets\App\wide_310x150\wide.scale-200.png" />
     <Content Include="Assets\App\wide_310x150\wide.scale-400.png" />
     <Content Include="Assets\Credits\credits_authors.png" />
-    <Content Include="Assets\Credits\credits_bmas.png" />
     <Content Include="Assets\Credits\credits_credits.png" />
     <Content Include="Assets\Credits\credits_license.png" />
     <Content Include="Assets\Credits\credits_verein.png" />
