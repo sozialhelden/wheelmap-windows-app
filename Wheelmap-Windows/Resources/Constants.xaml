@@ -10,11 +10,5 @@
     <SolidColorBrush x:Key="StatusLimited" Color="#ed9b56"/>
     <SolidColorBrush x:Key="StatusNo" Color="#d23b3a"/>
     <SolidColorBrush x:Key="StatusUnknown" Color="#8b8c8d"/>
-
-    <Style x:Key="TitleTextBlock" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="10"/>
-        <Setter Property="FontWeight" Value="bold"/>
-        <Setter Property="Margin" Value="10,10,10,10"/>
-    </Style>
     
 </ResourceDictionary>
