@@ -180,20 +180,29 @@ namespace Wheelmap.Source.UI.Pages {
 
         [Subscribe]
         public void OnNewData(NewNodesEvent e) {
+            
             // avoid flickering of the MapIcons by Remove or Add only the Elements which are needed
 
             // collection of all mapElemements which should be removed
             ICollection<MapElement> elementToRemove = new List<MapElement>(mapControl.MapElements);
+            ICollection<Model.Node> dirtyElements = new List<Model.Node>();
 
             foreach (Model.Node n in e.nodes) {
                 // check if node already exists on the map
                 if (nodeElementMap.Contains(n)) {
-                    // this element should not be removed
-                    elementToRemove.Remove(nodeElementMap.Get(n));
+
+                    if (n.NodeTag ==  Model.NodeTag.RETRIEVED) {
+                        // this element should not be removed
+                        elementToRemove.Remove(nodeElementMap.Get(n));
+                    } else {
+                        dirtyElements.Add(n);
+                    }
+
                 } else {
                     // create new element
                     AddNewMapIcons(n);
                 }
+                
             }
 
             // remove all outdated mapelements
@@ -203,6 +212,10 @@ namespace Wheelmap.Source.UI.Pages {
             }
             elementToRemove.Clear();
             
+            foreach (Model.Node n in dirtyElements) {
+                AddNewMapIcons(n);
+            }
+
             /*
             // remove all MapIcons
             nodeElementMap.Clear();

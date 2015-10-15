@@ -57,11 +57,22 @@ namespace Wheelmap.Utils {
                 _FilterdNodes = Filter.FilterNodes(_Nodes);
                 var e = new NewNodesEvent() {
                     nodes = _FilterdNodes,
-                    RefreshAll = true
+                    RefreshAll = false
                 };
                 BusProvider.DefaultInstance.Post(e);
             }
 
+        }
+
+        public void ReplaceNode(Node node) {
+            if (Nodes.Contains(node)) {
+                Nodes.Remove(node);
+                Nodes.Add(node);
+            } else {
+                Nodes.Add(node);
+            }
+            // post changed event and changed filted nodes
+            Nodes = Nodes;
         }
 
         /**

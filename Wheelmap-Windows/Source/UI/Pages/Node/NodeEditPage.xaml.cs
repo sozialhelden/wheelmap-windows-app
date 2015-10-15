@@ -202,6 +202,8 @@ namespace Wheelmap.Source.UI.Pages.Node {
                 if (task.Result.IsOk) {
                     node.DirtyState = DirtyState.CLEAN;
                     Nodes.Save(node);
+                    // make sure the changes are diaplayed on the map
+                    DataHolder.Instance.ReplaceNode(node);
                     GoBack();
                 } else {
 
