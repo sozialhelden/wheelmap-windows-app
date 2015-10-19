@@ -110,7 +110,6 @@ namespace Wheelmap.Api.Calls {
         }
 
         private async Task LoadBackgroundImages(StorageFolder toFolder) {
-            
             var uri = "ms-appx:///Assets/Images/mapmarker/bg_status_yes.png";
             var fileStream = RandomAccessStreamReference.CreateFromUri(new Uri(uri));
             bitmapStateYes = new WriteableBitmap(ICON_WIDTH,ICON_HEIGHT);
@@ -195,16 +194,18 @@ namespace Wheelmap.Api.Calls {
                 merge.Blit(destRectBG, background, new Rect(0, 0, w, h));
             }
 
-            IRandomAccessStream saveStream = await saveFile.OpenAsync(FileAccessMode.ReadWrite);
-            BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, saveStream);
-            // Get pixels of the WriteableBitmap object 
-            Stream pixelStream = merge.PixelBuffer.AsStream();
-            byte[] pixels = new byte[pixelStream.Length];
-            await pixelStream.ReadAsync(pixels, 0, pixels.Length);
-            // Save the image file with jpg extension                 
-            encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Straight, (uint)merge.PixelWidth, (uint)merge.PixelHeight, 96.0, 96.0, pixels);
-            await encoder.FlushAsync();
-
+            using (var saveStream = await saveFile.OpenAsync(FileAccessMode.ReadWrite)) {
+                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, saveStream);
+                // Get pixels of the WriteableBitmap object 
+                Stream pixelStream = merge.PixelBuffer.AsStream();
+                byte[] pixels = new byte[pixelStream.Length];
+                await pixelStream.ReadAsync(pixels, 0, pixels.Length);
+                // Save the image file with jpg extension                 
+                encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Straight, (uint)merge.PixelWidth, (uint)merge.PixelHeight, 96.0, 96.0, pixels);
+                await encoder.FlushAsync();
+                await saveStream.FlushAsync();
+                saveStream.Dispose();
+            }
         }
 
         public async Task<bool> DownloadAsset(Asset asset, StorageFolder folder) {
