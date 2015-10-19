@@ -66,5 +66,60 @@
     <PhraseTopic Label="search" Scenario="Search"/>
     
   </CommandSet>
+
+
+  <CommandSet xml:lang="en-US" Name="en-US-CommandSet">
+
+    <AppName>Wheelmap</AppName>
+
+    <Example>Where is the nearest accessible toilet.</Example>
+
+    <Command Name="helpCommand">
+      <Example>I want to help</Example>
+
+      <!-- ListenFor: Max Count: 10 -->
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">i want to help</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">let me help</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">help funktion</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">rate location</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">rate place</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">rate existing location</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">rate existing place</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">Mapping Day</ListenFor>
+
+      <Feedback> Thank you that you would like to help with Wheelmap </Feedback>
+      <VoiceCommandService Target="WheelmapVoiceCommandService"/>
+    </Command>
+
+    <Command Name="searchCommand">
+
+      <Example> find 'Bundle Schokowelt' </Example>
+
+      <ListenFor RequireAppName="BeforePhrase"> Search {search} </ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified"> Search {search} in {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="BeforePhrase"> Find {search} </ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified"> Find {search} in {builtin:AppName}</ListenFor>
+
+      <!--Feedback provides the displayed and spoken text when your command is triggered -->
+      <Feedback> Search in Wheelmap... </Feedback>
+      <VoiceCommandService Target="WheelmapVoiceCommandService"/>
+    </Command>
+
+    <Command Name="whereIsCommand">
+
+      <Example> Where is the nearest accessible toilet. </Example>
+
+      <!-- ListenFor: Max Count: 10 -->
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> Where is [the] [nearest] [accessible] {search} </ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> Where can i find [the] [nearest] [accessible] {search} </ListenFor>
+
+      <Feedback> Search in Wheelmap... </Feedback>
+      <VoiceCommandService Target="WheelmapVoiceCommandService"/>
+    </Command>
+
+    <!-- this is a placeholder for every word or wordcombination that can be said by the user -->
+    <PhraseTopic Label="search" Scenario="Search"/>
+
+  </CommandSet>
   
 </VoiceCommands>
