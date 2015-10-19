@@ -41,8 +41,13 @@ namespace Wheelmap.Cortana {
         }
 
         public static async void RegisterCommands() {
-            var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Resources/Commands/Commands.xml"));
-            await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(file);
+            try {
+                var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Resources/Commands/Commands.xml"));
+                await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(file);
+            } catch (Exception e) {
+                // just in case the cortana guidelines changed
+                Log.e(e);
+            }
         }
         
     }
