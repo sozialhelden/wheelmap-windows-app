@@ -85,7 +85,8 @@ namespace Wheelmap.Api.Calls {
                     if (page == 1) {
                         Log.d("Query: numPages = " + numPages + ": items: " + resp.meta.itemCountTotal);
                     }
-                } catch {
+                } catch (Exception e){
+                    Log.e(e);
                     return null;
                 }
                 iteration++;
