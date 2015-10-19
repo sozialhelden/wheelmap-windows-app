@@ -8,9 +8,9 @@ using Wheelmap.Api.Model;
 using Newtonsoft.Json;
 using Wheelmap.Extensions;
 
-/**
- * http://wheelmap.org/ja/api/docs/resources/nodes
- */
+/// <summary>
+/// http://wheelmap.org/ja/api/docs/resources/nodes
+/// </summary>
 namespace Wheelmap.Api.Calls {
 
     public class NodeEditRequest : Request<NodeEditResponse> {

@@ -11,6 +11,10 @@ using Wheelmap.Source.Utils.Interfaces;
 using Windows.UI;
 
 namespace Wheelmap.Source.UI.Pages.Status {
+
+    /// <summary>
+    /// custom view to display an Status with its color, icon and description
+    /// </summary>
     public sealed partial class StatusExplainView : UserControl, Selectable {
 
         private bool _Selected = false;

@@ -8,6 +8,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace Wheelmap.Source.UI.Pages.Node {
 
+    /// <summary>
+    /// dialog to choose a location from the map
+    /// </summary>
     public sealed partial class PositionChooserDialogPage : BasePage {
 
         public PositionChooserDialogPage() {

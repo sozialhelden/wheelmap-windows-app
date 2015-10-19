@@ -14,9 +14,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace Wheelmap.Source.UI {
 
-    /**
-     * part of MainPage to handle all navigations
-     */
+    /// <summary>
+    /// part of MainPage to handle all navigations
+    /// </summary>
     public sealed partial class MainPage : BasePage {
 
         public override bool CanGoBack() {
@@ -100,10 +100,10 @@ namespace Wheelmap.Source.UI {
             this.RefreshCanGoBack();
 
         }
-
-        /**
-         * returns true if page will be shown
-         */
+        
+        /// <returns>
+        ///     true if page will be shown
+        /// </returns>
         private bool ShowOnMenuContainerFrame(object sender, Type pageType, object param = null, bool toggle = false) {
             ShowMenu(false);
 

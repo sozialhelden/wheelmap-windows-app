@@ -90,10 +90,10 @@ namespace Wheelmap.Source.UI.Pages {
 
         }
 
-        /**
-         * called when the maps ZoomLevel has changed
-         * request new data if needed
-         */
+        /// <summary>
+        /// called when the maps ZoomLevel has changed
+        /// request new data if needed
+        /// </summary>
         private void MapControl_ZoomLevelChanged(MapControl sender, object args) {
             Log.d("ZoomLevel: " + mapControl.ZoomLevel);
             var zoomLevel = (int)mapControl.ZoomLevel;
@@ -124,10 +124,10 @@ namespace Wheelmap.Source.UI.Pages {
             RequestUpdate();
         }
 
-        /**
-         * called when the maps center has changed
-         * request new data if map moves more than 30% from the last position depending on the maps size
-         */
+        /// <summary>
+        /// called when the maps center has changed
+        /// request new data if map moves more than 30% from the last position depending on the maps size
+        /// </summary>
         private void MapControl_CenterChanged(MapControl sender, object args) {
 
             locationInitialed = true;

@@ -8,9 +8,9 @@ using Windows.UI.Xaml.Media.Animation;
 
 namespace Wheelmap.Source.UI {
 
-    /**
-     * part of MainPage to handle all viszal state changes
-     */
+    /// <summary>
+    /// part of MainPage to handle all viszal state changes
+    /// </summary>
     public sealed partial class MainPage : BasePage {
         
         private VisualState CurrentSizeState {
@@ -23,10 +23,11 @@ namespace Wheelmap.Source.UI {
             WindowSizeStates.CurrentStateChanged += (sender, e) => OnStateChanged(e.NewState);
             Loaded += (sender, e) => OnStateChanged(WindowSizeStates.CurrentState);
         }
-        
-        /**
-         * Do some extra action on VisualStateChanged.
-         */
+
+        /// <summary>
+        /// Do some extra action on VisualStateChanged.
+        /// </summary>
+        /// <param name="state"></param>
         private void OnStateChanged(VisualState state) {
             Log.d("New State Changed: " + state.Name);
 

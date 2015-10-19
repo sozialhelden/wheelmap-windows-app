@@ -89,9 +89,9 @@ namespace Wheelmap.Source.UI.Pages.Node {
             initNodeTypeComboBox(node?.category);
         }
 
-        /**
-         * initialize the nodetype combobox to show only types for the given category
-         */
+        /// <summary>
+        /// initialize the nodetype combobox to show only types for the given category
+        /// </summary>
         private void initNodeTypeComboBox(Category c) {
             if (c == null) {
                 nodeTypes.Clear();
@@ -128,9 +128,9 @@ namespace Wheelmap.Source.UI.Pages.Node {
                           Uri(wheelchairWCStatus?.GetImage(), UriKind.RelativeOrAbsolute));
         }
 
-        /**
-         * checks if all required field are set to save this node
-         */
+        /// <summary>
+        /// checks if all required field are set to save this node
+        /// </summary>
         private bool CheckIfAllRequiredFieldsAreValid() {
 
             if (nameTextBox.Text.Trim().Length == 0) {

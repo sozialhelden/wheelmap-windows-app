@@ -72,8 +72,6 @@ namespace Wheelmap.Source.UI.Pages.Status {
 
             var dialog = new ContentDialog() {
                 Template = Application.Current.Resources["MyContentDialogControlTemplate"] as ControlTemplate,
-                //Title = "Lorem Ipsum",
-                //MaxWidth = this.ActualWidth // Required for Mobile!
                 RequestedTheme = ElementTheme.Light
             };
             

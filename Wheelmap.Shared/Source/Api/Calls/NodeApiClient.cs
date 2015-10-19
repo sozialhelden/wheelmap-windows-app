@@ -9,10 +9,10 @@ using Windows.Devices.Geolocation;
 using SQLiteNetExtensions.Extensions;
 using Wheelmap.Utils;
 
-/**
- * contains all methods to query Node from the Wheelmap Api
- * @see http://wheelmap.org/api/docs/resources/nodes 
- */
+/// <summary>
+/// contains all methods to query Node from the Wheelmap Api
+/// @see http://wheelmap.org/api/docs/resources/nodes 
+/// </summary>
 namespace Wheelmap.Api.Calls {
 
     public class NodesRequest : PagedRequest<NodesResponse, Node> {

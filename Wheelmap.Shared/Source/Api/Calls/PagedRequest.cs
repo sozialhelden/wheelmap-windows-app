@@ -10,6 +10,11 @@ using Wheelmap.Utils.Extensions;
 
 namespace Wheelmap.Api.Calls {
 
+    /// <summary>
+    /// the most api calls are paged requests
+    /// http://wheelmap.org/de/api/docs
+    /// This base class wraps the most handling about using this mechanism
+    /// </summary>
     public abstract class PagedRequest<T, K> : Request<List<K>> where T : PagedResponse<K>{
 
         private bool error = false;
@@ -53,14 +58,19 @@ namespace Wheelmap.Api.Calls {
             return result;
         }
 
+        /// <summary>
+        /// checks if last request had an error
+        /// </summary>
         public bool WasError() {
             return error;
         }
 
-        /**
-         * collects all available pages and merges their result
-         * returns null if an error happens
-         */
+        /// <summary>
+        /// collects all available pages and merges their result
+        /// </summary>
+        /// <returns>
+        /// null if an error happens
+        /// </returns>
         protected virtual List<K> QueryPages() {
             List<K> items = new List<K>();
 
@@ -113,14 +123,16 @@ namespace Wheelmap.Api.Calls {
             return JsonConvert.DeserializeObject<T>(json);
         }
 
-        /**
-         * return the url to fetch for the next page
-         */
+        /// <summary>
+        ///  return the url to fetch for the next page
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
         protected abstract string GetUrl(int page);
 
-        /**
-         * prepare data if needed
-         */
+        /// <summary>
+        /// prepare data if needed
+        /// </summary>
         protected virtual Task<List<K>> prepareData(List<K> items) {
             return Task.FromResult(items);
         }
