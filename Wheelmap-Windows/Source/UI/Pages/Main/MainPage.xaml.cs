@@ -17,7 +17,6 @@ using Wheelmap.Source.UI.Pages.Categories;
 using Wheelmap.UI.Pages.Base;
 using Wheelmap.Source.UI.Pages.Status;
 using Wheelmap.Source.UI.Pages.Profile;
-using Wheelmap_Windows.Source.UI.Pages.Settings;
 using Wheelmap_Windows.Source.UI.Pages;
 using Wheelmap_Windows.Source.UI.Pages.Status;
 using Wheelmap.Extensions;

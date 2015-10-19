@@ -124,9 +124,6 @@
       <DependentUpon>CreditsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Source\UI\Pages\Main\MainPage.Params.cs" />
-    <Compile Include="Source\UI\Pages\Settings\SettingsPage.xaml.cs">
-      <DependentUpon>SettingsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Source\UI\Pages\Base\WebViewPage.xaml.cs">
       <DependentUpon>WebViewPage.xaml</DependentUpon>
     </Compile>
@@ -396,10 +393,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\UI\Pages\Profile\ProfilePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Source\UI\Pages\Settings\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
