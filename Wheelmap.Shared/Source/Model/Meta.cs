@@ -23,7 +23,7 @@ namespace Wheelmap.Api.Model {
     public class Conditions {
         public int page;
 
-        [JsonProperty(PropertyName = "localized_name")]
+        [JsonProperty(PropertyName = "per_page")]
         public int perPage;
 
         public string locale;

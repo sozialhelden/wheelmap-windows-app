@@ -248,7 +248,7 @@ namespace Wheelmap.Api.Calls {
 
         protected override string GetUrl(int page) {
             string pageParam = "page=" + page;
-            string pageSizeParam = "page_size=" + PAGE_SIZE;
+            string pageSizeParam = "per_page=" + PAGE_SIZE;
             string url = BuildConfig.API_BASEURL + ApiConstants.END_POINT_ASSETS + "?"
                 + ApiConstants.API_KEY_PARAM + "&"
                 + pageSizeParam + "&"

@@ -69,7 +69,7 @@ namespace Wheelmap.Api.Calls {
 
         protected override string GetUrl(int page) {
             string pageParam = "page=" + page;
-            string pageSizeParam = "page_size=" + PAGE_SIZE;
+            string pageSizeParam = "per_page=" + PAGE_SIZE;
 
             string bboxParam  = "bbox="
                     + bbox.NorthwestCorner.Longitude.ToString(CultureInfo.InvariantCulture) + ","
