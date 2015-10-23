@@ -24,7 +24,6 @@ namespace Wheelmap.Source.UI.Pages.Profile {
         }
 
         private void InitWebView() {
-            WebViewUtils.SetUserAgentForApp();
             var url = BuildConfig.API_BASEURL + ApiConstants.WEB_LOGIN_LINK;
             mWebView.Navigate(new Uri(url));
             mWebView.NavigationStarting += WebView_NavigationStarting;
@@ -97,6 +96,8 @@ namespace Wheelmap.Source.UI.Pages.Profile {
                         HttpRequestMessage request = new HttpRequestMessage();
                         request.RequestUri = args.Uri;
                         request.Headers.Add("Install-ID", Prefs.GetInstallId());
+                        // use a custom user agent to change the behavior of the website
+                        request.Headers.Add("User-Agent", WebViewUtils.CreateAppsUserAgent());
                         mWebView.NavigateWithHttpRequestMessage(request);
                     }).Forget();
                 });

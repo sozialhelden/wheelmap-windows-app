@@ -9,17 +9,6 @@ namespace Wheelmap.Utils {
 
     public static class WebViewUtils {
 
-        [DllImport("urlmon.dll", CharSet = CharSet.Ansi, ExactSpelling = true)]
-        private static extern int UrlMkSetSessionOption(int dwOption, string pBuffer, int dwBufferLength, int dwReserved);
-
-        private const int URLMON_OPTION_USERAGENT = 0x10000001;
-        
-        public static void SetUserAgent(string agent) {
-            try { 
-                UrlMkSetSessionOption(URLMON_OPTION_USERAGENT, agent, agent.Length, 0);
-            }catch { }
-        }
-
         public static string CreateAppsUserAgent() {
             var format = Constants.USER_AGENT_FORMAT;
             string appVersion = string.Format("{0}.{1}.{2}.{3}",
@@ -33,14 +22,7 @@ namespace Wheelmap.Utils {
                 (DeviceUtils.GetResolutionScaleForCurrentViewInPercentage()/100d).ToString(CultureInfo.InvariantCulture));
             return userAgent;
         }
-
-        public static void SetUserAgentForApp() {
-            var userAgent = CreateAppsUserAgent();
-            Log.d(userAgent);
-            SetUserAgent(userAgent);
-        }
         
-
     }
 
     public class DateUtils {
