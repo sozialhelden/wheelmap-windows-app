@@ -122,7 +122,7 @@
     <comment>Es konnten keine Daten geladen werden. Bitte überprüfe deine Internetverbindung oder versuche es später nochmal.</comment>
   </data>
   <data name="CREDITS_MICROSOFT" xml:space="preserve">
-    <value>The Development of the app was sponsort by Microsoft Deutschland.</value>
+    <value>The development of the app was sponsored by Microsoft Deutschland.</value>
   </data>
   <data name="DIALOG_NO_LOCATION_ACCESS_CANCEL" xml:space="preserve">
     <value>Cancel</value>
@@ -131,7 +131,7 @@
     <value>Settings</value>
   </data>
   <data name="HELP_HINT" xml:space="preserve">
-    <value>Help by marking places!</value>
+    <value>Help out by marking places!</value>
   </data>
   <data name="MENU_CATEGORY.Text" xml:space="preserve">
     <value>Categories</value>
@@ -161,16 +161,16 @@
     <value>Status</value>
   </data>
   <data name="MENU_STATUS_INFO.Text" xml:space="preserve">
-    <value>Infos for marking</value>
+    <value>Infos on marking wheelchair status</value>
   </data>
   <data name="MENU_WC.Text" xml:space="preserve">
     <value>Toilet</value>
   </data>
   <data name="NO_NODES_FOUND" xml:space="preserve">
-    <value>found no places with the selected criteria or position</value>
+    <value>No places with the selected criteria or position found</value>
   </data>
   <data name="OutOfZoom.Text" xml:space="preserve">
-    <value>Too far away to load new places.</value>
+    <value>Zoom in closer to see places.</value>
   </data>
   <data name="RetryButton.Content" xml:space="preserve">
     <value>Reload</value>
@@ -194,7 +194,7 @@
     <value>Map</value>
   </data>
   <data name="TITLE_NEW" xml:space="preserve">
-    <value>Add new place</value>
+    <value>Add a new place</value>
   </data>
   <data name="TITLE_PROFILE" xml:space="preserve">
     <value>Profile</value>
@@ -203,13 +203,13 @@
     <value>Settings</value>
   </data>
   <data name="TITLE_STATUS" xml:space="preserve">
-    <value>Status of the place</value>
+    <value>Wheelchair accessibility of the place</value>
   </data>
   <data name="TITLE_WC" xml:space="preserve">
-    <value>Status of the toilet</value>
+    <value>Wheelchair accessibility of the toilet</value>
   </data>
   <data name="UNKNOWN_ERROR" xml:space="preserve">
-    <value>Error. Please check your internetconnection</value>
+    <value>Error. Please check your internet connection</value>
   </data>
   <data name="UPLOAD_IMAGE_PROCESSING" xml:space="preserve">
     <value>Uploading image</value>

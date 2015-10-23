@@ -119,41 +119,41 @@
   </resheader>
   <data name="CHOOSE_A_PLACE_DisplayMessage_1" xml:space="preserve">
     <value>Please choose a location.</value>
-    <comment>message displayed when user should select a node via cortana</comment>
+    <comment>The message displayed when user is asked to select a node via Cortana</comment>
   </data>
   <data name="CHOOSE_A_PLACE_DisplayMessage_2" xml:space="preserve">
-    <value>Choose a location.</value>
-    <comment>an alternative translation to CHOOSE_A_PLACE_DisplayMessage_1</comment>
+    <value>Choose a place.</value>
+    <comment>An alternative translation to CHOOSE_A_PLACE_DisplayMessage_1</comment>
   </data>
   <data name="CHOOSE_A_PLACE_SpokenMessage_1" xml:space="preserve">
-    <value>Please choose a location.</value>
-    <comment>message spoken when user should select a node via cortana</comment>
+    <value>Please choose a place.</value>
+    <comment>The message spoken when user is asded to select a node via Cortana</comment>
   </data>
   <data name="CHOOSE_A_PLACE_SpokenMessage_2" xml:space="preserve">
-    <value>Choose a location.</value>
-    <comment>an alternative translation to CHOOSE_A_PLACE_SpokenMessage_1</comment>
+    <value>Choose a place.</value>
+    <comment>An alternative translation to CHOOSE_A_PLACE_SpokenMessage_1</comment>
   </data>
   <data name="ERROR_NO_LOCTION_ACCESS_DisplayMessage" xml:space="preserve">
-    <value>Wheelmap does not have permission to your current location .</value>
+    <value>Wheelmap does not have permission to access your current location.</value>
   </data>
   <data name="ERROR_NO_LOCTION_ACCESS_SpokenMessage" xml:space="preserve">
-    <value>Wheelmap does not have permission to your current location .</value>
+    <value>Wheelmap does not have permission to access your current location .</value>
   </data>
   <data name="ERROR_PLACE_NOT_FOUNT_DisplayMessage" xml:space="preserve">
     <value>No such place was found nearby.</value>
-    <comment>the message displayed when no place was found during a voicecommand</comment>
+    <comment>The message displayed when no place was found following a voice command</comment>
   </data>
   <data name="ERROR_PLACE_NOT_FOUNT_SpokenMessage" xml:space="preserve">
     <value>No such place was found nearby.</value>
-    <comment>the message spoken when no place was found during a voicecommand</comment>
+    <comment>The message spoken when no place was found following a voice command</comment>
   </data>
   <data name="ERROR_TOILET_NOT_FOUNT_DisplayMessage" xml:space="preserve">
-    <value>No handicapped accessible toilet found nearby.</value>
-    <comment>the message displayed when no toilet was found during a voicecommand</comment>
+    <value>No wheelchair accessible toilet found nearby.</value>
+    <comment>The message displayed when no toilet was found following a voice command</comment>
   </data>
   <data name="ERROR_TOILET_NOT_FOUNT_SpokenMessage" xml:space="preserve">
-    <value>No handicapped accessible toilet found nearby.</value>
-    <comment>the message spoken when no toilet was found during a voicecommand</comment>
+    <value>No wheelchair accessible toilet found nearby.</value>
+    <comment>The message spoken when no toilet was found following a voice command</comment>
   </data>
   <data name="OPEN_APP_DisplayMessage" xml:space="preserve">
     <value>Open Wheelmap</value>
@@ -163,11 +163,11 @@
   </data>
   <data name="SEARCHING" xml:space="preserve">
     <value>Searching: {0}</value>
-    <comment>response while searching</comment>
+    <comment>Response while searching</comment>
   </data>
   <data name="TOILET_SYNONYM" xml:space="preserve">
     <value>Toilette/WC</value>
-    <comment>/ seperated list of synonym for a toilet to use in voice commands
+    <comment>A separate list of synonyms for the word "toilet" to use in voice commands
 </comment>
   </data>
 </root>

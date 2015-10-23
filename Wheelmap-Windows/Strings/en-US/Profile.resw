@@ -121,7 +121,7 @@
     <value>Register on OSM</value>
   </data>
   <data name="PROFILE_HINT_LOGIN" xml:space="preserve">
-    <value>To login into Wheelmap you need an user account on OpenStreetMap (OSM)</value>
+    <value>To log in to Wheelmap you need a user account on OpenStreetMap (OSM)</value>
   </data>
   <data name="PROFILE_HINT_NO_ACCOUNT_TITLE" xml:space="preserve">
     <value>You don’t have an OSM user account yet?</value>
@@ -137,8 +137,8 @@
   </data>
   <data name="StepsToOSMAccount" xml:space="preserve">
     <value>Four steps to log in:
-1. Click on “OSM Registration” and register your OSM user account
-2. Open your email client and click on the activation link
+1. Click on “OSM Registration” and register an OSM user account
+2. Go to your email and click on the activation link you have been sent
 3. Open the Wheelmap app
 4. Log in with your OSM user account (username &amp; password)</value>
   </data>

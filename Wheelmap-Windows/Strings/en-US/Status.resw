@@ -118,26 +118,26 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="STATUS_LIMITED" xml:space="preserve">
-    <value>partially wheelchair accessible</value>
+    <value>Partially wheelchair accessible</value>
   </data>
   <data name="STATUS_LIMITED_HINT_0" xml:space="preserve">
-    <value>Entry has a step (max. height 7cm)</value>
+    <value>Entrance has one step with max. height 7cm (3 in)</value>
   </data>
   <data name="STATUS_LIMITED_HINT_1" xml:space="preserve">
-    <value>most rooms are without steps</value>
+    <value>Most rooms are without steps</value>
   </data>
   <data name="STATUS_LIMITED_HINT_COUNT" xml:space="preserve">
     <value>2</value>
     <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
   <data name="STATUS_NO" xml:space="preserve">
-    <value>no wheelchair accessible</value>
+    <value>Not wheelchair accessible</value>
   </data>
   <data name="STATUS_NO_HINT_0" xml:space="preserve">
-    <value>Entry has steps or several steps</value>
+    <value>Entrance has a step or several steps</value>
   </data>
   <data name="STATUS_NO_HINT_1" xml:space="preserve">
-    <value>rooms are not accessible</value>
+    <value>Rooms are not accessible</value>
   </data>
   <data name="STATUS_NO_HINT_COUNT" xml:space="preserve">
     <value>2</value>
@@ -150,7 +150,7 @@
     <value>Mark wheelchair accessibility of the toilet!</value>
   </data>
   <data name="STATUS_TOILET_LIMITED" xml:space="preserve">
-    <value>partially wheelchair accessible</value>
+    <value>Partially wheelchair accessible</value>
   </data>
   <data name="STATUS_TOILET_NO" xml:space="preserve">
     <value>No wheelchair accessible toilet</value>
@@ -162,10 +162,10 @@
     <value>Wheelchair accessible toilet</value>
   </data>
   <data name="STATUS_UNKNOWN" xml:space="preserve">
-    <value>unknown status</value>
+    <value>Unknown status</value>
   </data>
   <data name="STATUS_UNKNOWN_HINT_0" xml:space="preserve">
-    <value>Help by marking places!</value>
+    <value>Help out by marking places!</value>
   </data>
   <data name="STATUS_UNKNOWN_HINT_COUNT" xml:space="preserve">
     <value>1</value>
@@ -180,39 +180,39 @@
     <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
   <data name="STATUS_WC_UNKNOWN_HINT_0" xml:space="preserve">
-    <value>Help by marking places!</value>
+    <value>Help out by marking places!</value>
   </data>
   <data name="STATUS_WC_UNKNOWN_HINT_COUNT" xml:space="preserve">
     <value>1</value>
     <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
   <data name="STATUS_WC_YES_HINT_0" xml:space="preserve">
-    <value>Doorway's inner width min. 90cm</value>
+    <value>Doorways' inner width min. 90cm (35 in)</value>
   </data>
   <data name="STATUS_WC_YES_HINT_1" xml:space="preserve">
-    <value>clear space min. 150 x 150 cm</value>
+    <value>Clear floor space min. 150 x 150 cm (59 x 59 in)</value>
   </data>
   <data name="STATUS_WC_YES_HINT_2" xml:space="preserve">
-    <value>wheelchair-height toilet seat</value>
+    <value>Wheelchair-height toilet seat</value>
   </data>
   <data name="STATUS_WC_YES_HINT_3" xml:space="preserve">
-    <value>folding grab rails</value>
+    <value>Folding grab rails</value>
   </data>
   <data name="STATUS_WC_YES_HINT_4" xml:space="preserve">
-    <value>accessible hand basin</value>
+    <value>Accessible hand basin</value>
   </data>
   <data name="STATUS_WC_YES_HINT_COUNT" xml:space="preserve">
     <value>5</value>
     <comment>Indicates how many hints exists for this status (must be a number). Hints must have the format STATUS_{TYPE}_HINT_{NUMBER}</comment>
   </data>
   <data name="STATUS_YES" xml:space="preserve">
-    <value>wheelchair accessible</value>
+    <value>Wheelchair accessible</value>
   </data>
   <data name="STATUS_YES_HINT_0" xml:space="preserve">
     <value>Entrance without steps</value>
   </data>
   <data name="STATUS_YES_HINT_1" xml:space="preserve">
-    <value>all rooms without steps</value>
+    <value>All rooms without steps</value>
   </data>
   <data name="STATUS_YES_HINT_COUNT" xml:space="preserve">
     <value>2</value>

@@ -118,43 +118,44 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ADDRESS_TITLE.Text" xml:space="preserve">
-    <value>address</value>
+    <value>Address</value>
   </data>
   <data name="INPUT_ADDRESS.PlaceholderText" xml:space="preserve">
-    <value>address</value>
+    <value>Address</value>
   </data>
   <data name="INPUT_CATEGORY.PlaceholderText" xml:space="preserve">
     <value>category</value>
   </data>
   <data name="INPUT_CITY.PlaceholderText" xml:space="preserve">
-    <value>city</value>
+    <value>City</value>
   </data>
   <data name="INPUT_COMMENT.PlaceholderText" xml:space="preserve">
-    <value>comment</value>
+    <value>Comment</value>
   </data>
   <data name="INPUT_HOUSE_NUMBER.PlaceholderText" xml:space="preserve">
-    <value>number</value>
+    <value>House number</value>
   </data>
   <data name="INPUT_NAME.PlaceholderText" xml:space="preserve">
-    <value>name</value>
+    <value>Name</value>
   </data>
   <data name="INPUT_NODE_TYPE.PlaceholderText" xml:space="preserve">
-    <value>type</value>
+    <value>Type</value>
   </data>
   <data name="INPUT_PHONE.PlaceholderText" xml:space="preserve">
-    <value>telephone</value>
+    <value>Telephone number</value>
   </data>
   <data name="INPUT_PLZ.PlaceholderText" xml:space="preserve">
-    <value>postalcode</value>
+    <value>Postal code</value>
   </data>
   <data name="INPUT_POSITION.PlaceholderText" xml:space="preserve">
-    <value>position</value>
+    <value>Position</value>
+    <comment>"Position" is the geological position, not, for instance, a job position.</comment>
   </data>
   <data name="INPUT_STREET.PlaceholderText" xml:space="preserve">
-    <value>street</value>
+    <value>Street</value>
   </data>
   <data name="INPUT_WEBSITE.PlaceholderText" xml:space="preserve">
-    <value>webseite</value>
+    <value>Website</value>
   </data>
   <data name="NodeNoCategorySet" xml:space="preserve">
     <value>Please select a category!</value>
@@ -169,9 +170,9 @@
     <value>Please set the location of this place!</value>
   </data>
   <data name="POSITION" xml:space="preserve">
-    <value>position: ({0}:{1})</value>
+    <value>Position: ({0}:{1})</value>
   </data>
   <data name="SAVE" xml:space="preserve">
-    <value>save</value>
+    <value>Save</value>
   </data>
 </root>
