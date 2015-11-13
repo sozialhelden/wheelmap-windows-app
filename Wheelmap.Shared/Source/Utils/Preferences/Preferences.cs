@@ -24,6 +24,20 @@ namespace Wheelmap.Utils.Preferences {
         const string KEY_CURRENTUSER = "CurrentUser";
         const string KEY_FILTER = "Filter";
         const string KEY_INSTALL_ID = "KEY_INSTALL_ID";
+        const string KEY_FIRST_APP_START = "KEY_FIRST_APP_START";
+
+        public static bool FirstAppStart {
+            get {
+                return localSettings.Values.ContainsKey(KEY_FIRST_APP_START);
+            }
+            set {
+                if (value) {
+                    localSettings.Values[KEY_FIRST_APP_START] = true;
+                } else {
+                    localSettings.Values.Remove(KEY_FIRST_APP_START);
+                }
+            }
+        }
 
         public static Model.User GetCurrentUser() {
             string userJson = localSettings.Values[KEY_CURRENTUSER] as string;

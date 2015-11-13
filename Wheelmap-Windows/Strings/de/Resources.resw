@@ -216,4 +216,46 @@
   <data name="CREDITS" xml:space="preserve">
     <value>Credits</value>
   </data>
+  <data name="READY" xml:space="preserve">
+    <value>Fertig</value>
+  </data>
+  <data name="INTRODUCTION_01_TEXT" xml:space="preserve">
+    <value>Jetzt kannst du rollstuhlgerechte Orte
+suchen, finden und markieren.</value>
+  </data>
+  <data name="INTRODUCTION_01_TITLE" xml:space="preserve">
+    <value>Willkommen bei der Wheelmap</value>
+  </data>
+  <data name="INTRODUCTION_02_TEXT" xml:space="preserve">
+    <value>Finde rollstuhlgerechte Orte
+in deiner Nähe.</value>
+  </data>
+  <data name="INTRODUCTION_02_TITLE" xml:space="preserve">
+    <value>Orte suchen</value>
+  </data>
+  <data name="INTRODUCTION_03_TEXT" xml:space="preserve">
+    <value>Dafür musst du nicht
+angemeldet sein.</value>
+  </data>
+  <data name="INTRODUCTION_03_TITLE" xml:space="preserve">
+    <value>Orte und Toiletten markieren</value>
+  </data>
+  <data name="INTRODUCTION_04_TEXT" xml:space="preserve">
+    <value>Dafür musst du mit Profil
+angemeldet sein.</value>
+  </data>
+  <data name="INTRODUCTION_04_TITLE" xml:space="preserve">
+    <value>Orte bearbeiten</value>
+  </data>
+  <data name="INTRODUCTION_05_TEXT" xml:space="preserve">
+    <value>Weitere Tipps und Infos findest du auch
+in den FAQs auf Wheelmap.org.
+Lust auf News aus der Community?
+Stöbere durch den Blog und aboniere
+unseren Newsletter!</value>
+  </data>
+  <data name="INTRODUCTION_05_TITLE" xml:space="preserve">
+    <value>Und jetzt viel Spaß beim Suchen,
+Finden und Mappen!</value>
+  </data>
 </root>

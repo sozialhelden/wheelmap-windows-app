@@ -21,6 +21,9 @@ using Wheelmap_Windows.Source.UI.Pages;
 using Wheelmap_Windows.Source.UI.Pages.Status;
 using Wheelmap.Extensions;
 using Wheelmap.Source.UI.Pages.Credits;
+using Wheelmap.Source.UI.Pages.Intro;
+using Windows.UI.Core;
+using Wheelmap.Utils.Preferences;
 
 namespace Wheelmap.Source.UI {
 
@@ -60,6 +63,15 @@ namespace Wheelmap.Source.UI {
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
             BusProvider.DefaultInstance.Register(this);
+
+            if (Prefs.FirstAppStart) {
+                // wait some time to awoit blocking the ui
+                Dispatcher.PostDelayed(() => {
+                    Prefs.FirstAppStart = false;
+                    IntroPage.ShowInDialog();
+                }, 2000);
+            }
+
         }
         
         private void InitToggleGroup() {

@@ -217,4 +217,37 @@
   <data name="CREDITS" xml:space="preserve">
     <value>Credits</value>
   </data>
+  <data name="READY" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="INTRODUCTION_01_TEXT" xml:space="preserve">
+    <value />
+  </data>
+  <data name="INTRODUCTION_01_TITLE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="INTRODUCTION_02_TEXT" xml:space="preserve">
+    <value />
+  </data>
+  <data name="INTRODUCTION_02_TITLE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="INTRODUCTION_03_TEXT" xml:space="preserve">
+    <value />
+  </data>
+  <data name="INTRODUCTION_03_TITLE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="INTRODUCTION_04_TEXT" xml:space="preserve">
+    <value />
+  </data>
+  <data name="INTRODUCTION_04_TITLE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="INTRODUCTION_05_TEXT" xml:space="preserve">
+    <value />
+  </data>
+  <data name="INTRODUCTION_05_TITLE" xml:space="preserve">
+    <value />
+  </data>
 </root>
