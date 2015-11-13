@@ -28,14 +28,11 @@ namespace Wheelmap.Utils.Preferences {
 
         public static bool FirstAppStart {
             get {
-                return localSettings.Values.ContainsKey(KEY_FIRST_APP_START);
+                bool? value = localSettings.Values[KEY_FIRST_APP_START] as bool?;
+                return value ?? true;
             }
             set {
-                if (value) {
-                    localSettings.Values[KEY_FIRST_APP_START] = true;
-                } else {
-                    localSettings.Values.Remove(KEY_FIRST_APP_START);
-                }
+                localSettings.Values[KEY_FIRST_APP_START] = value;
             }
         }
 
