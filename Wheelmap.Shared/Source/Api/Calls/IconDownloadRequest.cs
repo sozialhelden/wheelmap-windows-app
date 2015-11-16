@@ -248,8 +248,8 @@ namespace Wheelmap.Api.Calls {
     public class AssetsRequest : PagedRequest<AssetsResponse, Asset> {
 
         protected override string GetUrl(int page) {
-            string pageParam = "page=" + page.ToString(CultureInfo.InvariantCulture); ;
-            string pageSizeParam = "per_page=" + PAGE_SIZE.ToString(CultureInfo.InvariantCulture); ;
+            string pageParam = "page=" + page.ToString(CultureInfo.InvariantCulture);
+            string pageSizeParam = "per_page=" + PAGE_SIZE.ToString(CultureInfo.InvariantCulture);
             string url = BuildConfig.API_BASEURL + ApiConstants.END_POINT_ASSETS + "?"
                 + ApiConstants.API_KEY_PARAM + "&"
                 + pageSizeParam + "&"
