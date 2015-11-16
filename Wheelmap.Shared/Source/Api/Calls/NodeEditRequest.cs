@@ -129,6 +129,9 @@ namespace Wheelmap.Api.Calls {
         }
     }
     
+    /// <summary>
+    /// updates the wheelchair state for a node
+    /// </summary>
     public class NodeStateEditRequest : Request<NodeEditResponse> {
 
         private bool error;
@@ -196,36 +199,24 @@ namespace Wheelmap.Api.Calls {
 
     }
 
-    // small hack until real api is present
-    // http://staging.wheelmap.org/nodes/433727969/update_toilet.js?api_key=XXXX&toilet=no
+    /// <summary>
+    /// updates the toilet state for a node
+    /// </summary>
     public class NodeEditToiletStatusRequest : NodeStateEditRequest {
-
-        public NodeEditToiletStatusRequest(Node node) : base(node) {
-        }
-
-        protected async override Task<NodeEditResponse> execute() {
-            using (var client = new HttpClient()) {
-                string url = GetUrl();
-                HttpResponseMessage responseMessage;
-                responseMessage = await client.PutAsync(url, null);
-                var responseString = await responseMessage.Content.ReadAsStringAsync();
-                if (responseMessage.StatusCode == System.Net.HttpStatusCode.OK) {
-                    node.DirtyState = DirtyState.CLEAN;
-                    Nodes.Save(node);
-                    return new NodeEditResponse(ok: true);
-                }
-                return new NodeEditResponse(ok: false);
-            }
-        }
-
+        
+        public NodeEditToiletStatusRequest(Node node) : base(node){}
+        
         protected override string GetUrl() {
-            var endPoint = String.Format(ApiConstants.END_POINT_UPDATE_TOILET_STATUS, node.wm_id);
-            var paramStatus = "toilet=" + node.wheelchairToiletStatus;
+            var endPoint = String.Format(ApiConstants.END_POINT_UPDATE_WHEELCHAIR_TOILET_STATUS, node.wm_id);
+            string localeParam = "locale=" + CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+            var paramStatus = "wheelchair_toilet=" + node.wheelchairToiletStatus;
 
             string url = BuildConfig.API_BASEURL + endPoint + "?"
                 + ApiConstants.API_KEY_PARAM + "&"
-                + paramStatus;
+                + paramStatus + "&"
+                + localeParam;
             return url;
         }
+
     }
 }
