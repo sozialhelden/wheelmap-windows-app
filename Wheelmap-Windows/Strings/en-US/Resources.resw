@@ -221,33 +221,33 @@
     <value>Ready</value>
   </data>
   <data name="INTRODUCTION_01_TEXT" xml:space="preserve">
-    <value />
+    <value>You can search for, find and mark wheelchair accessible places here.</value>
   </data>
   <data name="INTRODUCTION_01_TITLE" xml:space="preserve">
-    <value />
+    <value>Welcome to Wheelmap</value>
   </data>
   <data name="INTRODUCTION_02_TEXT" xml:space="preserve">
-    <value />
+    <value>Find wheelchair accessible places nearby.</value>
   </data>
   <data name="INTRODUCTION_02_TITLE" xml:space="preserve">
-    <value />
+    <value>Search for places</value>
   </data>
   <data name="INTRODUCTION_03_TEXT" xml:space="preserve">
-    <value />
+    <value>You do not need to be registered for this.</value>
   </data>
   <data name="INTRODUCTION_03_TITLE" xml:space="preserve">
-    <value />
+    <value>Mark places and toilets</value>
   </data>
   <data name="INTRODUCTION_04_TEXT" xml:space="preserve">
-    <value />
+    <value>You must be logged in with your Profile for this.</value>
   </data>
   <data name="INTRODUCTION_04_TITLE" xml:space="preserve">
-    <value />
+    <value>Edit places</value>
   </data>
   <data name="INTRODUCTION_05_TEXT" xml:space="preserve">
-    <value />
+    <value>You can find more tips and infos in the FAQs on Wheelmap.org. Interested in news from the community? Check out the blog or subscribe to our newsletter.</value>
   </data>
   <data name="INTRODUCTION_05_TITLE" xml:space="preserve">
-    <value />
+    <value>And now: Have fun as you search, find and map!</value>
   </data>
 </root>
