@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -19,9 +20,9 @@ namespace Wheelmap.Api.Calls {
         }
 
         protected override string GetUrl(int page) {
-            string pageParam = "page=" + page;
-            string pageSizeParam = "per_page=" + PAGE_SIZE;
-            string url = BuildConfig.API_BASEURL + String.Format(ApiConstants.END_POINT_PHOTOS, node.wm_id) + "?"
+            string pageParam = "page=" + page.ToString(CultureInfo.InvariantCulture);
+            string pageSizeParam = "per_page=" + PAGE_SIZE.ToString(CultureInfo.InvariantCulture);
+            string url = BuildConfig.API_BASEURL + String.Format(ApiConstants.END_POINT_PHOTOS, node.wm_id.ToString(CultureInfo.InvariantCulture)) + "?"
                 + ApiConstants.API_KEY_PARAM + "&"
                 + pageSizeParam + "&"
                 + pageParam;

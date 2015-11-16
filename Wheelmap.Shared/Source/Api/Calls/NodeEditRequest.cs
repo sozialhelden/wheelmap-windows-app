@@ -186,7 +186,7 @@ namespace Wheelmap.Api.Calls {
         }
 
         protected virtual string GetUrl() {
-            var endPoint = String.Format(ApiConstants.END_POINT_UPDATE_WHEELCHAIR_STATUS, node.wm_id);
+            var endPoint = String.Format(ApiConstants.END_POINT_UPDATE_WHEELCHAIR_STATUS, node.wm_id.ToString(CultureInfo.InvariantCulture));
             string localeParam = "locale=" + CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             var paramStatus = "wheelchair=" + node.wheelchairStatus;
 
@@ -207,7 +207,7 @@ namespace Wheelmap.Api.Calls {
         public NodeEditToiletStatusRequest(Node node) : base(node){}
         
         protected override string GetUrl() {
-            var endPoint = String.Format(ApiConstants.END_POINT_UPDATE_WHEELCHAIR_TOILET_STATUS, node.wm_id);
+            var endPoint = String.Format(ApiConstants.END_POINT_UPDATE_WHEELCHAIR_TOILET_STATUS, node.wm_id.ToString(CultureInfo.InvariantCulture));
             string localeParam = "locale=" + CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             var paramStatus = "wheelchair_toilet=" + node.wheelchairToiletStatus;
 
