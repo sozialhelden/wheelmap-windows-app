@@ -110,26 +110,25 @@ namespace Wheelmap.Api.Calls {
             destRectBG = new Rect(0, 0, ICON_WIDTH, ICON_HEIGHT);
         }
 
+        /// <summary>
+        /// loads background icons from assets and save them as default icons in case there is a node without a type
+        /// </summary>
+        /// <param name="toFolder">
+        /// the folder where to save the default icons
+        /// </param>
+        /// <returns></returns>
         private async Task LoadBackgroundImages(StorageFolder toFolder) {
             var uri = "ms-appx:///Assets/Images/mapmarker/bg_status_yes.png";
-            var fileStream = RandomAccessStreamReference.CreateFromUri(new Uri(uri));
-            bitmapStateYes = BitmapFactory.New(ICON_WIDTH, ICON_HEIGHT);
-            bitmapStateYes.SetSource(await fileStream.OpenReadAsync());
+            bitmapStateYes = await BitmapFactory.New(ICON_WIDTH, ICON_HEIGHT).FromContent(new Uri(uri));
             
             uri = "ms-appx:///Assets/Images/mapmarker/bg_status_no.png";
-            fileStream = RandomAccessStreamReference.CreateFromUri(new Uri(uri));
-            bitmapStateNo = BitmapFactory.New(ICON_WIDTH, ICON_HEIGHT);
-            bitmapStateNo.SetSource(await fileStream.OpenReadAsync());
+            bitmapStateNo = await BitmapFactory.New(ICON_WIDTH, ICON_HEIGHT).FromContent(new Uri(uri));
             
             uri = "ms-appx:///Assets/Images/mapmarker/bg_status_limited.png";
-            fileStream = RandomAccessStreamReference.CreateFromUri(new Uri(uri));
-            bitmapStateLimited = BitmapFactory.New(ICON_WIDTH, ICON_HEIGHT);
-            bitmapStateLimited.SetSource(await fileStream.OpenReadAsync());
+            bitmapStateLimited = await BitmapFactory.New(ICON_WIDTH, ICON_HEIGHT).FromContent(new Uri(uri));
             
             uri = "ms-appx:///Assets/Images/mapmarker/bg_status_unknown.png";
-            fileStream = RandomAccessStreamReference.CreateFromUri(new Uri(uri));
-            bitmapStateUnknown = BitmapFactory.New(ICON_WIDTH, ICON_HEIGHT);
-            bitmapStateUnknown.SetSource(await fileStream.OpenReadAsync());
+            bitmapStateUnknown = await BitmapFactory.New(ICON_WIDTH, ICON_HEIGHT).FromContent(new Uri(uri));
 
             // save copy
 
@@ -137,13 +136,14 @@ namespace Wheelmap.Api.Calls {
             StorageFile fileNo = await toFolder.CreateFileAsync($"no_.png", CreationCollisionOption.ReplaceExisting);
             StorageFile fileLimited = await toFolder.CreateFileAsync($"limited_.png", CreationCollisionOption.ReplaceExisting);
             StorageFile fileUnknown = await toFolder.CreateFileAsync($"unknown_.png", CreationCollisionOption.ReplaceExisting);
+            
             await mergeAndSaveFile(bitmapStateYes, null, fileYes);
             await mergeAndSaveFile(bitmapStateNo, null, fileNo);
             await mergeAndSaveFile(bitmapStateLimited, null, fileLimited);
             await mergeAndSaveFile(bitmapStateUnknown, null, fileUnknown);
-
+            
         }
-
+        
         private async Task<bool> PrepareImages(StorageFolder fromFolder, StorageFolder toFolder) {
 
             try {
@@ -181,6 +181,13 @@ namespace Wheelmap.Api.Calls {
             return true;
         }
         
+        /// <summary>
+        /// merges two WritableBitmaps and save the result to 'saveFile'
+        /// </summary>
+        /// <param name="background"></param>
+        /// <param name="icon"></param>
+        /// <param name="saveFile"></param>
+        /// <returns></returns>
         private async Task mergeAndSaveFile(WriteableBitmap background, WriteableBitmap icon, StorageFile saveFile) {
 
             var h = background.PixelHeight;
@@ -197,12 +204,12 @@ namespace Wheelmap.Api.Calls {
             }
 
             using (var saveStream = await saveFile.OpenAsync(FileAccessMode.ReadWrite)) {
+                // use PngEncoder for alpha channel support
                 BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, saveStream);
                 // Get pixels of the WriteableBitmap object 
                 Stream pixelStream = merge.PixelBuffer.AsStream();
                 byte[] pixels = new byte[pixelStream.Length];
                 await pixelStream.ReadAsync(pixels, 0, pixels.Length);
-                // Save the image file with jpg extension                 
                 encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Straight, (uint)merge.PixelWidth, (uint)merge.PixelHeight, 96.0, 96.0, pixels);
                 await encoder.FlushAsync();
                 await saveStream.FlushAsync();
