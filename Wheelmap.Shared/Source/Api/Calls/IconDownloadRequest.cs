@@ -113,22 +113,22 @@ namespace Wheelmap.Api.Calls {
         private async Task LoadBackgroundImages(StorageFolder toFolder) {
             var uri = "ms-appx:///Assets/Images/mapmarker/bg_status_yes.png";
             var fileStream = RandomAccessStreamReference.CreateFromUri(new Uri(uri));
-            bitmapStateYes = new WriteableBitmap(ICON_WIDTH,ICON_HEIGHT);
+            bitmapStateYes = BitmapFactory.New(ICON_WIDTH, ICON_HEIGHT);
             bitmapStateYes.SetSource(await fileStream.OpenReadAsync());
             
             uri = "ms-appx:///Assets/Images/mapmarker/bg_status_no.png";
             fileStream = RandomAccessStreamReference.CreateFromUri(new Uri(uri));
-            bitmapStateNo = new WriteableBitmap(ICON_WIDTH, ICON_HEIGHT);
+            bitmapStateNo = BitmapFactory.New(ICON_WIDTH, ICON_HEIGHT);
             bitmapStateNo.SetSource(await fileStream.OpenReadAsync());
             
             uri = "ms-appx:///Assets/Images/mapmarker/bg_status_limited.png";
             fileStream = RandomAccessStreamReference.CreateFromUri(new Uri(uri));
-            bitmapStateLimited = new WriteableBitmap(ICON_WIDTH, ICON_HEIGHT);
+            bitmapStateLimited = BitmapFactory.New(ICON_WIDTH, ICON_HEIGHT);
             bitmapStateLimited.SetSource(await fileStream.OpenReadAsync());
             
-            uri = "ms-appx:///Assets/Images/mapmarker/bg_status_unknown.png"; ;
+            uri = "ms-appx:///Assets/Images/mapmarker/bg_status_unknown.png";
             fileStream = RandomAccessStreamReference.CreateFromUri(new Uri(uri));
-            bitmapStateUnknown = new WriteableBitmap(ICON_WIDTH, ICON_HEIGHT);
+            bitmapStateUnknown = BitmapFactory.New(ICON_WIDTH, ICON_HEIGHT);
             bitmapStateUnknown.SetSource(await fileStream.OpenReadAsync());
 
             // save copy
@@ -162,9 +162,9 @@ namespace Wheelmap.Api.Calls {
                 }
                 
                 ImageProperties properties = await file.Properties.GetImagePropertiesAsync();
-                WriteableBitmap icon = new WriteableBitmap((int)properties.Width, (int)properties.Height);
+                WriteableBitmap icon = BitmapFactory.New((int)properties.Width, (int)properties.Height);
                 icon.SetSource((await file.OpenReadAsync()));
-                
+
                 var fileName = file.Name.Replace("@2x", "");
                 StorageFile fileYes = await toFolder.CreateFileAsync($"yes_{fileName}", CreationCollisionOption.ReplaceExisting);
                 StorageFile fileNo = await toFolder.CreateFileAsync($"no_{fileName}", CreationCollisionOption.ReplaceExisting);
@@ -182,10 +182,11 @@ namespace Wheelmap.Api.Calls {
         }
         
         private async Task mergeAndSaveFile(WriteableBitmap background, WriteableBitmap icon, StorageFile saveFile) {
-            
+
             var h = background.PixelHeight;
             var w = background.PixelWidth;
-            var merge = new WriteableBitmap(ICON_WIDTH, ICON_HEIGHT);
+
+            var merge = BitmapFactory.New(ICON_WIDTH, ICON_HEIGHT);
             merge.Clear(Colors.Transparent);
             merge.Blit(destRectBG, background, new Rect(0, 0, w, h));
 
