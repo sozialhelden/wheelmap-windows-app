@@ -18,6 +18,8 @@ namespace Wheelmap.Source.UI.Pages.Intro {
         /// </summary>
         Action DismissDialog;
 
+        const int PAGE_COUNT = 5;
+
         ToggleGroup<Ellipse> mFlipViewIndicatorToggleGroup = new ToggleGroup<Ellipse>();
 
         public IntroPage() {
@@ -25,6 +27,11 @@ namespace Wheelmap.Source.UI.Pages.Intro {
             readyButton.Text = "READY".t();
             initPageIndicator();
 
+            Dispatcher.PostDelayed(() => {
+                for (int i=0;i< PAGE_COUNT; i++) {
+                    FillFlipViewPageWithContent(i);
+                }
+            }, 1000);
         }
 
         private void initPageIndicator() {
@@ -64,6 +71,9 @@ namespace Wheelmap.Source.UI.Pages.Intro {
         private void FillFlipViewPageWithContent(int index) {
             switch (index) {
                 case 0:
+                    if (introFrame0.CurrentSourcePageType != null) {
+                        return;
+                    }
                     introFrame0.Navigate(typeof(IntroContentPage1), new IntroArguments {
                         Title = "INTRODUCTION_01_TITLE".t(),
                         Text = "INTRODUCTION_01_TEXT".t(),
@@ -71,6 +81,9 @@ namespace Wheelmap.Source.UI.Pages.Intro {
                     });
                     break;
                 case 1:
+                    if (introFrame1.CurrentSourcePageType != null) {
+                        return;
+                    }
                     introFrame1.Navigate(typeof(IntroContentPage1), new IntroArguments {
                         Title = "INTRODUCTION_02_TITLE".t(),
                         Text = "INTRODUCTION_02_TEXT".t(),
@@ -78,6 +91,9 @@ namespace Wheelmap.Source.UI.Pages.Intro {
                     });
                     break;
                 case 2:
+                    if (introFrame2.CurrentSourcePageType != null) {
+                        return;
+                    }
                     introFrame2.Navigate(typeof(IntroContentPage1), new IntroArguments {
                         Title = "INTRODUCTION_03_TITLE".t(),
                         Text = "INTRODUCTION_03_TEXT".t(),
@@ -85,6 +101,9 @@ namespace Wheelmap.Source.UI.Pages.Intro {
                     });
                     break;
                 case 3:
+                    if (introFrame3.CurrentSourcePageType != null) {
+                        return;
+                    }
                     introFrame3.Navigate(typeof(IntroContentPage1), new IntroArguments {
                         Title = "INTRODUCTION_04_TITLE".t(),
                         Text = "INTRODUCTION_04_TEXT".t(),
@@ -92,6 +111,9 @@ namespace Wheelmap.Source.UI.Pages.Intro {
                     });
                     break;
                 case 4:
+                    if (introFrame4.CurrentSourcePageType != null) {
+                        return;
+                    }
                     introFrame4.Navigate(typeof(IntroContentPage2), new IntroArguments {
                         Title = "INTRODUCTION_05_TITLE".t(),
                         Text = "INTRODUCTION_05_TEXT".t(),
