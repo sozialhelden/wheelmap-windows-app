@@ -42,6 +42,8 @@ namespace Wheelmap.Source.UI {
         public MainPage() {
 
             this.InitializeComponent();
+            rootContainer.FlowDirection = DeviceUtils.GetFlowDirection();
+
             InitToggleGroup();
 
             mainFrame.Navigate(typeof(MapPage));

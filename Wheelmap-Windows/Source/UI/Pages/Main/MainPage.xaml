@@ -9,6 +9,7 @@
     mc:Ignorable="d">
 
     <Grid
+        x:Name="rootContainer"
         RequestedTheme="Dark">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="WindowSizeStates">

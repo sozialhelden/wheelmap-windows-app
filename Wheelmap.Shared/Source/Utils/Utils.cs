@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using Wheelmap.Extensions;
 using Windows.ApplicationModel;
+using Windows.ApplicationModel.Resources.Core;
 using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
+using Windows.UI.Xaml;
 
 namespace Wheelmap.Utils {
 
@@ -35,6 +38,21 @@ namespace Wheelmap.Utils {
     }
 
     public class DeviceUtils {
+
+        /// <summary>
+        /// reads the FlowDirection defined in the app resources
+        /// </summary>
+        public static FlowDirection GetFlowDirection(ResourceContext context = null) {
+            const string KEY_FLOW_DIRECTION = "FlowDirection";
+            string flowDirection;
+            if (context != null) {
+                flowDirection = KEY_FLOW_DIRECTION.t(context);
+            } else {
+                flowDirection = KEY_FLOW_DIRECTION.t();
+            }
+            return "RightToLeft".Equals(flowDirection?.Trim()) ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+        }
+
         public static Platform DetectPlatform() {
             bool isHardwareButtonsAPIPresent =
                 ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons");

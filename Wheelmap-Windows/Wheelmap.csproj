@@ -124,6 +124,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\UI\Controls\InheritDirectionFlowImageContainer.cs" />
     <Compile Include="Source\UI\Pages\Credits\CreditsPage.xaml.cs">
       <DependentUpon>CreditsPage.xaml</DependentUpon>
     </Compile>
@@ -144,6 +145,7 @@
     <Compile Include="Source\UI\Pages\Status\PhoneStatusExplainPage.xaml.cs">
       <DependentUpon>PhoneStatusExplainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Source\Utils\DependencyObjectExtensions.cs" />
     <Compile Include="Source\WMBuildConfig.cs" />
     <Compile Include="Source\Cortana\CortanaCommand.cs" />
     <Compile Include="Source\Cortana\CortanaManager.cs" />

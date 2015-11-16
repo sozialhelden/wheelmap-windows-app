@@ -250,4 +250,8 @@
   <data name="INTRODUCTION_05_TITLE" xml:space="preserve">
     <value>And now: Have fun as you search, find and map!</value>
   </data>
+  <data name="FlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>the layout direction for the app. Must be LeftToRight or RightToLeft.</comment>
+  </data>
 </root>

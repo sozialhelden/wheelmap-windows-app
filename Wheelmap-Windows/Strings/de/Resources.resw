@@ -258,4 +258,8 @@ unseren Newsletter!</value>
     <value>Und jetzt viel Spaß beim Suchen,
 Finden und Mappen!</value>
   </data>
+  <data name="FlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>the layout direction for the app. Must be LeftToRight or RightToLeft</comment>
+  </data>
 </root>
