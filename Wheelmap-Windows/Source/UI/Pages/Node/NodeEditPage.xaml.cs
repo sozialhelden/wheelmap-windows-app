@@ -70,6 +70,7 @@ namespace Wheelmap.Source.UI.Pages.Node {
 
             streetTextBox.Text = node?.street ?? "";
             houseNumberTextBox.Text = node?.housenumber ?? "";
+            phoneNumberTextBox.Text = node?.phone ?? "";
             plzTextBox.Text = node?.postcode ?? "";
             cityTextBox.Text = node?.city ?? "";
             websiteTextBox.Text = node?.website ?? "";
