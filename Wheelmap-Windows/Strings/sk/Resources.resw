@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CouldNotLoadData.Text" xml:space="preserve">
+    <value>Overte si, prosím, že pripojenie na internet pracuje správne alebo skúste neskôr.</value>
+  </data>
+  <data name="CREDITS_MICROSOFT" xml:space="preserve">
+    <value>Vývoj tejto aplikácie finančne podporila spoločnosť Microsoft Deutschland.</value>
+  </data>
+  <data name="DIALOG_NO_LOCATION_ACCESS_CANCEL" xml:space="preserve">
+    <value>Zrušiť</value>
+  </data>
+  <data name="DIALOG_NO_LOCATION_ACCESS_SETTINGS_BUTTON_TEXT" xml:space="preserve">
+    <value>Nastavenia</value>
+  </data>
+  <data name="HELP_HINT" xml:space="preserve">
+    <value>Pomôžte nám označovaním miest!</value>
+  </data>
+  <data name="MENU_CATEGORY.Text" xml:space="preserve">
+    <value>Kategórie</value>
+  </data>
+  <data name="MENU_CREDITS.Text" xml:space="preserve">
+    <value>Zásluhy</value>
+  </data>
+  <data name="MENU_FAQ.Text" xml:space="preserve">
+    <value>Najčastejšie otázky</value>
+  </data>
+  <data name="MENU_HELP.Text" xml:space="preserve">
+    <value>Pomoc</value>
+  </data>
+  <data name="MENU_LIST.Text" xml:space="preserve">
+    <value>Zoznam</value>
+  </data>
+  <data name="MENU_NEWS.Text" xml:space="preserve">
+    <value>Novinky</value>
+  </data>
+  <data name="MENU_PROFILE.Text" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="MENU_SETTINGS.Text" xml:space="preserve">
+    <value>Nastavenia</value>
+  </data>
+  <data name="MENU_STATUS.Text" xml:space="preserve">
+    <value>Stav</value>
+  </data>
+  <data name="MENU_STATUS_INFO.Text" xml:space="preserve">
+    <value>Informácie o označovaní bezbariérovej dostupnosti</value>
+  </data>
+  <data name="MENU_WC.Text" xml:space="preserve">
+    <value>WC</value>
+  </data>
+  <data name="NO_NODES_FOUND" xml:space="preserve">
+    <value>Pre zadané kritériá a polohu sa nenašli žiadne miesta</value>
+  </data>
+  <data name="OutOfZoom.Text" xml:space="preserve">
+    <value>Miesta sa vám zobrazia po priblížení.</value>
+  </data>
+  <data name="RetryButton.Content" xml:space="preserve">
+    <value>Znova načítať</value>
+  </data>
+  <data name="searchBox.PlaceholderText" xml:space="preserve">
+    <value>Hľadať miesta.</value>
+  </data>
+  <data name="TITLE_CATEGORY" xml:space="preserve">
+    <value>Kategórie</value>
+  </data>
+  <data name="TITLE_EDIT" xml:space="preserve">
+    <value>Upraviť miesto</value>
+  </data>
+  <data name="TITLE_HELP" xml:space="preserve">
+    <value>Pomoc</value>
+  </data>
+  <data name="TITLE_LIST" xml:space="preserve">
+    <value>Zoznam</value>
+  </data>
+  <data name="TITLE_MAP" xml:space="preserve">
+    <value>Mapa</value>
+  </data>
+  <data name="TITLE_NEW" xml:space="preserve">
+    <value>Pridať nové miesto</value>
+  </data>
+  <data name="TITLE_PROFILE" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="TITLE_SETTINGS" xml:space="preserve">
+    <value>Nastavenia</value>
+  </data>
+  <data name="TITLE_STATUS" xml:space="preserve">
+    <value>Bezbariérová dostupnosť miesta</value>
+  </data>
+  <data name="TITLE_WC" xml:space="preserve">
+    <value>Bezbariérová dostupnosť záchoda</value>
+  </data>
+  <data name="UNKNOWN_ERROR" xml:space="preserve">
+    <value>Chyba. Prosím, skontrolujte svoje internetové pripojenie</value>
+  </data>
+  <data name="UPLOAD_IMAGE_PROCESSING" xml:space="preserve">
+    <value>Obrázok sa nahráva</value>
+  </data>
+  <data name="CREDITS" xml:space="preserve">
+    <value>Zásluhy</value>
+  </data>
+  <data name="READY" xml:space="preserve">
+    <value>Pripravené</value>
+  </data>
+  <data name="INTRODUCTION_01_TEXT" xml:space="preserve">
+    <value>Môžete tu vyhľadávať, nachádzať a označovať miesta prístupné pre invalidné vozíky</value>
+  </data>
+  <data name="INTRODUCTION_01_TITLE" xml:space="preserve">
+    <value>Vitajte na stránke Wheelmap</value>
+  </data>
+  <data name="INTRODUCTION_02_TEXT" xml:space="preserve">
+    <value>Nájdite miesta prístupné pre invalidné vozíky vo vašom okolí.</value>
+  </data>
+  <data name="INTRODUCTION_02_TITLE" xml:space="preserve">
+    <value>Vyhľadávať miesta</value>
+  </data>
+  <data name="INTRODUCTION_03_TEXT" xml:space="preserve">
+    <value>Nemusíte sa registrovať  pre túto operáciu.</value>
+  </data>
+  <data name="INTRODUCTION_03_TITLE" xml:space="preserve">
+    <value>Označiť miesta a toalety</value>
+  </data>
+  <data name="INTRODUCTION_04_TEXT" xml:space="preserve">
+    <value>Musíte byť prihlásený s vašim profilom pre túto operáciu.</value>
+  </data>
+  <data name="INTRODUCTION_04_TITLE" xml:space="preserve">
+    <value>Upraviť miesta</value>
+  </data>
+  <data name="INTRODUCTION_05_TEXT" xml:space="preserve">
+    <value>Viac tipov a informácií nájdete na FAQ na Wheelmap.org. Zaujímajú vás novinky z komunity? Prezrite si blog alebo sa prihláste k odberu nášho informačného bulletinu. </value>
+  </data>
+  <data name="INTRODUCTION_05_TITLE" xml:space="preserve">
+    <value>A teraz: Zabávaj sa počas toho, ako budeš vyhľadávať, nachádzať a mapovať!</value>
+  </data>
+  <data name="FlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>the layout direction for the app. Must be LeftToRight or RightToLeft.</comment>
+  </data>
+</root>

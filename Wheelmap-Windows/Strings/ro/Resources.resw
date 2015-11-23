@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CouldNotLoadData.Text" xml:space="preserve">
+    <value>Verificati conexiunea la internet sau incercati mai tarziu.</value>
+  </data>
+  <data name="CREDITS_MICROSOFT" xml:space="preserve">
+    <value>Dezvoltarea aplicației a fost sponsorizată de Microsoft Deutschland.</value>
+  </data>
+  <data name="DIALOG_NO_LOCATION_ACCESS_CANCEL" xml:space="preserve">
+    <value>Anulare</value>
+  </data>
+  <data name="DIALOG_NO_LOCATION_ACCESS_SETTINGS_BUTTON_TEXT" xml:space="preserve">
+    <value>Setări</value>
+  </data>
+  <data name="HELP_HINT" xml:space="preserve">
+    <value>Ajutați prin marcarea locurilor!</value>
+  </data>
+  <data name="MENU_CATEGORY.Text" xml:space="preserve">
+    <value>Categorii</value>
+  </data>
+  <data name="MENU_CREDITS.Text" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="MENU_FAQ.Text" xml:space="preserve">
+    <value>Întrebări frecvente</value>
+  </data>
+  <data name="MENU_HELP.Text" xml:space="preserve">
+    <value>Ajutor</value>
+  </data>
+  <data name="MENU_LIST.Text" xml:space="preserve">
+    <value>Listă</value>
+  </data>
+  <data name="MENU_NEWS.Text" xml:space="preserve">
+    <value>Știri</value>
+  </data>
+  <data name="MENU_PROFILE.Text" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="MENU_SETTINGS.Text" xml:space="preserve">
+    <value>Setări</value>
+  </data>
+  <data name="MENU_STATUS.Text" xml:space="preserve">
+    <value>Stare</value>
+  </data>
+  <data name="MENU_STATUS_INFO.Text" xml:space="preserve">
+    <value>Informații privind marcarea stării scaunului cu rotile</value>
+  </data>
+  <data name="MENU_WC.Text" xml:space="preserve">
+    <value>Toaletă</value>
+  </data>
+  <data name="NO_NODES_FOUND" xml:space="preserve">
+    <value>Nu au fost găsite locuri cu criteriile sau poziția selectată </value>
+  </data>
+  <data name="OutOfZoom.Text" xml:space="preserve">
+    <value>Mărire mai aproape pentru a vedea locuri.</value>
+  </data>
+  <data name="RetryButton.Content" xml:space="preserve">
+    <value>Reîncărcare</value>
+  </data>
+  <data name="searchBox.PlaceholderText" xml:space="preserve">
+    <value>Căutați locuri.</value>
+  </data>
+  <data name="TITLE_CATEGORY" xml:space="preserve">
+    <value>Categorii</value>
+  </data>
+  <data name="TITLE_EDIT" xml:space="preserve">
+    <value>Editare loc</value>
+  </data>
+  <data name="TITLE_HELP" xml:space="preserve">
+    <value>Ajutor</value>
+  </data>
+  <data name="TITLE_LIST" xml:space="preserve">
+    <value>Listă</value>
+  </data>
+  <data name="TITLE_MAP" xml:space="preserve">
+    <value>Hartă</value>
+  </data>
+  <data name="TITLE_NEW" xml:space="preserve">
+    <value>Adăugare loc nou</value>
+  </data>
+  <data name="TITLE_PROFILE" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="TITLE_SETTINGS" xml:space="preserve">
+    <value>Setări</value>
+  </data>
+  <data name="TITLE_STATUS" xml:space="preserve">
+    <value>Accesibilitatea locului cu scaunul cu rotile </value>
+  </data>
+  <data name="TITLE_WC" xml:space="preserve">
+    <value>Accesibilitatea cu scaunul cu rotile a toaletei</value>
+  </data>
+  <data name="UNKNOWN_ERROR" xml:space="preserve">
+    <value>Eroare. Vă rugăm să verificați conexiunea dvs. la internet</value>
+  </data>
+  <data name="UPLOAD_IMAGE_PROCESSING" xml:space="preserve">
+    <value>Încărcare imagine</value>
+  </data>
+  <data name="CREDITS" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="READY" xml:space="preserve">
+    <value>Gata</value>
+  </data>
+  <data name="INTRODUCTION_01_TEXT" xml:space="preserve">
+    <value>Aici puteți căuta, găsi și marca locuri accesibile în scaun cu rotile.</value>
+  </data>
+  <data name="INTRODUCTION_01_TITLE" xml:space="preserve">
+    <value>Bun venit la Wheelmap</value>
+  </data>
+  <data name="INTRODUCTION_02_TEXT" xml:space="preserve">
+    <value>Găsiți locuri accesibile în scaun cu rotile în apropiere.</value>
+  </data>
+  <data name="INTRODUCTION_02_TITLE" xml:space="preserve">
+    <value>Căutare locuri</value>
+  </data>
+  <data name="INTRODUCTION_03_TEXT" xml:space="preserve">
+    <value>Nu este nevoie să fiți înregistrat(ă) pentru acest lucru.</value>
+  </data>
+  <data name="INTRODUCTION_03_TITLE" xml:space="preserve">
+    <value>Marcați locuri și toalete</value>
+  </data>
+  <data name="INTRODUCTION_04_TEXT" xml:space="preserve">
+    <value>Trebuie să fiți autentificat(ă) prin Profilul dvs. pentru acest lucru.</value>
+  </data>
+  <data name="INTRODUCTION_04_TITLE" xml:space="preserve">
+    <value>Editare locuri</value>
+  </data>
+  <data name="INTRODUCTION_05_TEXT" xml:space="preserve">
+    <value>Puteți găsi mai multe sfaturi și informații în Întrebările frecvente de pe Wheelmap.org. Vă interesează noutăți din comunitate? Vizitați blogul sau abonați-vă la buletinul nostru informativ.</value>
+  </data>
+  <data name="INTRODUCTION_05_TITLE" xml:space="preserve">
+    <value>Iar acum: Distrați-vă în timp ce căutați, găsiți și treceți pe hartă!</value>
+  </data>
+  <data name="FlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>the layout direction for the app. Must be LeftToRight or RightToLeft.</comment>
+  </data>
+</root>
