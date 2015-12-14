@@ -91,8 +91,19 @@ namespace Wheelmap
 
             CortanaManager.RegisterCommands();
 
+            SendCrashedAsync().Forget();
+        }
+
+        private async Task SendCrashedAsync() {
             if (BuildConfig.HOCKEY_APP_ID?.Length > 0) {
-                HockeyClient.Current.SendCrashesAsync().Forget();
+                try {
+                    await HockeyClient.Current.SendCrashesAsync();
+                } catch (Exception ex) {
+                    Log.e("Crash in SendCrashesAsync from HockeyApp Sdk");
+                    Log.e(ex);
+                    // there is an bug in the HockeyApp SDK that causes the crash in some situations
+                    // http://stackoverflow.com/questions/32436976/hockeyapp-crashes-on-back-button-press-on-windows-phone/32444472#32444472
+                }
             }
         }
 
