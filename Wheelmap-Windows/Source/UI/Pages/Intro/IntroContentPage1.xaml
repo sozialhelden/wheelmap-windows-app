@@ -30,6 +30,7 @@
             FontSize="20"
             HorizontalAlignment="Center"
             TextAlignment="Center"
+            TextWrapping="WrapWholeWords"
             Margin="10,10,10,10"
             />
 
@@ -39,6 +40,7 @@
             Text="text"
             HorizontalAlignment="Center"
             TextAlignment="Center"
+            TextWrapping="WrapWholeWords"
             Margin="10,10,10,10"
             />
     </Grid>
