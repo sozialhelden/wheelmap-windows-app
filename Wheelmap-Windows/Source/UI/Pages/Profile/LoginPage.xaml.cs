@@ -95,7 +95,7 @@ namespace Wheelmap.Source.UI.Pages.Profile {
                     Dispatcher.RunAsync(CoreDispatcherPriority.Normal,() => {
                         HttpRequestMessage request = new HttpRequestMessage();
                         request.RequestUri = args.Uri;
-                        request.Headers.Add("Install-ID", Prefs.GetInstallId());
+                        request.Headers.Add("Install-ID", Prefs.InstallId);
                         // use a custom user agent to change the behavior of the website
                         request.Headers.Add("User-Agent", WebViewUtils.CreateAppsUserAgent());
                         mWebView.NavigateWithHttpRequestMessage(request);

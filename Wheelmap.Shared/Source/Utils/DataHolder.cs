@@ -94,7 +94,7 @@ namespace Wheelmap.Utils {
                 nodes = _FilterdNodes,
                 RefreshAll = false
             };
-            Prefs.SaveFilter(Filter);
+            Prefs.Filter = Filter;
             BusProvider.DefaultInstance.Post(e);
             
         }
@@ -167,7 +167,7 @@ namespace Wheelmap.Utils {
         
         private DataHolder() {
             BusProvider.DefaultInstance.Register(this);
-            Filter = Prefs.RestoreFilter() ?? new Filter();
+            Filter = Prefs.Filter ?? new Filter();
             Nodes = Model.Nodes.QueryAllDistinct();
         }
         

@@ -134,6 +134,7 @@
     <Compile Include="Source\Model\Status.cs" />
     <Compile Include="Source\Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\Utils\Extensions\PreferencesExtensions.cs" />
     <Compile Include="Source\Utils\Tiles\ContentInterfaces.cs" />
     <Compile Include="Source\Utils\Tiles\TileContent.cs" />
     <Compile Include="Source\Tiles\WheelmapTileManager.cs" />

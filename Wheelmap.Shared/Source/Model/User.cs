@@ -23,7 +23,7 @@ namespace Wheelmap.Model {
         public static User CurrentUser {
             get {
                 if (_currentUser == null) {
-                    _currentUser = Prefs.GetCurrentUser();
+                    _currentUser = Prefs.CurrentUser;
                 }
                 return _currentUser;
             }
@@ -33,7 +33,7 @@ namespace Wheelmap.Model {
                     _currentUser = value;
                     BusProvider.DefaultInstance.Post(new UserChangedEvent { User = value });
                 }
-                Prefs.SetCurrentUser(_currentUser);
+                Prefs.CurrentUser = _currentUser;
             }
         }
     }
