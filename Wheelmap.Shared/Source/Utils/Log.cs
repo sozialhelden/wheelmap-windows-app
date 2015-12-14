@@ -40,23 +40,7 @@ namespace Wheelmap {
             [CallerLineNumber] int sourceLineNumber = 0) {
             printLog("ERROR", message, memberName, sourceFilePath, sourceLineNumber);
         }
-
-        private static void printLog(string level, object TAG, object message) {
-#if DEBUG 
-            if (message is Exception) {
-                var ex = message as Exception;
-                Debug.WriteLine($"{level} | {TAG} | EXCEPTION: {ex.Message}");
-                Debug.WriteLine($"{level} | {TAG} | {ex.StackTrace}");
-            } else if (message is ICollection) {
-                var m = Newtonsoft.Json.JsonConvert.SerializeObject(message);
-                Debug.WriteLine($"{level} | {TAG} | {m}");
-            } else {
-                Debug.WriteLine($"{level} | {TAG} | {message}");
-            }
-            
-#endif
-        }
-
+        
         private static void printLog(
             string level, 
             object message, 
@@ -68,5 +52,19 @@ namespace Wheelmap {
             printLog(level, TAG, message);
 #endif
         }
+        
+        private static void printLog(string level, object TAG, object message) {
+            if (message is Exception) {
+                var ex = message as Exception;
+                Debug.WriteLine($"{level} | {TAG} | EXCEPTION: {ex.Message}");
+                Debug.WriteLine($"{level} | {TAG} | {ex.StackTrace}");
+            } else if (message is ICollection) {
+                var m = Newtonsoft.Json.JsonConvert.SerializeObject(message);
+                Debug.WriteLine($"{level} | {TAG} | {m}");
+            } else {
+                Debug.WriteLine($"{level} | {TAG} | {message}");
+            }
+        }
+
     }
 }
