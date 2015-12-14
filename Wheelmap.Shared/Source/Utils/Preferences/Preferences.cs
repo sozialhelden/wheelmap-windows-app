@@ -37,12 +37,7 @@ namespace Wheelmap.Utils.Preferences {
         }
 
         public static Model.User GetCurrentUser() {
-            string userJson = localSettings.Values[KEY_CURRENTUSER] as string;
-            if (userJson != null) {
-                return JsonConvert.DeserializeObject<Model.User>(userJson); ;
-            } else {
-                return null;
-            }
+            return readFromJson<Model.User>(KEY_CURRENTUSER);
         }
 
         public static void SetCurrentUser(Model.User user) {
@@ -63,12 +58,7 @@ namespace Wheelmap.Utils.Preferences {
         }
         
         public static Filter RestoreFilter() {
-            string json = localSettings.Values[KEY_FILTER] as string;
-            if (json != null) {
-                return JsonConvert.DeserializeObject<Filter>(json); ;
-            } else {
-                return null;
-            }
+            return readFromJson<Filter>(KEY_FILTER);
         }
         
         public static String GetInstallId() {
@@ -79,5 +69,31 @@ namespace Wheelmap.Utils.Preferences {
             }
             return id;
         }
+
+        /// <summary>
+        /// trys to read the value stored in {key} as JsonObject 
+        /// </summary>
+        /// <param name="key">
+        /// the unique key for the local settings
+        /// </param>
+        /// <returns>
+        /// the stored value or default
+        /// </returns>
+        private static T readFromJson<T>(String key) {
+            try {
+                string json = localSettings.Values[key] as string;
+                if (json != null) {
+                    return JsonConvert.DeserializeObject<T>(json);
+                } else {
+                    return default(T);
+                }
+            } catch (Exception e) {
+                // something goes wrong
+                Log.e(e);
+                return default(T);
+            }
+        }
+        
     }
+   
 }
