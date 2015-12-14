@@ -41,13 +41,18 @@ namespace Wheelmap.Api.Calls {
 
         public async Task<bool> Query() {
             var assets = await new AssetsRequest().Execute();
-            if (assets?.Count <= 0) {
+            if (assets == null || assets?.Count <= 0) {
+                bool hasCachedData = ApiPreferences.GetEtag(ETAG_KEY) != null;
+                Log.d($"api data is empty. Has cached Data: {hasCachedData}");
                 // we have some data in the cache
-                return ApiPreferences.GetEtag(ETAG_KEY) != null;
+                return hasCachedData;
             }
             var iconsType = "icons";
             foreach (Asset asset in assets) {
                 if (asset.type == iconsType) {
+
+                    Log.d($"load assets from {asset.url}");
+
                     string folderName = Constants.FOLDER_MARKER_ICONS;
                     StorageFolder local = Windows.Storage.ApplicationData.Current.LocalFolder;
                     StorageFolder folder = null;
